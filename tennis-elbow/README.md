@@ -1,0 +1,144 @@
+# Tennis Elbow Treatment App
+
+An iOS application to help manage and track tennis elbow (lateral epicondylitis) recovery with structured treatment plans, scheduling, pain tracking, and progress monitoring.
+
+## Features
+
+- 📋 **Progressive Treatment Plans** - Three 2-week treatment phases
+- 📅 **Smart Scheduling** - Automatic activity scheduling with customizable times
+- 🔔 **Push Notifications** - Reminders for scheduled activities
+- 📊 **Pain Tracking** - Record and visualize pain levels over time
+- 📈 **Progress Analytics** - Track completion rates and treatment effectiveness
+- 💡 **Educational Content** - Learn about tennis elbow and treatment best practices
+
+## How to Test the App
+
+### Option 1: Using Xcode (Recommended)
+
+1. **Install Xcode** from the Mac App Store (if not already installed)
+
+2. **Create a new Xcode project:**
+   - Open Xcode
+   - Select "Create a new Xcode project"
+   - Choose "iOS" → "App"
+   - Click "Next"
+   - Fill in:
+     - Product Name: `TennisElbow`
+     - Team: Select your team (or leave as None for simulator only)
+     - Organization Identifier: `com.yourname` (or any identifier)
+     - Interface: **SwiftUI**
+     - Language: **Swift**
+     - Storage: **None**
+   - Click "Next" and save to a temporary location
+
+3. **Replace the project files:**
+   - Delete the default `ContentView.swift` and `TennisElbowApp.swift` from Xcode
+   - Drag and drop all files from this directory into your Xcode project:
+     - `TennisElbowApp.swift`
+     - `ContentView.swift`
+     - `Models/` folder (all 3 files)
+     - `ViewModels/` folder (TreatmentManager.swift)
+     - `Views/` folder (all 5 files)
+   - Make sure "Copy items if needed" is checked
+   - Select "Create groups" for folders
+
+4. **Configure capabilities:**
+   - Select your project in the navigator
+   - Go to "Signing & Capabilities" tab
+   - If testing notifications, you may need to enable "Push Notifications"
+
+5. **Run the app:**
+   - Select a simulator (e.g., "iPhone 15 Pro")
+   - Click the Play button (▶️) or press Cmd+R
+   - The app will build and launch in the simulator
+
+### Option 2: Using Swift Playgrounds (iPad/Mac)
+
+If you have an iPad with Swift Playgrounds:
+1. Create a new App project
+2. Copy the code files one by one
+3. Run directly on your iPad
+
+### Option 3: Quick Test with Command Line
+
+```bash
+# Navigate to the project directory
+cd /Users/bwils17/code/tennis-elbow
+
+# Use xcodebuild to create and test (requires setting up project first)
+# This is more advanced - use Option 1 for easier testing
+```
+
+## Testing Tips
+
+### Initial Setup:
+1. **First Launch**: The app will generate a default schedule for the current week
+2. **Enable Notifications**: Go to Settings tab → Enable Reminders (simulator will show permission dialog)
+3. **Explore Treatment Plan**: View all activities in the Treatment tab
+
+### Testing Activities:
+1. **Schedule Tab**: 
+   - Use the calendar to select different dates
+   - Tap activities to view details
+   - Mark activities as complete and select pain level
+
+2. **Pain Tracking**:
+   - Complete several activities with different pain levels
+   - Go to Progress tab to see the pain chart and trends
+   - Chart needs at least 2 data points to show trends
+
+3. **Progress Tracking**:
+   - Complete activities to see progress bars fill up
+   - Check the completion percentages
+   - View recent completions history
+
+4. **Change Treatment Plans**:
+   - Go to Settings → Current Plan
+   - Switch between Week 1-2, 3-4, and 5-6 plans
+   - Notice how activities change based on recovery phase
+
+### Simulator Tips:
+- **Notifications**: Won't appear as prominently in simulator as on real device
+- **Time Travel**: Change simulator time (Debug → Custom Time) to test scheduling
+- **Reset**: Delete app from simulator to start fresh
+
+## Project Structure
+
+```
+tennis-elbow/
+├── Models/
+│   ├── TreatmentActivity.swift    # Activity definitions and types
+│   ├── ScheduledActivity.swift    # Scheduled activities with pain tracking
+│   └── TreatmentPlan.swift        # Treatment plan phases
+├── ViewModels/
+│   └── TreatmentManager.swift     # Main business logic and state management
+├── Views/
+│   ├── TreatmentPlanView.swift    # Treatment plan overview
+│   ├── ActivityDetailView.swift   # Individual activity details
+│   ├── ScheduleView.swift         # Calendar and scheduling
+│   ├── ProgressView.swift         # Charts and analytics
+│   └── SettingsView.swift         # Settings and info
+├── ContentView.swift              # Main tab navigation
+└── TennisElbowApp.swift          # App entry point
+```
+
+## Requirements
+
+- **iOS 16.0+** (for Charts framework)
+- **Xcode 14.0+**
+- **Swift 5.7+**
+
+## Medical Disclaimer
+
+This app is for informational purposes only and is not a substitute for professional medical advice. Always consult with a healthcare provider before starting any treatment program.
+
+## Treatment Phases
+
+### Week 1-2: Gentle Recovery
+Focus on reducing inflammation with ice therapy and gentle stretching exercises.
+
+### Week 3-4: Progressive Strengthening
+Add eccentric strengthening exercises while continuing stretches.
+
+### Week 5-6: Active Rehabilitation
+Increase strength and endurance with more intensive exercises.
