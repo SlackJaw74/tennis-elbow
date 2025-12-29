@@ -11,6 +11,58 @@ An iOS application to help manage and track tennis elbow (lateral epicondylitis)
 - 📈 **Progress Analytics** - Track completion rates and treatment effectiveness
 - 💡 **Educational Content** - Learn about tennis elbow and treatment best practices
 
+## Build & Launch in iOS Simulator
+
+These steps use the included Xcode project and the iOS Simulator.
+
+### Command Line (fastest)
+
+Prerequisites: Xcode installed and at least one iOS simulator (e.g., iPhone 16e) available.
+
+```bash
+# Navigate to the workspace root
+cd /Users/bwils17/code/tennis-elbow
+
+# Open Simulator (boots your last device)
+open -a Simulator
+
+# Build for the simulator (Debug)
+xcodebuild \
+   -project "TennisElbow/TennisElbow.xcodeproj" \
+   -scheme "TennisElbow" \
+   -configuration Debug \
+   -sdk iphonesimulator \
+   -destination "platform=iOS Simulator,name=iPhone 16e" \
+   -derivedDataPath build \
+   clean build
+
+# Install the built app to the booted simulator
+xcrun simctl install booted "build/Build/Products/Debug-iphonesimulator/TennisElbow.app"
+
+# Launch the app by bundle identifier
+xcrun simctl launch booted com.madhouse.TennisElbow
+```
+
+Notes:
+
+- If `iPhone 16e` isn’t available, pick another installed device name from:
+   `xcrun simctl list devices` and update the `-destination`.
+- The build output lives in `build/Build/Products/Debug-iphonesimulator/`.
+
+### Xcode (GUI)
+
+1. Open the project: [TennisElbow/TennisElbow.xcodeproj](TennisElbow/TennisElbow.xcodeproj)
+2. In the toolbar, select a simulator device (e.g., iPhone 16e).
+3. Ensure the scheme is `TennisElbow` and configuration is `Debug`.
+4. Press Run (▶) or `Cmd+R` to build and launch.
+
+### Troubleshooting
+
+- No simulators available: open Xcode → Settings → Platforms → install iOS simulators.
+- Pick a valid device name: run `xcrun simctl list devices` and use one marked `(Shutdown)` or `(Booted)`.
+- Clean derived data: remove the local `build` folder or use Xcode’s Product → Clean Build Folder.
+- App doesn’t appear: re-run the install and launch steps; ensure the Simulator is booted.
+
 ## How to Test the App
 
 ### Option 1: Using Xcode (Recommended)
@@ -55,6 +107,7 @@ An iOS application to help manage and track tennis elbow (lateral epicondylitis)
 ### Option 2: Using Swift Playgrounds (iPad/Mac)
 
 If you have an iPad with Swift Playgrounds:
+
 1. Create a new App project
 2. Copy the code files one by one
 3. Run directly on your iPad
@@ -71,13 +124,15 @@ cd /Users/bwils17/code/tennis-elbow
 
 ## Testing Tips
 
-### Initial Setup:
+### Initial Setup
+
 1. **First Launch**: The app will generate a default schedule for the current week
 2. **Enable Notifications**: Go to Settings tab → Enable Reminders (simulator will show permission dialog)
 3. **Explore Treatment Plan**: View all activities in the Treatment tab
 
-### Testing Activities:
-1. **Schedule Tab**: 
+### Testing Activities
+
+1. **Schedule Tab**:
    - Use the calendar to select different dates
    - Tap activities to view details
    - Mark activities as complete and select pain level
@@ -97,14 +152,15 @@ cd /Users/bwils17/code/tennis-elbow
    - Switch between Week 1-2, 3-4, and 5-6 plans
    - Notice how activities change based on recovery phase
 
-### Simulator Tips:
+### Simulator Tips
+
 - **Notifications**: Won't appear as prominently in simulator as on real device
 - **Time Travel**: Change simulator time (Debug → Custom Time) to test scheduling
 - **Reset**: Delete app from simulator to start fresh
 
 ## Project Structure
 
-```
+```txt
 tennis-elbow/
 ├── Models/
 │   ├── TreatmentActivity.swift    # Activity definitions and types
@@ -135,10 +191,13 @@ This app is for informational purposes only and is not a substitute for professi
 ## Treatment Phases
 
 ### Week 1-2: Gentle Recovery
+
 Focus on reducing inflammation with ice therapy and gentle stretching exercises.
 
 ### Week 3-4: Progressive Strengthening
+
 Add eccentric strengthening exercises while continuing stretches.
 
 ### Week 5-6: Active Rehabilitation
+
 Increase strength and endurance with more intensive exercises.
