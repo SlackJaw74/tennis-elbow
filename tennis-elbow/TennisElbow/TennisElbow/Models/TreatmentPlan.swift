@@ -58,10 +58,10 @@ extension TreatmentPlan {
             activities: [
                 TreatmentActivity.defaultActivities[0], // Wrist Extension Stretch
                 TreatmentActivity.defaultActivities[1], // Wrist Flexion Stretch
-                TreatmentActivity.defaultActivities[2], // Eccentric Wrist Extension
-                TreatmentActivity.defaultActivities[4], // Ice Therapy
                 TreatmentActivity.defaultActivities[5], // Forearm Massage
                 TreatmentActivity.defaultActivities[6], // Wrist Rotations
+                TreatmentActivity.defaultActivities[2], // Eccentric Wrist Extension
+                TreatmentActivity.defaultActivities[4], // Ice Therapy
                 TreatmentActivity.defaultActivities[7]  // Pain Level Check
             ],
             dailySchedule: [
@@ -81,11 +81,11 @@ extension TreatmentPlan {
             activities: [
                 TreatmentActivity.defaultActivities[0], // Wrist Extension Stretch
                 TreatmentActivity.defaultActivities[1], // Wrist Flexion Stretch
+                TreatmentActivity.defaultActivities[5], // Forearm Massage
+                TreatmentActivity.defaultActivities[6], // Wrist Rotations
                 TreatmentActivity.defaultActivities[2], // Eccentric Wrist Extension
                 TreatmentActivity.defaultActivities[3], // Grip Strengthening
-                TreatmentActivity.defaultActivities[6], // Wrist Rotations
                 TreatmentActivity.defaultActivities[4], // Ice Therapy
-                TreatmentActivity.defaultActivities[5], // Forearm Massage
                 TreatmentActivity.defaultActivities[7]  // Pain Level Check
             ],
             dailySchedule: [
@@ -105,10 +105,10 @@ extension TreatmentPlan {
             activities: [
                 TreatmentActivity.defaultActivities[0], // Wrist Extension Stretch
                 TreatmentActivity.defaultActivities[1], // Wrist Flexion Stretch
-                TreatmentActivity.defaultActivities[2], // Eccentric Wrist Extension
-                TreatmentActivity.defaultActivities[3], // Grip Strengthening
                 TreatmentActivity.defaultActivities[5], // Forearm Massage
                 TreatmentActivity.defaultActivities[6], // Wrist Rotations
+                TreatmentActivity.defaultActivities[2], // Eccentric Wrist Extension
+                TreatmentActivity.defaultActivities[3], // Grip Strengthening
                 TreatmentActivity.defaultActivities[4], // Ice Therapy
                 TreatmentActivity.defaultActivities[7]  // Pain Level Check
             ],
