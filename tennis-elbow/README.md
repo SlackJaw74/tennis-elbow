@@ -1,5 +1,60 @@
 # Tennis Elbow Treatment App
 
+## Build & Launch in iOS Simulator
+
+## App Store Submission Checklist
+
+- Versioning: Update `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in the project.
+- Minimum iOS: Set deployment target to 16.0 to match Charts (done).
+- App Icon: Confirm 1024×1024 marketing icon and that build produces all sizes.
+- Privacy Policy: Host [PRIVACY_POLICY.md](TennisElbow/PRIVACY_POLICY.md) on a public URL and add it in App Store Connect.
+- App Privacy: Declare data collection as local-only (no collection) in App Store Connect.
+- Screenshots: Prepare iPhone (6.5") and iPad (if supported) screenshots for key flows.
+- Signing: Configure Release signing (Distribution certificate + provisioning) in Xcode.
+- Archive & Upload: In Xcode, select Any iOS Device (arm64) → Product → Archive → Distribute → App Store Connect.
+- Review Notes: Include the in-app medical disclaimer and explain local-only data storage.
+
+Optional (recommended): Add a `PrivacyInfo.xcprivacy` manifest declaring no required reason APIs; add a `Makefile` or `fastlane` lane to automate build/archive.
+
+## Automation
+
+- Makefile: quick simulator run
+   - Build + install + launch:
+      ```bash
+      make sim-run
+      ```
+   - Choose a different simulator (e.g., iPhone 17):
+      ```bash
+      make sim-run DEVICE="iPhone 17"
+      ```
+   - List devices:
+      ```bash
+      make device-list
+      ```
+   - Archive (requires signing):
+      ```bash
+      make archive
+      ```
+
+- fastlane: optional CI-friendly lanes
+   - Install fastlane:
+      ```bash
+      sudo gem install fastlane -NV
+      ```
+   - Run simulator lane:
+      ```bash
+      fastlane simulator
+      ```
+   - Create archive (Release):
+      ```bash
+      fastlane archive
+      ```
+   - Upload to App Store (set credentials first):
+      ```bash
+      fastlane upload
+      ```
+# Tennis Elbow Treatment App
+
 An iOS application to help manage and track tennis elbow (lateral epicondylitis) recovery with structured treatment plans, scheduling, pain tracking, and progress monitoring.
 
 ## Features

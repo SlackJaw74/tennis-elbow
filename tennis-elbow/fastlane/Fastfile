@@ -1,0 +1,42 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Run the app in iOS Simulator via Makefile"
+  lane :simulator do
+    sh "make sim-run"
+  end
+
+  desc "Archive the app for App Store (requires signing)"
+  lane :archive do
+    gym(
+      scheme: "TennisElbow",
+      project: "TennisElbow/TennisElbow.xcodeproj",
+      configuration: "Release",
+      export_method: "app-store",
+      output_directory: "archives",
+      clean: true
+    )
+  end
+
+  desc "Upload to App Store (credentials required)"
+  lane :upload do
+    upload_to_app_store(
+      skip_binary_upload: false,
+      skip_screenshots: true,
+      skip_metadata: true
+    )
+  end
+
+  desc "List available simulators"
+  lane :devices do
+    sh "make device-list"
+  end
+
+  desc "Generate screenshots for App Store"
+  lane :screenshots do
+    snapshot(
+      project: "TennisElbow/TennisElbow.xcodeproj",
+      scheme: "TennisElbow"
+    )
+  end
+end
