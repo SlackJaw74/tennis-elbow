@@ -49,6 +49,7 @@ struct SettingsView: View {
                     }
                 }
                 
+
                 Section("Information") {
                     NavigationLink {
                         AboutTennisElbowView()
@@ -60,6 +61,12 @@ struct SettingsView: View {
                         TipsView()
                     } label: {
                         Label("Treatment Tips", systemImage: "lightbulb")
+                    }
+                    
+                    NavigationLink {
+                        MedicalSourcesView()
+                    } label: {
+                        Label("Medical Sources & Citations", systemImage: "books.vertical")
                     }
                     
                     Button {
@@ -127,8 +134,28 @@ struct AboutTennisElbowView: View {
                 
                 Always consult with a healthcare provider before starting any treatment program.
                 """)
-                .font(.body)
-            }
+                .font(.body)                
+
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Sources")
+                        .font(.headline)
+                        .padding(.top)
+                    
+                    Text("The information above is based on guidelines from the American Academy of Orthopaedic Surgeons (AAOS), Mayo Clinic, and peer-reviewed research published in the British Journal of Sports Medicine.")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    
+                    NavigationLink {
+                        MedicalSourcesView()
+                    } label: {
+                        HStack {
+                            Image(systemName: "books.vertical")
+                            Text("View All Medical Sources")
+                        }
+                        .font(.subheadline)
+                    }
+                    .padding(.top, 4)
+                }            }
             .padding()
         }
         .navigationTitle("About Tennis Elbow")

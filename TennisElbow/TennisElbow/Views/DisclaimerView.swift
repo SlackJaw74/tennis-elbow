@@ -38,6 +38,29 @@ struct DisclaimerView: View {
                         BulletText(text: "This app does not replace physical therapy or medical treatment")
                         BulletText(text: "Stop any exercise that causes sharp pain")
                         
+
+                        Text("Medical Sources")
+                            .font(.headline)
+                            .padding(.top, 8)
+                        
+                        Text("""
+                        The exercises and treatment recommendations in this app are based on peer-reviewed medical research and guidelines from recognized medical organizations including the American Academy of Orthopaedic Surgeons (AAOS), Mayo Clinic, and published studies in the British Journal of Sports Medicine.
+                        """)
+                        
+                        if !isInitialLaunch {
+                            NavigationLink {
+                                MedicalSourcesView()
+                            } label: {
+                                HStack {
+                                    Image(systemName: "books.vertical")
+                                    Text("View All Medical Sources & Citations")
+                                }
+                                .font(.subheadline)
+                                .foregroundColor(.blue)
+                            }
+                            .padding(.top, 4)
+                        }
+                        
                         Text("Data & Privacy")
                             .font(.headline)
                             .padding(.top, 8)
