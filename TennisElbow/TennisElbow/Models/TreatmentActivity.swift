@@ -51,7 +51,6 @@ extension TreatmentActivity {
             description: "Gentle stretching to improve flexibility",
             type: .stretch,
             durationMinutes: 5,
-            repetitions: 10,
             sets: 3,
             instructions: [
                 "Extend your arm in front with palm facing down",
@@ -66,7 +65,6 @@ extension TreatmentActivity {
             description: "Stretches the extensors of the forearm",
             type: .stretch,
             durationMinutes: 5,
-            repetitions: 10,
             sets: 3,
             instructions: [
                 "Extend your arm with palm facing up",
