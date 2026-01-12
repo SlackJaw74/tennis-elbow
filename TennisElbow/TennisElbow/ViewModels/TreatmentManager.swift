@@ -25,7 +25,9 @@ class TreatmentManager: ObservableObject {
     }
     
     func generateSchedule(from date: Date = Date()) {
-        scheduledActivities.removeAll()
+        // Preserve existing completed activities and their data
+        // Remove only incomplete activities
+        scheduledActivities.removeAll { !$0.isCompleted }
         
         let calendar = Calendar.current
         let startOfWeek = calendar.dateComponents([.calendar, .yearForWeekOfYear, .weekOfYear], from: date)
