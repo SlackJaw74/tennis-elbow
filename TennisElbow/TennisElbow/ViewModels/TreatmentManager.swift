@@ -22,15 +22,16 @@ class TreatmentManager: ObservableObject {
         loadScheduledActivities()
         loadPlanStartDate()
         checkNotificationPermissions()
-        // Save initial plan start date if this is first launch
-        savePlanStartDate()
     }
     
-    func changePlan(to plan: TreatmentPlan) {
+    func changePlan(to plan: TreatmentPlan, isAutoAdvance: Bool = false) {
         currentPlan = plan
         currentPlanStartDate = Date()
         savePlanStartDate()
-        hasAutoAdvanced = false
+        if !isAutoAdvance {
+            // Only reset the flag when manually changing plans
+            hasAutoAdvanced = false
+        }
         generateSchedule()
         saveScheduledActivities()
     }
@@ -293,10 +294,8 @@ class TreatmentManager: ObservableObject {
         }
         
         let nextPlan = TreatmentPlan.defaultPlans[currentIndex + 1]
-        changePlan(to: nextPlan)
-        // Set flag after changePlan to prevent multiple auto-advancements
-        // (changePlan resets the flag, so we set it after the call)
         hasAutoAdvanced = true
+        changePlan(to: nextPlan, isAutoAdvance: true)
     }
     
     private func savePlanStartDate() {
@@ -306,9 +305,11 @@ class TreatmentManager: ObservableObject {
     private func loadPlanStartDate() {
         if let savedDate = UserDefaults.standard.object(forKey: "currentPlanStartDate") as? Date {
             currentPlanStartDate = savedDate
+        } else {
+            // No saved date exists - this is a new user or existing user upgrading
+            // Save the initialized date (current date) to establish the baseline
+            savePlanStartDate()
         }
-        // If no saved date exists, currentPlanStartDate will be the initialized value (current date)
-        // which is appropriate for new users or existing users upgrading to this version
     }
     
     private func saveScheduledActivities() {
