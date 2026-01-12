@@ -9,8 +9,10 @@ class TreatmentManager: ObservableObject {
     @Published var scheduledActivities: [ScheduledActivity] = []
     @Published var allActivities: [TreatmentActivity] = TreatmentActivity.defaultActivities
     @Published var startDate: Date
+    // Tracks when the current treatment plan stage started, used for automatic stage advancement
     @Published var currentPlanStartDate: Date
     @Published var notificationsEnabled: Bool = false
+    // Prevents multiple automatic stage advancements during a single treatment stage
     private var hasAutoAdvanced = false
     
     init() {
@@ -20,6 +22,8 @@ class TreatmentManager: ObservableObject {
         loadScheduledActivities()
         loadPlanStartDate()
         checkNotificationPermissions()
+        // Save initial plan start date if this is first launch
+        savePlanStartDate()
     }
     
     func changePlan(to plan: TreatmentPlan) {
@@ -303,6 +307,8 @@ class TreatmentManager: ObservableObject {
         if let savedDate = UserDefaults.standard.object(forKey: "currentPlanStartDate") as? Date {
             currentPlanStartDate = savedDate
         }
+        // If no saved date exists, currentPlanStartDate will be the initialized value (current date)
+        // which is appropriate for new users or existing users upgrading to this version
     }
     
     private func saveScheduledActivities() {
