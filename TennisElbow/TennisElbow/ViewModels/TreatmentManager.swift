@@ -273,8 +273,9 @@ class TreatmentManager: ObservableObject {
         
         // Check if current stage has been running for 2 weeks (14 days)
         let calendar = Calendar.current
-        // Note: dateComponents with .day gives the number of full days between dates,
-        // which is appropriate for this use case of checking if 14+ days have elapsed
+        // Note: dateComponents with .day calculates calendar days (not 24-hour periods).
+        // This is appropriate for treatment plans where "14 days" means "starting on the 15th calendar day".
+        // For example: Started Jan 1 → Advances on Jan 15 (14 calendar days elapsed)
         guard let daysSinceStart = calendar.dateComponents([.day], from: currentPlanStartDate, to: Date()).day else {
             return
         }
@@ -295,7 +296,8 @@ class TreatmentManager: ObservableObject {
         
         let nextPlan = TreatmentPlan.defaultPlans[currentIndex + 1]
         changePlan(to: nextPlan, isAutoAdvance: true)
-        // Set flag after successful plan change to prevent multiple auto-advancements
+        // Set flag after plan change to prevent multiple auto-advancements
+        // Note: changePlan is a simple method that always succeeds, so no error handling needed
         hasAutoAdvanced = true
     }
     
