@@ -2,7 +2,9 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var treatmentManager: TreatmentManager
+    @AppStorage("hasAcceptedDisclaimer") private var hasAcceptedDisclaimer = false
     @State private var showDisclaimer = false
+    @State private var showClearDataConfirmation = false
     
     var body: some View {
         NavigationStack {
@@ -49,6 +51,13 @@ struct SettingsView: View {
                     }
                 }
                 
+                Section("Data Management") {
+                    Button(role: .destructive) {
+                        showClearDataConfirmation = true
+                    } label: {
+                        Label("Clear All Data", systemImage: "trash")
+                    }
+                }
 
                 Section("Information") {
                     NavigationLink {
@@ -88,6 +97,19 @@ struct SettingsView: View {
             .navigationTitle("Settings")
             .sheet(isPresented: $showDisclaimer) {
                 DisclaimerView(isInitialLaunch: false)
+            }
+            .confirmationDialog(
+                "Clear All Data",
+                isPresented: $showClearDataConfirmation,
+                titleVisibility: .visible
+            ) {
+                Button("Clear All Data", role: .destructive) {
+                    treatmentManager.clearAllData()
+                    hasAcceptedDisclaimer = false
+                }
+                Button("Cancel", role: .cancel) { }
+            } message: {
+                Text("This will delete all your scheduled activities, completion history, pain tracking data, and reset the app to its default state. This action cannot be undone.")
             }
         }
     }

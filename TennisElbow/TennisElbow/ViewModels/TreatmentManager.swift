@@ -262,4 +262,24 @@ class TreatmentManager: ObservableObject {
             generateSchedule()
         }
     }
+    
+    func clearAllData() {
+        // Clear scheduled activities
+        scheduledActivities.removeAll()
+        UserDefaults.standard.removeObject(forKey: "scheduledActivities")
+        
+        // Reset to default plan
+        currentPlan = TreatmentPlan.defaultPlans[0]
+        startDate = Date()
+        
+        // Clear all pending notifications and disable notifications
+        // We intentionally set notificationsEnabled to false as part of the data reset,
+        // even if the user has granted system permissions. This allows users to start fresh.
+        // They can re-enable notifications through the Settings toggle if desired.
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        notificationsEnabled = false
+        
+        // Regenerate schedule with default plan (this will also save the new schedule to UserDefaults)
+        generateSchedule()
+    }
 }
