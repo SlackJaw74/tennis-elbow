@@ -272,11 +272,12 @@ class TreatmentManager: ObservableObject {
         currentPlan = TreatmentPlan.defaultPlans[0]
         startDate = Date()
         
-        // Clear notifications
+        // Clear all pending notifications and disable notifications
+        // Setting to false directly since we're intentionally disabling as part of data reset
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         notificationsEnabled = false
         
-        // Regenerate schedule with default plan
+        // Regenerate schedule with default plan (this will also save the new schedule to UserDefaults)
         generateSchedule()
     }
 }
