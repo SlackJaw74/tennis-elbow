@@ -7,10 +7,15 @@ on:
       - main
       - master
 
+permissions:
+  contents: read
+
 jobs:
   swiftlint:
     name: SwiftLint
     runs-on: macos-latest
+    permissions:
+      contents: read
     
     steps:
       - name: Checkout code
@@ -27,6 +32,8 @@ jobs:
   build-and-test:
     name: Build and Test
     runs-on: macos-latest
+    permissions:
+      contents: read
     
     steps:
       - name: Checkout code
@@ -59,6 +66,8 @@ jobs:
     name: SwiftFormat Check
     runs-on: macos-latest
     continue-on-error: true  # Don't fail the build on formatting issues initially
+    permissions:
+      contents: read
     
     steps:
       - name: Checkout code
