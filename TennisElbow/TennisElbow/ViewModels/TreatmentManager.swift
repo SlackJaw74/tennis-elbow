@@ -11,6 +11,7 @@ class TreatmentManager: ObservableObject {
     @Published var startDate: Date
     @Published var currentPlanStartDate: Date
     @Published var notificationsEnabled: Bool = false
+    private var hasAdvancedThisSession = false
     
     init() {
         self.currentPlan = TreatmentPlan.defaultPlans[0]
@@ -25,6 +26,7 @@ class TreatmentManager: ObservableObject {
         currentPlan = plan
         currentPlanStartDate = Date()
         savePlanStartDate()
+        hasAdvancedThisSession = false
         generateSchedule()
         saveScheduledActivities()
     }
@@ -259,6 +261,11 @@ class TreatmentManager: ObservableObject {
     }
     
     func checkAndAdvanceStage() {
+        // Prevent multiple advancements in the same session
+        if hasAdvancedThisSession {
+            return
+        }
+        
         // Check if current stage has been running for 2 weeks (14 days)
         let calendar = Calendar.current
         guard let daysSinceStart = calendar.dateComponents([.day], from: currentPlanStartDate, to: Date()).day else {
@@ -280,6 +287,7 @@ class TreatmentManager: ObservableObject {
         }
         
         let nextPlan = TreatmentPlan.defaultPlans[currentIndex + 1]
+        hasAdvancedThisSession = true
         changePlan(to: nextPlan)
     }
     
@@ -317,6 +325,7 @@ class TreatmentManager: ObservableObject {
         currentPlan = TreatmentPlan.defaultPlans[0]
         startDate = Date()
         currentPlanStartDate = Date()
+        hasAdvancedThisSession = false
         UserDefaults.standard.removeObject(forKey: "currentPlanStartDate")
         
         // Clear all pending notifications and disable notifications
