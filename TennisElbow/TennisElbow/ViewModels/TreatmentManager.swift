@@ -11,7 +11,7 @@ class TreatmentManager: ObservableObject {
     @Published var startDate: Date
     @Published var currentPlanStartDate: Date
     @Published var notificationsEnabled: Bool = false
-    private var hasAdvancedThisSession = false
+    private var hasAutoAdvanced = false
     
     init() {
         self.currentPlan = TreatmentPlan.defaultPlans[0]
@@ -26,7 +26,7 @@ class TreatmentManager: ObservableObject {
         currentPlan = plan
         currentPlanStartDate = Date()
         savePlanStartDate()
-        hasAdvancedThisSession = false
+        hasAutoAdvanced = false
         generateSchedule()
         saveScheduledActivities()
     }
@@ -261,13 +261,15 @@ class TreatmentManager: ObservableObject {
     }
     
     func checkAndAdvanceStage() {
-        // Prevent multiple advancements in the same session
-        if hasAdvancedThisSession {
+        // Prevent multiple automatic advancements (flag is reset when plan is changed)
+        if hasAutoAdvanced {
             return
         }
         
         // Check if current stage has been running for 2 weeks (14 days)
         let calendar = Calendar.current
+        // Note: dateComponents with .day gives the number of full days between dates,
+        // which is appropriate for this use case of checking if 14+ days have elapsed
         guard let daysSinceStart = calendar.dateComponents([.day], from: currentPlanStartDate, to: Date()).day else {
             return
         }
@@ -287,8 +289,10 @@ class TreatmentManager: ObservableObject {
         }
         
         let nextPlan = TreatmentPlan.defaultPlans[currentIndex + 1]
-        hasAdvancedThisSession = true
         changePlan(to: nextPlan)
+        // Set flag after changePlan to prevent multiple auto-advancements
+        // (changePlan resets the flag, so we set it after the call)
+        hasAutoAdvanced = true
     }
     
     private func savePlanStartDate() {
@@ -325,7 +329,7 @@ class TreatmentManager: ObservableObject {
         currentPlan = TreatmentPlan.defaultPlans[0]
         startDate = Date()
         currentPlanStartDate = Date()
-        hasAdvancedThisSession = false
+        hasAutoAdvanced = false
         UserDefaults.standard.removeObject(forKey: "currentPlanStartDate")
         
         // Clear all pending notifications and disable notifications
