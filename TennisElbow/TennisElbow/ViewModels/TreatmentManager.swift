@@ -9,17 +9,22 @@ class TreatmentManager: ObservableObject {
     @Published var scheduledActivities: [ScheduledActivity] = []
     @Published var allActivities: [TreatmentActivity] = TreatmentActivity.defaultActivities
     @Published var startDate: Date
+    @Published var currentPlanStartDate: Date
     @Published var notificationsEnabled: Bool = false
     
     init() {
         self.currentPlan = TreatmentPlan.defaultPlans[0]
         self.startDate = Date()
+        self.currentPlanStartDate = Date()
         loadScheduledActivities()
+        loadPlanStartDate()
         checkNotificationPermissions()
     }
     
     func changePlan(to plan: TreatmentPlan) {
         currentPlan = plan
+        currentPlanStartDate = Date()
+        savePlanStartDate()
         generateSchedule()
         saveScheduledActivities()
     }
@@ -90,6 +95,9 @@ class TreatmentManager: ObservableObject {
             scheduledActivities[index].painLevel = painLevel
             scheduledActivities[index].weightUsedLbs = weightUsedLbs
             saveScheduledActivities()
+            
+            // Check if we should advance to the next stage
+            checkAndAdvanceStage()
         }
     }
     
@@ -250,6 +258,41 @@ class TreatmentManager: ObservableObject {
         }
     }
     
+    func checkAndAdvanceStage() {
+        // Check if current stage has been running for 2 weeks (14 days)
+        let calendar = Calendar.current
+        guard let daysSinceStart = calendar.dateComponents([.day], from: currentPlanStartDate, to: Date()).day else {
+            return
+        }
+        
+        // If 14 or more days have passed, advance to next stage
+        if daysSinceStart >= 14 {
+            advanceToNextStage()
+        }
+    }
+    
+    func advanceToNextStage() {
+        // Find the next plan in the sequence
+        guard let currentIndex = TreatmentPlan.defaultPlans.firstIndex(where: { $0.id == currentPlan.id }),
+              currentIndex < TreatmentPlan.defaultPlans.count - 1 else {
+            // Already at the last stage
+            return
+        }
+        
+        let nextPlan = TreatmentPlan.defaultPlans[currentIndex + 1]
+        changePlan(to: nextPlan)
+    }
+    
+    private func savePlanStartDate() {
+        UserDefaults.standard.set(currentPlanStartDate, forKey: "currentPlanStartDate")
+    }
+    
+    private func loadPlanStartDate() {
+        if let savedDate = UserDefaults.standard.object(forKey: "currentPlanStartDate") as? Date {
+            currentPlanStartDate = savedDate
+        }
+    }
+    
     private func saveScheduledActivities() {
         if let encoded = try? JSONEncoder().encode(scheduledActivities) {
             UserDefaults.standard.set(encoded, forKey: "scheduledActivities")
@@ -273,6 +316,8 @@ class TreatmentManager: ObservableObject {
         // Reset to default plan
         currentPlan = TreatmentPlan.defaultPlans[0]
         startDate = Date()
+        currentPlanStartDate = Date()
+        UserDefaults.standard.removeObject(forKey: "currentPlanStartDate")
         
         // Clear all pending notifications and disable notifications
         // We intentionally set notificationsEnabled to false as part of the data reset,
