@@ -26,8 +26,6 @@ class TreatmentManager: ObservableObject {
     
     func generateSchedule(from date: Date = Date()) {
         // Preserve existing completed activities and their data
-        let completedActivities = scheduledActivities.filter { $0.isCompleted }
-        
         // Remove only incomplete activities
         scheduledActivities.removeAll { !$0.isCompleted }
         
