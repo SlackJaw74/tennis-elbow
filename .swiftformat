@@ -1,0 +1,61 @@
+# SwiftFormat Configuration for Tennis Elbow App
+
+# Version
+--swiftversion 5.7
+
+# Indentation
+--indent 4
+--tabwidth 4
+--indentcase false
+--ifdef noindent
+
+# Wrapping
+--maxwidth 120
+--wraparguments beforefirst
+--wrapparameters beforefirst
+--wrapcollections beforefirst
+--wrapreturntype preserve
+--closingparen balanced
+--wraptypealiases preserve
+--wrapternary default
+
+# Spacing
+--trimwhitespace always
+--commas inline
+--semicolons inline
+--ranges spaced
+
+# Redundancy
+--redundanttype inferred
+--redundantself insert
+--redundantbackticks false
+--redundantbreak remove
+--redundantparens remove
+--redundantget remove
+--redundantnil remove
+
+# Organization
+--importgrouping alphabetized
+--organizetypes actor,class,enum,struct
+--alphabeticalsorts true
+
+# Braces
+--allman false
+--elseposition same-line
+--guardelse same-line
+
+# Specifiers
+--modifierorder
+
+# Linebreaks
+--linebreaks lf
+--emptybraces no-space
+--indent 4
+
+# Excluded paths
+--exclude build,archives,fastlane,.build,DerivedData
+
+# Disabled rules (rules that conflict with project style)
+--disable blankLinesAroundMark
+--disable blankLinesAtStartOfScope
+--disable blankLinesAtEndOfScope
