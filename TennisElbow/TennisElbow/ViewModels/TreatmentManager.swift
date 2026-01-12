@@ -294,8 +294,9 @@ class TreatmentManager: ObservableObject {
         }
         
         let nextPlan = TreatmentPlan.defaultPlans[currentIndex + 1]
-        hasAutoAdvanced = true
         changePlan(to: nextPlan, isAutoAdvance: true)
+        // Set flag after successful plan change to prevent multiple auto-advancements
+        hasAutoAdvanced = true
     }
     
     private func savePlanStartDate() {
