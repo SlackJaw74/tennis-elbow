@@ -53,6 +53,112 @@ Optional (recommended): Add a `PrivacyInfo.xcprivacy` manifest declaring no requ
       ```bash
       fastlane upload
       ```
+
+## Running PR Checks Locally
+
+Before opening a PR, you can run the same checks that will run in CI to catch issues early:
+
+### Install Tools
+
+First, install the required tools (one-time setup):
+
+```bash
+# Install SwiftLint
+brew install swiftlint
+
+# Install SwiftFormat
+brew install swiftformat
+```
+
+### Run Individual Checks
+
+**SwiftLint** (code style and best practices):
+```bash
+cd TennisElbow
+swiftlint lint
+```
+
+**SwiftFormat** (code formatting check):
+```bash
+cd TennisElbow
+swiftformat --lint .
+```
+
+To automatically fix formatting issues:
+```bash
+cd TennisElbow
+swiftformat .
+```
+
+**Build the app**:
+```bash
+xcodebuild \
+  -project "TennisElbow/TennisElbow.xcodeproj" \
+  -scheme "TennisElbow" \
+  -configuration Debug \
+  -sdk iphonesimulator \
+  -destination "platform=iOS Simulator,name=iPhone 14" \
+  clean build
+```
+
+**Run tests**:
+```bash
+xcodebuild test \
+  -project "TennisElbow/TennisElbow.xcodeproj" \
+  -scheme "TennisElbow" \
+  -configuration Debug \
+  -sdk iphonesimulator \
+  -destination "platform=iOS Simulator,name=iPhone 14" \
+  -enableCodeCoverage YES
+```
+
+### Run All Checks
+
+To run all checks at once:
+
+```bash
+# From project root
+cd TennisElbow
+
+# Run SwiftLint
+echo "Running SwiftLint..."
+swiftlint lint
+
+# Run SwiftFormat check
+echo "Running SwiftFormat..."
+swiftformat --lint .
+
+# Build
+echo "Building..."
+cd ..
+xcodebuild \
+  -project "TennisElbow/TennisElbow.xcodeproj" \
+  -scheme "TennisElbow" \
+  -configuration Debug \
+  -sdk iphonesimulator \
+  -destination "platform=iOS Simulator,name=iPhone 14" \
+  clean build
+
+# Run tests
+echo "Running tests..."
+xcodebuild test \
+  -project "TennisElbow/TennisElbow.xcodeproj" \
+  -scheme "TennisElbow" \
+  -configuration Debug \
+  -sdk iphonesimulator \
+  -destination "platform=iOS Simulator,name=iPhone 14" \
+  -enableCodeCoverage YES
+
+echo "All checks complete!"
+```
+
+Note: If "iPhone 14" simulator is not available on your system, you can list available simulators with:
+```bash
+xcrun simctl list devices
+```
+
+Then use any available device name in the `-destination` parameter.
+
 # Tennis Elbow Treatment App
 
 An iOS application to help manage and track tennis elbow (lateral epicondylitis) recovery with structured treatment plans, scheduling, pain tracking, and progress monitoring.

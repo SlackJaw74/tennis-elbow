@@ -1,0 +1,21 @@
+# SwiftFormat Configuration for Tennis Elbow App
+
+# Version
+--swiftversion 5.7
+
+# Indentation
+--indent 4
+--tabwidth 4
+--indentcase false
+--ifdef noindent
+
+# Wrapping
+--maxwidth 120
+
+# Excluded paths
+--exclude build,archives,fastlane,.build,DerivedData
+
+# Disabled rules (rules that conflict with project style)
+--disable blankLinesAroundMark
+--disable blankLinesAtStartOfScope
+--disable blankLinesAtEndOfScope

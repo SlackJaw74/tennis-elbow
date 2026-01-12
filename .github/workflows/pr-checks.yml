@@ -1,0 +1,82 @@
+name: PR Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+      - master
+
+permissions:
+  contents: read
+
+jobs:
+  swiftlint:
+    name: SwiftLint
+    runs-on: macos-latest
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Install SwiftLint
+        run: brew install swiftlint
+      
+      - name: Run SwiftLint
+        run: |
+          cd TennisElbow
+          swiftlint lint --reporter github-actions-logging
+
+  build-and-test:
+    name: Build and Test
+    runs-on: macos-latest
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Show Xcode version
+        run: xcodebuild -version
+      
+      - name: Build app
+        run: |
+          xcodebuild \
+            -project "TennisElbow/TennisElbow.xcodeproj" \
+            -scheme "TennisElbow" \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination "platform=iOS Simulator,name=iPhone 14" \
+            clean build
+      
+      - name: Run UI Tests
+        run: |
+          xcodebuild test \
+            -project "TennisElbow/TennisElbow.xcodeproj" \
+            -scheme "TennisElbow" \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination "platform=iOS Simulator,name=iPhone 14" \
+            -enableCodeCoverage YES
+
+  swiftformat:
+    name: SwiftFormat Check
+    runs-on: macos-latest
+    continue-on-error: true  # Don't fail the build on formatting issues initially
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Install SwiftFormat
+        run: brew install swiftformat
+      
+      - name: Run SwiftFormat (lint mode)
+        run: |
+          cd TennisElbow
+          swiftformat --lint .
