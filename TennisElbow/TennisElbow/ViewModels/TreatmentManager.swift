@@ -12,8 +12,10 @@ class TreatmentManager: ObservableObject {
     // Tracks when the current treatment plan stage started, used for automatic stage advancement
     @Published var currentPlanStartDate: Date
     @Published var notificationsEnabled: Bool = false
-    // Prevents multiple automatic stage advancements during a single treatment stage
-    private var hasAutoAdvanced = false
+    // Shows prompt to user asking if they want to advance to the next stage
+    @Published var showAdvancementPrompt: Bool = false
+    // Prevents multiple advancement prompts during a single treatment stage
+    private var hasPromptedForAdvancement = false
     
     init() {
         self.currentPlan = TreatmentPlan.defaultPlans[0]
@@ -30,7 +32,7 @@ class TreatmentManager: ObservableObject {
         savePlanStartDate()
         if !isAutoAdvance {
             // Only reset the flag when manually changing plans
-            hasAutoAdvanced = false
+            hasPromptedForAdvancement = false
         }
         generateSchedule()
         saveScheduledActivities()
@@ -266,8 +268,8 @@ class TreatmentManager: ObservableObject {
     }
     
     func checkAndAdvanceStage() {
-        // Prevent multiple automatic advancements (flag is reset when plan is changed)
-        if hasAutoAdvanced {
+        // Prevent multiple advancement prompts (flag is reset when plan is changed)
+        if hasPromptedForAdvancement {
             return
         }
         
@@ -280,10 +282,39 @@ class TreatmentManager: ObservableObject {
             return
         }
         
-        // If 14 or more days have passed, advance to next stage
+        // If 14 or more days have passed, prompt user to advance to next stage
         if daysSinceStart >= 14 {
-            advanceToNextStage()
+            promptForAdvancement()
         }
+    }
+    
+    func promptForAdvancement() {
+        // Check if there is a next stage available
+        guard let currentIndex = TreatmentPlan.defaultPlans.firstIndex(where: { $0.id == currentPlan.id }),
+              currentIndex < TreatmentPlan.defaultPlans.count - 1 else {
+            // Already at the last stage, no prompt needed
+            return
+        }
+        
+        hasPromptedForAdvancement = true
+        showAdvancementPrompt = true
+    }
+    
+    func userAcceptedAdvancement() {
+        showAdvancementPrompt = false
+        advanceToNextStage()
+    }
+    
+    func userDeclinedAdvancement() {
+        showAdvancementPrompt = false
+        // Extend current plan by 2 more weeks (14 days)
+        let calendar = Calendar.current
+        if let extendedDate = calendar.date(byAdding: .day, value: 14, to: currentPlanStartDate) {
+            currentPlanStartDate = extendedDate
+            savePlanStartDate()
+        }
+        // Reset the flag so we can prompt again after another 14 days
+        hasPromptedForAdvancement = false
     }
     
     func advanceToNextStage() {
@@ -296,9 +327,7 @@ class TreatmentManager: ObservableObject {
         
         let nextPlan = TreatmentPlan.defaultPlans[currentIndex + 1]
         changePlan(to: nextPlan, isAutoAdvance: true)
-        // Set flag after plan change to prevent multiple auto-advancements
         // Note: changePlan is a simple method that always succeeds, so no error handling needed
-        hasAutoAdvanced = true
     }
     
     private func savePlanStartDate() {
@@ -339,7 +368,8 @@ class TreatmentManager: ObservableObject {
         currentPlan = TreatmentPlan.defaultPlans[0]
         startDate = Date()
         currentPlanStartDate = Date()
-        hasAutoAdvanced = false
+        hasPromptedForAdvancement = false
+        showAdvancementPrompt = false
         UserDefaults.standard.removeObject(forKey: "currentPlanStartDate")
         
         // Clear all pending notifications and disable notifications
