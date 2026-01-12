@@ -42,7 +42,7 @@ jobs:
             -scheme "TennisElbow" \
             -configuration Debug \
             -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,name=iPhone 15 Pro" \
+            -destination "platform=iOS Simulator,name=iPhone 14" \
             clean build
       
       - name: Run UI Tests
@@ -52,7 +52,7 @@ jobs:
             -scheme "TennisElbow" \
             -configuration Debug \
             -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,name=iPhone 15 Pro" \
+            -destination "platform=iOS Simulator,name=iPhone 14" \
             -enableCodeCoverage YES
 
   swiftformat:
