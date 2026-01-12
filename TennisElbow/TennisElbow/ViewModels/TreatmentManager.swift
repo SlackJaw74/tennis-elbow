@@ -262,4 +262,21 @@ class TreatmentManager: ObservableObject {
             generateSchedule()
         }
     }
+    
+    func clearAllData() {
+        // Clear scheduled activities
+        scheduledActivities.removeAll()
+        UserDefaults.standard.removeObject(forKey: "scheduledActivities")
+        
+        // Reset to default plan
+        currentPlan = TreatmentPlan.defaultPlans[0]
+        startDate = Date()
+        
+        // Clear notifications
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        notificationsEnabled = false
+        
+        // Regenerate schedule with default plan
+        generateSchedule()
+    }
 }
