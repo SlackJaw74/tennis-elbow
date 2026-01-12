@@ -57,7 +57,7 @@ struct SettingsView: View {
                     } label: {
                         Label("Clear All Data", systemImage: "trash")
                     }
-                }                
+                }
 
                 Section("Information") {
                     NavigationLink {
