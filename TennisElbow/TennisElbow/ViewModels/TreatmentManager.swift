@@ -273,7 +273,9 @@ class TreatmentManager: ObservableObject {
         startDate = Date()
         
         // Clear all pending notifications and disable notifications
-        // Setting to false directly since we're intentionally disabling as part of data reset
+        // We intentionally set notificationsEnabled to false as part of the data reset,
+        // even if the user has granted system permissions. This allows users to start fresh.
+        // They can re-enable notifications through the Settings toggle if desired.
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         notificationsEnabled = false
         
