@@ -162,7 +162,7 @@ class TreatmentManager: ObservableObject {
         let oneWeekAgo = calendar.date(byAdding: .day, value: -7, to: Date()) ?? Date()
 
         let weekActivities = scheduledActivities.filter { $0.scheduledTime >= oneWeekAgo }
-        guard weekActivities.count > 0 else { return 0 }
+        guard !weekActivities.isEmpty else { return 0 }
 
         let completed = weekActivities.filter(\.isCompleted).count
         return Double(completed) / Double(weekActivities.count)
