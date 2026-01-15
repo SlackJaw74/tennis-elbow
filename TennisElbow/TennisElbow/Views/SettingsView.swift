@@ -134,7 +134,6 @@ struct SettingsView: View {
                 Button("Cancel".localized(), role: .cancel) {}
             } message: {
                 Text("settings.clear_data_warning".localized())
-                )
             }
         }
     }

@@ -129,6 +129,14 @@ xcrun simctl list devices
 - UI tests must pass
 - No force unwrapping or unsafe code patterns
 - Follow existing architectural patterns (MVVM with SwiftUI)
+- **Before creating a PR:** Always run linting, formatting, and build checks to ensure CI will pass:
+  ```bash
+  cd TennisElbow
+  swiftlint lint
+  swiftformat --lint .
+  # Build to verify no compilation errors
+  xcodebuild -project "TennisElbow.xcodeproj" -scheme "TennisElbow" -configuration Debug -sdk iphonesimulator clean build
+  ```
 
 ## Medical Disclaimer Requirement
 
