@@ -107,7 +107,10 @@ struct MedicalSourcesView: View {
             }
 
             Text(
-                "The exercises and treatment recommendations in this app are based on peer-reviewed medical research and guidelines from recognized medical organizations."
+                """
+                The exercises and treatment recommendations in this app are based on peer-reviewed medical \
+                research and guidelines from recognized medical organizations.
+                """
             )
             .font(.subheadline)
             .foregroundColor(.secondary)
@@ -121,7 +124,11 @@ struct MedicalSourcesView: View {
                 .foregroundColor(.orange)
 
             Text(
-                "These sources are provided for informational purposes. This app does not replace professional medical advice. Always consult with a healthcare provider before beginning any treatment program."
+                """
+                These sources are provided for informational purposes. This app does not replace \
+                professional medical advice. Always consult with a healthcare provider before beginning \
+                any treatment program.
+                """
             )
             .font(.caption)
             .foregroundColor(.secondary)
