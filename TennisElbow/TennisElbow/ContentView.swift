@@ -48,7 +48,10 @@ struct ContentView: View {
             }
         } message: {
             Text(
-                "You've completed 14 days on your current treatment plan. Would you like to advance to the next stage, or continue with the current plan for 2 more weeks?"
+                """
+                You've completed 14 days on your current treatment plan. Would you like to advance to the \
+                next stage, or continue with the current plan for 2 more weeks?
+                """
             )
         }
         .onAppear {

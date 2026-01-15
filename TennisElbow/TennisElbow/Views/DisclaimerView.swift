@@ -25,7 +25,9 @@ struct DisclaimerView: View {
                             .font(.headline)
 
                         Text("""
-                        This app is designed to provide general information and guidance about tennis elbow (lateral epicondylitis) exercises and treatment approaches. It is NOT intended to be a substitute for professional medical advice, diagnosis, or treatment.
+                        This app is designed to provide general information and guidance about tennis elbow \
+                        (lateral epicondylitis) exercises and treatment approaches. It is NOT intended to be a \
+                        substitute for professional medical advice, diagnosis, or treatment.
                         """)
 
                         Text("Please Note:")
@@ -47,7 +49,10 @@ struct DisclaimerView: View {
                             .padding(.top, 8)
 
                         Text("""
-                        The exercises and treatment recommendations in this app are based on peer-reviewed medical research and guidelines from recognized medical organizations including the American Academy of Orthopaedic Surgeons (AAOS), Mayo Clinic, and published studies in the British Journal of Sports Medicine.
+                        The exercises and treatment recommendations in this app are based on peer-reviewed \
+                        medical research and guidelines from recognized medical organizations including the \
+                        American Academy of Orthopaedic Surgeons (AAOS), Mayo Clinic, and published studies in \
+                        the British Journal of Sports Medicine.
                         """)
 
                         if !isInitialLaunch {
@@ -69,7 +74,9 @@ struct DisclaimerView: View {
                             .padding(.top, 8)
 
                         Text("""
-                        All your health data (activities, pain levels, progress) is stored locally on your device. We do not collect, transmit, or share your personal health information with any third parties.
+                        All your health data (activities, pain levels, progress) is stored locally on your \
+                        device. We do not collect, transmit, or share your personal health information with any \
+                        third parties.
                         """)
                     }
                     .padding(.horizontal)
