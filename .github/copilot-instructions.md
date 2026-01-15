@@ -85,30 +85,36 @@ swiftformat --lint .
 ### Building
 
 ```bash
-# Build for simulator
+# Build for simulator (use any available iPhone simulator)
 xcodebuild \
   -project "TennisElbow/TennisElbow.xcodeproj" \
   -scheme "TennisElbow" \
   -configuration Debug \
   -sdk iphonesimulator \
-  -destination "platform=iOS Simulator,name=iPhone 14" \
+  -destination "platform=iOS Simulator,OS=latest,name=iPhone 15" \
   clean build
 
 # Using Makefile
 make sim-run
+
+# List available simulators
+xcrun simctl list devices
 ```
 
 ### Testing
 
 ```bash
-# Run UI tests
+# Run UI tests (use any available iPhone simulator)
 xcodebuild test \
   -project "TennisElbow/TennisElbow.xcodeproj" \
   -scheme "TennisElbow" \
   -configuration Debug \
   -sdk iphonesimulator \
-  -destination "platform=iOS Simulator,name=iPhone 14" \
+  -destination "platform=iOS Simulator,OS=latest,name=iPhone 15" \
   -enableCodeCoverage YES
+
+# List available simulators
+xcrun simctl list devices
 ```
 
 ## Code Review Requirements
