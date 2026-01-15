@@ -1,0 +1,158 @@
+/* 
+  Localizable.strings (Spanish)
+  TennisElbow
+  Spanish translations for the Tennis Elbow app
+*/
+
+// MARK: - Common
+"Done" = "Hecho";
+"Cancel" = "Cancelar";
+"Close" = "Cerrar";
+"Complete" = "Completar";
+"lbs" = "lbs";
+
+// MARK: - DisclaimerView
+"Medical Disclaimer" = "Descargo de Responsabilidad Médica";
+"Important Information" = "Información Importante";
+"disclaimer.description" = "Esta aplicación está diseñada para proporcionar información general y orientación sobre ejercicios y enfoques de tratamiento para el codo de tenista (epicondilitis lateral). NO está destinada a ser un sustituto del consejo médico profesional, diagnóstico o tratamiento.";
+"Please Note:" = "Tenga en cuenta:";
+"disclaimer.consult_provider" = "Siempre consulte con un proveedor de atención médica calificado antes de comenzar cualquier programa de tratamiento";
+"disclaimer.seek_attention" = "Si experimenta dolor severo, hinchazón o síntomas que empeoran, busque atención médica inmediata";
+"disclaimer.individual_results" = "Los resultados individuales pueden variar según la gravedad de su condición";
+"disclaimer.not_replacement" = "Esta aplicación no reemplaza la fisioterapia o el tratamiento médico";
+"disclaimer.stop_pain" = "Detenga cualquier ejercicio que cause dolor agudo";
+"Medical Sources" = "Fuentes Médicas";
+"disclaimer.sources_description" = "Los ejercicios y recomendaciones de tratamiento en esta aplicación se basan en investigaciones médicas revisadas por pares y pautas de organizaciones médicas reconocidas, incluida la Academia Estadounidense de Cirujanos Ortopédicos (AAOS), la Clínica Mayo y estudios publicados en el British Journal of Sports Medicine.";
+"View All Medical Sources & Citations" = "Ver Todas las Fuentes Médicas y Citas";
+"Data & Privacy" = "Datos y Privacidad";
+"disclaimer.privacy_description" = "Todos sus datos de salud (actividades, niveles de dolor, progreso) se almacenan localmente en su dispositivo. No recopilamos, transmitimos ni compartimos su información de salud personal con terceros.";
+"Accept and Continue" = "Aceptar y Continuar";
+"Decline" = "Rechazar";
+
+// MARK: - ScheduleView
+"Schedule" = "Horario";
+"Select Date" = "Seleccionar Fecha";
+"Regenerate" = "Regenerar";
+"No activities scheduled" = "No hay actividades programadas";
+"schedule.generate_prompt" = "Genere un horario para ver sus actividades";
+"Scheduled Activity" = "Actividad Programada";
+"Pain Level:" = "Nivel de Dolor:";
+"Weight Used:" = "Peso Utilizado:";
+"Notes" = "Notas";
+"Mark as Complete" = "Marcar como Completada";
+"Completed" = "Completada";
+"Completed at" = "Completada a las";
+"How do you feel?" = "¿Cómo se siente?";
+"schedule.feel_after_activity" = "¿Cómo se siente después de esta actividad?";
+"Weight Used" = "Peso Utilizado";
+"Complete Activity" = "Completar Actividad";
+
+// MARK: - Pain Levels
+"pain.none" = "Sin molestias en absoluto";
+"pain.mild" = "Molestia leve, fácilmente manejable";
+"pain.moderate" = "Dolor notable pero tolerable";
+"pain.severe" = "Dolor significativo, difícil de ignorar";
+"pain.extreme" = "Dolor intenso, difícil completar la actividad";
+
+// MARK: - TreatmentPlanView
+"Treatment Plan" = "Plan de Tratamiento";
+"Activities" = "Actividades";
+"Change Plan" = "Cambiar Plan";
+"Today's Progress" = "Progreso de Hoy";
+"Activities Completed" = "Actividades Completadas";
+"Morning" = "Mañana";
+"Afternoon" = "Tarde";
+"Evening" = "Noche";
+"Details" = "Detalles";
+"Instructions" = "Instrucciones";
+"Pain Level Check" = "Verificación del Nivel de Dolor";
+"treatment.feel_after_session" = "¿Cómo se siente después de esta sesión?";
+
+// MARK: - ProgressView
+"Progress" = "Progreso";
+"Overall Completion" = "Finalización General";
+"Total Activities" = "Actividades Totales";
+"Remaining" = "Restantes";
+"Pain Trend" = "Tendencia del Dolor";
+"Average Pain Level" = "Nivel Promedio de Dolor";
+"progress.track_pain_prompt" = "Complete actividades y registre el dolor para ver tendencias";
+"pain_history_30_days" = "Historial de Dolor (30 Días)";
+"No pain data recorded yet" = "Aún no se han registrado datos de dolor";
+"weight_progress_30_days" = "Progreso de Peso (30 Días)";
+"Average:" = "Promedio:";
+"Max:" = "Máx:";
+"progress.track_weight_prompt" = "Complete actividades de ejercicio con seguimiento de peso para ver el progreso";
+"This Week" = "Esta Semana";
+"progress.week_completion" = "%d%% completado esta semana";
+"Activity Breakdown" = "Desglose de Actividades";
+"Recent Completions" = "Finalizaciones Recientes";
+"No completed activities yet" = "Aún no hay actividades completadas";
+
+// MARK: - SettingsView
+"Notifications" = "Notificaciones";
+"Enable Reminders" = "Activar Recordatorios";
+"Morning Time" = "Hora de la Mañana";
+"Evening Time" = "Hora de la Tarde";
+"settings.notification_description" = "Recibirá notificaciones para las actividades programadas en sus horarios personalizados";
+"Current Plan" = "Plan Actual";
+"Regenerate Schedule" = "Regenerar Horario";
+"Data Management" = "Gestión de Datos";
+"Clear All Data" = "Borrar Todos los Datos";
+"Information" = "Información";
+"About Tennis Elbow" = "Acerca del Codo de Tenista";
+"Treatment Tips" = "Consejos de Tratamiento";
+"Medical Sources & Citations" = "Fuentes Médicas y Citas";
+"App Information" = "Información de la Aplicación";
+"Version" = "Versión";
+"Settings" = "Configuración";
+"settings.clear_data_warning" = "Esto eliminará todas sus actividades programadas, sesiones completadas y datos de progreso. Esta acción no se puede deshacer.";
+
+// MARK: - AboutTennisElbowView
+"What is Tennis Elbow?" = "¿Qué es el Codo de Tenista?";
+"about.tennis_elbow_description" = "El codo de tenista (epicondilitis lateral) es una condición dolorosa que ocurre cuando los tendones del codo se sobrecargan, generalmente por movimientos repetitivos de la muñeca y el brazo. A pesar de su nombre, la mayoría de las personas que tienen codo de tenista no juegan tenis. Es común en personas cuyos trabajos presentan movimientos repetitivos del brazo.";
+"Common Symptoms" = "Síntomas Comunes";
+"symptoms.pain_outer_part" = "Dolor o ardor en la parte externa del codo";
+"symptoms.weak_grip" = "Fuerza de agarre débil";
+"symptoms.pain_lifting" = "Dolor al levantar o doblar el brazo";
+"symptoms.pain_gripping" = "Dolor al agarrar objetos";
+"Treatment Approach" = "Enfoque de Tratamiento";
+"about.treatment_description" = "Esta aplicación sigue protocolos de tratamiento basados en evidencia que combinan reposo, terapia con hielo, estiramientos y ejercicios de fortalecimiento. Los ejercicios están diseñados para desarrollar gradualmente la fuerza en los músculos y tendones del antebrazo. La mayoría de las personas ven mejoras dentro de 6-12 semanas de tratamiento constante.";
+"View All Medical Sources" = "Ver Todas las Fuentes Médicas";
+
+// MARK: - TipsView
+"Ice Regularly" = "Aplicar Hielo Regularmente";
+"tips.ice_description" = "Aplique hielo durante 15 minutos, 3-4 veces al día para reducir la inflamación";
+"Start Slow" = "Comenzar Despacio";
+"tips.start_slow_description" = "Comience con estiramientos suaves y aumente gradualmente la intensidad";
+"Be Consistent" = "Ser Constante";
+"tips.consistency_description" = "Los ejercicios regulares y diarios son más efectivos que las sesiones intensas ocasionales";
+"Modify Activities" = "Modificar Actividades";
+"tips.modify_description" = "Evite o modifique actividades que agraven sus síntomas";
+"Warm Up" = "Calentar";
+"tips.warmup_description" = "Siempre caliente su brazo antes de los ejercicios";
+"Seek Professional Help" = "Buscar Ayuda Profesional";
+"tips.professional_help_description" = "Si el dolor persiste más de 6-8 semanas, consulte a un proveedor de atención médica";
+"Sources" = "Fuentes";
+"tips.sources_description" = "La información anterior se basa en las pautas de la Academia Estadounidense de Cirujanos Ortopédicos (AAOS) y los protocolos de tratamiento de la Clínica Mayo para la epicondilitis lateral.";
+
+// MARK: - ActivityDetailView
+"Evidence-Based" = "Basado en Evidencia";
+"View Research Source" = "Ver Fuente de Investigación";
+"Duration" = "Duración";
+"Reps" = "Repeticiones";
+"Sets" = "Series";
+
+// MARK: - MedicalSourcesView
+"References & Citations" = "Referencias y Citas";
+"medical_sources.description" = "Los ejercicios y recomendaciones de tratamiento en esta aplicación se basan en investigaciones médicas revisadas por pares y pautas clínicas de instituciones médicas reconocidas.";
+"Important Note" = "Nota Importante";
+"medical_sources.disclaimer" = "Estas fuentes se proporcionan solo con fines informativos. Siempre consulte con un proveedor de atención médica calificado antes de comenzar cualquier programa de tratamiento.";
+"Peer-Reviewed Sources" = "Fuentes Revisadas por Pares";
+"Additional Resources" = "Recursos Adicionales";
+"National Institutes of Health (NIH)" = "Institutos Nacionales de Salud (NIH)";
+"MedlinePlus - Tennis Elbow" = "MedlinePlus - Codo de Tenista";
+"Cleveland Clinic" = "Clínica Cleveland";
+"Lateral Epicondylitis Overview" = "Descripción General de Epicondilitis Lateral";
+"NHS (UK National Health Service)" = "NHS (Servicio Nacional de Salud del Reino Unido)";
+"Tennis Elbow Treatment Guide" = "Guía de Tratamiento del Codo de Tenista";
+"View Source" = "Ver Fuente";

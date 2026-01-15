@@ -92,7 +92,13 @@ open class Snapshot: NSObject {
         do {
             let trimCharacterSet = CharacterSet.whitespacesAndNewlines
             deviceLanguage = try String(contentsOf: path, encoding: .utf8).trimmingCharacters(in: trimCharacterSet)
-            app.launchArguments += ["-AppleLanguages", "(\(deviceLanguage))"]
+            
+            // Support for Spanish locale
+            if currentLocale == "es-ES" {
+                app.launchArguments += ["-AppleLanguages", "(es)"]
+            } else {
+                app.launchArguments += ["-AppleLanguages", "(\(deviceLanguage))"]
+            }
         } catch {
             NSLog("Couldn't detect/set language...")
         }
