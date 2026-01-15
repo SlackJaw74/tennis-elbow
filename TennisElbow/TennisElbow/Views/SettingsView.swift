@@ -9,7 +9,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section("Notifications") {
+                Section("Notifications".localized()) {
                     Toggle(isOn: Binding(
                         get: { treatmentManager.notificationsEnabled },
                         set: { enabled in
@@ -20,12 +20,12 @@ struct SettingsView: View {
                             }
                         }
                     )) {
-                        Label("Enable Reminders", systemImage: "bell.fill")
+                        Label("Enable Reminders".localized(), systemImage: "bell.fill")
                     }
 
                     if treatmentManager.notificationsEnabled {
                         DatePicker(
-                            "Morning Time",
+                            "Morning Time".localized(),
                             selection: Binding(
                                 get: { treatmentManager.morningReminderTime },
                                 set: { newTime in
@@ -37,7 +37,7 @@ struct SettingsView: View {
                         )
 
                         DatePicker(
-                            "Evening Time",
+                            "Evening Time".localized(),
                             selection: Binding(
                                 get: { treatmentManager.eveningReminderTime },
                                 set: { newTime in
@@ -48,14 +48,14 @@ struct SettingsView: View {
                             displayedComponents: .hourAndMinute
                         )
 
-                        Text("You'll receive notifications for scheduled activities at your custom times")
+                        Text("settings.notification_description".localized())
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
                 }
 
-                Section("Treatment Plan") {
-                    Picker("Current Plan", selection: Binding(
+                Section("Treatment Plan".localized()) {
+                    Picker("Current Plan".localized(), selection: Binding(
                         get: { treatmentManager.currentPlan.id },
                         set: { newId in
                             if let plan = TreatmentPlan.defaultPlans.first(where: { $0.id == newId }) {
@@ -71,73 +71,69 @@ struct SettingsView: View {
                     Button {
                         treatmentManager.generateSchedule(from: Date())
                     } label: {
-                        Label("Regenerate Schedule", systemImage: "arrow.clockwise")
+                        Label("Regenerate Schedule".localized(), systemImage: "arrow.clockwise")
                     }
                 }
 
-                Section("Data Management") {
+                Section("Data Management".localized()) {
                     Button(role: .destructive) {
                         showClearDataConfirmation = true
                     } label: {
-                        Label("Clear All Data", systemImage: "trash")
+                        Label("Clear All Data".localized(), systemImage: "trash")
                     }
                 }
 
-                Section("Information") {
+                Section("Information".localized()) {
                     NavigationLink {
                         AboutTennisElbowView()
                     } label: {
-                        Label("About Tennis Elbow", systemImage: "info.circle")
+                        Label("About Tennis Elbow".localized(), systemImage: "info.circle")
                     }
 
                     NavigationLink {
                         TipsView()
                     } label: {
-                        Label("Treatment Tips", systemImage: "lightbulb")
+                        Label("Treatment Tips".localized(), systemImage: "lightbulb")
                     }
 
                     NavigationLink {
                         MedicalSourcesView()
                     } label: {
-                        Label("Medical Sources & Citations", systemImage: "books.vertical")
+                        Label("Medical Sources & Citations".localized(), systemImage: "books.vertical")
                     }
 
                     Button {
                         showDisclaimer = true
                     } label: {
-                        Label("Medical Disclaimer", systemImage: "exclamationmark.triangle")
+                        Label("Medical Disclaimer".localized(), systemImage: "exclamationmark.triangle")
                     }
                 }
 
-                Section("App Information") {
+                Section("App Information".localized()) {
                     HStack {
-                        Text("Version")
+                        Text("Version".localized())
                         Spacer()
                         Text("1.0.0")
                             .foregroundColor(.secondary)
                     }
                 }
             }
-            .navigationTitle("Settings")
+            .navigationTitle("Settings".localized())
             .sheet(isPresented: $showDisclaimer) {
                 DisclaimerView(isInitialLaunch: false)
             }
             .confirmationDialog(
-                "Clear All Data",
+                "Clear All Data".localized(),
                 isPresented: $showClearDataConfirmation,
                 titleVisibility: .visible
             ) {
-                Button("Clear All Data", role: .destructive) {
+                Button("Clear All Data".localized(), role: .destructive) {
                     treatmentManager.clearAllData()
                     hasAcceptedDisclaimer = false
                 }
-                Button("Cancel", role: .cancel) {}
+                Button("Cancel".localized(), role: .cancel) {}
             } message: {
-                Text(
-                    """
-                    This will delete all your scheduled activities, completion history, pain tracking data, \
-                    and reset the app to its default state. This action cannot be undone.
-                    """
+                Text("settings.clear_data_warning".localized())
                 )
             }
         }
@@ -148,69 +144,46 @@ struct AboutTennisElbowView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                Text("What is Tennis Elbow?")
+                Text("What is Tennis Elbow?".localized())
                     .font(.title2)
                     .bold()
 
-                Text("""
-                Tennis elbow (lateral epicondylitis) is a painful condition that occurs when tendons in your \
-                elbow are overloaded, usually by repetitive motions of the wrist and arm.
+                Text("about.tennis_elbow_description".localized())
+                    .font(.body)
 
-                Despite its name, athletes aren't the only people who develop tennis elbow. People whose jobs \
-                feature the types of motions that can lead to tennis elbow include plumbers, painters, \
-                carpenters and butchers.
-                """)
-                .font(.body)
-
-                Text("Common Symptoms")
+                Text("Common Symptoms".localized())
                     .font(.headline)
                     .padding(.top)
 
                 VStack(alignment: .leading, spacing: 8) {
-                    BulletPoint(text: "Pain or burning on the outer part of your elbow")
-                    BulletPoint(text: "Weak grip strength")
-                    BulletPoint(text: "Pain when lifting or bending your arm")
-                    BulletPoint(text: "Pain when gripping objects")
+                    BulletPoint(text: "symptoms.pain_outer_part".localized())
+                    BulletPoint(text: "symptoms.weak_grip".localized())
+                    BulletPoint(text: "symptoms.pain_lifting".localized())
+                    BulletPoint(text: "symptoms.pain_gripping".localized())
                 }
 
-                Text("Treatment Approach")
+                Text("Treatment Approach".localized())
                     .font(.headline)
                     .padding(.top)
 
-                Text("""
-                This app follows evidence-based treatment protocols including:
-
-                • Rest and activity modification
-                • Stretching exercises
-                • Strengthening exercises (especially eccentric)
-                • Ice therapy for inflammation
-                • Gradual return to activities
-
-                Always consult with a healthcare provider before starting any treatment program.
-                """)
-                .font(.body)
+                Text("about.treatment_description".localized())
+                    .font(.body)
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Sources")
+                    Text("Sources".localized())
                         .font(.headline)
                         .padding(.top)
 
-                    Text(
-                        """
-                        The information above is based on guidelines from the American Academy of Orthopaedic \
-                        Surgeons (AAOS), Mayo Clinic, and peer-reviewed research published in the British \
-                        Journal of Sports Medicine.
-                        """
-                    )
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                    Text("tips.sources_description".localized())
+                        .font(.caption)
+                        .foregroundColor(.secondary)
 
                     NavigationLink {
                         MedicalSourcesView()
                     } label: {
                         HStack {
                             Image(systemName: "books.vertical")
-                            Text("View All Medical Sources")
+                            Text("View All Medical Sources".localized())
                         }
                         .font(.subheadline)
                     }
@@ -219,7 +192,7 @@ struct AboutTennisElbowView: View {
             }
             .padding()
         }
-        .navigationTitle("About Tennis Elbow")
+        .navigationTitle("About Tennis Elbow".localized())
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -228,49 +201,49 @@ struct TipsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                Text("Treatment Tips")
+                Text("Treatment Tips".localized())
                     .font(.title2)
                     .bold()
 
                 TipCard(
                     icon: "snowflake",
-                    title: "Ice Regularly",
-                    description: "Apply ice for 15 minutes, 3-4 times daily, especially after activities that aggravate your symptoms."
+                    title: "Ice Regularly".localized(),
+                    description: "tips.ice_description".localized()
                 )
 
                 TipCard(
                     icon: "figure.walk",
-                    title: "Start Slow",
-                    description: "Begin with gentle stretches and gradually progress to strengthening exercises. Don't push through sharp pain."
+                    title: "Start Slow".localized(),
+                    description: "tips.start_slow_description".localized()
                 )
 
                 TipCard(
                     icon: "calendar",
-                    title: "Be Consistent",
-                    description: "Regular, daily exercises are more effective than occasional intensive sessions. Consistency is key to recovery."
+                    title: "Be Consistent".localized(),
+                    description: "tips.consistency_description".localized()
                 )
 
                 TipCard(
                     icon: "hand.raised",
-                    title: "Modify Activities",
-                    description: "Avoid or modify activities that aggravate your symptoms. Use proper technique when lifting or gripping."
+                    title: "Modify Activities".localized(),
+                    description: "tips.modify_description".localized()
                 )
 
                 TipCard(
                     icon: "wind",
-                    title: "Warm Up",
-                    description: "Always warm up your arm with gentle movements before exercises. Cold muscles are more prone to injury."
+                    title: "Warm Up".localized(),
+                    description: "tips.warmup_description".localized()
                 )
 
                 TipCard(
                     icon: "stethoscope",
-                    title: "Seek Professional Help",
-                    description: "If pain persists beyond 6-8 weeks or worsens, consult a healthcare provider or physical therapist."
+                    title: "Seek Professional Help".localized(),
+                    description: "tips.professional_help_description".localized()
                 )
             }
             .padding()
         }
-        .navigationTitle("Treatment Tips")
+        .navigationTitle("Treatment Tips".localized())
         .navigationBarTitleDisplayMode(.inline)
     }
 }

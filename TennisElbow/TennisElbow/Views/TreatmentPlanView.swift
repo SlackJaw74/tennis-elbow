@@ -17,7 +17,7 @@ struct TreatmentPlanView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Treatment Plan")
+            .navigationTitle("Treatment Plan".localized())
         }
     }
 
@@ -40,7 +40,7 @@ struct TreatmentPlanView: View {
             Divider()
 
             HStack {
-                Label("\(treatmentManager.currentPlan.activities.count) Activities",
+                Label("\(treatmentManager.currentPlan.activities.count) " + "Activities".localized(),
                       systemImage: "list.bullet")
 
                 Spacer()
@@ -48,7 +48,7 @@ struct TreatmentPlanView: View {
                 Button {
                     treatmentManager.generateSchedule()
                 } label: {
-                    Label("Regenerate", systemImage: "arrow.clockwise")
+                    Label("Regenerate".localized(), systemImage: "arrow.clockwise")
                         .font(.caption)
                 }
 
@@ -59,7 +59,7 @@ struct TreatmentPlanView: View {
                         }
                     }
                 } label: {
-                    Label("Change Plan", systemImage: "arrow.triangle.2.circlepath")
+                    Label("Change Plan".localized(), systemImage: "arrow.triangle.2.circlepath")
                         .font(.caption)
                 }
             }
@@ -76,7 +76,7 @@ struct TreatmentPlanView: View {
         let completed = todayActivities.filter(\.isCompleted).count
 
         return VStack(alignment: .leading, spacing: 12) {
-            Text("Today's Progress")
+            Text("Today's Progress".localized())
                 .font(.headline)
 
             HStack {
@@ -84,7 +84,7 @@ struct TreatmentPlanView: View {
                     Text("\(completed) / \(todayActivities.count)")
                         .font(.title2)
                         .bold()
-                    Text("Activities Completed")
+                    Text("Activities Completed".localized())
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -110,7 +110,7 @@ struct TreatmentPlanView: View {
         return VStack(spacing: 12) {
             if !morningActivities.isEmpty {
                 SessionSection(
-                    title: "Morning",
+                    title: "Morning".localized(),
                     icon: "sunrise.fill",
                     activities: morningActivities,
                     isExpanded: expandedSessions.contains("morning"),
@@ -121,7 +121,7 @@ struct TreatmentPlanView: View {
 
             if !afternoonActivities.isEmpty {
                 SessionSection(
-                    title: "Afternoon",
+                    title: "Afternoon".localized(),
                     icon: "sun.max.fill",
                     activities: afternoonActivities,
                     isExpanded: expandedSessions.contains("afternoon"),
@@ -132,7 +132,7 @@ struct TreatmentPlanView: View {
 
             if !eveningActivities.isEmpty {
                 SessionSection(
-                    title: "Evening",
+                    title: "Evening".localized(),
                     icon: "moon.fill",
                     activities: eveningActivities,
                     isExpanded: expandedSessions.contains("evening"),
@@ -397,20 +397,20 @@ struct ActivityDetailContent: View {
             // Details
             if activity.repetitions != nil || activity.sets != nil || activity.durationMinutes > 0 {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Details")
+                    Text("Details".localized())
                         .font(.headline)
 
                     HStack(spacing: 16) {
                         if activity.durationMinutes > 0 {
-                            DetailBadge(icon: "clock", label: "Duration", value: "\(activity.durationMinutes) min")
+                            DetailBadge(icon: "clock", label: "Duration".localized(), value: "\(activity.durationMinutes) min")
                         }
 
                         if let reps = activity.repetitions {
-                            DetailBadge(icon: "repeat", label: "Reps", value: "\(reps)")
+                            DetailBadge(icon: "repeat", label: "Reps".localized(), value: "\(reps)")
                         }
 
                         if let sets = activity.sets {
-                            DetailBadge(icon: "square.stack.3d.up", label: "Sets", value: "\(sets)")
+                            DetailBadge(icon: "square.stack.3d.up", label: "Sets".localized(), value: "\(sets)")
                         }
                     }
                 }
@@ -419,7 +419,7 @@ struct ActivityDetailContent: View {
             // Instructions
             if !activity.instructions.isEmpty {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Instructions")
+                    Text("Instructions".localized())
                         .font(.headline)
 
                     ForEach(Array(activity.instructions.enumerated()), id: \.offset) { index, instruction in
@@ -507,7 +507,7 @@ struct WeightPickerSheet: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 24) {
-                Text("Weight Used")
+                Text("Weight Used".localized())
                     .font(.title2)
                     .bold()
 
@@ -529,7 +529,7 @@ struct WeightPickerSheet: View {
                     VStack {
                         Text("\(weightUsed)")
                             .font(.system(size: 72, weight: .bold))
-                        Text("lbs")
+                        Text("lbs".localized())
                             .font(.title3)
                             .foregroundColor(.secondary)
                     }
@@ -550,7 +550,7 @@ struct WeightPickerSheet: View {
                     onComplete()
                     dismiss()
                 } label: {
-                    Text("Complete")
+                    Text("Complete".localized())
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -566,7 +566,7 @@ struct WeightPickerSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
+                    Button("Cancel".localized()) {
                         dismiss()
                     }
                 }
@@ -583,11 +583,11 @@ struct PainPickerSheet: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 24) {
-                Text("Pain Level Check")
+                Text("Pain Level Check".localized())
                     .font(.title2)
                     .bold()
 
-                Text("How do you feel after this session?")
+                Text("treatment.feel_after_session".localized())
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
@@ -630,7 +630,7 @@ struct PainPickerSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
+                    Button("Cancel".localized()) {
                         dismiss()
                     }
                 }
@@ -640,11 +640,11 @@ struct PainPickerSheet: View {
 
     func getPainDescription(for level: PainLevel) -> String {
         switch level {
-        case .none: return "No discomfort at all"
-        case .mild: return "Slight discomfort, easily manageable"
-        case .moderate: return "Noticeable pain but tolerable"
-        case .severe: return "Significant pain, difficult to ignore"
-        case .extreme: return "Intense pain, hard to complete activity"
+        case .none: return "pain.none".localized()
+        case .mild: return "pain.mild".localized()
+        case .moderate: return "pain.moderate".localized()
+        case .severe: return "pain.severe".localized()
+        case .extreme: return "pain.extreme".localized()
         }
     }
 }
