@@ -76,18 +76,33 @@ final class TennisElbowUITests: XCTestCase {
         snapshot("04-Settings")
 
         // Screenshot 5: Medical Sources View (from Settings)
-        let medicalSourcesButton = app.buttons["View Medical Disclaimer"]
-        if medicalSourcesButton.waitForExistence(timeout: 3) {
-            medicalSourcesButton.tap()
+        let medicalSourcesLink = app.buttons["Medical Sources & Citations"]
+        if medicalSourcesLink.waitForExistence(timeout: 3) {
+            medicalSourcesLink.tap()
             sleep(2)
-            snapshot("05-DisclaimerFromSettings")
+            snapshot("05-MedicalSources")
 
-            // Check for Medical Sources link
-            let medicalSourcesLink = app.links["View All Medical Sources & Citations"]
-            if medicalSourcesLink.waitForExistence(timeout: 3) {
-                medicalSourcesLink.tap()
+            // Go back to Settings
+            let backButton = app.navigationBars.buttons.element(boundBy: 0)
+            if backButton.exists {
+                backButton.tap()
+                sleep(1)
+            }
+        }
+
+        // Screenshot 6: Disclaimer from Settings
+        let disclaimerButton = app.buttons["Medical Disclaimer"]
+        if disclaimerButton.waitForExistence(timeout: 3) {
+            disclaimerButton.tap()
+            sleep(2)
+            snapshot("06-DisclaimerFromSettings")
+
+            // Check for Medical Sources link in disclaimer
+            let medicalSourcesCitation = app.links["View All Medical Sources & Citations"]
+            if medicalSourcesCitation.waitForExistence(timeout: 3) {
+                medicalSourcesCitation.tap()
                 sleep(2)
-                snapshot("06-MedicalSources")
+                snapshot("07-MedicalSourcesFromDisclaimer")
 
                 // Go back
                 let backButton = app.navigationBars.buttons.element(boundBy: 0)
@@ -110,13 +125,13 @@ final class TennisElbowUITests: XCTestCase {
         treatmentTab.tap()
         sleep(2)
 
-        // Screenshot 7: Activity Detail View
+        // Screenshot 8: Activity Detail View
         let cells = app.collectionViews.cells
         // swiftlint:disable:next empty_count
         if cells.count > 0 {
             cells.element(boundBy: 0).tap()
             sleep(2)
-            snapshot("07-ActivityDetail")
+            snapshot("08-ActivityDetail")
         }
     }
 
