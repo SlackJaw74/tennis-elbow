@@ -80,7 +80,8 @@ final class TennisElbowUITests: XCTestCase {
 
         // Try to tap on first activity cell if it exists
         let cells = app.collectionViews.cells
-        if !cells.isEmpty {
+        // swiftlint:disable:next empty_count
+        if cells.count > 0 {
             cells.element(boundBy: 0).tap()
             sleep(2)
             snapshot("05-ActivityDetail")
