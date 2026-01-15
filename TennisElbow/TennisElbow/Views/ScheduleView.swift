@@ -8,7 +8,7 @@ struct ScheduleView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                DatePicker("Select Date", selection: $selectedDate, displayedComponents: .date)
+                DatePicker("Select Date".localized(), selection: $selectedDate, displayedComponents: .date)
                     .datePickerStyle(.graphical)
                     .padding()
 
@@ -16,13 +16,13 @@ struct ScheduleView: View {
 
                 scheduledActivitiesList
             }
-            .navigationTitle("Schedule")
+            .navigationTitle("Schedule".localized())
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         treatmentManager.generateSchedule(from: Date())
                     } label: {
-                        Label("Regenerate", systemImage: "arrow.clockwise")
+                        Label("Regenerate".localized(), systemImage: "arrow.clockwise")
                     }
                 }
             }
@@ -41,10 +41,10 @@ struct ScheduleView: View {
                     Image(systemName: "calendar.badge.exclamationmark")
                         .font(.system(size: 50))
                         .foregroundColor(.secondary)
-                    Text("No activities scheduled")
+                    Text("No activities scheduled".localized())
                         .font(.headline)
                         .foregroundColor(.secondary)
-                    Text("Generate a schedule to see your activities")
+                    Text("schedule.generate_prompt".localized())
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -168,7 +168,7 @@ struct ScheduledActivityDetailView: View {
                                 dismiss()
                             }
                         } label: {
-                            Label("Mark as Complete", systemImage: "checkmark.circle.fill")
+                            Label("Mark as Complete".localized(), systemImage: "checkmark.circle.fill")
                                 .frame(maxWidth: .infinity)
                                 .padding()
                                 .background(Color.green)
@@ -179,11 +179,11 @@ struct ScheduledActivityDetailView: View {
                     }
                 }
             }
-            .navigationTitle("Scheduled Activity")
+            .navigationTitle("Scheduled Activity".localized())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
+                    Button("Done".localized()) {
                         dismiss()
                     }
                 }
@@ -220,21 +220,21 @@ struct ScheduledActivityDetailView: View {
                       systemImage: "calendar.clock")
                 Spacer()
                 if scheduledActivity.isCompleted {
-                    Label("Completed", systemImage: "checkmark.circle.fill")
+                    Label("Completed".localized(), systemImage: "checkmark.circle.fill")
                         .foregroundColor(.green)
                 }
             }
             .font(.caption)
 
             if let completedTime = scheduledActivity.completedTime {
-                Text("Completed at \(completedTime.formatted(date: .omitted, time: .shortened))")
+                Text("Completed at".localized() + " \(completedTime.formatted(date: .omitted, time: .shortened))")
                     .font(.caption2)
                     .foregroundColor(.secondary)
             }
 
             if let painLevel = scheduledActivity.painLevel {
                 HStack {
-                    Text("Pain Level:")
+                    Text("Pain Level:".localized())
                         .font(.caption)
                         .foregroundColor(.secondary)
                     Text("\(painLevel.emoji) \(painLevel.description)")
@@ -245,10 +245,10 @@ struct ScheduledActivityDetailView: View {
 
             if let weight = scheduledActivity.weightUsedLbs, scheduledActivity.activity.type == .exercise {
                 HStack {
-                    Text("Weight Used:")
+                    Text("Weight Used:".localized())
                         .font(.caption)
                         .foregroundColor(.secondary)
-                    Text("\(weight) lbs")
+                    Text("\(weight) " + "lbs".localized())
                         .font(.caption)
                         .bold()
                 }
@@ -262,7 +262,7 @@ struct ScheduledActivityDetailView: View {
 
     var notesSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Notes")
+            Text("Notes".localized())
                 .font(.headline)
 
             TextEditor(text: $notes)
@@ -294,7 +294,7 @@ struct PainLevelSheet: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 24) {
-                    Text(activity.type == .painTracking ? "How do you feel?" : "How do you feel after this activity?")
+                    Text(activity.type == .painTracking ? "How do you feel?".localized() : "schedule.feel_after_activity".localized())
                         .font(.title3)
                         .bold()
                         .multilineTextAlignment(.center)
@@ -303,7 +303,7 @@ struct PainLevelSheet: View {
                     // Weight selector for exercises only
                     if activity.type == .exercise {
                         VStack(alignment: .leading, spacing: 12) {
-                            Text("Weight Used")
+                            Text("Weight Used".localized())
                                 .font(.headline)
 
                             HStack {
@@ -322,7 +322,7 @@ struct PainLevelSheet: View {
                                 VStack {
                                     Text("\(weightUsed)")
                                         .font(.system(size: 48, weight: .bold))
-                                    Text("lbs")
+                                    Text("lbs".localized())
                                         .font(.caption)
                                         .foregroundColor(.secondary)
                                 }
@@ -387,7 +387,7 @@ struct PainLevelSheet: View {
                         onComplete()
                         dismiss()
                     } label: {
-                        Text("Complete Activity")
+                        Text("Complete Activity".localized())
                             .font(.headline)
                             .frame(maxWidth: .infinity)
                             .padding()
@@ -399,11 +399,11 @@ struct PainLevelSheet: View {
                     .padding(.bottom)
                 }
             }
-            .navigationTitle("Complete Activity")
+            .navigationTitle("Complete Activity".localized())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
+                    Button("Cancel".localized()) {
                         dismiss()
                     }
                 }
@@ -413,11 +413,11 @@ struct PainLevelSheet: View {
 
     func getPainDescription(for level: PainLevel) -> String {
         switch level {
-        case .none: return "No discomfort at all"
-        case .mild: return "Slight discomfort, easily manageable"
-        case .moderate: return "Noticeable pain but tolerable"
-        case .severe: return "Significant pain, difficult to ignore"
-        case .extreme: return "Intense pain, hard to complete activity"
+        case .none: return "pain.none".localized()
+        case .mild: return "pain.mild".localized()
+        case .moderate: return "pain.moderate".localized()
+        case .severe: return "pain.severe".localized()
+        case .extreme: return "pain.extreme".localized()
         }
     }
 }
