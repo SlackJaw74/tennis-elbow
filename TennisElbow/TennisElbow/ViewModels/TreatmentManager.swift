@@ -387,6 +387,10 @@ class TreatmentManager: ObservableObject {
         // Regenerate schedule when times change
         generateSchedule()
         saveScheduledActivities()
+        // Reschedule notifications with new times if enabled
+        if notificationsEnabled {
+            scheduleNotifications()
+        }
     }
     
     private func loadCustomReminderTimes() {
