@@ -41,9 +41,11 @@ final class TennisElbowUITests: XCTestCase {
         XCUIDevice.shared.orientation = .portrait
         sleep(1)
 
-        // Handle the disclaimer if it appears
+        // Screenshot 0: Disclaimer View (initial launch)
         let acceptButton = app.buttons["Accept and Continue"]
         if acceptButton.waitForExistence(timeout: 5) {
+            snapshot("00-Disclaimer")
+            sleep(1)
             acceptButton.tap()
             sleep(2)
         }
@@ -73,19 +75,77 @@ final class TennisElbowUITests: XCTestCase {
         sleep(2)
         snapshot("04-Settings")
 
+        // Screenshot 5: Medical Sources View (from Settings)
+        let medicalSourcesButton = app.buttons["View Medical Disclaimer"]
+        if medicalSourcesButton.waitForExistence(timeout: 3) {
+            medicalSourcesButton.tap()
+            sleep(2)
+            snapshot("05-DisclaimerFromSettings")
+
+            // Check for Medical Sources link
+            let medicalSourcesLink = app.links["View All Medical Sources & Citations"]
+            if medicalSourcesLink.waitForExistence(timeout: 3) {
+                medicalSourcesLink.tap()
+                sleep(2)
+                snapshot("06-MedicalSources")
+
+                // Go back
+                let backButton = app.navigationBars.buttons.element(boundBy: 0)
+                if backButton.exists {
+                    backButton.tap()
+                    sleep(1)
+                }
+            }
+
+            // Close disclaimer sheet
+            let closeButton = app.buttons["Close"]
+            if closeButton.exists {
+                closeButton.tap()
+                sleep(1)
+            }
+        }
+
         // Navigate back to Treatment to show activity details
         let treatmentTab = app.tabBars.buttons["Treatment"]
         treatmentTab.tap()
         sleep(2)
 
-        // Try to tap on first activity cell if it exists
+        // Screenshot 7: Activity Detail View
         let cells = app.collectionViews.cells
         // swiftlint:disable:next empty_count
         if cells.count > 0 {
             cells.element(boundBy: 0).tap()
             sleep(2)
-            snapshot("05-ActivityDetail")
+            snapshot("07-ActivityDetail")
         }
+    }
+
+    @MainActor
+    func testAllViewsExist() throws {
+        app.launch()
+
+        // Handle the disclaimer if it appears
+        let acceptButton = app.buttons["Accept and Continue"]
+        if acceptButton.waitForExistence(timeout: 5) {
+            acceptButton.tap()
+            sleep(1)
+        }
+
+        // Verify all main tabs exist
+        XCTAssertTrue(app.tabBars.buttons["Treatment"].exists, "Treatment tab should exist")
+        XCTAssertTrue(app.tabBars.buttons["Schedule"].exists, "Schedule tab should exist")
+        XCTAssertTrue(app.tabBars.buttons["Progress"].exists, "Progress tab should exist")
+        XCTAssertTrue(app.tabBars.buttons["Settings"].exists, "Settings tab should exist")
+
+        // Test navigation to all views
+        app.tabBars.buttons["Schedule"].tap()
+        sleep(1)
+        app.tabBars.buttons["Progress"].tap()
+        sleep(1)
+        app.tabBars.buttons["Settings"].tap()
+        sleep(1)
+        app.tabBars.buttons["Treatment"].tap()
+        sleep(1)
     }
 
     @MainActor
