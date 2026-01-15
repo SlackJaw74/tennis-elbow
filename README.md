@@ -31,6 +31,10 @@ Optional (recommended): Add a `PrivacyInfo.xcprivacy` manifest declaring no requ
       ```bash
       make device-list
       ```
+   - Format code with SwiftFormat:
+      ```bash
+      make format
+      ```
    - Archive (requires signing):
       ```bash
       make archive
