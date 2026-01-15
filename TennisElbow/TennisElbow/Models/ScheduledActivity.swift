@@ -6,7 +6,7 @@ enum PainLevel: Int, Codable, CaseIterable {
     case moderate = 2
     case severe = 3
     case extreme = 4
-    
+
     var description: String {
         switch self {
         case .none: return "No Pain"
@@ -16,7 +16,7 @@ enum PainLevel: Int, Codable, CaseIterable {
         case .extreme: return "Extreme"
         }
     }
-    
+
     var emoji: String {
         switch self {
         case .none: return "😊"
@@ -26,7 +26,7 @@ enum PainLevel: Int, Codable, CaseIterable {
         case .extreme: return "😖"
         }
     }
-    
+
     var color: String {
         switch self {
         case .none: return "green"
@@ -47,10 +47,11 @@ struct ScheduledActivity: Identifiable, Codable {
     var notes: String?
     var painLevel: PainLevel?
     var weightUsedLbs: Int?
-    
-    init(id: UUID = UUID(), activity: TreatmentActivity, scheduledTime: Date, 
+
+    init(id: UUID = UUID(), activity: TreatmentActivity, scheduledTime: Date,
          isCompleted: Bool = false, completedTime: Date? = nil, notes: String? = nil,
-         painLevel: PainLevel? = nil, weightUsedLbs: Int? = nil) {
+         painLevel: PainLevel? = nil, weightUsedLbs: Int? = nil)
+    {
         self.id = id
         self.activity = activity
         self.scheduledTime = scheduledTime

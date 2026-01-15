@@ -5,7 +5,7 @@ struct ContentView: View {
     @State private var selectedTab = 0
     @AppStorage("hasAcceptedDisclaimer") private var hasAcceptedDisclaimer = false
     @State private var showDisclaimer = false
-    
+
     var body: some View {
         TabView(selection: $selectedTab) {
             TreatmentPlanView()
@@ -14,21 +14,21 @@ struct ContentView: View {
                     Label("Treatment", systemImage: "heart.text.square")
                 }
                 .tag(0)
-            
+
             ScheduleView()
                 .environmentObject(treatmentManager)
                 .tabItem {
                     Label("Schedule", systemImage: "calendar")
                 }
                 .tag(1)
-            
+
             TreatmentProgressView()
                 .environmentObject(treatmentManager)
                 .tabItem {
                     Label("Progress", systemImage: "chart.line.uptrend.xyaxis")
                 }
                 .tag(2)
-            
+
             SettingsView()
                 .environmentObject(treatmentManager)
                 .tabItem {
@@ -47,7 +47,9 @@ struct ContentView: View {
                 treatmentManager.userDeclinedAdvancement()
             }
         } message: {
-            Text("You've completed 14 days on your current treatment plan. Would you like to advance to the next stage, or continue with the current plan for 2 more weeks?")
+            Text(
+                "You've completed 14 days on your current treatment plan. Would you like to advance to the next stage, or continue with the current plan for 2 more weeks?"
+            )
         }
         .onAppear {
             if !hasAcceptedDisclaimer {

@@ -3,17 +3,16 @@ import SwiftUI
 struct ActivityDetailView: View {
     let activity: TreatmentActivity
     @Environment(\.dismiss) var dismiss
-    
+
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     headerSection
-                    
+
                     detailsSection
-                    
+
                     instructionsSection
-                    
 
                     sourcesSection
                 }
@@ -30,7 +29,6 @@ struct ActivityDetailView: View {
             }
         }
     }
-    
 
     var sourcesSection: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -38,11 +36,11 @@ struct ActivityDetailView: View {
                 .font(.caption)
                 .bold()
                 .foregroundColor(.secondary)
-            
+
             Text(sourceDescription)
                 .font(.caption)
                 .foregroundColor(.secondary)
-            
+
             if let url = sourceURL {
                 Link(destination: url) {
                     HStack(spacing: 4) {
@@ -58,7 +56,7 @@ struct ActivityDetailView: View {
         .background(Color(.tertiarySystemBackground))
         .cornerRadius(12)
     }
-    
+
     var sourceDescription: String {
         switch activity.type {
         case .exercise:
@@ -75,7 +73,7 @@ struct ActivityDetailView: View {
             return "Pain tracking helps monitor recovery progress as recommended in clinical practice guidelines."
         }
     }
-    
+
     var sourceURL: URL? {
         switch activity.type {
         case .exercise:
@@ -88,13 +86,13 @@ struct ActivityDetailView: View {
             return URL(string: "https://orthoinfo.aaos.org/en/diseases--conditions/tennis-elbow-lateral-epicondylitis/")
         }
     }
-    
+
     var headerSection: some View {
         VStack(spacing: 16) {
             Image(systemName: activity.imageSystemName)
                 .font(.system(size: 60))
                 .foregroundColor(activityColor)
-            
+
             Text(activity.description)
                 .font(.body)
                 .multilineTextAlignment(.center)
@@ -105,24 +103,24 @@ struct ActivityDetailView: View {
         .background(Color(.secondarySystemBackground))
         .cornerRadius(12)
     }
-    
+
     var detailsSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Details")
                 .font(.headline)
-            
+
             HStack(spacing: 20) {
                 DetailItem(icon: "clock", label: "Duration", value: "\(activity.durationMinutes) min")
-                
+
                 if let reps = activity.repetitions {
                     DetailItem(icon: "repeat", label: "Reps", value: "\(reps)")
                 }
-                
+
                 if let sets = activity.sets {
                     DetailItem(icon: "square.stack.3d.up", label: "Sets", value: "\(sets)")
                 }
             }
-            
+
             HStack {
                 Label(activity.type.rawValue.capitalized, systemImage: typeIcon)
                 Spacer()
@@ -135,12 +133,12 @@ struct ActivityDetailView: View {
         .background(Color(.secondarySystemBackground))
         .cornerRadius(12)
     }
-    
+
     var instructionsSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Instructions")
                 .font(.headline)
-            
+
             ForEach(Array(activity.instructions.enumerated()), id: \.offset) { index, instruction in
                 HStack(alignment: .top, spacing: 12) {
                     Text("\(index + 1)")
@@ -150,7 +148,7 @@ struct ActivityDetailView: View {
                         .frame(width: 24, height: 24)
                         .background(activityColor)
                         .clipShape(Circle())
-                    
+
                     Text(instruction)
                         .font(.body)
                         .fixedSize(horizontal: false, vertical: true)
@@ -161,7 +159,7 @@ struct ActivityDetailView: View {
         .background(Color(.secondarySystemBackground))
         .cornerRadius(12)
     }
-    
+
     var activityColor: Color {
         switch activity.type {
         case .exercise: return .blue
@@ -172,7 +170,7 @@ struct ActivityDetailView: View {
         case .painTracking: return .red
         }
     }
-    
+
     var typeIcon: String {
         switch activity.type {
         case .exercise: return "figure.strengthtraining.traditional"
@@ -189,7 +187,7 @@ struct DetailItem: View {
     let icon: String
     let label: String
     let value: String
-    
+
     var body: some View {
         VStack(spacing: 4) {
             Image(systemName: icon)

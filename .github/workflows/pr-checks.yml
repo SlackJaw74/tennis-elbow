@@ -76,7 +76,17 @@ jobs:
       - name: Install SwiftFormat
         run: brew install swiftformat
       
-      - name: Run SwiftFormat (lint mode)
+      - name: Run SwiftFormat
         run: |
           cd TennisElbow
-          swiftformat --lint .
+          swiftformat .
+      
+      - name: Check for formatting changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "SwiftFormat made changes. Please run 'make format' locally and commit the changes."
+            git diff
+            exit 1
+          else
+            echo "No formatting changes needed."
+          fi

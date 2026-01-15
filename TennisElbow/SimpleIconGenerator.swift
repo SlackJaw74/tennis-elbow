@@ -8,16 +8,16 @@ struct SimpleTextIcon: View {
             // Medical blue background
             LinearGradient(
                 colors: [Color(red: 0.3, green: 0.6, blue: 1.0),
-                        Color(red: 0.1, green: 0.4, blue: 0.8)],
+                         Color(red: 0.1, green: 0.4, blue: 0.8)],
                 startPoint: .top,
                 endPoint: .bottom
             )
-            
+
             VStack(spacing: -30) {
                 // Large emoji or symbol
                 Text("💪")
                     .font(.system(size: 280))
-                
+
                 // Pain indicator
                 Text("⚡️")
                     .font(.system(size: 180))
@@ -34,7 +34,7 @@ struct MinimalIcon: View {
         ZStack {
             // Clean white background
             Color.white
-            
+
             VStack(spacing: 20) {
                 // App name initials
                 Text("TE")
@@ -46,7 +46,7 @@ struct MinimalIcon: View {
                             endPoint: .bottomTrailing
                         )
                     )
-                
+
                 // Subtitle
                 Text("Recovery")
                     .font(.system(size: 80, weight: .semibold))

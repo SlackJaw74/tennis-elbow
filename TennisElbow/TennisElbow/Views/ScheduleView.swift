@@ -4,16 +4,16 @@ struct ScheduleView: View {
     @EnvironmentObject var treatmentManager: TreatmentManager
     @State private var selectedDate = Date()
     @State private var selectedActivity: ScheduledActivity?
-    
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
                 DatePicker("Select Date", selection: $selectedDate, displayedComponents: .date)
                     .datePickerStyle(.graphical)
                     .padding()
-                
+
                 Divider()
-                
+
                 scheduledActivitiesList
             }
             .navigationTitle("Schedule")
@@ -31,10 +31,10 @@ struct ScheduleView: View {
             }
         }
     }
-    
+
     var scheduledActivitiesList: some View {
         let activities = getActivitiesForSelectedDate()
-        
+
         return Group {
             if activities.isEmpty {
                 VStack(spacing: 12) {
@@ -64,7 +64,7 @@ struct ScheduleView: View {
             }
         }
     }
-    
+
     func getActivitiesForSelectedDate() -> [ScheduledActivity] {
         let calendar = Calendar.current
         return treatmentManager.scheduledActivities.filter { scheduled in
@@ -76,7 +76,7 @@ struct ScheduleView: View {
 struct ScheduledActivityRow: View {
     @EnvironmentObject var treatmentManager: TreatmentManager
     let scheduledActivity: ScheduledActivity
-    
+
     var body: some View {
         HStack(spacing: 12) {
             Button {
@@ -90,36 +90,36 @@ struct ScheduledActivityRow: View {
                     .font(.title2)
                     .foregroundColor(scheduledActivity.isCompleted ? .green : .gray)
             }
-            
+
             VStack(alignment: .leading, spacing: 4) {
                 Text(scheduledActivity.activity.name)
                     .font(.subheadline)
                     .bold()
                     .strikethrough(scheduledActivity.isCompleted)
-                
+
                 HStack {
-                    Label(scheduledActivity.scheduledTime.formatted(date: .omitted, time: .shortened), 
+                    Label(scheduledActivity.scheduledTime.formatted(date: .omitted, time: .shortened),
                           systemImage: "clock")
                     Text("•")
-                    Label("\(scheduledActivity.activity.durationMinutes) min", 
+                    Label("\(scheduledActivity.activity.durationMinutes) min",
                           systemImage: "timer")
                 }
                 .font(.caption)
                 .foregroundColor(.secondary)
             }
-            
+
             Spacer()
-            
+
             Image(systemName: scheduledActivity.activity.imageSystemName)
                 .foregroundColor(activityColor)
         }
         .padding()
-        .background(scheduledActivity.isCompleted ? 
-                   Color.green.opacity(0.1) : Color(.secondarySystemBackground))
+        .background(scheduledActivity.isCompleted ?
+            Color.green.opacity(0.1) : Color(.secondarySystemBackground))
         .cornerRadius(10)
         .opacity(scheduledActivity.isCompleted ? 0.7 : 1.0)
     }
-    
+
     var activityColor: Color {
         switch scheduledActivity.activity.type {
         case .exercise: return .blue
@@ -140,18 +140,18 @@ struct ScheduledActivityDetailView: View {
     @State private var selectedPainLevel: PainLevel = .none
     @State private var weightUsed: Int = 1
     @State private var showCompletionSheet = false
-    
+
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     scheduleInfoCard
-                    
+
                     ActivityDetailView(activity: scheduledActivity.activity)
                         .toolbar(.hidden)
-                    
+
                     notesSection
-                    
+
                     if !scheduledActivity.isCompleted {
                         Button {
                             // If pain tracking activity, show pain selector directly
@@ -212,7 +212,7 @@ struct ScheduledActivityDetailView: View {
             weightUsed = scheduledActivity.weightUsedLbs ?? 1
         }
     }
-    
+
     var scheduleInfoCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -225,13 +225,13 @@ struct ScheduledActivityDetailView: View {
                 }
             }
             .font(.caption)
-            
+
             if let completedTime = scheduledActivity.completedTime {
                 Text("Completed at \(completedTime.formatted(date: .omitted, time: .shortened))")
                     .font(.caption2)
                     .foregroundColor(.secondary)
             }
-            
+
             if let painLevel = scheduledActivity.painLevel {
                 HStack {
                     Text("Pain Level:")
@@ -242,7 +242,7 @@ struct ScheduledActivityDetailView: View {
                         .bold()
                 }
             }
-            
+
             if let weight = scheduledActivity.weightUsedLbs, scheduledActivity.activity.type == .exercise {
                 HStack {
                     Text("Weight Used:")
@@ -259,12 +259,12 @@ struct ScheduledActivityDetailView: View {
         .cornerRadius(12)
         .padding(.horizontal)
     }
-    
+
     var notesSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Notes")
                 .font(.headline)
-            
+
             TextEditor(text: $notes)
                 .frame(height: 100)
                 .padding(8)
@@ -289,7 +289,7 @@ struct PainLevelSheet: View {
     let activity: TreatmentActivity
     let onComplete: () -> Void
     @Environment(\.dismiss) var dismiss
-    
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -299,13 +299,13 @@ struct PainLevelSheet: View {
                         .bold()
                         .multilineTextAlignment(.center)
                         .padding(.top)
-                    
+
                     // Weight selector for exercises only
                     if activity.type == .exercise {
                         VStack(alignment: .leading, spacing: 12) {
                             Text("Weight Used")
                                 .font(.headline)
-                            
+
                             HStack {
                                 Button {
                                     if weightUsed > 1 {
@@ -316,9 +316,9 @@ struct PainLevelSheet: View {
                                         .font(.title2)
                                         .foregroundColor(.blue)
                                 }
-                                
+
                                 Spacer()
-                                
+
                                 VStack {
                                     Text("\(weightUsed)")
                                         .font(.system(size: 48, weight: .bold))
@@ -326,9 +326,9 @@ struct PainLevelSheet: View {
                                         .font(.caption)
                                         .foregroundColor(.secondary)
                                 }
-                                
+
                                 Spacer()
-                                
+
                                 Button {
                                     if weightUsed < 100 {
                                         weightUsed += 1
@@ -345,7 +345,7 @@ struct PainLevelSheet: View {
                         }
                         .padding(.horizontal)
                     }
-                    
+
                     // Pain Level - only for pain tracking activity
                     if activity.type == .painTracking {
                         VStack(spacing: 12) {
@@ -356,7 +356,7 @@ struct PainLevelSheet: View {
                                     HStack {
                                         Text(level.emoji)
                                             .font(.title2)
-                                        
+
                                         VStack(alignment: .leading) {
                                             Text(level.description)
                                                 .font(.headline)
@@ -365,24 +365,24 @@ struct PainLevelSheet: View {
                                                 .font(.caption)
                                                 .foregroundColor(.secondary)
                                         }
-                                        
+
                                         Spacer()
-                                        
+
                                         if selectedPainLevel == level {
                                             Image(systemName: "checkmark.circle.fill")
                                                 .foregroundColor(.blue)
                                         }
                                     }
                                     .padding()
-                                    .background(selectedPainLevel == level ? 
-                                               Color.blue.opacity(0.1) : Color(.secondarySystemBackground))
+                                    .background(selectedPainLevel == level ?
+                                        Color.blue.opacity(0.1) : Color(.secondarySystemBackground))
                                     .cornerRadius(12)
                                 }
                             }
                         }
                         .padding(.horizontal)
                     }
-                    
+
                     Button {
                         onComplete()
                         dismiss()
@@ -410,7 +410,7 @@ struct PainLevelSheet: View {
             }
         }
     }
-    
+
     func getPainDescription(for level: PainLevel) -> String {
         switch level {
         case .none: return "No discomfort at all"

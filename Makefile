@@ -5,7 +5,7 @@ DEVICE ?= iPhone 16e
 BUNDLE_ID := com.madhouse.TennisElbow
 APP := $(DERIVED)/Build/Products/Debug-iphonesimulator/TennisElbow.app
 
-.PHONY: sim-build sim-install sim-launch sim-run device-list clean archive open-xcode
+.PHONY: sim-build sim-install sim-launch sim-run device-list clean archive open-xcode format
 
 sim-build:
 	open -a Simulator || true
@@ -48,3 +48,7 @@ archive:
 
 open-xcode:
 	open "$(PROJECT)"
+
+format:
+	@command -v swiftformat >/dev/null 2>&1 || { echo "Error: swiftformat not installed. Install with: brew install swiftformat"; exit 1; }
+	cd TennisElbow && swiftformat .
