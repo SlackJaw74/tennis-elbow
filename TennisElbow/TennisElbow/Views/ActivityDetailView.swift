@@ -61,19 +61,19 @@ struct ActivityDetailView: View {
         switch activity.type {
         case .exercise:
             return """
-                Eccentric strengthening exercises are supported by research published in the British Journal of \
-                Sports Medicine and guidelines from the American Academy of Orthopaedic Surgeons.
-                """
+            Eccentric strengthening exercises are supported by research published in the British Journal of \
+            Sports Medicine and guidelines from the American Academy of Orthopaedic Surgeons.
+            """
         case .stretch:
             return """
-                Stretching protocols are based on clinical studies published in the British Journal of Sports \
-                Medicine demonstrating effectiveness for lateral epicondylitis.
-                """
+            Stretching protocols are based on clinical studies published in the British Journal of Sports \
+            Medicine demonstrating effectiveness for lateral epicondylitis.
+            """
         case .iceTherapy:
             return """
-                Cryotherapy recommendations follow evidence-based protocols for musculoskeletal injury \
-                management as published in peer-reviewed sports medicine journals.
-                """
+            Cryotherapy recommendations follow evidence-based protocols for musculoskeletal injury \
+            management as published in peer-reviewed sports medicine journals.
+            """
         case .rest:
             return "Rest and activity modification guidance follows AAOS and Mayo Clinic recommendations for tennis elbow recovery."
         case .medication:
