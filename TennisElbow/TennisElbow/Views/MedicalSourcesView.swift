@@ -91,7 +91,7 @@ struct MedicalSourcesView: View {
             }
             .padding()
         }
-        .navigationTitle("Medical Sources")
+        .navigationTitle("Medical Sources".localized())
         .navigationBarTitleDisplayMode(.inline)
     }
 
@@ -101,37 +101,26 @@ struct MedicalSourcesView: View {
                 Image(systemName: "books.vertical.fill")
                     .font(.title)
                     .foregroundColor(.blue)
-                Text("References & Citations")
+                Text("References & Citations".localized())
                     .font(.title2)
                     .bold()
             }
 
-            Text(
-                """
-                The exercises and treatment recommendations in this app are based on peer-reviewed medical \
-                research and guidelines from recognized medical organizations.
-                """
-            )
-            .font(.subheadline)
-            .foregroundColor(.secondary)
+            Text("medical_sources.description".localized())
+                .font(.subheadline)
+                .foregroundColor(.secondary)
         }
     }
 
     var disclaimerSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Label("Important Note", systemImage: "exclamationmark.triangle.fill")
+            Label("Important Note".localized(), systemImage: "exclamationmark.triangle.fill")
                 .font(.headline)
                 .foregroundColor(.orange)
 
-            Text(
-                """
-                These sources are provided for informational purposes. This app does not replace \
-                professional medical advice. Always consult with a healthcare provider before beginning \
-                any treatment program.
-                """
-            )
-            .font(.caption)
-            .foregroundColor(.secondary)
+            Text("medical_sources.disclaimer".localized())
+                .font(.caption)
+                .foregroundColor(.secondary)
         }
         .padding()
         .background(Color(.systemOrange).opacity(0.1))
@@ -140,7 +129,7 @@ struct MedicalSourcesView: View {
 
     var sourcesListSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Peer-Reviewed Sources")
+            Text("Peer-Reviewed Sources".localized())
                 .font(.headline)
 
             ForEach(sources) { source in
@@ -151,25 +140,25 @@ struct MedicalSourcesView: View {
 
     var additionalResourcesSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Additional Resources")
+            Text("Additional Resources".localized())
                 .font(.headline)
                 .padding(.top)
 
             ResourceLink(
-                title: "National Institutes of Health (NIH)",
-                subtitle: "MedlinePlus - Tennis Elbow",
+                title: "National Institutes of Health (NIH)".localized(),
+                subtitle: "MedlinePlus - Tennis Elbow".localized(),
                 url: "https://medlineplus.gov/tenniselbow.html"
             )
 
             ResourceLink(
-                title: "Cleveland Clinic",
-                subtitle: "Lateral Epicondylitis Overview",
+                title: "Cleveland Clinic".localized(),
+                subtitle: "Lateral Epicondylitis Overview".localized(),
                 url: "https://my.clevelandclinic.org/health/diseases/7049-tennis-elbow-lateral-epicondylitis"
             )
 
             ResourceLink(
-                title: "NHS (UK National Health Service)",
-                subtitle: "Tennis Elbow Treatment Guide",
+                title: "NHS (UK National Health Service)".localized(),
+                subtitle: "Tennis Elbow Treatment Guide".localized(),
                 url: "https://www.nhs.uk/conditions/tennis-elbow/"
             )
         }
@@ -207,7 +196,7 @@ struct SourceCard: View {
                 Link(destination: url) {
                     HStack(spacing: 4) {
                         Image(systemName: "link")
-                        Text("View Source")
+                        Text("View Source".localized())
                     }
                     .font(.caption)
                     .foregroundColor(.blue)
