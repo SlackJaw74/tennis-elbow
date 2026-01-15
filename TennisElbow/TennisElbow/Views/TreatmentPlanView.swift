@@ -4,15 +4,15 @@ struct TreatmentPlanView: View {
     @EnvironmentObject var treatmentManager: TreatmentManager
     @State private var expandedSessions: Set<String> = ["morning"] // Start with morning expanded
     @State private var expandedActivityId: UUID? = nil // Track which activity is expanded
-    
+
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     planHeaderCard
-                    
+
                     todaysSummaryCard
-                    
+
                     sessionsView
                 }
                 .padding()
@@ -20,14 +20,14 @@ struct TreatmentPlanView: View {
             .navigationTitle("Treatment Plan")
         }
     }
-    
+
     var planHeaderCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Image(systemName: "heart.text.square.fill")
                     .font(.title2)
                     .foregroundColor(.red)
-                
+
                 VStack(alignment: .leading) {
                     Text(treatmentManager.currentPlan.name)
                         .font(.headline)
@@ -36,22 +36,22 @@ struct TreatmentPlanView: View {
                         .foregroundColor(.secondary)
                 }
             }
-            
+
             Divider()
-            
+
             HStack {
-                Label("\(treatmentManager.currentPlan.activities.count) Activities", 
+                Label("\(treatmentManager.currentPlan.activities.count) Activities",
                       systemImage: "list.bullet")
-                
+
                 Spacer()
-                
+
                 Button {
                     treatmentManager.generateSchedule()
                 } label: {
                     Label("Regenerate", systemImage: "arrow.clockwise")
                         .font(.caption)
                 }
-                
+
                 Menu {
                     ForEach(TreatmentPlan.defaultPlans) { plan in
                         Button(plan.name) {
@@ -70,15 +70,15 @@ struct TreatmentPlanView: View {
         .background(Color(.secondarySystemBackground))
         .cornerRadius(12)
     }
-    
+
     var todaysSummaryCard: some View {
         let todayActivities = treatmentManager.getTodayActivities()
-        let completed = todayActivities.filter { $0.isCompleted }.count
-        
+        let completed = todayActivities.filter(\.isCompleted).count
+
         return VStack(alignment: .leading, spacing: 12) {
             Text("Today's Progress")
                 .font(.headline)
-            
+
             HStack {
                 VStack(alignment: .leading) {
                     Text("\(completed) / \(todayActivities.count)")
@@ -88,10 +88,11 @@ struct TreatmentPlanView: View {
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
-                
+
                 Spacer()
-                
-                CircularProgressView(progress: todayActivities.isEmpty ? 0 : Double(completed) / Double(todayActivities.count))
+
+                CircularProgressView(progress: todayActivities
+                    .isEmpty ? 0 : Double(completed) / Double(todayActivities.count))
                     .frame(width: 60, height: 60)
             }
         }
@@ -99,13 +100,13 @@ struct TreatmentPlanView: View {
         .background(Color(.secondarySystemBackground))
         .cornerRadius(12)
     }
-    
+
     var sessionsView: some View {
         let todayActivities = treatmentManager.getTodayActivities()
         let morningActivities = todayActivities.filter { getTimeOfDay(for: $0.scheduledTime) == "morning" }
         let afternoonActivities = todayActivities.filter { getTimeOfDay(for: $0.scheduledTime) == "afternoon" }
         let eveningActivities = todayActivities.filter { getTimeOfDay(for: $0.scheduledTime) == "evening" }
-        
+
         return VStack(spacing: 12) {
             if !morningActivities.isEmpty {
                 SessionSection(
@@ -117,7 +118,7 @@ struct TreatmentPlanView: View {
                     onToggle: { toggleSession("morning", activities: morningActivities) }
                 )
             }
-            
+
             if !afternoonActivities.isEmpty {
                 SessionSection(
                     title: "Afternoon",
@@ -128,7 +129,7 @@ struct TreatmentPlanView: View {
                     onToggle: { toggleSession("afternoon", activities: afternoonActivities) }
                 )
             }
-            
+
             if !eveningActivities.isEmpty {
                 SessionSection(
                     title: "Evening",
@@ -141,7 +142,7 @@ struct TreatmentPlanView: View {
             }
         }
     }
-    
+
     func getTimeOfDay(for date: Date) -> String {
         let hour = Calendar.current.component(.hour, from: date)
         if hour < 12 {
@@ -152,25 +153,25 @@ struct TreatmentPlanView: View {
             return "evening"
         }
     }
-    
-    func toggleSession(_ session: String, activities: [ScheduledActivity]) {
+
+    func toggleSession(_ session: String, activities _: [ScheduledActivity]) {
         if expandedSessions.contains(session) {
             expandedSessions.remove(session)
         } else {
             expandedSessions.insert(session)
         }
     }
-    
+
     var afternoonActivities: [ScheduledActivity] {
         treatmentManager.getTodayActivities().filter { getTimeOfDay(for: $0.scheduledTime) == "afternoon" }
     }
-    
+
     var eveningActivities: [ScheduledActivity] {
         treatmentManager.getTodayActivities().filter { getTimeOfDay(for: $0.scheduledTime) == "evening" }
     }
-    
+
     func allActivitiesCompleted(_ activities: [ScheduledActivity]) -> Bool {
-        return !activities.isEmpty && activities.allSatisfy { $0.isCompleted }
+        !activities.isEmpty && activities.allSatisfy(\.isCompleted)
     }
 }
 
@@ -182,24 +183,24 @@ struct SessionSection: View {
     let isExpanded: Bool
     @Binding var expandedActivityId: UUID?
     let onToggle: () -> Void
-    
+
     var body: some View {
         VStack(spacing: 0) {
             Button(action: onToggle) {
                 HStack {
                     Image(systemName: icon)
                         .foregroundColor(.orange)
-                    
+
                     Text(title)
                         .font(.headline)
-                    
+
                     Spacer()
-                    
-                    let completed = activities.filter { $0.isCompleted }.count
+
+                    let completed = activities.filter(\.isCompleted).count
                     Text("\(completed)/\(activities.count)")
                         .font(.caption)
                         .foregroundColor(.secondary)
-                    
+
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                         .font(.caption)
                         .foregroundColor(.secondary)
@@ -208,7 +209,7 @@ struct SessionSection: View {
                 .background(Color(.secondarySystemBackground))
             }
             .buttonStyle(PlainButtonStyle())
-            
+
             if isExpanded {
                 VStack(spacing: 8) {
                     ForEach(activities) { activity in
@@ -243,7 +244,7 @@ struct SessionActivityRow: View {
     @State private var showPainPicker = false
     @State private var weightUsed: Int = 1
     @State private var selectedPainLevel: PainLevel = .none
-    
+
     var body: some View {
         VStack(spacing: 0) {
             // Activity Row
@@ -255,13 +256,19 @@ struct SessionActivityRow: View {
                             treatmentManager.uncompleteActivity(scheduledActivity)
                         } else {
                             // Only show weight picker for Eccentric Wrist Extension
-                            if scheduledActivity.activity.type == .exercise && 
-                               scheduledActivity.activity.name == "Eccentric Wrist Extension" {
+                            if scheduledActivity.activity.type == .exercise,
+                               scheduledActivity.activity.name == "Eccentric Wrist Extension"
+                            {
                                 showWeightPicker = true
                             } else if scheduledActivity.activity.type == .painTracking {
                                 showPainPicker = true
                             } else {
-                                treatmentManager.completeActivity(scheduledActivity, notes: nil, painLevel: nil, weightUsedLbs: nil)
+                                treatmentManager.completeActivity(
+                                    scheduledActivity,
+                                    notes: nil,
+                                    painLevel: nil,
+                                    weightUsedLbs: nil
+                                )
                             }
                         }
                     } label: {
@@ -270,23 +277,24 @@ struct SessionActivityRow: View {
                             .foregroundColor(scheduledActivity.isCompleted ? .green : .gray)
                     }
                     .buttonStyle(PlainButtonStyle())
-                    
+
                     Image(systemName: scheduledActivity.activity.imageSystemName)
                         .foregroundColor(activityColor)
                         .frame(width: 30)
-                    
+
                     VStack(alignment: .leading, spacing: 2) {
                         Text(scheduledActivity.activity.name)
                             .font(.subheadline)
                             .strikethrough(scheduledActivity.isCompleted)
-                        
+
                         HStack(spacing: 8) {
                             Text("\(scheduledActivity.activity.durationMinutes) min")
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
-                            
-                            if let reps = scheduledActivity.activity.repetitions, 
-                               let sets = scheduledActivity.activity.sets {
+
+                            if let reps = scheduledActivity.activity.repetitions,
+                               let sets = scheduledActivity.activity.sets
+                            {
                                 Text("•")
                                     .font(.caption2)
                                     .foregroundColor(.secondary)
@@ -294,7 +302,7 @@ struct SessionActivityRow: View {
                                     .font(.caption2)
                                     .foregroundColor(.secondary)
                             }
-                            
+
                             if let weight = scheduledActivity.weightUsedLbs {
                                 Text("•")
                                     .font(.caption2)
@@ -305,9 +313,9 @@ struct SessionActivityRow: View {
                             }
                         }
                     }
-                    
+
                     Spacer()
-                    
+
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                         .font(.caption)
                         .foregroundColor(.secondary)
@@ -319,7 +327,7 @@ struct SessionActivityRow: View {
                 .opacity(scheduledActivity.isCompleted ? 0.6 : 1.0)
             }
             .buttonStyle(PlainButtonStyle())
-            
+
             // Expanded Details
             if isExpanded {
                 ActivityDetailContent(activity: scheduledActivity.activity)
@@ -363,7 +371,7 @@ struct SessionActivityRow: View {
             selectedPainLevel = scheduledActivity.painLevel ?? .none
         }
     }
-    
+
     var activityColor: Color {
         switch scheduledActivity.activity.type {
         case .exercise: return .blue
@@ -378,42 +386,42 @@ struct SessionActivityRow: View {
 
 struct ActivityDetailContent: View {
     let activity: TreatmentActivity
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             // Description
             Text(activity.description)
                 .font(.body)
                 .foregroundColor(.secondary)
-            
+
             // Details
             if activity.repetitions != nil || activity.sets != nil || activity.durationMinutes > 0 {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Details")
                         .font(.headline)
-                    
+
                     HStack(spacing: 16) {
                         if activity.durationMinutes > 0 {
                             DetailBadge(icon: "clock", label: "Duration", value: "\(activity.durationMinutes) min")
                         }
-                        
+
                         if let reps = activity.repetitions {
                             DetailBadge(icon: "repeat", label: "Reps", value: "\(reps)")
                         }
-                        
+
                         if let sets = activity.sets {
                             DetailBadge(icon: "square.stack.3d.up", label: "Sets", value: "\(sets)")
                         }
                     }
                 }
             }
-            
+
             // Instructions
             if !activity.instructions.isEmpty {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Instructions")
                         .font(.headline)
-                    
+
                     ForEach(Array(activity.instructions.enumerated()), id: \.offset) { index, instruction in
                         HStack(alignment: .top, spacing: 8) {
                             Text("\(index + 1)")
@@ -423,7 +431,7 @@ struct ActivityDetailContent: View {
                                 .frame(width: 20, height: 20)
                                 .background(activityColor)
                                 .clipShape(Circle())
-                            
+
                             Text(instruction)
                                 .font(.subheadline)
                                 .fixedSize(horizontal: false, vertical: true)
@@ -431,22 +439,22 @@ struct ActivityDetailContent: View {
                     }
                 }
             }
-            
+
             // Type and Difficulty
             HStack(spacing: 12) {
                 Label(activity.type.rawValue.capitalized, systemImage: typeIcon)
                     .font(.caption)
                     .foregroundColor(.secondary)
-                
+
                 Spacer()
-                
+
                 Label(activity.difficultyLevel.rawValue.capitalized, systemImage: "star.fill")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
         }
     }
-    
+
     var activityColor: Color {
         switch activity.type {
         case .exercise: return .blue
@@ -457,7 +465,7 @@ struct ActivityDetailContent: View {
         case .painTracking: return .red
         }
     }
-    
+
     var typeIcon: String {
         switch activity.type {
         case .exercise: return "figure.strengthtraining.traditional"
@@ -474,7 +482,7 @@ struct DetailBadge: View {
     let icon: String
     let label: String
     let value: String
-    
+
     var body: some View {
         VStack(spacing: 4) {
             Image(systemName: icon)
@@ -495,18 +503,18 @@ struct WeightPickerSheet: View {
     let activityName: String
     let onComplete: () -> Void
     @Environment(\.dismiss) var dismiss
-    
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 24) {
                 Text("Weight Used")
                     .font(.title2)
                     .bold()
-                
+
                 Text(activityName)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-                
+
                 HStack(spacing: 20) {
                     Button {
                         if weightUsed > 1 {
@@ -517,7 +525,7 @@ struct WeightPickerSheet: View {
                             .font(.system(size: 40))
                             .foregroundColor(.blue)
                     }
-                    
+
                     VStack {
                         Text("\(weightUsed)")
                             .font(.system(size: 72, weight: .bold))
@@ -525,7 +533,7 @@ struct WeightPickerSheet: View {
                             .font(.title3)
                             .foregroundColor(.secondary)
                     }
-                    
+
                     Button {
                         if weightUsed < 100 {
                             weightUsed += 1
@@ -537,7 +545,7 @@ struct WeightPickerSheet: View {
                     }
                 }
                 .padding()
-                
+
                 Button {
                     onComplete()
                     dismiss()
@@ -551,7 +559,7 @@ struct WeightPickerSheet: View {
                         .cornerRadius(12)
                 }
                 .padding(.horizontal)
-                
+
                 Spacer()
             }
             .padding()
@@ -571,20 +579,20 @@ struct PainPickerSheet: View {
     @Binding var selectedPainLevel: PainLevel
     let onComplete: () -> Void
     @Environment(\.dismiss) var dismiss
-    
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 24) {
                 Text("Pain Level Check")
                     .font(.title2)
                     .bold()
-                
+
                 Text("How do you feel after this session?")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
-                
+
                 VStack(spacing: 12) {
                     ForEach(PainLevel.allCases, id: \.self) { level in
                         Button {
@@ -595,7 +603,7 @@ struct PainPickerSheet: View {
                             HStack {
                                 Text(level.emoji)
                                     .font(.title2)
-                                
+
                                 VStack(alignment: .leading) {
                                     Text(level.description)
                                         .font(.headline)
@@ -604,7 +612,7 @@ struct PainPickerSheet: View {
                                         .font(.caption)
                                         .foregroundColor(.secondary)
                                 }
-                                
+
                                 Spacer()
                             }
                             .padding()
@@ -615,7 +623,7 @@ struct PainPickerSheet: View {
                     }
                 }
                 .padding(.horizontal)
-                
+
                 Spacer()
             }
             .padding()
@@ -629,7 +637,7 @@ struct PainPickerSheet: View {
             }
         }
     }
-    
+
     func getPainDescription(for level: PainLevel) -> String {
         switch level {
         case .none: return "No discomfort at all"
@@ -643,18 +651,18 @@ struct PainPickerSheet: View {
 
 struct CircularProgressView: View {
     let progress: Double
-    
+
     var body: some View {
         ZStack {
             Circle()
                 .stroke(Color.gray.opacity(0.3), lineWidth: 8)
-            
+
             Circle()
                 .trim(from: 0, to: progress)
                 .stroke(Color.blue, style: StrokeStyle(lineWidth: 8, lineCap: .round))
                 .rotationEffect(.degrees(-90))
                 .animation(.easeInOut, value: progress)
-            
+
             Text("\(Int(progress * 100))%")
                 .font(.caption)
                 .bold()

@@ -75,18 +75,18 @@ struct MedicalSourcesView: View {
             year: "2004",
             url: "https://pubmed.ncbi.nlm.nih.gov/15155427/",
             description: "Evidence for ice therapy application protocols in musculoskeletal injury management."
-        )
+        ),
     ]
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 headerSection
-                
+
                 disclaimerSection
-                
+
                 sourcesListSection
-                
+
                 additionalResourcesSection
             }
             .padding()
@@ -94,7 +94,7 @@ struct MedicalSourcesView: View {
         .navigationTitle("Medical Sources")
         .navigationBarTitleDisplayMode(.inline)
     }
-    
+
     var headerSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -105,57 +105,61 @@ struct MedicalSourcesView: View {
                     .font(.title2)
                     .bold()
             }
-            
-            Text("The exercises and treatment recommendations in this app are based on peer-reviewed medical research and guidelines from recognized medical organizations.")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
+
+            Text(
+                "The exercises and treatment recommendations in this app are based on peer-reviewed medical research and guidelines from recognized medical organizations."
+            )
+            .font(.subheadline)
+            .foregroundColor(.secondary)
         }
     }
-    
+
     var disclaimerSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Label("Important Note", systemImage: "exclamationmark.triangle.fill")
                 .font(.headline)
                 .foregroundColor(.orange)
-            
-            Text("These sources are provided for informational purposes. This app does not replace professional medical advice. Always consult with a healthcare provider before beginning any treatment program.")
-                .font(.caption)
-                .foregroundColor(.secondary)
+
+            Text(
+                "These sources are provided for informational purposes. This app does not replace professional medical advice. Always consult with a healthcare provider before beginning any treatment program."
+            )
+            .font(.caption)
+            .foregroundColor(.secondary)
         }
         .padding()
         .background(Color(.systemOrange).opacity(0.1))
         .cornerRadius(12)
     }
-    
+
     var sourcesListSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Peer-Reviewed Sources")
                 .font(.headline)
-            
+
             ForEach(sources) { source in
                 SourceCard(source: source)
             }
         }
     }
-    
+
     var additionalResourcesSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Additional Resources")
                 .font(.headline)
                 .padding(.top)
-            
+
             ResourceLink(
                 title: "National Institutes of Health (NIH)",
                 subtitle: "MedlinePlus - Tennis Elbow",
                 url: "https://medlineplus.gov/tenniselbow.html"
             )
-            
+
             ResourceLink(
                 title: "Cleveland Clinic",
                 subtitle: "Lateral Epicondylitis Overview",
                 url: "https://my.clevelandclinic.org/health/diseases/7049-tennis-elbow-lateral-epicondylitis"
             )
-            
+
             ResourceLink(
                 title: "NHS (UK National Health Service)",
                 subtitle: "Tennis Elbow Treatment Guide",
@@ -167,18 +171,18 @@ struct MedicalSourcesView: View {
 
 struct SourceCard: View {
     let source: MedicalSource
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(source.title)
                 .font(.subheadline)
                 .bold()
                 .foregroundColor(.primary)
-            
+
             Text(source.authors)
                 .font(.caption)
                 .foregroundColor(.secondary)
-            
+
             HStack {
                 Text(source.publication)
                     .italic()
@@ -186,12 +190,12 @@ struct SourceCard: View {
             }
             .font(.caption)
             .foregroundColor(.secondary)
-            
+
             Text(source.description)
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .padding(.top, 2)
-            
+
             if let url = URL(string: source.url) {
                 Link(destination: url) {
                     HStack(spacing: 4) {
@@ -215,7 +219,7 @@ struct ResourceLink: View {
     let title: String
     let subtitle: String
     let url: String
-    
+
     var body: some View {
         if let linkURL = URL(string: url) {
             Link(destination: linkURL) {
