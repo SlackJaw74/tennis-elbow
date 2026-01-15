@@ -86,9 +86,10 @@ class TreatmentManager: ObservableObject {
                 if let painActivity = currentPlan.activities.first(where: { $0.type == .painTracking }) {
                     var components = calendar.dateComponents([.year, .month, .day], from: currentDate)
                     components.hour = getCustomHour(for: timeOfDay)
-                    components.minute = getCustomMinute(for: timeOfDay) + 30 // Schedule 30 minutes after session start
+                    components.minute = getCustomMinute(for: timeOfDay)
                     
-                    if let scheduledTime = calendar.date(from: components) {
+                    if let sessionStartTime = calendar.date(from: components),
+                       let scheduledTime = calendar.date(byAdding: .minute, value: 30, to: sessionStartTime) {
                         let scheduled = ScheduledActivity(
                             activity: painActivity,
                             scheduledTime: scheduledTime
@@ -385,6 +386,11 @@ class TreatmentManager: ObservableObject {
         UserDefaults.standard.set(morningReminderTime, forKey: "morningReminderTime")
         UserDefaults.standard.set(eveningReminderTime, forKey: "eveningReminderTime")
         // Regenerate schedule when times change
+        // Note: This triggers immediate regeneration on each time picker change.
+        // Debouncing was considered but not implemented as:
+        // 1. DatePicker triggers only on user commit (not continuous updates)
+        // 2. Schedule regeneration is fast enough for good UX
+        // 3. Users typically change one time at a time
         generateSchedule()
         saveScheduledActivities()
         // Reschedule notifications with new times if enabled
