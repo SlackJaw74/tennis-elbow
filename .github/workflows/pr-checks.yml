@@ -49,7 +49,7 @@ jobs:
             -scheme "TennisElbow" \
             -configuration Debug \
             -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,name=iPhone 14" \
+            -destination "platform=iOS Simulator,name=iPhone SE (3rd generation)" \
             clean build
       
       - name: Run UI Tests
@@ -59,7 +59,7 @@ jobs:
             -scheme "TennisElbow" \
             -configuration Debug \
             -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,name=iPhone 14" \
+            -destination "platform=iOS Simulator,name=iPhone SE (3rd generation)" \
             -enableCodeCoverage YES
 
   swiftformat:
