@@ -38,7 +38,7 @@ struct AppIconPreview: View {
     }
 }
 
-struct AppIconPreview_Simplified: View {
+struct AppIconPreviewSimplified: View {
     var body: some View {
         ZStack {
             // Blue medical background
@@ -77,5 +77,5 @@ struct AppIconPreview_Simplified: View {
 }
 
 #Preview("Simple Style") {
-    AppIconPreview_Simplified()
+    AppIconPreviewSimplified()
 }

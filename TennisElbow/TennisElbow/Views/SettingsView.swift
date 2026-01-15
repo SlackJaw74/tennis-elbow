@@ -109,7 +109,10 @@ struct SettingsView: View {
                 }
                 Button("Cancel", role: .cancel) { }
             } message: {
-                Text("This will delete all your scheduled activities, completion history, pain tracking data, and reset the app to its default state. This action cannot be undone.")
+                Text("""
+                    This will delete all your scheduled activities, completion history, pain tracking data, \
+                    and reset the app to its default state. This action cannot be undone.
+                    """)
             }
         }
     }
@@ -124,9 +127,11 @@ struct AboutTennisElbowView: View {
                     .bold()
                 
                 Text("""
-                Tennis elbow (lateral epicondylitis) is a painful condition that occurs when tendons in your elbow are overloaded, usually by repetitive motions of the wrist and arm.
+                Tennis elbow (lateral epicondylitis) is a painful condition that occurs when tendons in your elbow \
+                are overloaded, usually by repetitive motions of the wrist and arm.
                 
-                Despite its name, athletes aren't the only people who develop tennis elbow. People whose jobs feature the types of motions that can lead to tennis elbow include plumbers, painters, carpenters and butchers.
+                Despite its name, athletes aren't the only people who develop tennis elbow. People whose jobs feature \
+                the types of motions that can lead to tennis elbow include plumbers, painters, carpenters and butchers.
                 """)
                 .font(.body)
                 
@@ -163,7 +168,10 @@ struct AboutTennisElbowView: View {
                         .font(.headline)
                         .padding(.top)
                     
-                    Text("The information above is based on guidelines from the American Academy of Orthopaedic Surgeons (AAOS), Mayo Clinic, and peer-reviewed research published in the British Journal of Sports Medicine.")
+                    Text("""
+                        The information above is based on guidelines from the American Academy of Orthopaedic Surgeons (AAOS), \
+                        Mayo Clinic, and peer-reviewed research published in the British Journal of Sports Medicine.
+                        """)
                         .font(.caption)
                         .foregroundColor(.secondary)
                     
