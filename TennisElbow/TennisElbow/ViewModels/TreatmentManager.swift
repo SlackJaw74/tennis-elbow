@@ -17,12 +17,23 @@ class TreatmentManager: ObservableObject {
     // Prevents multiple advancement prompts during a single treatment stage
     private var hasPromptedForAdvancement = false
     
+    // Custom reminder times (stored as Date for time picker, only hour and minute are used)
+    @Published var morningReminderTime: Date
+    @Published var eveningReminderTime: Date
+    
     init() {
         self.currentPlan = TreatmentPlan.defaultPlans[0]
         self.startDate = Date()
         self.currentPlanStartDate = Date()
+        
+        // Initialize custom reminder times with defaults (8:00 AM and 7:00 PM)
+        let calendar = Calendar.current
+        self.morningReminderTime = calendar.date(from: DateComponents(hour: 8, minute: 0)) ?? Date()
+        self.eveningReminderTime = calendar.date(from: DateComponents(hour: 19, minute: 0)) ?? Date()
+        
         loadScheduledActivities()
         loadPlanStartDate()
+        loadCustomReminderTimes()
         checkNotificationPermissions()
     }
     
@@ -59,8 +70,8 @@ class TreatmentManager: ObservableObject {
                 // Schedule regular activities (excluding Pain Level Check)
                 for activity in currentPlan.activities where activity.type != .painTracking {
                     var components = calendar.dateComponents([.year, .month, .day], from: currentDate)
-                    components.hour = timeOfDay.defaultHour
-                    components.minute = 0
+                    components.hour = getCustomHour(for: timeOfDay)
+                    components.minute = getCustomMinute(for: timeOfDay)
                     
                     if let scheduledTime = calendar.date(from: components) {
                         let scheduled = ScheduledActivity(
@@ -74,10 +85,11 @@ class TreatmentManager: ObservableObject {
                 // Add Pain Level Check at the end of each session
                 if let painActivity = currentPlan.activities.first(where: { $0.type == .painTracking }) {
                     var components = calendar.dateComponents([.year, .month, .day], from: currentDate)
-                    components.hour = timeOfDay.defaultHour
-                    components.minute = 30 // Schedule 30 minutes after session start
+                    components.hour = getCustomHour(for: timeOfDay)
+                    components.minute = getCustomMinute(for: timeOfDay)
                     
-                    if let scheduledTime = calendar.date(from: components) {
+                    if let sessionStartTime = calendar.date(from: components),
+                       let scheduledTime = calendar.date(byAdding: .minute, value: 30, to: sessionStartTime) {
                         let scheduled = ScheduledActivity(
                             activity: painActivity,
                             scheduledTime: scheduledTime
@@ -344,6 +356,58 @@ class TreatmentManager: ObservableObject {
         }
     }
     
+    // Get custom hour for a time of day
+    private func getCustomHour(for timeOfDay: TimeOfDay) -> Int {
+        let calendar = Calendar.current
+        switch timeOfDay {
+        case .morning:
+            return calendar.component(.hour, from: morningReminderTime)
+        case .afternoon:
+            return timeOfDay.defaultHour // Afternoon uses default (not customizable per requirements)
+        case .evening:
+            return calendar.component(.hour, from: eveningReminderTime)
+        }
+    }
+    
+    // Get custom minute for a time of day
+    private func getCustomMinute(for timeOfDay: TimeOfDay) -> Int {
+        let calendar = Calendar.current
+        switch timeOfDay {
+        case .morning:
+            return calendar.component(.minute, from: morningReminderTime)
+        case .afternoon:
+            return 0 // Afternoon uses default
+        case .evening:
+            return calendar.component(.minute, from: eveningReminderTime)
+        }
+    }
+    
+    func saveCustomReminderTimes() {
+        UserDefaults.standard.set(morningReminderTime, forKey: "morningReminderTime")
+        UserDefaults.standard.set(eveningReminderTime, forKey: "eveningReminderTime")
+        // Regenerate schedule when times change
+        // Note: This triggers immediate regeneration on each time picker change.
+        // Debouncing was considered but not implemented as:
+        // 1. DatePicker triggers only on user commit (not continuous updates)
+        // 2. Schedule regeneration is fast enough for good UX
+        // 3. Users typically change one time at a time
+        generateSchedule()
+        saveScheduledActivities()
+        // Reschedule notifications with new times if enabled
+        if notificationsEnabled {
+            scheduleNotifications()
+        }
+    }
+    
+    private func loadCustomReminderTimes() {
+        if let savedMorning = UserDefaults.standard.object(forKey: "morningReminderTime") as? Date {
+            morningReminderTime = savedMorning
+        }
+        if let savedEvening = UserDefaults.standard.object(forKey: "eveningReminderTime") as? Date {
+            eveningReminderTime = savedEvening
+        }
+    }
+    
     private func saveScheduledActivities() {
         if let encoded = try? JSONEncoder().encode(scheduledActivities) {
             UserDefaults.standard.set(encoded, forKey: "scheduledActivities")
@@ -371,6 +435,13 @@ class TreatmentManager: ObservableObject {
         hasPromptedForAdvancement = false
         showAdvancementPrompt = false
         UserDefaults.standard.removeObject(forKey: "currentPlanStartDate")
+        
+        // Reset custom reminder times to defaults
+        let calendar = Calendar.current
+        morningReminderTime = calendar.date(from: DateComponents(hour: 8, minute: 0)) ?? Date()
+        eveningReminderTime = calendar.date(from: DateComponents(hour: 19, minute: 0)) ?? Date()
+        UserDefaults.standard.removeObject(forKey: "morningReminderTime")
+        UserDefaults.standard.removeObject(forKey: "eveningReminderTime")
         
         // Clear all pending notifications and disable notifications
         // We intentionally set notificationsEnabled to false as part of the data reset,

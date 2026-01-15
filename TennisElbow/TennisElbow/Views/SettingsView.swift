@@ -24,7 +24,31 @@ struct SettingsView: View {
                     }
                     
                     if treatmentManager.notificationsEnabled {
-                        Text("You'll receive notifications for scheduled activities")
+                        DatePicker(
+                            "Morning Time",
+                            selection: Binding(
+                                get: { treatmentManager.morningReminderTime },
+                                set: { newTime in
+                                    treatmentManager.morningReminderTime = newTime
+                                    treatmentManager.saveCustomReminderTimes()
+                                }
+                            ),
+                            displayedComponents: .hourAndMinute
+                        )
+                        
+                        DatePicker(
+                            "Evening Time",
+                            selection: Binding(
+                                get: { treatmentManager.eveningReminderTime },
+                                set: { newTime in
+                                    treatmentManager.eveningReminderTime = newTime
+                                    treatmentManager.saveCustomReminderTimes()
+                                }
+                            ),
+                            displayedComponents: .hourAndMinute
+                        )
+                        
+                        Text("You'll receive notifications for scheduled activities at your custom times")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }

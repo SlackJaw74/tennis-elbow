@@ -134,4 +134,47 @@ final class TennisElbowUITests: XCTestCase {
             XCUIApplication().launch()
         }
     }
+    
+    @MainActor
+    func testCustomReminderTimes() throws {
+        app.launch()
+        
+        // Handle the disclaimer if it appears
+        let acceptButton = app.buttons["Accept and Continue"]
+        if acceptButton.waitForExistence(timeout: 5) {
+            acceptButton.tap()
+            sleep(1)
+        }
+        
+        // Navigate to Settings tab
+        let settingsTab = app.tabBars.buttons["Settings"]
+        XCTAssertTrue(settingsTab.exists, "Settings tab should exist")
+        settingsTab.tap()
+        sleep(1)
+        
+        // Verify reminder toggle exists
+        let reminderToggle = app.switches["Enable Reminders"]
+        XCTAssertTrue(reminderToggle.exists, "Reminder toggle should exist")
+        
+        // If reminders are off, turn them on
+        if reminderToggle.value as? String == "0" {
+            reminderToggle.tap()
+            sleep(1)
+        }
+        
+        // Verify time pickers appear when reminders are enabled
+        let morningTimePicker = app.datePickers["Morning Time"]
+        let eveningTimePicker = app.datePickers["Evening Time"]
+        
+        XCTAssertTrue(morningTimePicker.exists, "Morning time picker should exist when reminders are enabled")
+        XCTAssertTrue(eveningTimePicker.exists, "Evening time picker should exist when reminders are enabled")
+        
+        // Turn off reminders
+        reminderToggle.tap()
+        sleep(1)
+        
+        // Verify time pickers are hidden when reminders are disabled
+        XCTAssertFalse(morningTimePicker.exists, "Morning time picker should be hidden when reminders are disabled")
+        XCTAssertFalse(eveningTimePicker.exists, "Evening time picker should be hidden when reminders are disabled")
+    }
 }
