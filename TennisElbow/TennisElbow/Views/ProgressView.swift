@@ -179,7 +179,7 @@ struct TreatmentProgressView: View {
                             Text("Average:".localized())
                                 .font(.caption)
                                 .foregroundColor(.secondary)
-                            Text("\(String(format: "%.1f", avgWeight)) " + "lbs".localized())
+                            Text(String(format: "%.1f %@", avgWeight, "lbs".localized()))
                                 .font(.caption)
                                 .bold()
                             Spacer()
@@ -187,7 +187,7 @@ struct TreatmentProgressView: View {
                                 Text("Max:".localized())
                                     .font(.caption)
                                     .foregroundColor(.secondary)
-                                Text("\(Int(maxWeight)) " + "lbs".localized())
+                                Text(String(format: "%d %@", Int(maxWeight), "lbs".localized()))
                                     .font(.caption)
                                     .bold()
                             }
@@ -215,7 +215,7 @@ struct TreatmentProgressView: View {
                             AxisGridLine()
                             AxisValueLabel {
                                 if let intValue = value.as(Int.self) {
-                                    Text("\(intValue) " + "lbs".localized())
+                                    Text(String(format: "%d %@", intValue, "lbs".localized()))
                                         .font(.caption2)
                                 }
                             }

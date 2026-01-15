@@ -227,7 +227,7 @@ struct ScheduledActivityDetailView: View {
             .font(.caption)
 
             if let completedTime = scheduledActivity.completedTime {
-                Text("Completed at".localized() + " \(completedTime.formatted(date: .omitted, time: .shortened))")
+                Text(String(format: "%@ %@", "Completed at".localized(), completedTime.formatted(date: .omitted, time: .shortened)))
                     .font(.caption2)
                     .foregroundColor(.secondary)
             }
@@ -248,7 +248,7 @@ struct ScheduledActivityDetailView: View {
                     Text("Weight Used:".localized())
                         .font(.caption)
                         .foregroundColor(.secondary)
-                    Text("\(weight) " + "lbs".localized())
+                    Text(String(format: "%d %@", weight, "lbs".localized()))
                         .font(.caption)
                         .bold()
                 }

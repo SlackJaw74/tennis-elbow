@@ -40,7 +40,7 @@ struct TreatmentPlanView: View {
             Divider()
 
             HStack {
-                Label("\(treatmentManager.currentPlan.activities.count) " + "Activities".localized(),
+                Label(String(format: "%d %@", treatmentManager.currentPlan.activities.count, "Activities".localized()),
                       systemImage: "list.bullet")
 
                 Spacer()
