@@ -11,11 +11,8 @@ devices([
 
 # List of languages to generate screenshots for
 languages([
-  "en-US"
-  # Add more languages as needed:
-  # "es-ES",
-  # "fr-FR",
-  # "de-DE"
+  "en-US",
+  "es-ES"
 ])
 
 # The name of the scheme which contains the UI Tests
