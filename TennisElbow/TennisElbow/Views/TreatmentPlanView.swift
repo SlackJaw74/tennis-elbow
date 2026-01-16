@@ -38,7 +38,9 @@ struct TreatmentPlanView: View {
                 }
             }
             .accessibilityElement(children: .combine)
-            .accessibilityLabel("Current plan: \(treatmentManager.currentPlan.name), \(treatmentManager.currentPlan.description)")
+            .accessibilityLabel(
+                "Current plan: \(treatmentManager.currentPlan.name), \(treatmentManager.currentPlan.description)"
+            )
 
             Divider()
 
@@ -225,7 +227,9 @@ struct SessionSection: View {
                 .background(Color(.secondarySystemBackground))
             }
             .buttonStyle(PlainButtonStyle())
-            .accessibilityLabel("\(title) session: \(activities.filter(\.isCompleted).count) of \(activities.count) completed")
+            .accessibilityLabel(
+                "\(title) session: \(activities.filter(\.isCompleted).count) of \(activities.count) completed"
+            )
             .accessibilityHint(isExpanded ? "Double tap to collapse" : "Double tap to expand")
             .accessibilityAddTraits(.isButton)
 
@@ -297,7 +301,8 @@ struct SessionActivityRow: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     .accessibilityLabel(scheduledActivity.isCompleted ? "Completed" : "Not completed")
-                    .accessibilityHint(scheduledActivity.isCompleted ? "Double tap to mark as incomplete" : "Double tap to mark as complete")
+                    .accessibilityHint(scheduledActivity
+                        .isCompleted ? "Double tap to mark as incomplete" : "Double tap to mark as complete")
                     .accessibilityAddTraits(.isButton)
 
                     Image(systemName: scheduledActivity.activity.imageSystemName)

@@ -99,7 +99,8 @@ struct ScheduledActivityRow: View {
                     .foregroundColor(scheduledActivity.isCompleted ? .green : .gray)
             }
             .accessibilityLabel(scheduledActivity.isCompleted ? "Completed" : "Not completed")
-            .accessibilityHint(scheduledActivity.isCompleted ? "Double tap to mark as incomplete" : "Double tap to mark as complete")
+            .accessibilityHint(scheduledActivity
+                .isCompleted ? "Double tap to mark as incomplete" : "Double tap to mark as complete")
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(scheduledActivity.activity.name)
@@ -414,7 +415,8 @@ struct PainLevelSheet: View {
                                 }
                                 .accessibilityLabel("Pain level: \(level.description)")
                                 .accessibilityHint(getPainDescription(for: level))
-                                .accessibilityAddTraits(selectedPainLevel == level ? [.isButton, .isSelected] : .isButton)
+                                .accessibilityAddTraits(selectedPainLevel == level ? [.isButton, .isSelected] :
+                                    .isButton)
                             }
                         }
                         .padding(.horizontal)

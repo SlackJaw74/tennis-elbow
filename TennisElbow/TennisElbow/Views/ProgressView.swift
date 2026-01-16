@@ -405,7 +405,7 @@ struct TreatmentProgressView: View {
 
     func chartAccessibilityHint(painHistory: [(Date, Double)]) -> String {
         guard !painHistory.isEmpty else { return "No data available" }
-        let values = painHistory.map { $0.1 }
+        let values = painHistory.map(\.1)
         let minPain = values.min() ?? 0
         let maxPain = values.max() ?? 0
         let avgPain = values.reduce(0, +) / Double(values.count)

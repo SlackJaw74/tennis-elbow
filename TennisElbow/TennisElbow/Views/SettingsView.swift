@@ -23,7 +23,8 @@ struct SettingsView: View {
                         Label("Enable Reminders".localized(), systemImage: "bell.fill")
                     }
                     .accessibilityLabel("Enable reminders")
-                    .accessibilityHint(treatmentManager.notificationsEnabled ? "Reminders are enabled" : "Reminders are disabled")
+                    .accessibilityHint(treatmentManager
+                        .notificationsEnabled ? "Reminders are enabled" : "Reminders are disabled")
 
                     if treatmentManager.notificationsEnabled {
                         DatePicker(
