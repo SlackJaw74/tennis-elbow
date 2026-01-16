@@ -80,15 +80,50 @@ jobs:
           echo "Found simulator ID: $SIMULATOR_ID"
           echo "simulator_id=$SIMULATOR_ID" >> $GITHUB_OUTPUT
       
+      - name: Install xcpretty for better test output
+        run: gem install xcpretty
+      
       - name: Run UI Tests
+        id: run-tests
+        continue-on-error: true
         run: |
+          set -o pipefail
+          RESULT_BUNDLE_PATH="TestResults.xcresult"
           xcodebuild test \
             -project "TennisElbow/TennisElbow.xcodeproj" \
             -scheme "TennisElbow" \
             -configuration Debug \
             -sdk iphonesimulator \
             -destination "platform=iOS Simulator,id=${{ steps.find-simulator.outputs.simulator_id }}" \
-            -enableCodeCoverage YES
+            -enableCodeCoverage YES \
+            -resultBundlePath "$RESULT_BUNDLE_PATH" \
+            2>&1 | tee xcodebuild.log | xcpretty --color
+          TEST_EXIT_CODE=${PIPESTATUS[0]}
+          echo "result=$TEST_EXIT_CODE" >> $GITHUB_OUTPUT
+          exit 0
+      
+      - name: Extract detailed test failure information
+        if: steps.run-tests.outputs.result != '0'
+        run: |
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "📋 DETAILED TEST FAILURE INFORMATION"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo ""
+          
+          # Extract test failures using xcresulttool
+          xcrun xcresulttool get --path TestResults.xcresult --format json > test_results.json
+          
+          # Parse and display failures
+          echo "🔍 Failed Tests:"
+          echo ""
+          xcrun xcresulttool get --path TestResults.xcresult --format human
+          
+          echo ""
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      
+      - name: Fail job if tests failed
+        if: steps.run-tests.outputs.result != '0'
+        run: exit 1
 
   swiftformat:
     name: SwiftFormat Check
