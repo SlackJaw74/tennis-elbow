@@ -24,13 +24,13 @@ struct TreatmentProgressView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Progress")
+            .navigationTitle("Progress".localized())
         }
     }
 
     var overallProgressCard: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Overall Completion")
+            Text("Overall Completion".localized())
                 .font(.headline)
 
             let completionRate = treatmentManager.getCompletionRate()
@@ -51,19 +51,19 @@ struct TreatmentProgressView: View {
                         Text("\(Int(completionRate * 100))%")
                             .font(.title)
                             .bold()
-                        Text("Complete")
+                        Text("Complete".localized())
                             .font(.caption2)
                             .foregroundColor(.secondary)
                     }
                 }
 
                 VStack(alignment: .leading, spacing: 12) {
-                    StatRow(label: "Total Activities",
+                    StatRow(label: "Total Activities".localized(),
                             value: "\(treatmentManager.scheduledActivities.count)")
-                    StatRow(label: "Completed",
+                    StatRow(label: "Completed".localized(),
                             value: "\(treatmentManager.scheduledActivities.filter(\.isCompleted).count)",
                             color: .green)
-                    StatRow(label: "Remaining",
+                    StatRow(label: "Remaining".localized(),
                             value: "\(treatmentManager.scheduledActivities.filter { !$0.isCompleted }.count)",
                             color: .orange)
                 }
@@ -76,7 +76,7 @@ struct TreatmentProgressView: View {
 
     var painTrendCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Pain Trend")
+            Text("Pain Trend".localized())
                 .font(.headline)
 
             if let avgPain = treatmentManager.getAveragePainLevel() {
@@ -85,7 +85,7 @@ struct TreatmentProgressView: View {
                         Text(String(format: "%.1f", avgPain))
                             .font(.title)
                             .bold()
-                        Text("Average Pain Level")
+                        Text("Average Pain Level".localized())
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -103,7 +103,7 @@ struct TreatmentProgressView: View {
                     }
                 }
             } else {
-                Text("Complete activities and track pain to see trends")
+                Text("progress.track_pain_prompt".localized())
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -117,7 +117,7 @@ struct TreatmentProgressView: View {
 
     var painChartCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Pain History (30 Days)")
+            Text("pain_history_30_days".localized())
                 .font(.headline)
 
             let painHistory = treatmentManager.getPainHistory(days: 30)
@@ -153,7 +153,7 @@ struct TreatmentProgressView: View {
                 }
                 .frame(height: 200)
             } else {
-                Text("No pain data recorded yet")
+                Text("No pain data recorded yet".localized())
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -167,7 +167,7 @@ struct TreatmentProgressView: View {
 
     var weightProgressCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Weight Progress (30 Days)")
+            Text("weight_progress_30_days".localized())
                 .font(.headline)
 
             let weightHistory = treatmentManager.getWeightProgressHistory(days: 30)
@@ -176,18 +176,18 @@ struct TreatmentProgressView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     if let avgWeight = treatmentManager.getAverageWeight() {
                         HStack {
-                            Text("Average:")
+                            Text("Average:".localized())
                                 .font(.caption)
                                 .foregroundColor(.secondary)
-                            Text("\(String(format: "%.1f", avgWeight)) lbs")
+                            Text(String(format: "%.1f %@", avgWeight, "lbs".localized()))
                                 .font(.caption)
                                 .bold()
                             Spacer()
                             if let maxWeight = weightHistory.map(\.1).max() {
-                                Text("Max:")
+                                Text("Max:".localized())
                                     .font(.caption)
                                     .foregroundColor(.secondary)
-                                Text("\(Int(maxWeight)) lbs")
+                                Text(String(format: "%d %@", Int(maxWeight), "lbs".localized()))
                                     .font(.caption)
                                     .bold()
                             }
@@ -215,7 +215,7 @@ struct TreatmentProgressView: View {
                             AxisGridLine()
                             AxisValueLabel {
                                 if let intValue = value.as(Int.self) {
-                                    Text("\(intValue) lbs")
+                                    Text(String(format: "%d %@", intValue, "lbs".localized()))
                                         .font(.caption2)
                                 }
                             }
@@ -224,7 +224,7 @@ struct TreatmentProgressView: View {
                     .frame(height: 150)
                 }
             } else {
-                Text("Complete exercise activities with weight tracking to see progress")
+                Text("progress.track_weight_prompt".localized())
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -238,7 +238,7 @@ struct TreatmentProgressView: View {
 
     var weeklyProgressCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("This Week")
+            Text("This Week".localized())
                 .font(.headline)
 
             let weeklyRate = treatmentManager.getWeeklyCompletionRate()
@@ -247,7 +247,7 @@ struct TreatmentProgressView: View {
                 .tint(.green)
 
             HStack {
-                Text("\(Int(weeklyRate * 100))% completed this week")
+                Text(String(format: "progress.week_completion".localized(), Int(weeklyRate * 100)))
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()
@@ -264,7 +264,7 @@ struct TreatmentProgressView: View {
         let activityCounts = getActivityTypeCounts()
 
         return VStack(alignment: .leading, spacing: 12) {
-            Text("Activity Breakdown")
+            Text("Activity Breakdown".localized())
                 .font(.headline)
 
             ForEach(Array(activityCounts.keys.sorted(by: { $0.rawValue < $1.rawValue })), id: \.self) { type in
@@ -293,7 +293,7 @@ struct TreatmentProgressView: View {
 
     var completionHistoryCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Recent Completions")
+            Text("Recent Completions".localized())
                 .font(.headline)
 
             let recentCompletions = treatmentManager.scheduledActivities
@@ -302,7 +302,7 @@ struct TreatmentProgressView: View {
                 .prefix(5)
 
             if recentCompletions.isEmpty {
-                Text("No completed activities yet")
+                Text("No completed activities yet".localized())
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .center)

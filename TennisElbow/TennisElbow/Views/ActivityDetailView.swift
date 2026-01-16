@@ -22,7 +22,7 @@ struct ActivityDetailView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
+                    Button("Done".localized()) {
                         dismiss()
                     }
                 }
@@ -32,7 +32,7 @@ struct ActivityDetailView: View {
 
     var sourcesSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Evidence-Based")
+            Text("Evidence-Based".localized())
                 .font(.caption)
                 .bold()
                 .foregroundColor(.secondary)
@@ -45,7 +45,7 @@ struct ActivityDetailView: View {
                 Link(destination: url) {
                     HStack(spacing: 4) {
                         Image(systemName: "link")
-                        Text("View Research Source")
+                        Text("View Research Source".localized())
                     }
                     .font(.caption)
                     .foregroundColor(.blue)
@@ -115,18 +115,18 @@ struct ActivityDetailView: View {
 
     var detailsSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Details")
+            Text("Details".localized())
                 .font(.headline)
 
             HStack(spacing: 20) {
-                DetailItem(icon: "clock", label: "Duration", value: "\(activity.durationMinutes) min")
+                DetailItem(icon: "clock", label: "Duration".localized(), value: "\(activity.durationMinutes) min")
 
                 if let reps = activity.repetitions {
-                    DetailItem(icon: "repeat", label: "Reps", value: "\(reps)")
+                    DetailItem(icon: "repeat", label: "Reps".localized(), value: "\(reps)")
                 }
 
                 if let sets = activity.sets {
-                    DetailItem(icon: "square.stack.3d.up", label: "Sets", value: "\(sets)")
+                    DetailItem(icon: "square.stack.3d.up", label: "Sets".localized(), value: "\(sets)")
                 }
             }
 
@@ -145,7 +145,7 @@ struct ActivityDetailView: View {
 
     var instructionsSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Instructions")
+            Text("Instructions".localized())
                 .font(.headline)
 
             ForEach(Array(activity.instructions.enumerated()), id: \.offset) { index, instruction in

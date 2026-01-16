@@ -15,45 +15,36 @@ struct DisclaimerView: View {
                         .frame(maxWidth: .infinity)
                         .padding(.top)
 
-                    Text("Medical Disclaimer")
+                    Text("Medical Disclaimer".localized())
                         .font(.title)
                         .bold()
                         .frame(maxWidth: .infinity)
 
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Important Information")
+                        Text("Important Information".localized())
                             .font(.headline)
 
-                        Text("""
-                        This app is designed to provide general information and guidance about tennis elbow \
-                        (lateral epicondylitis) exercises and treatment approaches. It is NOT intended to be a \
-                        substitute for professional medical advice, diagnosis, or treatment.
-                        """)
+                        Text("disclaimer.description".localized())
 
-                        Text("Please Note:")
+                        Text("Please Note:".localized())
                             .font(.headline)
                             .padding(.top, 8)
 
                         BulletText(
-                            text: "Always consult with a qualified healthcare provider before starting any treatment program"
+                            text: "disclaimer.consult_provider".localized()
                         )
                         BulletText(
-                            text: "If you experience severe pain, swelling, or symptoms that worsen, seek immediate medical attention"
+                            text: "disclaimer.seek_attention".localized()
                         )
-                        BulletText(text: "Individual results may vary based on the severity of your condition")
-                        BulletText(text: "This app does not replace physical therapy or medical treatment")
-                        BulletText(text: "Stop any exercise that causes sharp pain")
+                        BulletText(text: "disclaimer.individual_results".localized())
+                        BulletText(text: "disclaimer.not_replacement".localized())
+                        BulletText(text: "disclaimer.stop_pain".localized())
 
-                        Text("Medical Sources")
+                        Text("Medical Sources".localized())
                             .font(.headline)
                             .padding(.top, 8)
 
-                        Text("""
-                        The exercises and treatment recommendations in this app are based on peer-reviewed \
-                        medical research and guidelines from recognized medical organizations including the \
-                        American Academy of Orthopaedic Surgeons (AAOS), Mayo Clinic, and published studies in \
-                        the British Journal of Sports Medicine.
-                        """)
+                        Text("disclaimer.sources_description".localized())
 
                         if !isInitialLaunch {
                             NavigationLink {
@@ -61,7 +52,7 @@ struct DisclaimerView: View {
                             } label: {
                                 HStack {
                                     Image(systemName: "books.vertical")
-                                    Text("View All Medical Sources & Citations")
+                                    Text("View All Medical Sources & Citations".localized())
                                 }
                                 .font(.subheadline)
                                 .foregroundColor(.blue)
@@ -69,15 +60,11 @@ struct DisclaimerView: View {
                             .padding(.top, 4)
                         }
 
-                        Text("Data & Privacy")
+                        Text("Data & Privacy".localized())
                             .font(.headline)
                             .padding(.top, 8)
 
-                        Text("""
-                        All your health data (activities, pain levels, progress) is stored locally on your \
-                        device. We do not collect, transmit, or share your personal health information with any \
-                        third parties.
-                        """)
+                        Text("disclaimer.privacy_description".localized())
                     }
                     .padding(.horizontal)
 
@@ -87,7 +74,7 @@ struct DisclaimerView: View {
                                 hasAcceptedDisclaimer = true
                                 dismiss()
                             } label: {
-                                Text("Accept and Continue")
+                                Text("Accept and Continue".localized())
                                     .font(.headline)
                                     .frame(maxWidth: .infinity)
                                     .padding()
@@ -104,7 +91,7 @@ struct DisclaimerView: View {
                                     exit(0)
                                 }
                             } label: {
-                                Text("Decline")
+                                Text("Decline".localized())
                                     .font(.headline)
                                     .frame(maxWidth: .infinity)
                                     .padding()
@@ -119,7 +106,7 @@ struct DisclaimerView: View {
                         Button {
                             dismiss()
                         } label: {
-                            Text("Close")
+                            Text("Close".localized())
                                 .font(.headline)
                                 .frame(maxWidth: .infinity)
                                 .padding()
