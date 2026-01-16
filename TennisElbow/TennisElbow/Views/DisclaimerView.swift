@@ -23,12 +23,14 @@ struct DisclaimerView: View {
                     VStack(alignment: .leading, spacing: 16) {
                         Text("Important Information".localized())
                             .font(.headline)
+                            .accessibilityAddTraits(.isHeader)
 
                         Text("disclaimer.description".localized())
 
                         Text("Please Note:".localized())
                             .font(.headline)
                             .padding(.top, 8)
+                            .accessibilityAddTraits(.isHeader)
 
                         BulletText(
                             text: "disclaimer.consult_provider".localized()
@@ -43,6 +45,7 @@ struct DisclaimerView: View {
                         Text("Medical Sources".localized())
                             .font(.headline)
                             .padding(.top, 8)
+                            .accessibilityAddTraits(.isHeader)
 
                         Text("disclaimer.sources_description".localized())
 
@@ -58,11 +61,16 @@ struct DisclaimerView: View {
                                 .foregroundColor(.blue)
                             }
                             .padding(.top, 4)
+                            .accessibilityLabel("View all medical sources and citations")
+                            .accessibilityHint(
+                                "Opens a list of medical research sources"
+                            )
                         }
 
                         Text("Data & Privacy".localized())
                             .font(.headline)
                             .padding(.top, 8)
+                            .accessibilityAddTraits(.isHeader)
 
                         Text("disclaimer.privacy_description".localized())
                     }
@@ -82,6 +90,10 @@ struct DisclaimerView: View {
                                     .foregroundColor(.white)
                                     .cornerRadius(12)
                             }
+                            .accessibilityLabel("Accept and continue")
+                            .accessibilityHint(
+                                "Accepts the medical disclaimer and continues to the app"
+                            )
 
                             Button {
                                 hasAcceptedDisclaimer = false
@@ -99,6 +111,10 @@ struct DisclaimerView: View {
                                     .foregroundColor(.red)
                                     .cornerRadius(12)
                             }
+                            .accessibilityLabel("Decline")
+                            .accessibilityHint(
+                                "Declines the medical disclaimer and exits the app"
+                            )
                         }
                         .padding(.horizontal)
                         .padding(.bottom)
@@ -116,6 +132,8 @@ struct DisclaimerView: View {
                         }
                         .padding(.horizontal)
                         .padding(.bottom)
+                        .accessibilityLabel("Close")
+                        .accessibilityHint("Closes the medical disclaimer")
                     }
                 }
             }

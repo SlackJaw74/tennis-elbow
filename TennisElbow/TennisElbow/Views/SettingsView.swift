@@ -22,6 +22,9 @@ struct SettingsView: View {
                     )) {
                         Label("Enable Reminders".localized(), systemImage: "bell.fill")
                     }
+                    .accessibilityLabel("Enable reminders")
+                    .accessibilityHint(treatmentManager
+                        .notificationsEnabled ? "Reminders are enabled" : "Reminders are disabled")
 
                     if treatmentManager.notificationsEnabled {
                         DatePicker(
@@ -36,6 +39,7 @@ struct SettingsView: View {
                             displayedComponents: .hourAndMinute
                         )
                         .accessibilityIdentifier("Morning Time")
+                        .accessibilityLabel("Morning reminder time")
 
                         DatePicker(
                             "Evening Time".localized(),
@@ -49,6 +53,7 @@ struct SettingsView: View {
                             displayedComponents: .hourAndMinute
                         )
                         .accessibilityIdentifier("Evening Time")
+                        .accessibilityLabel("Evening reminder time")
 
                         Text("settings.notification_description".localized())
                             .font(.caption)
@@ -69,12 +74,16 @@ struct SettingsView: View {
                             Text(plan.name).tag(plan.id)
                         }
                     }
+                    .accessibilityLabel("Current treatment plan")
+                    .accessibilityHint("Select which treatment plan phase to follow")
 
                     Button {
                         treatmentManager.generateSchedule(from: Date())
                     } label: {
                         Label("Regenerate Schedule".localized(), systemImage: "arrow.clockwise")
                     }
+                    .accessibilityLabel("Regenerate schedule")
+                    .accessibilityHint("Creates a new schedule starting from today")
                 }
 
                 Section("Data Management".localized()) {
@@ -83,6 +92,8 @@ struct SettingsView: View {
                     } label: {
                         Label("Clear All Data".localized(), systemImage: "trash")
                     }
+                    .accessibilityLabel("Clear all data")
+                    .accessibilityHint("Permanently deletes all your treatment data and progress")
                 }
 
                 Section("Information".localized()) {
@@ -273,6 +284,7 @@ struct TipCard: View {
                 .font(.title2)
                 .foregroundColor(.blue)
                 .frame(width: 40)
+                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
@@ -285,6 +297,8 @@ struct TipCard: View {
         .padding()
         .background(Color(.secondarySystemBackground))
         .cornerRadius(10)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(title): \(description)")
     }
 }
 

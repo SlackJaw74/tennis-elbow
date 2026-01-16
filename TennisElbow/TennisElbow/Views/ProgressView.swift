@@ -32,6 +32,7 @@ struct TreatmentProgressView: View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Overall Completion".localized())
                 .font(.headline)
+                .accessibilityAddTraits(.isHeader)
 
             let completionRate = treatmentManager.getCompletionRate()
 
@@ -56,6 +57,9 @@ struct TreatmentProgressView: View {
                             .foregroundColor(.secondary)
                     }
                 }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Overall completion")
+                .accessibilityValue("\(Int(completionRate * 100)) percent complete")
 
                 VStack(alignment: .leading, spacing: 12) {
                     StatRow(label: "Total Activities".localized(),
@@ -78,8 +82,10 @@ struct TreatmentProgressView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Pain Trend".localized())
                 .font(.headline)
+                .accessibilityAddTraits(.isHeader)
 
             if let avgPain = treatmentManager.getAveragePainLevel() {
+                let trend = treatmentManager.getPainTrend()
                 HStack(spacing: 20) {
                     VStack(alignment: .leading) {
                         Text(String(format: "%.1f", avgPain))
@@ -89,18 +95,22 @@ struct TreatmentProgressView: View {
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel("Average pain level: \(String(format: "%.1f", avgPain))")
 
                     Spacer()
 
                     VStack(alignment: .trailing) {
-                        let trend = treatmentManager.getPainTrend()
                         Text(trend)
                             .font(.headline)
                             .foregroundColor(trendColor(trend))
                         Image(systemName: trendIcon(trend))
                             .font(.title)
                             .foregroundColor(trendColor(trend))
+                            .accessibilityHidden(true)
                     }
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel("Pain trend: \(trend)")
                 }
             } else {
                 Text("progress.track_pain_prompt".localized())
@@ -119,6 +129,7 @@ struct TreatmentProgressView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("pain_history_30_days".localized())
                 .font(.headline)
+                .accessibilityAddTraits(.isHeader)
 
             let painHistory = treatmentManager.getPainHistory(days: 30)
 
@@ -152,6 +163,8 @@ struct TreatmentProgressView: View {
                     }
                 }
                 .frame(height: 200)
+                .accessibilityLabel("Pain history chart for the last 30 days")
+                .accessibilityHint(chartAccessibilityHint(painHistory: painHistory))
             } else {
                 Text("No pain data recorded yet".localized())
                     .font(.caption)
@@ -240,11 +253,14 @@ struct TreatmentProgressView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("This Week".localized())
                 .font(.headline)
+                .accessibilityAddTraits(.isHeader)
 
             let weeklyRate = treatmentManager.getWeeklyCompletionRate()
 
             ProgressView(value: weeklyRate)
                 .tint(.green)
+                .accessibilityLabel("Weekly progress")
+                .accessibilityValue("\(Int(weeklyRate * 100)) percent complete")
 
             HStack {
                 Text(String(format: "progress.week_completion".localized(), Int(weeklyRate * 100)))
@@ -253,6 +269,8 @@ struct TreatmentProgressView: View {
                 Spacer()
                 Image(systemName: weeklyRate >= 0.8 ? "trophy.fill" : "flag.fill")
                     .foregroundColor(weeklyRate >= 0.8 ? .yellow : .blue)
+                    .accessibilityLabel(weeklyRate >= 0.8 ? "Achievement trophy" : "Goal flag")
+                    .accessibilityHidden(true)
             }
         }
         .padding()
@@ -384,6 +402,18 @@ struct TreatmentProgressView: View {
         default: return "questionmark.circle.fill"
         }
     }
+
+    func chartAccessibilityHint(painHistory: [(Date, Double)]) -> String {
+        guard !painHistory.isEmpty else { return "No data available" }
+        let values = painHistory.map(\.1)
+        let minPain = values.min() ?? 0
+        let maxPain = values.max() ?? 0
+        let avgPain = values.reduce(0, +) / Double(values.count)
+        let minStr = String(format: "%.1f", minPain)
+        let maxStr = String(format: "%.1f", maxPain)
+        let avgStr = String(format: "%.1f", avgPain)
+        return "Chart shows pain levels ranging from \(minStr) to \(maxStr), with an average of \(avgStr)"
+    }
 }
 
 struct StatRow: View {
@@ -402,6 +432,8 @@ struct StatRow: View {
                 .bold()
                 .foregroundColor(color)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(label): \(value)")
     }
 }
 

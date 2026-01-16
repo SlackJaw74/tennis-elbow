@@ -101,10 +101,13 @@ struct MedicalSourcesView: View {
                 Image(systemName: "books.vertical.fill")
                     .font(.title)
                     .foregroundColor(.blue)
+                    .accessibilityHidden(true)
                 Text("References & Citations".localized())
                     .font(.title2)
                     .bold()
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityAddTraits(.isHeader)
 
             Text("medical_sources.description".localized())
                 .font(.subheadline)
@@ -131,6 +134,7 @@ struct MedicalSourcesView: View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Peer-Reviewed Sources".localized())
                 .font(.headline)
+                .accessibilityAddTraits(.isHeader)
 
             ForEach(sources) { source in
                 SourceCard(source: source)
@@ -143,6 +147,7 @@ struct MedicalSourcesView: View {
             Text("Additional Resources".localized())
                 .font(.headline)
                 .padding(.top)
+                .accessibilityAddTraits(.isHeader)
 
             ResourceLink(
                 title: "National Institutes of Health (NIH)".localized(),
@@ -196,12 +201,15 @@ struct SourceCard: View {
                 Link(destination: url) {
                     HStack(spacing: 4) {
                         Image(systemName: "link")
+                            .accessibilityHidden(true)
                         Text("View Source".localized())
                     }
                     .font(.caption)
                     .foregroundColor(.blue)
                 }
                 .padding(.top, 4)
+                .accessibilityLabel("View source: \(source.title)")
+                .accessibilityHint("Opens the source in your browser")
             }
         }
         .padding()
@@ -231,11 +239,14 @@ struct ResourceLink: View {
                     Spacer()
                     Image(systemName: "arrow.up.right.square")
                         .foregroundColor(.blue)
+                        .accessibilityHidden(true)
                 }
                 .padding()
                 .background(Color(.secondarySystemBackground))
                 .cornerRadius(10)
             }
+            .accessibilityLabel("\(title): \(subtitle)")
+            .accessibilityHint("Opens external link in your browser")
         }
     }
 }

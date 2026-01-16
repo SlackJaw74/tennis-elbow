@@ -101,6 +101,7 @@ struct ActivityDetailView: View {
             Image(systemName: activity.imageSystemName)
                 .font(.system(size: 60))
                 .foregroundColor(activityColor)
+                .accessibilityHidden(true)
 
             Text(activity.description)
                 .font(.body)
@@ -117,6 +118,7 @@ struct ActivityDetailView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Details".localized())
                 .font(.headline)
+                .accessibilityAddTraits(.isHeader)
 
             HStack(spacing: 20) {
                 DetailItem(icon: "clock", label: "Duration".localized(), value: "\(activity.durationMinutes) min")
@@ -137,6 +139,8 @@ struct ActivityDetailView: View {
             }
             .font(.caption)
             .foregroundColor(.secondary)
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Type: \(activity.type.rawValue), Difficulty: \(activity.difficultyLevel.rawValue)")
         }
         .padding()
         .background(Color(.secondarySystemBackground))
@@ -147,6 +151,7 @@ struct ActivityDetailView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Instructions".localized())
                 .font(.headline)
+                .accessibilityAddTraits(.isHeader)
 
             ForEach(Array(activity.instructions.enumerated()), id: \.offset) { index, instruction in
                 HStack(alignment: .top, spacing: 12) {
@@ -157,11 +162,14 @@ struct ActivityDetailView: View {
                         .frame(width: 24, height: 24)
                         .background(activityColor)
                         .clipShape(Circle())
+                        .accessibilityHidden(true)
 
                     Text(instruction)
                         .font(.body)
                         .fixedSize(horizontal: false, vertical: true)
                 }
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel("Step \(index + 1): \(instruction)")
             }
         }
         .padding()
@@ -202,12 +210,15 @@ struct DetailItem: View {
             Image(systemName: icon)
                 .font(.title3)
                 .foregroundColor(.blue)
+                .accessibilityHidden(true)
             Text(value)
                 .font(.headline)
             Text(label)
                 .font(.caption2)
                 .foregroundColor(.secondary)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(label): \(value)")
     }
 }
 
