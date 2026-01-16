@@ -35,6 +35,7 @@ struct SettingsView: View {
                             ),
                             displayedComponents: .hourAndMinute
                         )
+                        .accessibilityIdentifier("Morning Time")
 
                         DatePicker(
                             "Evening Time".localized(),
@@ -47,6 +48,7 @@ struct SettingsView: View {
                             ),
                             displayedComponents: .hourAndMinute
                         )
+                        .accessibilityIdentifier("Evening Time")
 
                         Text("settings.notification_description".localized())
                             .font(.caption)
