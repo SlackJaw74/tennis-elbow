@@ -10,6 +10,7 @@ An iOS application to help manage and track tennis elbow (lateral epicondylitis)
 - 📊 **Pain Tracking** - Record and visualize pain levels over time
 - 📈 **Progress Analytics** - Track completion rates and treatment effectiveness
 - 💡 **Educational Content** - Learn about tennis elbow and treatment best practices
+- 🌍 **Multi-Language Support** - Available in 10 languages (English, Spanish, French, German, Japanese, Chinese Simplified, Portuguese, Italian, Dutch, Korean)
 
 ## Quick Start
 
@@ -67,6 +68,7 @@ tennis-elbow/
 - **[SCREENSHOT_GUIDE.md](SCREENSHOT_GUIDE.md)** - Manual and automated screenshot capture for App Store
 - **[SNAPSHOT_TESTING.md](SNAPSHOT_TESTING.md)** - Comprehensive UI snapshot testing guide
 - **[VERSION_MANAGEMENT.md](docs/VERSION_MANAGEMENT.md)** - Automatic version incrementing guide
+- **[LOCALIZATION.md](docs/LOCALIZATION.md)** - Multi-language support and translation guide
 - **[PRIVACY_POLICY.md](TennisElbow/PRIVACY_POLICY.md)** - Privacy policy for App Store
 
 - Versioning: Update `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in the project.
