@@ -1,0 +1,85 @@
+name: Auto Version Bump
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+    inputs:
+      bump_type:
+        description: 'Version bump type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+          - build
+
+permissions:
+  contents: write
+
+jobs:
+  bump-version:
+    name: Bump Version
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Determine bump type
+        id: bump_type
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "type=${{ inputs.bump_type }}" >> $GITHUB_OUTPUT
+          else
+            # Default to patch for automatic merges to main
+            echo "type=patch" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Bump version
+        id: version
+        run: |
+          chmod +x scripts/version_bump.sh
+          ./scripts/version_bump.sh ${{ steps.bump_type.outputs.type }}
+          
+          # Capture the new version for tagging
+          NEW_VERSION=$(grep -m 1 "MARKETING_VERSION = " "TennisElbow/TennisElbow.xcodeproj/project.pbxproj" | sed 's/.*MARKETING_VERSION = \(.*\);/\1/')
+          NEW_BUILD=$(grep -m 1 "CURRENT_PROJECT_VERSION = " "TennisElbow/TennisElbow.xcodeproj/project.pbxproj" | sed 's/.*CURRENT_PROJECT_VERSION = \(.*\);/\1/')
+          
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "build=$NEW_BUILD" >> $GITHUB_OUTPUT
+      
+      - name: Commit version bump
+        run: |
+          git add TennisElbow/TennisElbow.xcodeproj/project.pbxproj
+          git commit -m "chore: bump version to ${{ steps.version.outputs.version }} (${{ steps.version.outputs.build }}) [skip ci]"
+      
+      - name: Create tag
+        run: |
+          git tag -a "v${{ steps.version.outputs.version }}" -m "Release version ${{ steps.version.outputs.version }}"
+      
+      - name: Push changes
+        run: |
+          git push origin ${{ github.ref_name }}
+          git push origin "v${{ steps.version.outputs.version }}"
+      
+      - name: Create release summary
+        run: |
+          echo "## Version Bump Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version:** ${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Build:** ${{ steps.version.outputs.build }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Tag:** v${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Bump Type:** ${{ steps.bump_type.outputs.type }}" >> $GITHUB_STEP_SUMMARY

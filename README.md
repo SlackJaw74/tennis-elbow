@@ -66,7 +66,7 @@ tennis-elbow/
 
 - **[SCREENSHOT_GUIDE.md](SCREENSHOT_GUIDE.md)** - Manual and automated screenshot capture for App Store
 - **[SNAPSHOT_TESTING.md](SNAPSHOT_TESTING.md)** - Comprehensive UI snapshot testing guide
-- **[VERSION_MANAGEMENT.md](VERSION_MANAGEMENT.md)** - Automatic version incrementing guide
+- **[VERSION_MANAGEMENT.md](docs/VERSION_MANAGEMENT.md)** - Automatic version incrementing guide
 - **[PRIVACY_POLICY.md](TennisElbow/PRIVACY_POLICY.md)** - Privacy policy for App Store
 
 - Versioning: Update `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in the project.

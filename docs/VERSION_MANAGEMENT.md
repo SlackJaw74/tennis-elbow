@@ -44,7 +44,29 @@ make bump-build
 
 ## Tools
 
-### 1. Shell Script (`scripts/version_bump.sh`)
+### 1. Automatic Version Bumping (GitHub Actions)
+
+**NEW**: Automatic version bumping on merge to main!
+
+The repository includes a GitHub Actions workflow that automatically bumps the patch version whenever changes are merged to the `main` branch. This ensures every release has a unique version number.
+
+**Features:**
+- Automatically bumps patch version on merge to main
+- Creates a git tag for the new version (e.g., `v1.0.1`)
+- Commits the version bump with `[skip ci]` to avoid triggering another CI run
+- Can be manually triggered with custom bump type (patch, minor, major, build)
+
+**Manual Trigger:**
+1. Go to Actions tab in GitHub
+2. Select "Auto Version Bump" workflow
+3. Click "Run workflow"
+4. Select the bump type (patch, minor, major, or build)
+5. Click "Run workflow"
+
+**Configuration:**
+The workflow is located at `.github/workflows/auto-version-bump.yml`
+
+### 2. Shell Script (`scripts/version_bump.sh`)
 
 The core version bumping script that directly modifies the Xcode project file.
 
@@ -74,7 +96,7 @@ The core version bumping script that directly modifies the Xcode project file.
 - Updates all occurrences in the project file
 - Provides next steps for committing and tagging
 
-### 2. Makefile Targets
+### 3. Makefile Targets
 
 Convenient shortcuts for version management.
 
@@ -87,7 +109,7 @@ make bump-major   # Bump major version
 make bump-build   # Bump build number only
 ```
 
-### 3. Fastlane Lanes
+### 4. Fastlane Lanes
 
 For CI/CD integration and advanced workflows.
 

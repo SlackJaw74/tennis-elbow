@@ -51,4 +51,4 @@ This script is integrated with:
 
 ### Documentation
 
-For comprehensive version management documentation, see [VERSION_MANAGEMENT.md](../VERSION_MANAGEMENT.md).
+For comprehensive version management documentation, see [VERSION_MANAGEMENT.md](../docs/VERSION_MANAGEMENT.md).
