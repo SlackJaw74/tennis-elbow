@@ -49,6 +49,12 @@ get_current_version() {
         exit 1
     fi
     
+    # Validate version format (should be digits and dots only)
+    if ! [[ "${version}" =~ ^[0-9]+(\.[0-9]+)*$ ]]; then
+        echo -e "${RED}Error: Invalid version format in project file: ${version}${NC}" >&2
+        exit 1
+    fi
+    
     echo "${version}"
 }
 
@@ -68,6 +74,12 @@ get_current_build() {
         exit 1
     fi
     
+    # Validate build number format (should be digits only)
+    if ! [[ "${build}" =~ ^[0-9]+$ ]]; then
+        echo -e "${RED}Error: Invalid build number format in project file: ${build}${NC}" >&2
+        exit 1
+    fi
+    
     echo "${build}"
 }
 
@@ -75,6 +87,12 @@ get_current_build() {
 set_version() {
     local new_version=$1
     cd "${PROJECT_ROOT}"
+    
+    # Validate version format before setting
+    if ! [[ "${new_version}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        echo -e "${RED}Error: Invalid version format for setting: ${new_version}${NC}" >&2
+        exit 1
+    fi
     
     # Use sed to replace all occurrences of MARKETING_VERSION
     if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -90,6 +108,12 @@ set_version() {
 set_build() {
     local new_build=$1
     cd "${PROJECT_ROOT}"
+    
+    # Validate build number format before setting
+    if ! [[ "${new_build}" =~ ^[0-9]+$ ]]; then
+        echo -e "${RED}Error: Invalid build number format for setting: ${new_build}${NC}" >&2
+        exit 1
+    fi
     
     # Use sed to replace all occurrences of CURRENT_PROJECT_VERSION
     if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -177,10 +201,13 @@ main() {
         NEW_BUILD=$((CURRENT_BUILD + 1))
         NEW_VERSION="${CURRENT_VERSION}"
     else
-        NEW_VERSION=$(increment_version "${CURRENT_VERSION}" "${BUMP_TYPE}")
-        # Check if increment_version succeeded
-        if [ $? -ne 0 ] || [ -z "${NEW_VERSION}" ]; then
+        NEW_VERSION=$(increment_version "${CURRENT_VERSION}" "${BUMP_TYPE}") || {
             echo -e "${RED}Error: Failed to increment version${NC}" >&2
+            exit 1
+        }
+        # Additional validation that we got a valid version
+        if [ -z "${NEW_VERSION}" ] || ! [[ "${NEW_VERSION}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo -e "${RED}Error: Invalid version generated: ${NEW_VERSION}${NC}" >&2
             exit 1
         fi
         NEW_BUILD=$((CURRENT_BUILD + 1))

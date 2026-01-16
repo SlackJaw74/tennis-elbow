@@ -67,9 +67,9 @@ platform :ios do
 
   desc "Get current version and build number"
   lane :version do
-    project_file = "TennisElbow/TennisElbow.xcodeproj/project.pbxproj"
-    version = sh("grep -m 1 'MARKETING_VERSION = ' ../#{project_file} | sed 's/.*MARKETING_VERSION = \\(.*\\);/\\1/'").strip
-    build = sh("grep -m 1 'CURRENT_PROJECT_VERSION = ' ../#{project_file} | sed 's/.*CURRENT_PROJECT_VERSION = \\(.*\\);/\\1/'").strip
+    project_file = "../TennisElbow/TennisElbow.xcodeproj/project.pbxproj"
+    version = sh("grep", "-m", "1", "MARKETING_VERSION = ", project_file).split("=").last.strip.gsub(";", "")
+    build = sh("grep", "-m", "1", "CURRENT_PROJECT_VERSION = ", project_file).split("=").last.strip.gsub(";", "")
     
     UI.message "📱 Current Version Information:"
     UI.message "   Marketing Version (CFBundleShortVersionString): #{version}"
