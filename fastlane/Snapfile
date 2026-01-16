@@ -4,9 +4,15 @@
 # List of devices to generate screenshots for
 # Using older device types to match App Store Connect requirements
 devices([
+  # iPhone devices
   "iPhone 11 Pro Max",      # Produces 1242x2688 screenshots (App Store requirement)
   "iPhone 12 Pro Max",      # Produces 1284x2778 screenshots (App Store requirement)
-  "iPad Pro 13-inch (M5)"   # iPad Pro - if supporting iPad
+  
+  # iPad devices - supporting multiple form factors
+  "iPad Pro 13-inch (M5)",           # Latest large iPad Pro
+  "iPad Pro 12.9-inch (6th generation)",  # Previous generation large iPad
+  "iPad Air 11-inch (M2)",           # iPad Air
+  "iPad (10th generation)"           # Standard iPad
 ])
 
 # List of languages to generate screenshots for

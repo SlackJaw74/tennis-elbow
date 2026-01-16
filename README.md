@@ -1,8 +1,71 @@
 # Tennis Elbow Treatment App
 
-## Build & Launch in iOS Simulator
+An iOS application to help manage and track tennis elbow (lateral epicondylitis) recovery with structured treatment plans, scheduling, pain tracking, and progress monitoring.
 
-## App Store Submission Checklist
+## Features
+
+- 📋 **Progressive Treatment Plans** - Three 2-week treatment phases
+- 📅 **Smart Scheduling** - Automatic activity scheduling with customizable times
+- 🔔 **Push Notifications** - Reminders for scheduled activities
+- 📊 **Pain Tracking** - Record and visualize pain levels over time
+- 📈 **Progress Analytics** - Track completion rates and treatment effectiveness
+- 💡 **Educational Content** - Learn about tennis elbow and treatment best practices
+
+## Quick Start
+
+### Build & Run
+
+```bash
+# Build and run on iPhone simulator
+make sim-run
+
+# Build and run on iPad simulator
+make ipad-run
+
+# Run on specific device
+make sim-run DEVICE="iPhone 17 Pro"
+make ipad-run IPAD_DEVICE="iPad Air 11-inch (M2)"
+```
+
+### Screenshot Generation
+
+```bash
+# Capture all screenshots (iPhone + iPad)
+make screenshots
+
+# Capture iPhone screenshots only
+make screenshots-iphone
+
+# Capture iPad screenshots only
+make screenshots-ipad
+
+# Process screenshots for App Store submission
+make process-screenshots
+```
+
+For detailed snapshot testing documentation, see [SNAPSHOT_TESTING.md](SNAPSHOT_TESTING.md).
+
+## Project Structure
+
+```txt
+tennis-elbow/
+├── TennisElbow/
+│   ├── TennisElbow/
+│   │   ├── Models/                    # Data models
+│   │   ├── ViewModels/                # Business logic
+│   │   └── Views/                     # SwiftUI views
+│   └── TennisElbowUITests/            # UI tests and snapshot testing
+├── fastlane/                          # Fastlane automation & screenshot lanes
+├── Makefile                           # Build automation
+├── SCREENSHOT_GUIDE.md                # App Store screenshot guide
+└── SNAPSHOT_TESTING.md                # Comprehensive testing guide
+```
+
+## Documentation
+
+- **[SCREENSHOT_GUIDE.md](SCREENSHOT_GUIDE.md)** - Manual and automated screenshot capture for App Store
+- **[SNAPSHOT_TESTING.md](SNAPSHOT_TESTING.md)** - Comprehensive UI snapshot testing guide
+- **[PRIVACY_POLICY.md](TennisElbow/PRIVACY_POLICY.md)** - Privacy policy for App Store
 
 - Versioning: Update `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in the project.
 - Minimum iOS: Set deployment target to 16.0 to match Charts (done).
@@ -19,13 +82,18 @@ Optional (recommended): Add a `PrivacyInfo.xcprivacy` manifest declaring no requ
 ## Automation
 
 - Makefile: quick simulator run
-   - Build + install + launch:
+   - Build + install + launch (iPhone):
       ```bash
       make sim-run
       ```
-   - Choose a different simulator (e.g., iPhone 17):
+   - Build + install + launch (iPad):
+      ```bash
+      make ipad-run
+      ```
+   - Choose a different simulator:
       ```bash
       make sim-run DEVICE="iPhone 17"
+      make ipad-run IPAD_DEVICE="iPad Pro 13-inch (M5)"
       ```
    - List devices:
       ```bash
@@ -40,23 +108,120 @@ Optional (recommended): Add a `PrivacyInfo.xcprivacy` manifest declaring no requ
       make archive
       ```
 
-- fastlane: optional CI-friendly lanes
+- fastlane: CI-friendly automation lanes
    - Install fastlane:
       ```bash
       sudo gem install fastlane -NV
+      # Or with bundler:
+      cd fastlane && bundle install
       ```
    - Run simulator lane:
       ```bash
-      fastlane simulator
+      cd fastlane && bundle exec fastlane simulator
       ```
    - Create archive (Release):
       ```bash
-      fastlane archive
+      cd fastlane && bundle exec fastlane archive
       ```
    - Upload to App Store (set credentials first):
       ```bash
-      fastlane upload
+      cd fastlane && bundle exec fastlane upload
       ```
+   - Generate screenshots (all devices):
+      ```bash
+      cd fastlane && bundle exec fastlane screenshots_all
+      ```
+   - Generate screenshots (iPhone only):
+      ```bash
+      cd fastlane && bundle exec fastlane screenshots_iphone
+      ```
+   - Generate screenshots (iPad only):
+      ```bash
+      cd fastlane && bundle exec fastlane screenshots_ipad
+      ```
+   - Process screenshots for App Store:
+      ```bash
+      cd fastlane && bundle exec fastlane process_screenshots
+      ```
+
+## Snapshot Testing
+
+The app includes comprehensive UI snapshot testing for both iPhone and iPad devices using fastlane.
+
+### Quick Commands
+
+```bash
+# Capture all screenshots (iPhone + iPad)
+make screenshots
+
+# Capture iPhone screenshots only
+make screenshots-iphone
+
+# Capture iPad screenshots only
+make screenshots-ipad
+
+# Process for App Store submission
+make process-screenshots
+```
+
+### Supported Devices
+
+**iPhone:**
+- iPhone 17 Pro Max
+- iPhone 17 Pro
+- iPhone 17
+- iPhone 16e
+
+**iPad:**
+- iPad Pro 13-inch (M5)
+- iPad Pro 12.9-inch (6th generation)
+- iPad Air 11-inch (M2)
+- iPad (10th generation)
+
+### UI Coverage
+
+All 9 major app screens are covered:
+1. Disclaimer View (initial launch)
+2. Treatment Plan View
+3. Schedule View
+4. Progress View
+5. Settings View
+6. Medical Sources View
+7. Disclaimer View (from Settings)
+8. Medical Sources (from Disclaimer)
+9. Activity Detail View
+
+### Documentation
+
+- **[SNAPSHOT_TESTING.md](SNAPSHOT_TESTING.md)** - Comprehensive guide with troubleshooting, best practices, and CI/CD integration
+- **[SCREENSHOT_GUIDE.md](SCREENSHOT_GUIDE.md)** - Manual screenshot capture and App Store requirements
+
+## App Store Submission Checklist
+
+- [ ] **Versioning**: Update `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in the project
+- [ ] **Minimum iOS**: Set deployment target to 16.0 (required for Charts framework)
+- [ ] **App Icon**: Confirm 1024×1024 marketing icon and that build produces all sizes
+- [ ] **Privacy Policy**: Host [PRIVACY_POLICY.md](TennisElbow/PRIVACY_POLICY.md) on a public URL and add it in App Store Connect
+- [ ] **App Privacy**: Declare data collection as local-only (no collection) in App Store Connect
+- [ ] **Screenshots**: 
+  - Run `make screenshots` to generate screenshots for all devices
+  - Process for App Store: `make process-screenshots`
+  - Minimum 3, maximum 10 screenshots per device type
+  - iPhone: 6.7" display (1290 x 2796) required
+  - iPad: 12.9" display (2048 x 2732) if supporting iPad
+- [ ] **Signing**: Configure Release signing (Distribution certificate + provisioning) in Xcode
+- [ ] **Archive & Upload**: 
+  - In Xcode, select Any iOS Device (arm64) → Product → Archive → Distribute → App Store Connect
+  - Or use: `make archive` → Upload via Xcode
+- [ ] **Review Notes**: 
+  - Include the in-app medical disclaimer
+  - Explain local-only data storage
+  - Mention no third-party analytics or tracking
+
+**Optional Enhancements:**
+- Add `PrivacyInfo.xcprivacy` manifest declaring no required reason APIs (already included)
+- Use fastlane for automated build/archive: `fastlane archive`
+- Generate localized screenshots for multiple languages
 
 ## Running PR Checks Locally
 
