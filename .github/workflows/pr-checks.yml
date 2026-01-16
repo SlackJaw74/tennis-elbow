@@ -42,6 +42,9 @@ jobs:
       - name: Show Xcode version
         run: xcodebuild -version
       
+      - name: List available simulators
+        run: xcrun simctl list devices available | grep iPhone
+      
       - name: Build app
         run: |
           xcodebuild \
@@ -49,7 +52,7 @@ jobs:
             -scheme "TennisElbow" \
             -configuration Debug \
             -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,name=iPhone SE (3rd generation)" \
+            -destination "platform=iOS Simulator,OS=latest,name=iPhone 15" \
             clean build
       
       - name: Run UI Tests
@@ -59,7 +62,7 @@ jobs:
             -scheme "TennisElbow" \
             -configuration Debug \
             -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,name=iPhone SE (3rd generation)" \
+            -destination "platform=iOS Simulator,OS=latest,name=iPhone 15" \
             -enableCodeCoverage YES
 
   swiftformat:
