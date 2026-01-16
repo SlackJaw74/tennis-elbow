@@ -38,6 +38,9 @@ make screenshots-iphone
 
 # Capture iPad screenshots only
 make screenshots-ipad
+
+# Process screenshots for App Store submission
+make process-screenshots
 ```
 
 For detailed snapshot testing documentation, see [SNAPSHOT_TESTING.md](SNAPSHOT_TESTING.md).
@@ -52,9 +55,8 @@ tennis-elbow/
 │   │   ├── ViewModels/                # Business logic
 │   │   └── Views/                     # SwiftUI views
 │   └── TennisElbowUITests/            # UI tests and snapshot testing
-├── fastlane/                          # Fastlane automation
+├── fastlane/                          # Fastlane automation & screenshot lanes
 ├── Makefile                           # Build automation
-├── capture_screenshots.sh             # Screenshot capture script
 ├── SCREENSHOT_GUIDE.md                # App Store screenshot guide
 └── SNAPSHOT_TESTING.md                # Comprehensive testing guide
 ```
@@ -106,46 +108,60 @@ Optional (recommended): Add a `PrivacyInfo.xcprivacy` manifest declaring no requ
       make archive
       ```
 
-- fastlane: optional CI-friendly lanes
+- fastlane: CI-friendly automation lanes
    - Install fastlane:
       ```bash
       sudo gem install fastlane -NV
+      # Or with bundler:
+      cd fastlane && bundle install
       ```
    - Run simulator lane:
       ```bash
-      fastlane simulator
+      cd fastlane && bundle exec fastlane simulator
       ```
    - Create archive (Release):
       ```bash
-      fastlane archive
+      cd fastlane && bundle exec fastlane archive
       ```
    - Upload to App Store (set credentials first):
       ```bash
-      fastlane upload
+      cd fastlane && bundle exec fastlane upload
       ```
-   - Generate screenshots:
+   - Generate screenshots (all devices):
       ```bash
-      fastlane screenshots
+      cd fastlane && bundle exec fastlane screenshots_all
+      ```
+   - Generate screenshots (iPhone only):
+      ```bash
+      cd fastlane && bundle exec fastlane screenshots_iphone
+      ```
+   - Generate screenshots (iPad only):
+      ```bash
+      cd fastlane && bundle exec fastlane screenshots_ipad
+      ```
+   - Process screenshots for App Store:
+      ```bash
+      cd fastlane && bundle exec fastlane process_screenshots
       ```
 
 ## Snapshot Testing
 
-The app includes comprehensive UI snapshot testing for both iPhone and iPad devices.
+The app includes comprehensive UI snapshot testing for both iPhone and iPad devices using fastlane.
 
 ### Quick Commands
 
 ```bash
 # Capture all screenshots (iPhone + iPad)
-./capture_screenshots.sh all
 make screenshots
 
 # Capture iPhone screenshots only
-./capture_screenshots.sh iphone
 make screenshots-iphone
 
 # Capture iPad screenshots only
-./capture_screenshots.sh ipad
 make screenshots-ipad
+
+# Process for App Store submission
+make process-screenshots
 ```
 
 ### Supported Devices
@@ -188,8 +204,8 @@ All 9 major app screens are covered:
 - [ ] **Privacy Policy**: Host [PRIVACY_POLICY.md](TennisElbow/PRIVACY_POLICY.md) on a public URL and add it in App Store Connect
 - [ ] **App Privacy**: Declare data collection as local-only (no collection) in App Store Connect
 - [ ] **Screenshots**: 
-  - Run `make screenshots` or `./capture_screenshots.sh all` to generate screenshots
-  - Resize for App Store: `./resize_screenshots.sh`
+  - Run `make screenshots` to generate screenshots for all devices
+  - Process for App Store: `make process-screenshots`
   - Minimum 3, maximum 10 screenshots per device type
   - iPhone: 6.7" display (1290 x 2796) required
   - iPad: 12.9" display (2048 x 2732) if supporting iPad

@@ -14,24 +14,30 @@ Snapshot testing captures screenshots of the app's UI across different devices a
 
 ### Capture All Screenshots (iPhone + iPad)
 ```bash
-./capture_screenshots.sh all
+make screenshots
+# Or directly with fastlane:
+cd fastlane && bundle exec fastlane screenshots_all
 ```
 
 ### Capture iPhone Screenshots Only
 ```bash
-./capture_screenshots.sh iphone
+make screenshots-iphone
+# Or directly with fastlane:
+cd fastlane && bundle exec fastlane screenshots_iphone
 ```
 
 ### Capture iPad Screenshots Only
 ```bash
-./capture_screenshots.sh ipad
+make screenshots-ipad
+# Or directly with fastlane:
+cd fastlane && bundle exec fastlane screenshots_ipad
 ```
 
-### Using Makefile Targets
+### Process Screenshots for App Store
 ```bash
-make screenshots           # All devices
-make screenshots-iphone    # iPhone only
-make screenshots-ipad      # iPad only
+make process-screenshots
+# Or directly with fastlane:
+cd fastlane && bundle exec fastlane process_screenshots
 ```
 
 ## Test Coverage
@@ -66,26 +72,26 @@ The UI tests capture snapshots of all major app screens:
 
 ## Configuration Files
 
-### capture_screenshots.sh
-Main script for running snapshot tests across devices.
+### fastlane/Fastfile
+Main fastlane configuration with screenshot capture lanes.
 
-**Usage:**
-```bash
-./capture_screenshots.sh [iphone|ipad|all]
-```
+**Key Lanes:**
+- `screenshots_all` - Capture screenshots for all devices (iPhone + iPad)
+- `screenshots_iphone` - Capture screenshots for iPhone devices only
+- `screenshots_ipad` - Capture screenshots for iPad devices only
+- `process_screenshots` - Process screenshots for App Store submission
 
-**Device Arrays:**
-```bash
-# Edit these arrays to add/remove devices
-IPHONE_DEVICES=(
-  "iPhone 17 Pro Max"
-  "Your Custom iPhone"
-)
-
-IPAD_DEVICES=(
-  "iPad Pro 13-inch (M5)"
-  "Your Custom iPad"
-)
+**Customizing Device Lists:**
+```ruby
+# Edit the device arrays in Fastfile
+lane :screenshots_ipad do
+  ipad_devices = [
+    "iPad Pro 13-inch (M5)",
+    "Your Custom iPad Device"
+  ]
+  
+  capture_screenshots_for_devices(devices: ipad_devices, device_type: "iPad")
+end
 ```
 
 ### fastlane/Snapfile
@@ -203,23 +209,25 @@ Examples:
 
 ## Processing Screenshots
 
-### Resize for App Store
+### Process for App Store via Fastlane
 ```bash
-./resize_screenshots.sh
+make process-screenshots
+# Or directly:
+cd fastlane && bundle exec fastlane process_screenshots
 ```
 
-This script:
+This lane:
 - Resizes iPhone screenshots to 1284 x 2778 (6.7" display requirement)
 - Copies iPad screenshots at original resolution
 - Outputs to `fastlane/screenshots/app-store-ready/`
 
-### Using fastlane
+### Using fastlane snapshot (traditional method)
 ```bash
 cd fastlane
 bundle exec fastlane screenshots
 ```
 
-Fastlane provides:
+Fastlane snapshot provides:
 - Multi-device automation
 - Multi-language support
 - Status bar override

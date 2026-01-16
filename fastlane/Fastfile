@@ -32,11 +32,143 @@ platform :ios do
     sh "make device-list"
   end
 
-  desc "Generate screenshots for App Store"
+  desc "Generate screenshots for App Store using fastlane snapshot"
   lane :screenshots do
     snapshot(
       project: "TennisElbow/TennisElbow.xcodeproj",
       scheme: "TennisElbow"
     )
+  end
+
+  desc "Capture screenshots for iPhone devices only"
+  lane :screenshots_iphone do
+    iphone_devices = [
+      "iPhone 17 Pro Max",
+      "iPhone 17 Pro",
+      "iPhone 17",
+      "iPhone 16e"
+    ]
+    
+    capture_screenshots_for_devices(devices: iphone_devices, device_type: "iPhone")
+  end
+
+  desc "Capture screenshots for iPad devices only"
+  lane :screenshots_ipad do
+    ipad_devices = [
+      "iPad Pro 13-inch (M5)",
+      "iPad Pro 12.9-inch (6th generation)",
+      "iPad Air 11-inch (M2)",
+      "iPad (10th generation)"
+    ]
+    
+    capture_screenshots_for_devices(devices: ipad_devices, device_type: "iPad")
+  end
+
+  desc "Capture screenshots for all devices (iPhone and iPad)"
+  lane :screenshots_all do
+    UI.message "📱 Capturing screenshots for all devices (iPhone and iPad)..."
+    
+    UI.message "--- iPhone Devices ---"
+    screenshots_iphone
+    
+    UI.message ""
+    UI.message "--- iPad Devices ---"
+    screenshots_ipad
+    
+    UI.success "✅ Screenshot capture complete for all devices!"
+  end
+
+  desc "Process screenshots for App Store Connect (resize iPhone, copy iPad)"
+  lane :process_screenshots do
+    screenshot_dir = "fastlane/screenshots/en-US"
+    output_dir = "fastlane/screenshots/app-store-ready"
+    
+    # Create output directory
+    sh "mkdir -p #{output_dir}"
+    
+    UI.message "🔄 Processing screenshots for App Store Connect..."
+    UI.message ""
+    
+    # iPhone screenshots - resize to 1284x2778 (6.7" display)
+    iphone_target_width = 1284
+    iphone_target_height = 2778
+    
+    UI.message "--- iPhone Screenshots ---"
+    Dir.glob("#{screenshot_dir}/iPhone 17 Pro Max-*.png").each do |file|
+      filename = File.basename(file)
+      new_filename = filename.gsub("iPhone 17 Pro Max-", "iPhone-")
+      output_file = "#{output_dir}/#{new_filename}"
+      
+      UI.message "Processing: #{filename}"
+      UI.message "  → Resizing to #{iphone_target_width}x#{iphone_target_height}"
+      
+      sh "sips -z #{iphone_target_height} #{iphone_target_width} '#{file}' --out '#{output_file}' > /dev/null 2>&1"
+      
+      UI.message "  ✓ Saved to: #{output_file}"
+    end
+    
+    UI.message ""
+    UI.message "--- iPad Screenshots ---"
+    # iPad screenshots - copy at original resolution
+    Dir.glob("#{screenshot_dir}/iPad*.png").each do |file|
+      filename = File.basename(file)
+      # Extract device model for better organization
+      device_model = filename.match(/^(iPad[^-]*)/)[1] rescue "iPad"
+      screenshot_name = filename.match(/-(\d\d-.*)\.png$/)[1] rescue filename
+      new_filename = "#{device_model}-#{screenshot_name}"
+      output_file = "#{output_dir}/#{new_filename}"
+      
+      UI.message "Processing: #{filename}"
+      UI.message "  → Copying original resolution (no resize needed)"
+      
+      sh "cp '#{file}' '#{output_file}'"
+      
+      UI.message "  ✓ Saved to: #{output_file}"
+    end
+    
+    UI.message ""
+    UI.success "✅ Screenshot processing complete!"
+    UI.message "📁 App Store ready screenshots are in: #{output_dir}"
+    UI.message ""
+    UI.message "📋 Screenshot Summary:"
+    UI.message "   iPhone: #{iphone_target_width} × #{iphone_target_height} (6.7\" display)"
+    UI.message "   iPad: Original resolution (device-specific sizes)"
+    UI.message ""
+    UI.message "💡 Use these processed screenshots when uploading to App Store Connect"
+  end
+
+  # Private helper lane for capturing screenshots on specific devices
+  private_lane :capture_screenshots_for_devices do |options|
+    devices = options[:devices]
+    device_type = options[:device_type]
+    
+    project = "TennisElbow/TennisElbow.xcodeproj"
+    scheme = "TennisElbow"
+    output_dir = "fastlane/screenshots"
+    
+    # Create output directory
+    sh "mkdir -p #{output_dir}"
+    
+    devices.each do |device|
+      UI.message "📱 Running tests on: #{device} (#{device_type})"
+      
+      begin
+        # Run UI tests which will capture screenshots
+        scan(
+          project: project,
+          scheme: scheme,
+          device: device,
+          derived_data_path: "./build",
+          output_directory: output_dir,
+          only_testing: ["TennisElbowUITests/TennisElbowUITests/testScreenshots"],
+          fail_build: false
+        )
+      rescue => ex
+        UI.error "⚠️  Tests failed on #{device}, but continuing..."
+      end
+      
+      UI.success "✓ Completed #{device}"
+      UI.message ""
+    end
   end
 end

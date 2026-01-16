@@ -7,7 +7,7 @@ BUNDLE_ID := com.madhouse.TennisElbow
 APP := $(DERIVED)/Build/Products/Debug-iphonesimulator/TennisElbow.app
 
 .PHONY: sim-build sim-install sim-launch sim-run device-list clean archive open-xcode format
-.PHONY: ipad-build ipad-install ipad-launch ipad-run screenshots screenshots-iphone screenshots-ipad
+.PHONY: ipad-build ipad-install ipad-launch ipad-run screenshots screenshots-iphone screenshots-ipad process-screenshots
 
 sim-build:
 	open -a Simulator || true
@@ -53,15 +53,19 @@ ipad-run: ipad-build ipad-install ipad-launch
 
 screenshots:
 	@echo "Capturing screenshots for all devices (iPhone and iPad)..."
-	./capture_screenshots.sh all
+	cd fastlane && bundle exec fastlane screenshots_all
 
 screenshots-iphone:
 	@echo "Capturing screenshots for iPhone devices only..."
-	./capture_screenshots.sh iphone
+	cd fastlane && bundle exec fastlane screenshots_iphone
 
 screenshots-ipad:
 	@echo "Capturing screenshots for iPad devices only..."
-	./capture_screenshots.sh ipad
+	cd fastlane && bundle exec fastlane screenshots_ipad
+
+process-screenshots:
+	@echo "Processing screenshots for App Store Connect..."
+	cd fastlane && bundle exec fastlane process_screenshots
 
 device-list:
 	xcrun simctl list devices

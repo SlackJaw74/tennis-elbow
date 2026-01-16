@@ -57,25 +57,42 @@ Screenshots will be on your Desktop. You can:
 - Rename them sequentially (01-Disclaimer.png, 02-TreatmentPlan.png, etc.)
 - Add them directly to App Store Connect
 
-## Automated Method: Using Scripts
+## Automated Method: Using Fastlane
 
-### Using capture_screenshots.sh
+### Using Fastlane Lanes
 
-The `capture_screenshots.sh` script automates screenshot capture across multiple devices.
+The recommended approach is to use fastlane lanes for automated screenshot capture.
 
 **Capture all devices (iPhone and iPad):**
 ```bash
-./capture_screenshots.sh all
+cd fastlane
+bundle exec fastlane screenshots_all
+# Or via Makefile:
+make screenshots
 ```
 
 **Capture iPhone devices only:**
 ```bash
-./capture_screenshots.sh iphone
+cd fastlane
+bundle exec fastlane screenshots_iphone
+# Or via Makefile:
+make screenshots-iphone
 ```
 
 **Capture iPad devices only:**
 ```bash
-./capture_screenshots.sh ipad
+cd fastlane
+bundle exec fastlane screenshots_ipad
+# Or via Makefile:
+make screenshots-ipad
+```
+
+**Process screenshots for App Store submission:**
+```bash
+cd fastlane
+bundle exec fastlane process_screenshots
+# Or via Makefile:
+make process-screenshots
 ```
 
 Screenshots will be saved to `fastlane/screenshots/` with device-specific naming.
@@ -97,14 +114,19 @@ make screenshots-iphone
 make screenshots-ipad
 ```
 
+**Process for App Store:**
+```bash
+make process-screenshots
+```
+
 **Test on specific iPad device:**
 ```bash
 make ipad-run IPAD_DEVICE="iPad Air 11-inch (M2)"
 ```
 
-### Using fastlane snapshot
+### Using fastlane snapshot (original method)
 
-If you want automated screenshots across multiple devices and languages, use fastlane:
+You can also use the original fastlane snapshot tool:
 
 ```bash
 cd fastlane
@@ -134,17 +156,21 @@ This will:
 
 ### Customizing Devices
 
-Edit `capture_screenshots.sh` or `fastlane/Snapfile` to add or remove devices:
+Edit `fastlane/Fastfile` or `fastlane/Snapfile` to add or remove devices:
 
-**In capture_screenshots.sh:**
-```bash
-IPAD_DEVICES=(
-  "iPad Pro 13-inch (M5)"
-  "Your Custom iPad Device"
-)
+**In fastlane/Fastfile (for custom lanes):**
+```ruby
+lane :screenshots_ipad do
+  ipad_devices = [
+    "iPad Pro 13-inch (M5)",
+    "Your Custom iPad Device"
+  ]
+  
+  capture_screenshots_for_devices(devices: ipad_devices, device_type: "iPad")
+end
 ```
 
-**In fastlane/Snapfile:**
+**In fastlane/Snapfile (for snapshot tool):**
 ```ruby
 devices([
   "iPhone 17 Pro Max",
