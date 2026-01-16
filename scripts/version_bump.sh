@@ -162,6 +162,12 @@ main() {
     CURRENT_VERSION=$(get_current_version)
     CURRENT_BUILD=$(get_current_build)
     
+    # Validate build number is numeric
+    if ! [[ "${CURRENT_BUILD}" =~ ^[0-9]+$ ]]; then
+        echo -e "${RED}Error: Invalid build number: ${CURRENT_BUILD}${NC}" >&2
+        exit 1
+    fi
+    
     echo -e "${YELLOW}Current version: ${CURRENT_VERSION}${NC}"
     echo -e "${YELLOW}Current build: ${CURRENT_BUILD}${NC}"
     echo ""
@@ -172,6 +178,11 @@ main() {
         NEW_VERSION="${CURRENT_VERSION}"
     else
         NEW_VERSION=$(increment_version "${CURRENT_VERSION}" "${BUMP_TYPE}")
+        # Check if increment_version succeeded
+        if [ $? -ne 0 ] || [ -z "${NEW_VERSION}" ]; then
+            echo -e "${RED}Error: Failed to increment version${NC}" >&2
+            exit 1
+        fi
         NEW_BUILD=$((CURRENT_BUILD + 1))
     fi
     
