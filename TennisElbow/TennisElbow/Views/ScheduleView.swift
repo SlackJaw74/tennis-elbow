@@ -118,7 +118,13 @@ struct ScheduledActivityRow: View {
                 .foregroundColor(.secondary)
             }
             .accessibilityElement(children: .combine)
-            .accessibilityLabel("\(scheduledActivity.activity.name), scheduled for \(scheduledActivity.scheduledTime.formatted(date: .omitted, time: .shortened)), duration \(scheduledActivity.activity.durationMinutes) minutes")
+            .accessibilityLabel(
+                """
+                \(scheduledActivity.activity.name), scheduled for \
+                \(scheduledActivity.scheduledTime.formatted(date: .omitted, time: .shortened)), \
+                duration \(scheduledActivity.activity.durationMinutes) minutes
+                """
+            )
 
             Spacer()
 

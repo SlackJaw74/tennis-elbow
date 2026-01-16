@@ -85,6 +85,7 @@ struct TreatmentProgressView: View {
                 .accessibilityAddTraits(.isHeader)
 
             if let avgPain = treatmentManager.getAveragePainLevel() {
+                let trend = treatmentManager.getPainTrend()
                 HStack(spacing: 20) {
                     VStack(alignment: .leading) {
                         Text(String(format: "%.1f", avgPain))
@@ -100,7 +101,6 @@ struct TreatmentProgressView: View {
                     Spacer()
 
                     VStack(alignment: .trailing) {
-                        let trend = treatmentManager.getPainTrend()
                         Text(trend)
                             .font(.headline)
                             .foregroundColor(trendColor(trend))
@@ -409,7 +409,10 @@ struct TreatmentProgressView: View {
         let minPain = values.min() ?? 0
         let maxPain = values.max() ?? 0
         let avgPain = values.reduce(0, +) / Double(values.count)
-        return "Chart shows pain levels ranging from \(String(format: "%.1f", minPain)) to \(String(format: "%.1f", maxPain)), with an average of \(String(format: "%.1f", avgPain))"
+        let minStr = String(format: "%.1f", minPain)
+        let maxStr = String(format: "%.1f", maxPain)
+        let avgStr = String(format: "%.1f", avgPain)
+        return "Chart shows pain levels ranging from \(minStr) to \(maxStr), with an average of \(avgStr)"
     }
 }
 

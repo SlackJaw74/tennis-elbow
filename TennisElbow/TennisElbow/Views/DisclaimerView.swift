@@ -62,7 +62,9 @@ struct DisclaimerView: View {
                             }
                             .padding(.top, 4)
                             .accessibilityLabel("View all medical sources and citations")
-                            .accessibilityHint("Opens a list of medical research sources")
+                            .accessibilityHint(
+                                "Opens a list of medical research sources"
+                            )
                         }
 
                         Text("Data & Privacy".localized())
@@ -89,7 +91,9 @@ struct DisclaimerView: View {
                                     .cornerRadius(12)
                             }
                             .accessibilityLabel("Accept and continue")
-                            .accessibilityHint("Accepts the medical disclaimer and continues to the app")
+                            .accessibilityHint(
+                                "Accepts the medical disclaimer and continues to the app"
+                            )
 
                             Button {
                                 hasAcceptedDisclaimer = false
@@ -108,7 +112,9 @@ struct DisclaimerView: View {
                                     .cornerRadius(12)
                             }
                             .accessibilityLabel("Decline")
-                            .accessibilityHint("Declines the medical disclaimer and exits the app")
+                            .accessibilityHint(
+                                "Declines the medical disclaimer and exits the app"
+                            )
                         }
                         .padding(.horizontal)
                         .padding(.bottom)
