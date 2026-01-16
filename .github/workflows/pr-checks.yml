@@ -72,7 +72,7 @@ jobs:
         id: find-simulator
         run: |
           # Get the first available iPhone simulator
-          SIMULATOR_ID=$(xcrun simctl list devices available iPhone | grep -m 1 "iPhone" | grep -o -E '\(([A-F0-9-]+)\)' | tr -d '()')
+          SIMULATOR_ID=$(xcrun simctl list devices available iPhone | grep -m 1 "iPhone" | grep -o -E '\(([A-Fa-f0-9-]+)\)' | tr -d '()')
           if [ -z "$SIMULATOR_ID" ]; then
             echo "Error: No iPhone simulator found"
             exit 1
