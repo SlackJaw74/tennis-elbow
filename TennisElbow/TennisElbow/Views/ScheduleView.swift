@@ -227,9 +227,13 @@ struct ScheduledActivityDetailView: View {
             .font(.caption)
 
             if let completedTime = scheduledActivity.completedTime {
-                Text(String(format: "%@ %@", "Completed at".localized(), completedTime.formatted(date: .omitted, time: .shortened)))
-                    .font(.caption2)
-                    .foregroundColor(.secondary)
+                Text(String(
+                    format: "%@ %@",
+                    "Completed at".localized(),
+                    completedTime.formatted(date: .omitted, time: .shortened)
+                ))
+                .font(.caption2)
+                .foregroundColor(.secondary)
             }
 
             if let painLevel = scheduledActivity.painLevel {
@@ -294,7 +298,8 @@ struct PainLevelSheet: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 24) {
-                    Text(activity.type == .painTracking ? "How do you feel?".localized() : "schedule.feel_after_activity".localized())
+                    Text(activity.type == .painTracking ? "How do you feel?".localized() : "schedule.feel_after_activity"
+                        .localized())
                         .font(.title3)
                         .bold()
                         .multilineTextAlignment(.center)

@@ -402,7 +402,11 @@ struct ActivityDetailContent: View {
 
                     HStack(spacing: 16) {
                         if activity.durationMinutes > 0 {
-                            DetailBadge(icon: "clock", label: "Duration".localized(), value: "\(activity.durationMinutes) min")
+                            DetailBadge(
+                                icon: "clock",
+                                label: "Duration".localized(),
+                                value: "\(activity.durationMinutes) min"
+                            )
                         }
 
                         if let reps = activity.repetitions {
