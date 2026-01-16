@@ -36,13 +36,39 @@ show_usage() {
 # Function to get current version from project file
 get_current_version() {
     cd "${PROJECT_ROOT}"
-    grep -m 1 "MARKETING_VERSION = " "${PROJECT_FILE}" | sed 's/.*MARKETING_VERSION = \(.*\);/\1/'
+    
+    if [ ! -f "${PROJECT_FILE}" ]; then
+        echo -e "${RED}Error: Project file not found: ${PROJECT_FILE}${NC}" >&2
+        exit 1
+    fi
+    
+    local version=$(grep -m 1 "MARKETING_VERSION = " "${PROJECT_FILE}" | sed 's/.*MARKETING_VERSION = \(.*\);/\1/')
+    
+    if [ -z "${version}" ]; then
+        echo -e "${RED}Error: MARKETING_VERSION not found in ${PROJECT_FILE}${NC}" >&2
+        exit 1
+    fi
+    
+    echo "${version}"
 }
 
 # Function to get current build number from project file
 get_current_build() {
     cd "${PROJECT_ROOT}"
-    grep -m 1 "CURRENT_PROJECT_VERSION = " "${PROJECT_FILE}" | sed 's/.*CURRENT_PROJECT_VERSION = \(.*\);/\1/'
+    
+    if [ ! -f "${PROJECT_FILE}" ]; then
+        echo -e "${RED}Error: Project file not found: ${PROJECT_FILE}${NC}" >&2
+        exit 1
+    fi
+    
+    local build=$(grep -m 1 "CURRENT_PROJECT_VERSION = " "${PROJECT_FILE}" | sed 's/.*CURRENT_PROJECT_VERSION = \(.*\);/\1/')
+    
+    if [ -z "${build}" ]; then
+        echo -e "${RED}Error: CURRENT_PROJECT_VERSION not found in ${PROJECT_FILE}${NC}" >&2
+        exit 1
+    fi
+    
+    echo "${build}"
 }
 
 # Function to set version in project file
@@ -83,8 +109,16 @@ increment_version() {
     # Parse version components
     IFS='.' read -r major minor patch <<< "${version}"
     
-    # Default patch to 0 if not present
+    # Default components to 0 if not present
+    major=${major:-0}
+    minor=${minor:-0}
     patch=${patch:-0}
+    
+    # Validate that components are numeric
+    if ! [[ "${major}" =~ ^[0-9]+$ ]] || ! [[ "${minor}" =~ ^[0-9]+$ ]] || ! [[ "${patch}" =~ ^[0-9]+$ ]]; then
+        echo -e "${RED}Error: Invalid version format: ${version}${NC}" >&2
+        return 1
+    fi
     
     case "${bump_type}" in
         major)
@@ -100,7 +134,7 @@ increment_version() {
             patch=$((patch + 1))
             ;;
         *)
-            echo -e "${RED}Error: Invalid bump type: ${bump_type}${NC}"
+            echo -e "${RED}Error: Invalid bump type: ${bump_type}${NC}" >&2
             return 1
             ;;
     esac

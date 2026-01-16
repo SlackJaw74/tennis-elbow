@@ -41,7 +41,7 @@ platform :ios do
     end
     
     UI.message "🔢 Bumping #{type} version..."
-    sh "../scripts/version_bump.sh #{type}"
+    sh "../scripts/version_bump.sh", type
     UI.success "✓ Version bumped successfully!"
   end
 
