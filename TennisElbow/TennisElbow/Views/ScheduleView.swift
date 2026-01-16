@@ -11,6 +11,8 @@ struct ScheduleView: View {
                 DatePicker("Select Date".localized(), selection: $selectedDate, displayedComponents: .date)
                     .datePickerStyle(.graphical)
                     .padding()
+                    .accessibilityLabel("Select date")
+                    .accessibilityHint("Choose a date to view scheduled activities")
 
                 Divider()
 
@@ -24,6 +26,8 @@ struct ScheduleView: View {
                     } label: {
                         Label("Regenerate".localized(), systemImage: "arrow.clockwise")
                     }
+                    .accessibilityLabel("Regenerate schedule")
+                    .accessibilityHint("Creates a new schedule starting from today")
                 }
             }
             .sheet(item: $selectedActivity) { scheduled in
@@ -41,6 +45,7 @@ struct ScheduleView: View {
                     Image(systemName: "calendar.badge.exclamationmark")
                         .font(.system(size: 50))
                         .foregroundColor(.secondary)
+                        .accessibilityHidden(true)
                     Text("No activities scheduled".localized())
                         .font(.headline)
                         .foregroundColor(.secondary)
@@ -49,6 +54,9 @@ struct ScheduleView: View {
                         .foregroundColor(.secondary)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel("No activities scheduled for this date")
+                .accessibilityHint("Tap regenerate button to create a schedule")
             } else {
                 ScrollView {
                     LazyVStack(spacing: 12) {
@@ -90,6 +98,8 @@ struct ScheduledActivityRow: View {
                     .font(.title2)
                     .foregroundColor(scheduledActivity.isCompleted ? .green : .gray)
             }
+            .accessibilityLabel(scheduledActivity.isCompleted ? "Completed" : "Not completed")
+            .accessibilityHint(scheduledActivity.isCompleted ? "Double tap to mark as incomplete" : "Double tap to mark as complete")
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(scheduledActivity.activity.name)
@@ -107,17 +117,21 @@ struct ScheduledActivityRow: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("\(scheduledActivity.activity.name), scheduled for \(scheduledActivity.scheduledTime.formatted(date: .omitted, time: .shortened)), duration \(scheduledActivity.activity.durationMinutes) minutes")
 
             Spacer()
 
             Image(systemName: scheduledActivity.activity.imageSystemName)
                 .foregroundColor(activityColor)
+                .accessibilityHidden(true)
         }
         .padding()
         .background(scheduledActivity.isCompleted ?
             Color.green.opacity(0.1) : Color(.secondarySystemBackground))
         .cornerRadius(10)
         .opacity(scheduledActivity.isCompleted ? 0.7 : 1.0)
+        .accessibilityElement(children: .contain)
     }
 
     var activityColor: Color {
@@ -321,6 +335,8 @@ struct PainLevelSheet: View {
                                         .font(.title2)
                                         .foregroundColor(.blue)
                                 }
+                                .accessibilityLabel("Decrease weight")
+                                .accessibilityHint("Decreases weight by 1 pound")
 
                                 Spacer()
 
@@ -331,6 +347,9 @@ struct PainLevelSheet: View {
                                         .font(.caption)
                                         .foregroundColor(.secondary)
                                 }
+                                .accessibilityElement(children: .combine)
+                                .accessibilityLabel("\(weightUsed) pounds")
+                                .accessibilityValue("\(weightUsed)")
 
                                 Spacer()
 
@@ -343,6 +362,8 @@ struct PainLevelSheet: View {
                                         .font(.title2)
                                         .foregroundColor(.blue)
                                 }
+                                .accessibilityLabel("Increase weight")
+                                .accessibilityHint("Increases weight by 1 pound")
                             }
                             .padding()
                             .background(Color(.secondarySystemBackground))
@@ -361,6 +382,7 @@ struct PainLevelSheet: View {
                                     HStack {
                                         Text(level.emoji)
                                             .font(.title2)
+                                            .accessibilityHidden(true)
 
                                         VStack(alignment: .leading) {
                                             Text(level.description)
@@ -376,6 +398,7 @@ struct PainLevelSheet: View {
                                         if selectedPainLevel == level {
                                             Image(systemName: "checkmark.circle.fill")
                                                 .foregroundColor(.blue)
+                                                .accessibilityHidden(true)
                                         }
                                     }
                                     .padding()
@@ -383,6 +406,9 @@ struct PainLevelSheet: View {
                                         Color.blue.opacity(0.1) : Color(.secondarySystemBackground))
                                     .cornerRadius(12)
                                 }
+                                .accessibilityLabel("Pain level: \(level.description)")
+                                .accessibilityHint(getPainDescription(for: level))
+                                .accessibilityAddTraits(selectedPainLevel == level ? [.isButton, .isSelected] : .isButton)
                             }
                         }
                         .padding(.horizontal)

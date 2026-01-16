@@ -27,6 +27,7 @@ struct TreatmentPlanView: View {
                 Image(systemName: "heart.text.square.fill")
                     .font(.title2)
                     .foregroundColor(.red)
+                    .accessibilityHidden(true)
 
                 VStack(alignment: .leading) {
                     Text(treatmentManager.currentPlan.name)
@@ -36,12 +37,15 @@ struct TreatmentPlanView: View {
                         .foregroundColor(.secondary)
                 }
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Current plan: \(treatmentManager.currentPlan.name), \(treatmentManager.currentPlan.description)")
 
             Divider()
 
             HStack {
                 Label(String(format: "%d %@", treatmentManager.currentPlan.activities.count, "Activities".localized()),
                       systemImage: "list.bullet")
+                    .accessibilityLabel("\(treatmentManager.currentPlan.activities.count) activities in plan")
 
                 Spacer()
 
@@ -51,6 +55,8 @@ struct TreatmentPlanView: View {
                     Label("Regenerate".localized(), systemImage: "arrow.clockwise")
                         .font(.caption)
                 }
+                .accessibilityLabel("Regenerate schedule")
+                .accessibilityHint("Creates a new schedule for your activities")
 
                 Menu {
                     ForEach(TreatmentPlan.defaultPlans) { plan in
@@ -62,6 +68,8 @@ struct TreatmentPlanView: View {
                     Label("Change Plan".localized(), systemImage: "arrow.triangle.2.circlepath")
                         .font(.caption)
                 }
+                .accessibilityLabel("Change treatment plan")
+                .accessibilityHint("Select a different treatment plan phase")
             }
             .font(.caption)
             .foregroundColor(.secondary)
@@ -78,6 +86,7 @@ struct TreatmentPlanView: View {
         return VStack(alignment: .leading, spacing: 12) {
             Text("Today's Progress".localized())
                 .font(.headline)
+                .accessibilityAddTraits(.isHeader)
 
             HStack {
                 VStack(alignment: .leading) {
@@ -88,12 +97,15 @@ struct TreatmentPlanView: View {
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel("Activities completed: \(completed) of \(todayActivities.count)")
 
                 Spacer()
 
                 CircularProgressView(progress: todayActivities
                     .isEmpty ? 0 : Double(completed) / Double(todayActivities.count))
                     .frame(width: 60, height: 60)
+                    .accessibilityLabel("Progress: \(todayActivities.isEmpty ? 0 : Int(Double(completed) / Double(todayActivities.count) * 100)) percent complete")
             }
         }
         .padding()
@@ -190,6 +202,7 @@ struct SessionSection: View {
                 HStack {
                     Image(systemName: icon)
                         .foregroundColor(.orange)
+                        .accessibilityHidden(true)
 
                     Text(title)
                         .font(.headline)
@@ -204,11 +217,15 @@ struct SessionSection: View {
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                         .font(.caption)
                         .foregroundColor(.secondary)
+                        .accessibilityHidden(true)
                 }
                 .padding()
                 .background(Color(.secondarySystemBackground))
             }
             .buttonStyle(PlainButtonStyle())
+            .accessibilityLabel("\(title) session: \(activities.filter(\.isCompleted).count) of \(activities.count) completed")
+            .accessibilityHint(isExpanded ? "Double tap to collapse" : "Double tap to expand")
+            .accessibilityAddTraits(.isButton)
 
             if isExpanded {
                 VStack(spacing: 8) {
@@ -277,10 +294,14 @@ struct SessionActivityRow: View {
                             .foregroundColor(scheduledActivity.isCompleted ? .green : .gray)
                     }
                     .buttonStyle(PlainButtonStyle())
+                    .accessibilityLabel(scheduledActivity.isCompleted ? "Completed" : "Not completed")
+                    .accessibilityHint(scheduledActivity.isCompleted ? "Double tap to mark as incomplete" : "Double tap to mark as complete")
+                    .accessibilityAddTraits(.isButton)
 
                     Image(systemName: scheduledActivity.activity.imageSystemName)
                         .foregroundColor(activityColor)
                         .frame(width: 30)
+                        .accessibilityHidden(true)
 
                     VStack(alignment: .leading, spacing: 2) {
                         Text(scheduledActivity.activity.name)
@@ -313,12 +334,15 @@ struct SessionActivityRow: View {
                             }
                         }
                     }
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel(activityAccessibilityLabel)
 
                     Spacer()
 
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                         .font(.caption)
                         .foregroundColor(.secondary)
+                        .accessibilityHidden(true)
                 }
                 .padding(.vertical, 8)
                 .padding(.horizontal, 12)
@@ -327,6 +351,9 @@ struct SessionActivityRow: View {
                 .opacity(scheduledActivity.isCompleted ? 0.6 : 1.0)
             }
             .buttonStyle(PlainButtonStyle())
+            .accessibilityLabel("Activity: \(scheduledActivity.activity.name)")
+            .accessibilityHint(isExpanded ? "Double tap to collapse details" : "Double tap to view details")
+            .accessibilityAddTraits(.isButton)
 
             // Expanded Details
             if isExpanded {
@@ -381,6 +408,23 @@ struct SessionActivityRow: View {
         case .medication: return .orange
         case .painTracking: return .red
         }
+    }
+
+    var activityAccessibilityLabel: String {
+        var label = scheduledActivity.activity.name
+        label += ", \(scheduledActivity.activity.durationMinutes) minutes"
+        if let reps = scheduledActivity.activity.repetitions,
+           let sets = scheduledActivity.activity.sets
+        {
+            label += ", \(sets) sets of \(reps) repetitions"
+        }
+        if let weight = scheduledActivity.weightUsedLbs {
+            label += ", using \(weight) pounds"
+        }
+        if scheduledActivity.isCompleted {
+            label += ", completed"
+        }
+        return label
     }
 }
 
@@ -492,6 +536,7 @@ struct DetailBadge: View {
             Image(systemName: icon)
                 .font(.caption)
                 .foregroundColor(.blue)
+                .accessibilityHidden(true)
             Text(value)
                 .font(.caption)
                 .bold()
@@ -499,6 +544,8 @@ struct DetailBadge: View {
                 .font(.caption2)
                 .foregroundColor(.secondary)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(label): \(value)")
     }
 }
 
@@ -529,6 +576,8 @@ struct WeightPickerSheet: View {
                             .font(.system(size: 40))
                             .foregroundColor(.blue)
                     }
+                    .accessibilityLabel("Decrease weight")
+                    .accessibilityHint("Decreases weight by 1 pound")
 
                     VStack {
                         Text("\(weightUsed)")
@@ -537,6 +586,9 @@ struct WeightPickerSheet: View {
                             .font(.title3)
                             .foregroundColor(.secondary)
                     }
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel("\(weightUsed) pounds")
+                    .accessibilityValue("\(weightUsed)")
 
                     Button {
                         if weightUsed < 100 {
@@ -547,6 +599,8 @@ struct WeightPickerSheet: View {
                             .font(.system(size: 40))
                             .foregroundColor(.blue)
                     }
+                    .accessibilityLabel("Increase weight")
+                    .accessibilityHint("Increases weight by 1 pound")
                 }
                 .padding()
 
@@ -563,6 +617,8 @@ struct WeightPickerSheet: View {
                         .cornerRadius(12)
                 }
                 .padding(.horizontal)
+                .accessibilityLabel("Complete activity with weight \(weightUsed) pounds")
+                .accessibilityHint("Marks the activity as complete and records the weight used")
 
                 Spacer()
             }
@@ -607,6 +663,7 @@ struct PainPickerSheet: View {
                             HStack {
                                 Text(level.emoji)
                                     .font(.title2)
+                                    .accessibilityHidden(true)
 
                                 VStack(alignment: .leading) {
                                     Text(level.description)
@@ -624,6 +681,8 @@ struct PainPickerSheet: View {
                             .cornerRadius(12)
                         }
                         .buttonStyle(PlainButtonStyle())
+                        .accessibilityLabel("Pain level: \(level.description)")
+                        .accessibilityHint(getPainDescription(for: level))
                     }
                 }
                 .padding(.horizontal)
@@ -671,6 +730,9 @@ struct CircularProgressView: View {
                 .font(.caption)
                 .bold()
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Progress")
+        .accessibilityValue("\(Int(progress * 100)) percent")
     }
 }
 

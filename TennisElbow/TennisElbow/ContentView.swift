@@ -14,6 +14,8 @@ struct ContentView: View {
                     Label("Treatment", systemImage: "heart.text.square")
                 }
                 .tag(0)
+                .accessibilityLabel("Treatment Plan")
+                .accessibilityHint("View your daily treatment activities and exercises")
 
             ScheduleView()
                 .environmentObject(treatmentManager)
@@ -21,6 +23,8 @@ struct ContentView: View {
                     Label("Schedule", systemImage: "calendar")
                 }
                 .tag(1)
+                .accessibilityLabel("Schedule")
+                .accessibilityHint("View and manage scheduled activities by date")
 
             TreatmentProgressView()
                 .environmentObject(treatmentManager)
@@ -28,6 +32,8 @@ struct ContentView: View {
                     Label("Progress", systemImage: "chart.line.uptrend.xyaxis")
                 }
                 .tag(2)
+                .accessibilityLabel("Progress")
+                .accessibilityHint("View your recovery progress and pain trends")
 
             SettingsView()
                 .environmentObject(treatmentManager)
@@ -35,6 +41,8 @@ struct ContentView: View {
                     Label("Settings", systemImage: "gear")
                 }
                 .tag(3)
+                .accessibilityLabel("Settings")
+                .accessibilityHint("Manage app settings and view information")
         }
         .sheet(isPresented: $showDisclaimer) {
             DisclaimerView(isInitialLaunch: !hasAcceptedDisclaimer)
@@ -43,9 +51,11 @@ struct ContentView: View {
             Button("Yes, Advance", role: nil) {
                 treatmentManager.userAcceptedAdvancement()
             }
+            .accessibilityLabel("Yes, advance to next treatment stage")
             Button("Not Yet", role: .cancel) {
                 treatmentManager.userDeclinedAdvancement()
             }
+            .accessibilityLabel("Not yet, continue current plan")
         } message: {
             Text(
                 """
