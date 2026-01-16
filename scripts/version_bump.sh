@@ -88,8 +88,8 @@ set_version() {
     local new_version=$1
     cd "${PROJECT_ROOT}"
     
-    # Validate version format before setting
-    if ! [[ "${new_version}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    # Validate version format before setting (allow X.Y or X.Y.Z format)
+    if ! [[ "${new_version}" =~ ^[0-9]+(\.[0-9]+){1,2}$ ]]; then
         echo -e "${RED}Error: Invalid version format for setting: ${new_version}${NC}" >&2
         exit 1
     fi
