@@ -32,6 +32,51 @@ platform :ios do
     sh "make device-list"
   end
 
+  desc "Bump version number - Usage: fastlane bump type:patch|minor|major|build"
+  lane :bump do |options|
+    type = options[:type] || "patch"
+    
+    unless ["major", "minor", "patch", "build"].include?(type)
+      UI.user_error!("Invalid bump type: #{type}. Use major, minor, patch, or build")
+    end
+    
+    UI.message "🔢 Bumping #{type} version..."
+    sh "../scripts/version_bump.sh #{type}"
+    UI.success "✓ Version bumped successfully!"
+  end
+
+  desc "Bump patch version (1.0.0 -> 1.0.1)"
+  lane :bump_patch do
+    bump(type: "patch")
+  end
+
+  desc "Bump minor version (1.0.0 -> 1.1.0)"
+  lane :bump_minor do
+    bump(type: "minor")
+  end
+
+  desc "Bump major version (1.0.0 -> 2.0.0)"
+  lane :bump_major do
+    bump(type: "major")
+  end
+
+  desc "Bump build number only"
+  lane :bump_build do
+    bump(type: "build")
+  end
+
+  desc "Get current version and build number"
+  lane :version do
+    project_file = "TennisElbow/TennisElbow.xcodeproj/project.pbxproj"
+    version = sh("grep -m 1 'MARKETING_VERSION = ' ../#{project_file} | sed 's/.*MARKETING_VERSION = \\(.*\\);/\\1/'").strip
+    build = sh("grep -m 1 'CURRENT_PROJECT_VERSION = ' ../#{project_file} | sed 's/.*CURRENT_PROJECT_VERSION = \\(.*\\);/\\1/'").strip
+    
+    UI.message "📱 Current Version Information:"
+    UI.message "   Marketing Version (CFBundleShortVersionString): #{version}"
+    UI.message "   Build Number (CFBundleVersion): #{build}"
+    UI.message "   Full Version: #{version} (#{build})"
+  end
+
   desc "Generate screenshots for App Store using fastlane snapshot"
   lane :screenshots do
     snapshot(
