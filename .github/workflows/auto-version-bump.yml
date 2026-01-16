@@ -71,9 +71,11 @@ jobs:
           git tag -a "v${{ steps.version.outputs.version }}" -m "Release version ${{ steps.version.outputs.version }}"
       
       - name: Push changes
+        env:
+          PATH: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
-          git push origin ${{ github.ref_name }}
-          git push origin "v${{ steps.version.outputs.version }}"
+          git push https://x-access-token:${PAT}@github.com/${{ github.repository }} ${{ github.ref_name }}
+          git push https://x-access-token:${PAT}@github.com/${{ github.repository }} "v${{ steps.version.outputs.version }}"
       
       - name: Create release summary
         run: |
