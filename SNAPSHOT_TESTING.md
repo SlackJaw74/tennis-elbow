@@ -287,7 +287,7 @@ The PR checks workflow has two main jobs:
   id: find-simulator
   run: |
     # Get the first available iPhone simulator
-    SIMULATOR_ID=$(xcrun simctl list devices available iPhone | grep -m 1 "iPhone" | grep -o -E '\(([A-Fa-f0-9-]+)\)' | tr -d '()')
+    SIMULATOR_ID=$(xcrun simctl list devices available iPhone | grep -m 1 "iPhone" | grep -o -E '[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}')
     echo "simulator_id=$SIMULATOR_ID" >> $GITHUB_OUTPUT
 
 - name: Run UI Tests
@@ -309,7 +309,7 @@ To add iPad testing to CI, add a new job to `.github/workflows/pr-checks.yml`:
 - name: Find available iPad simulator
   id: find-ipad-simulator
   run: |
-    SIMULATOR_ID=$(xcrun simctl list devices available iPad | grep -m 1 "iPad" | grep -o -E '\(([A-Fa-f0-9-]+)\)' | tr -d '()')
+    SIMULATOR_ID=$(xcrun simctl list devices available iPad | grep -m 1 "iPad" | grep -o -E '[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}')
     echo "simulator_id=$SIMULATOR_ID" >> $GITHUB_OUTPUT
 
 - name: Run iPad UI Tests
