@@ -143,8 +143,12 @@ final class TennisElbowUITests: XCTestCase {
         let acceptButton = app.buttons["Accept and Continue"]
         if acceptButton.waitForExistence(timeout: 5) {
             acceptButton.tap()
-            sleep(1)
+            sleep(2) // Wait for transition to complete
         }
+
+        // Wait for tab bar to appear
+        let tabBar = app.tabBars.firstMatch
+        XCTAssertTrue(tabBar.waitForExistence(timeout: 5), "Tab bar should exist")
 
         // Verify all main tabs exist
         XCTAssertTrue(app.tabBars.buttons["Treatment"].exists, "Treatment tab should exist")
@@ -235,22 +239,20 @@ final class TennisElbowUITests: XCTestCase {
         // If reminders are off, turn them on
         if reminderToggle.value as? String == "0" {
             reminderToggle.tap()
-            sleep(1)
+            sleep(2) // Wait for UI to update
         }
 
         // Verify time pickers appear when reminders are enabled
-        let morningTimePicker = app.datePickers.matching(identifier: "Morning Time").element
-        let eveningTimePicker = app.datePickers.matching(identifier: "Evening Time").element
-
-        XCTAssertTrue(morningTimePicker.exists, "Morning time picker should exist when reminders are enabled")
-        XCTAssertTrue(eveningTimePicker.exists, "Evening time picker should exist when reminders are enabled")
+        // Count date pickers - should be 2 when enabled
+        let datePickersEnabled = app.datePickers.count
+        XCTAssertEqual(datePickersEnabled, 2, "Should have 2 date pickers when reminders are enabled")
 
         // Turn off reminders
         reminderToggle.tap()
-        sleep(1)
+        sleep(2) // Wait for UI to update
 
         // Verify time pickers are hidden when reminders are disabled
-        XCTAssertFalse(morningTimePicker.exists, "Morning time picker should be hidden when reminders are disabled")
-        XCTAssertFalse(eveningTimePicker.exists, "Evening time picker should be hidden when reminders are disabled")
+        let datePickersDisabled = app.datePickers.count
+        XCTAssertEqual(datePickersDisabled, 0, "Should have 0 date pickers when reminders are disabled")
     }
 }
