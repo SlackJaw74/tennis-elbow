@@ -21,6 +21,18 @@ TennisElbow/
 └── PrivacyInfo.xcprivacy
 ```
 
+## Documentation Guidelines
+
+- **All documentation files MUST be placed in the `docs/` folder**, except for `README.md` which stays in the project root
+- This includes guides, architecture documents, testing documentation, and any other .md files
+- The root-level `README.md` serves as the main entry point and should link to documentation in `docs/`
+- Examples of documentation that belongs in `docs/`:
+  - `VERSION_MANAGEMENT.md`
+  - `SCREENSHOT_GUIDE.md`
+  - `SNAPSHOT_TESTING.md`
+  - `ARCHITECTURE_DIAGRAM.md`
+  - Any other technical or user-facing documentation
+
 ## Coding Standards
 
 ### Swift Style

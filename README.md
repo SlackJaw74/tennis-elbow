@@ -56,6 +56,7 @@ tennis-elbow/
 │   │   └── Views/                     # SwiftUI views
 │   └── TennisElbowUITests/            # UI tests and snapshot testing
 ├── fastlane/                          # Fastlane automation & screenshot lanes
+├── scripts/                           # Build and version management scripts
 ├── Makefile                           # Build automation
 ├── SCREENSHOT_GUIDE.md                # App Store screenshot guide
 └── SNAPSHOT_TESTING.md                # Comprehensive testing guide
@@ -65,6 +66,7 @@ tennis-elbow/
 
 - **[SCREENSHOT_GUIDE.md](SCREENSHOT_GUIDE.md)** - Manual and automated screenshot capture for App Store
 - **[SNAPSHOT_TESTING.md](SNAPSHOT_TESTING.md)** - Comprehensive UI snapshot testing guide
+- **[VERSION_MANAGEMENT.md](docs/VERSION_MANAGEMENT.md)** - Automatic version incrementing guide
 - **[PRIVACY_POLICY.md](TennisElbow/PRIVACY_POLICY.md)** - Privacy policy for App Store
 
 - Versioning: Update `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in the project.
@@ -107,6 +109,26 @@ Optional (recommended): Add a `PrivacyInfo.xcprivacy` manifest declaring no requ
       ```bash
       make archive
       ```
+   - Version management:
+      ```bash
+      # Show current version and build number
+      make version
+
+      # Bump patch version (1.0.0 -> 1.0.1)
+      make bump-patch
+
+      # Bump minor version (1.0.0 -> 1.1.0)
+      make bump-minor
+
+      # Bump major version (1.0.0 -> 2.0.0)
+      make bump-major
+
+      # Bump build number only
+      make bump-build
+
+      # Or use the script directly
+      ./scripts/version_bump.sh patch
+      ```
 
 - fastlane: CI-friendly automation lanes
    - Install fastlane:
@@ -142,6 +164,26 @@ Optional (recommended): Add a `PrivacyInfo.xcprivacy` manifest declaring no requ
    - Process screenshots for App Store:
       ```bash
       cd fastlane && bundle exec fastlane process_screenshots
+      ```
+   - Version management:
+      ```bash
+      # Show current version and build number
+      cd fastlane && bundle exec fastlane version
+
+      # Bump patch version (1.0.0 -> 1.0.1)
+      cd fastlane && bundle exec fastlane bump_patch
+
+      # Bump minor version (1.0.0 -> 1.1.0)
+      cd fastlane && bundle exec fastlane bump_minor
+
+      # Bump major version (1.0.0 -> 2.0.0)
+      cd fastlane && bundle exec fastlane bump_major
+
+      # Bump build number only
+      cd fastlane && bundle exec fastlane bump_build
+
+      # Or specify type directly
+      cd fastlane && bundle exec fastlane bump type:patch
       ```
 
 ## Snapshot Testing
@@ -198,7 +240,12 @@ All 9 major app screens are covered:
 
 ## App Store Submission Checklist
 
-- [ ] **Versioning**: Update `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in the project
+- [ ] **Versioning**: Update version numbers using automatic version management:
+  - Run `make bump-patch` for bug fixes (1.0.0 → 1.0.1)
+  - Run `make bump-minor` for new features (1.0.0 → 1.1.0)
+  - Run `make bump-major` for breaking changes (1.0.0 → 2.0.0)
+  - Or manually update `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in the project
+  - Check current version: `make version`
 - [ ] **Minimum iOS**: Set deployment target to 16.0 (required for Charts framework)
 - [ ] **App Icon**: Confirm 1024×1024 marketing icon and that build produces all sizes
 - [ ] **Privacy Policy**: Host [PRIVACY_POLICY.md](TennisElbow/PRIVACY_POLICY.md) on a public URL and add it in App Store Connect

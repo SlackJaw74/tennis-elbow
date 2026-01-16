@@ -8,6 +8,7 @@ APP := $(DERIVED)/Build/Products/Debug-iphonesimulator/TennisElbow.app
 
 .PHONY: sim-build sim-install sim-launch sim-run device-list clean archive open-xcode format
 .PHONY: ipad-build ipad-install ipad-launch ipad-run screenshots screenshots-iphone screenshots-ipad process-screenshots
+.PHONY: version bump-patch bump-minor bump-major bump-build
 
 sim-build:
 	open -a Simulator || true
@@ -91,3 +92,22 @@ open-xcode:
 format:
 	@command -v swiftformat >/dev/null 2>&1 || { echo "Error: swiftformat not installed. Install with: brew install swiftformat"; exit 1; }
 	cd TennisElbow && swiftformat .
+
+# Version Management
+version:
+	@echo "Current version information:"
+	@grep -m 1 "MARKETING_VERSION = " "$(PROJECT)/project.pbxproj" | sed 's/.*MARKETING_VERSION = \(.*\);/  Marketing Version: \1/'
+	@grep -m 1 "CURRENT_PROJECT_VERSION = " "$(PROJECT)/project.pbxproj" | sed 's/.*CURRENT_PROJECT_VERSION = \(.*\);/  Build Number: \1/'
+
+bump-patch:
+	@bash scripts/version_bump.sh patch
+
+bump-minor:
+	@bash scripts/version_bump.sh minor
+
+bump-major:
+	@bash scripts/version_bump.sh major
+
+bump-build:
+	@bash scripts/version_bump.sh build
+

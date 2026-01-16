@@ -47,13 +47,93 @@ Upload to App Store (credentials required)
 
 List available simulators
 
+### ios bump
+
+```sh
+[bundle exec] fastlane ios bump
+```
+
+Bump version number - Usage: fastlane bump type:patch|minor|major|build
+
+### ios bump_patch
+
+```sh
+[bundle exec] fastlane ios bump_patch
+```
+
+Bump patch version (1.0.0 -> 1.0.1)
+
+### ios bump_minor
+
+```sh
+[bundle exec] fastlane ios bump_minor
+```
+
+Bump minor version (1.0.0 -> 1.1.0)
+
+### ios bump_major
+
+```sh
+[bundle exec] fastlane ios bump_major
+```
+
+Bump major version (1.0.0 -> 2.0.0)
+
+### ios bump_build
+
+```sh
+[bundle exec] fastlane ios bump_build
+```
+
+Bump build number only
+
+### ios version
+
+```sh
+[bundle exec] fastlane ios version
+```
+
+Get current version and build number
+
 ### ios screenshots
 
 ```sh
 [bundle exec] fastlane ios screenshots
 ```
 
-Generate screenshots for App Store
+Generate screenshots for App Store using fastlane snapshot
+
+### ios screenshots_iphone
+
+```sh
+[bundle exec] fastlane ios screenshots_iphone
+```
+
+Capture screenshots for iPhone devices only
+
+### ios screenshots_ipad
+
+```sh
+[bundle exec] fastlane ios screenshots_ipad
+```
+
+Capture screenshots for iPad devices only
+
+### ios screenshots_all
+
+```sh
+[bundle exec] fastlane ios screenshots_all
+```
+
+Capture screenshots for all devices (iPhone and iPad)
+
+### ios process_screenshots
+
+```sh
+[bundle exec] fastlane ios process_screenshots
+```
+
+Process screenshots for App Store Connect (resize iPhone, copy iPad)
 
 ----
 
