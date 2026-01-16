@@ -64,6 +64,7 @@ tennis-elbow/
 
 ## Documentation
 
+- **[ACCESSIBILITY.md](docs/ACCESSIBILITY.md)** - Complete accessibility features and VoiceOver support guide
 - **[SCREENSHOT_GUIDE.md](SCREENSHOT_GUIDE.md)** - Manual and automated screenshot capture for App Store
 - **[SNAPSHOT_TESTING.md](SNAPSHOT_TESTING.md)** - Comprehensive UI snapshot testing guide
 - **[VERSION_MANAGEMENT.md](docs/VERSION_MANAGEMENT.md)** - Automatic version incrementing guide
