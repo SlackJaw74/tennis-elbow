@@ -239,8 +239,8 @@ final class TennisElbowUITests: XCTestCase {
         }
 
         // Verify time pickers appear when reminders are enabled
-        let morningTimePicker = app.datePickers["Morning Time"]
-        let eveningTimePicker = app.datePickers["Evening Time"]
+        let morningTimePicker = app.datePickers.matching(identifier: "Morning Time").element
+        let eveningTimePicker = app.datePickers.matching(identifier: "Evening Time").element
 
         XCTAssertTrue(morningTimePicker.exists, "Morning time picker should exist when reminders are enabled")
         XCTAssertTrue(eveningTimePicker.exists, "Evening time picker should exist when reminders are enabled")
