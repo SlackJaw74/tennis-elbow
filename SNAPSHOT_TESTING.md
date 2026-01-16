@@ -266,29 +266,58 @@ make ipad-run IPAD_DEVICE="iPad Air 11-inch (M2)"
 
 ### GitHub Actions Workflow
 
-The PR checks workflow runs UI tests on iPhone:
+The PR checks workflow has two main jobs:
 
+**Build Job** - Validates code compilation without requiring a specific simulator:
 ```yaml
+- name: Build app for simulator
+  run: |
+    xcodebuild \
+      -project "TennisElbow/TennisElbow.xcodeproj" \
+      -scheme "TennisElbow" \
+      -configuration Debug \
+      -sdk iphonesimulator \
+      -destination "generic/platform=iOS Simulator" \
+      clean build
+```
+
+**UI Tests Job** - Dynamically finds and uses the first available iPhone simulator:
+```yaml
+- name: Find available iPhone simulator
+  id: find-simulator
+  run: |
+    # Get the first available iPhone simulator
+    SIMULATOR_ID=$(xcrun simctl list devices available iPhone | grep -m 1 "iPhone" | grep -o -E '[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}')
+    echo "simulator_id=$SIMULATOR_ID" >> $GITHUB_OUTPUT
+
 - name: Run UI Tests
   run: |
     xcodebuild test \
       -project "TennisElbow/TennisElbow.xcodeproj" \
       -scheme "TennisElbow" \
-      -destination "platform=iOS Simulator,name=iPhone SE (3rd generation)" \
+      -destination "platform=iOS Simulator,id=${{ steps.find-simulator.outputs.simulator_id }}" \
       -enableCodeCoverage YES
 ```
 
+This approach ensures the workflow works in any CI environment regardless of which specific simulator devices are available.
+
 ### Adding iPad to CI
 
-To add iPad testing to CI, update `.github/workflows/pr-checks.yml`:
+To add iPad testing to CI, add a new job to `.github/workflows/pr-checks.yml`:
 
 ```yaml
+- name: Find available iPad simulator
+  id: find-ipad-simulator
+  run: |
+    SIMULATOR_ID=$(xcrun simctl list devices available iPad | grep -m 1 "iPad" | grep -o -E '[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}')
+    echo "simulator_id=$SIMULATOR_ID" >> $GITHUB_OUTPUT
+
 - name: Run iPad UI Tests
   run: |
     xcodebuild test \
       -project "TennisElbow/TennisElbow.xcodeproj" \
       -scheme "TennisElbow" \
-      -destination "platform=iOS Simulator,name=iPad Pro 13-inch (M5)" \
+      -destination "platform=iOS Simulator,id=${{ steps.find-ipad-simulator.outputs.simulator_id }}" \
       -enableCodeCoverage YES
 ```
 
@@ -296,13 +325,19 @@ To add iPad testing to CI, update `.github/workflows/pr-checks.yml`:
 
 ### Simulator Not Found
 
-**Problem:** Device not available
+**Problem:** Device not available in local development
+
 ```bash
 make device-list  # List all simulators
 xcrun simctl list devices available
 ```
 
-**Solution:** Use an available device name exactly as shown in the list.
+**Solution:** Use an available device name exactly as shown in the list, or use the Makefile's DEVICE variable:
+```bash
+make sim-run DEVICE="iPhone 16 Pro"
+```
+
+**Note:** The CI workflow automatically detects available simulators, so this issue only affects local development.
 
 ### Screenshots Not Captured
 
