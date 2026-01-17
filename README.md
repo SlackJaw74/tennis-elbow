@@ -212,12 +212,14 @@ make process-screenshots
 ### Supported Devices
 
 **iPhone:**
+
 - iPhone 17 Pro Max
 - iPhone 17 Pro
 - iPhone 17
 - iPhone 16e
 
 **iPad:**
+
 - iPad Pro 13-inch (M5)
 - iPad Pro 12.9-inch (6th generation)
 - iPad Air 11-inch (M2)
@@ -226,6 +228,7 @@ make process-screenshots
 ### UI Coverage
 
 All 9 major app screens are covered:
+
 1. Disclaimer View (initial launch)
 2. Treatment Plan View
 3. Schedule View
