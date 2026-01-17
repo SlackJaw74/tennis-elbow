@@ -1,0 +1,158 @@
+/* 
+  Localizable.strings (Dutch)
+  TennisElbow
+  Dutch localization support
+*/
+
+// MARK: - Common
+"Done" = "Klaar";
+"Cancel" = "Annuleren";
+"Close" = "Sluiten";
+"Complete" = "Voltooien";
+"lbs" = "lbs";
+
+// MARK: - DisclaimerView
+"Medical Disclaimer" = "Medische Disclaimer";
+"Important Information" = "Belangrijke Informatie";
+"disclaimer.description" = "Deze app is ontworpen om algemene informatie en begeleiding te bieden over tenniselleboog (laterale epicondylitis) oefeningen en behandelingsbenaderingen. Het is NIET bedoeld als vervanging voor professioneel medisch advies, diagnose of behandeling.";
+"Please Note:" = "Let op:";
+"disclaimer.consult_provider" = "Raadpleeg altijd een gekwalificeerde zorgverlener voordat u aan een behandelingsprogramma begint";
+"disclaimer.seek_attention" = "Als u ernstige pijn, zwelling of verergerende symptomen ervaart, zoek dan onmiddellijk medische hulp";
+"disclaimer.individual_results" = "Individuele resultaten kunnen variëren op basis van de ernst van uw aandoening";
+"disclaimer.not_replacement" = "Deze app vervangt geen fysiotherapie of medische behandeling";
+"disclaimer.stop_pain" = "Stop elke oefening die scherpe pijn veroorzaakt";
+"Medical Sources" = "Medische Bronnen";
+"disclaimer.sources_description" = "De oefeningen en behandelingsaanbevelingen in deze app zijn gebaseerd op medisch onderzoek dat door peers is beoordeeld en richtlijnen van erkende medische organisaties, waaronder de American Academy of Orthopaedic Surgeons (AAOS), Mayo Clinic en gepubliceerde studies in het British Journal of Sports Medicine.";
+"View All Medical Sources & Citations" = "Bekijk Alle Medische Bronnen & Citaten";
+"Data & Privacy" = "Gegevens & Privacy";
+"disclaimer.privacy_description" = "Al uw gezondheidsgegevens (activiteiten, pijnniveaus, voortgang) worden lokaal op uw apparaat opgeslagen. We verzamelen, verzenden of delen uw persoonlijke gezondheidsinformatie niet met derden.";
+"Accept and Continue" = "Accepteren en Doorgaan";
+"Decline" = "Weigeren";
+
+// MARK: - ScheduleView
+"Schedule" = "Schema";
+"Select Date" = "Selecteer Datum";
+"Regenerate" = "Opnieuw Genereren";
+"No activities scheduled" = "Geen activiteiten gepland";
+"schedule.generate_prompt" = "Genereer een schema om uw activiteiten te zien";
+"Scheduled Activity" = "Geplande Activiteit";
+"Pain Level:" = "Pijnniveau:";
+"Weight Used:" = "Gebruikt Gewicht:";
+"Notes" = "Notities";
+"Mark as Complete" = "Markeer als Voltooid";
+"Completed" = "Voltooid";
+"Completed at" = "Voltooid om";
+"How do you feel?" = "Hoe voelt u zich?";
+"schedule.feel_after_activity" = "Hoe voelt u zich na deze activiteit?";
+"Weight Used" = "Gebruikt Gewicht";
+"Complete Activity" = "Activiteit Voltooien";
+
+// MARK: - Pain Levels
+"pain.none" = "Geen ongemak";
+"pain.mild" = "Licht ongemak, gemakkelijk beheersbaar";
+"pain.moderate" = "Merkbare pijn maar draaglijk";
+"pain.severe" = "Aanzienlijke pijn, moeilijk te negeren";
+"pain.extreme" = "Intense pijn, moeilijk om activiteit af te ronden";
+
+// MARK: - TreatmentPlanView
+"Treatment Plan" = "Behandelplan";
+"Activities" = "Activiteiten";
+"Change Plan" = "Plan Wijzigen";
+"Today's Progress" = "Voortgang van Vandaag";
+"Activities Completed" = "Voltooide Activiteiten";
+"Morning" = "Ochtend";
+"Afternoon" = "Middag";
+"Evening" = "Avond";
+"Details" = "Details";
+"Instructions" = "Instructies";
+"Pain Level Check" = "Pijnniveau Controle";
+"treatment.feel_after_session" = "Hoe voelt u zich na deze sessie?";
+
+// MARK: - ProgressView
+"Progress" = "Voortgang";
+"Overall Completion" = "Algemene Voltooiing";
+"Total Activities" = "Totaal Activiteiten";
+"Remaining" = "Resterend";
+"Pain Trend" = "Pijntrend";
+"Average Pain Level" = "Gemiddeld Pijnniveau";
+"progress.track_pain_prompt" = "Voltooi activiteiten en volg pijn om trends te zien";
+"pain_history_30_days" = "Pijngeschiedenis (30 Dagen)";
+"No pain data recorded yet" = "Nog geen pijngegevens geregistreerd";
+"weight_progress_30_days" = "Gewichtsvoortgang (30 Dagen)";
+"Average:" = "Gemiddeld:";
+"Max:" = "Max:";
+"progress.track_weight_prompt" = "Voltooi oefeningsactiviteiten met gewichtsregistratie om voortgang te zien";
+"This Week" = "Deze Week";
+"progress.week_completion" = "%d%% voltooid deze week";
+"Activity Breakdown" = "Activiteitenoverzicht";
+"Recent Completions" = "Recente Voltooiingen";
+"No completed activities yet" = "Nog geen voltooide activiteiten";
+
+// MARK: - SettingsView
+"Notifications" = "Meldingen";
+"Enable Reminders" = "Herinneringen Inschakelen";
+"Morning Time" = "Ochtendtijd";
+"Evening Time" = "Avondtijd";
+"settings.notification_description" = "U ontvangt meldingen voor geplande activiteiten op uw aangepaste tijden";
+"Current Plan" = "Huidig Plan";
+"Regenerate Schedule" = "Schema Opnieuw Genereren";
+"Data Management" = "Gegevensbeheer";
+"Clear All Data" = "Alle Gegevens Wissen";
+"Information" = "Informatie";
+"About Tennis Elbow" = "Over Tenniselleboog";
+"Treatment Tips" = "Behandelingstips";
+"Medical Sources & Citations" = "Medische Bronnen & Citaten";
+"App Information" = "App-informatie";
+"Version" = "Versie";
+"Settings" = "Instellingen";
+"settings.clear_data_warning" = "Dit zal al uw geplande activiteiten, voltooide sessies en voortgangsgegevens verwijderen. Deze actie kan niet ongedaan worden gemaakt.";
+
+// MARK: - AboutTennisElbowView
+"What is Tennis Elbow?" = "Wat is Tenniselleboog?";
+"about.tennis_elbow_description" = "Tenniselleboog (laterale epicondylitis) is een pijnlijke aandoening die optreedt wanneer de pezen in uw elleboog overbelast raken, meestal door repetitieve bewegingen van de pols en arm. Ondanks de naam krijgen de meeste mensen met tenniselleboog het niet door tennis te spelen. Het komt vaak voor bij mensen wier werk repetitieve armbewegingen vereist.";
+"Common Symptoms" = "Veel Voorkomende Symptomen";
+"symptoms.pain_outer_part" = "Pijn of branderig gevoel aan de buitenkant van uw elleboog";
+"symptoms.weak_grip" = "Zwakke greepkracht";
+"symptoms.pain_lifting" = "Pijn bij het tillen of buigen van uw arm";
+"symptoms.pain_gripping" = "Pijn bij het vastpakken van voorwerpen";
+"Treatment Approach" = "Behandelingsbenadering";
+"about.treatment_description" = "Deze app volgt evidence-based behandelingsprotocollen die rust, ijstherapie, stretching en krachttraining combineren. De oefeningen zijn ontworpen om geleidelijk kracht op te bouwen in uw onderarmspieren en -pezen. De meeste mensen zien verbetering binnen 6-12 weken consistente behandeling.";
+"View All Medical Sources" = "Bekijk Alle Medische Bronnen";
+
+// MARK: - TipsView
+"Ice Regularly" = "Regelmatig IJzen";
+"tips.ice_description" = "Breng 3-4 keer per dag 15 minuten ijs aan om ontsteking te verminderen";
+"Start Slow" = "Begin Langzaam";
+"tips.start_slow_description" = "Begin met zachte stretchoefeningen en verhoog geleidelijk de intensiteit";
+"Be Consistent" = "Wees Consistent";
+"tips.consistency_description" = "Regelmatige, dagelijkse oefeningen zijn effectiever dan occasionele intense sessies";
+"Modify Activities" = "Activiteiten Aanpassen";
+"tips.modify_description" = "Vermijd of pas activiteiten aan die uw symptomen verergeren";
+"Warm Up" = "Opwarmen";
+"tips.warmup_description" = "Warm uw arm altijd op voor oefeningen";
+"Seek Professional Help" = "Zoek Professionele Hulp";
+"tips.professional_help_description" = "Als de pijn langer dan 6-8 weken aanhoudt, raadpleeg dan een zorgverlener";
+"Sources" = "Bronnen";
+"tips.sources_description" = "De bovenstaande informatie is gebaseerd op richtlijnen van de American Academy of Orthopaedic Surgeons (AAOS) en de behandelingsprotocollen van Mayo Clinic voor laterale epicondylitis.";
+
+// MARK: - ActivityDetailView
+"Evidence-Based" = "Evidence-Based";
+"View Research Source" = "Bekijk Onderzoeksbron";
+"Duration" = "Duur";
+"Reps" = "Herhalingen";
+"Sets" = "Sets";
+
+// MARK: - MedicalSourcesView
+"References & Citations" = "Referenties & Citaten";
+"medical_sources.description" = "De oefeningen en behandelingsaanbevelingen in deze app zijn gebaseerd op medisch onderzoek dat door peers is beoordeeld en klinische richtlijnen van erkende medische instellingen.";
+"Important Note" = "Belangrijke Opmerking";
+"medical_sources.disclaimer" = "Deze bronnen worden alleen ter informatie verstrekt. Raadpleeg altijd een gekwalificeerde zorgverlener voordat u aan een behandelingsprogramma begint.";
+"Peer-Reviewed Sources" = "Peer-Reviewed Bronnen";
+"Additional Resources" = "Aanvullende Bronnen";
+"National Institutes of Health (NIH)" = "National Institutes of Health (NIH)";
+"MedlinePlus - Tennis Elbow" = "MedlinePlus - Tenniselleboog";
+"Cleveland Clinic" = "Cleveland Clinic";
+"Lateral Epicondylitis Overview" = "Overzicht Laterale Epicondylitis";
+"NHS (UK National Health Service)" = "NHS (UK National Health Service)";
+"Tennis Elbow Treatment Guide" = "Behandelingsgids Tenniselleboog";
+"View Source" = "Bekijk Bron";

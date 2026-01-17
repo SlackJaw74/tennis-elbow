@@ -1,0 +1,158 @@
+/* 
+  Localizable.strings (German)
+  TennisElbow
+  German localization support
+*/
+
+// MARK: - Common
+"Done" = "Fertig";
+"Cancel" = "Abbrechen";
+"Close" = "Schließen";
+"Complete" = "Abschließen";
+"lbs" = "lbs";
+
+// MARK: - DisclaimerView
+"Medical Disclaimer" = "Medizinischer Haftungsausschluss";
+"Important Information" = "Wichtige Informationen";
+"disclaimer.description" = "Diese App wurde entwickelt, um allgemeine Informationen und Anleitungen zu Übungen und Behandlungsansätzen bei Tennisellenbogen (laterale Epicondylitis) bereitzustellen. Sie ist NICHT als Ersatz für professionelle medizinische Beratung, Diagnose oder Behandlung gedacht.";
+"Please Note:" = "Bitte beachten Sie:";
+"disclaimer.consult_provider" = "Konsultieren Sie immer einen qualifizierten Arzt, bevor Sie mit einem Behandlungsprogramm beginnen";
+"disclaimer.seek_attention" = "Bei starken Schmerzen, Schwellungen oder sich verschlimmernden Symptomen suchen Sie sofort einen Arzt auf";
+"disclaimer.individual_results" = "Die individuellen Ergebnisse können je nach Schwere Ihrer Erkrankung variieren";
+"disclaimer.not_replacement" = "Diese App ersetzt keine Physiotherapie oder medizinische Behandlung";
+"disclaimer.stop_pain" = "Beenden Sie jede Übung, die scharfe Schmerzen verursacht";
+"Medical Sources" = "Medizinische Quellen";
+"disclaimer.sources_description" = "Die Übungen und Behandlungsempfehlungen in dieser App basieren auf von Fachleuten begutachteter medizinischer Forschung und Richtlinien anerkannter medizinischer Organisationen, einschließlich der American Academy of Orthopaedic Surgeons (AAOS), der Mayo Clinic und veröffentlichten Studien im British Journal of Sports Medicine.";
+"View All Medical Sources & Citations" = "Alle medizinischen Quellen & Zitate anzeigen";
+"Data & Privacy" = "Daten & Datenschutz";
+"disclaimer.privacy_description" = "Alle Ihre Gesundheitsdaten (Aktivitäten, Schmerzniveaus, Fortschritte) werden lokal auf Ihrem Gerät gespeichert. Wir sammeln, übertragen oder teilen Ihre persönlichen Gesundheitsinformationen nicht mit Dritten.";
+"Accept and Continue" = "Akzeptieren und fortfahren";
+"Decline" = "Ablehnen";
+
+// MARK: - ScheduleView
+"Schedule" = "Zeitplan";
+"Select Date" = "Datum auswählen";
+"Regenerate" = "Neu generieren";
+"No activities scheduled" = "Keine Aktivitäten geplant";
+"schedule.generate_prompt" = "Erstellen Sie einen Zeitplan, um Ihre Aktivitäten zu sehen";
+"Scheduled Activity" = "Geplante Aktivität";
+"Pain Level:" = "Schmerzniveau:";
+"Weight Used:" = "Verwendetes Gewicht:";
+"Notes" = "Notizen";
+"Mark as Complete" = "Als abgeschlossen markieren";
+"Completed" = "Abgeschlossen";
+"Completed at" = "Abgeschlossen um";
+"How do you feel?" = "Wie fühlen Sie sich?";
+"schedule.feel_after_activity" = "Wie fühlen Sie sich nach dieser Aktivität?";
+"Weight Used" = "Verwendetes Gewicht";
+"Complete Activity" = "Aktivität abschließen";
+
+// MARK: - Pain Levels
+"pain.none" = "Keine Beschwerden";
+"pain.mild" = "Leichte Beschwerden, gut zu bewältigen";
+"pain.moderate" = "Merkliche Schmerzen, aber erträglich";
+"pain.severe" = "Erhebliche Schmerzen, schwer zu ignorieren";
+"pain.extreme" = "Intensive Schmerzen, schwierig die Aktivität abzuschließen";
+
+// MARK: - TreatmentPlanView
+"Treatment Plan" = "Behandlungsplan";
+"Activities" = "Aktivitäten";
+"Change Plan" = "Plan ändern";
+"Today's Progress" = "Heutiger Fortschritt";
+"Activities Completed" = "Abgeschlossene Aktivitäten";
+"Morning" = "Morgen";
+"Afternoon" = "Nachmittag";
+"Evening" = "Abend";
+"Details" = "Details";
+"Instructions" = "Anweisungen";
+"Pain Level Check" = "Schmerzniveau-Überprüfung";
+"treatment.feel_after_session" = "Wie fühlen Sie sich nach dieser Sitzung?";
+
+// MARK: - ProgressView
+"Progress" = "Fortschritt";
+"Overall Completion" = "Gesamtabschluss";
+"Total Activities" = "Gesamte Aktivitäten";
+"Remaining" = "Verbleibend";
+"Pain Trend" = "Schmerztrend";
+"Average Pain Level" = "Durchschnittliches Schmerzniveau";
+"progress.track_pain_prompt" = "Schließen Sie Aktivitäten ab und verfolgen Sie Schmerzen, um Trends zu sehen";
+"pain_history_30_days" = "Schmerzverlauf (30 Tage)";
+"No pain data recorded yet" = "Noch keine Schmerzdaten aufgezeichnet";
+"weight_progress_30_days" = "Gewichtsfortschritt (30 Tage)";
+"Average:" = "Durchschnitt:";
+"Max:" = "Max:";
+"progress.track_weight_prompt" = "Schließen Sie Übungsaktivitäten mit Gewichtsverfolgung ab, um Fortschritte zu sehen";
+"This Week" = "Diese Woche";
+"progress.week_completion" = "%d%% diese Woche abgeschlossen";
+"Activity Breakdown" = "Aktivitätsaufschlüsselung";
+"Recent Completions" = "Kürzliche Abschlüsse";
+"No completed activities yet" = "Noch keine abgeschlossenen Aktivitäten";
+
+// MARK: - SettingsView
+"Notifications" = "Benachrichtigungen";
+"Enable Reminders" = "Erinnerungen aktivieren";
+"Morning Time" = "Morgenzeit";
+"Evening Time" = "Abendzeit";
+"settings.notification_description" = "Sie erhalten Benachrichtigungen für geplante Aktivitäten zu Ihren benutzerdefinierten Zeiten";
+"Current Plan" = "Aktueller Plan";
+"Regenerate Schedule" = "Zeitplan neu generieren";
+"Data Management" = "Datenverwaltung";
+"Clear All Data" = "Alle Daten löschen";
+"Information" = "Informationen";
+"About Tennis Elbow" = "Über Tennisellenbogen";
+"Treatment Tips" = "Behandlungstipps";
+"Medical Sources & Citations" = "Medizinische Quellen & Zitate";
+"App Information" = "App-Informationen";
+"Version" = "Version";
+"Settings" = "Einstellungen";
+"settings.clear_data_warning" = "Dadurch werden alle Ihre geplanten Aktivitäten, abgeschlossenen Sitzungen und Fortschrittsdaten gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";
+
+// MARK: - AboutTennisElbowView
+"What is Tennis Elbow?" = "Was ist Tennisellenbogen?";
+"about.tennis_elbow_description" = "Tennisellenbogen (laterale Epicondylitis) ist eine schmerzhafte Erkrankung, die auftritt, wenn die Sehnen in Ihrem Ellenbogen überlastet werden, normalerweise durch wiederholte Bewegungen des Handgelenks und Arms. Trotz des Namens bekommen die meisten Menschen mit Tennisellenbogen ihn nicht durch Tennis. Er ist häufig bei Menschen, deren Arbeit sich wiederholende Armbewegungen erfordert.";
+"Common Symptoms" = "Häufige Symptome";
+"symptoms.pain_outer_part" = "Schmerzen oder Brennen an der Außenseite Ihres Ellenbogens";
+"symptoms.weak_grip" = "Schwache Griffkraft";
+"symptoms.pain_lifting" = "Schmerzen beim Heben oder Beugen Ihres Arms";
+"symptoms.pain_gripping" = "Schmerzen beim Greifen von Gegenständen";
+"Treatment Approach" = "Behandlungsansatz";
+"about.treatment_description" = "Diese App folgt evidenzbasierten Behandlungsprotokollen, die Ruhe, Eistherapie, Dehnübungen und Kräftigungsübungen kombinieren. Die Übungen sind darauf ausgelegt, die Kraft in Ihren Unterarmmuskeln und -sehnen schrittweise aufzubauen. Die meisten Menschen sehen innerhalb von 6-12 Wochen konsequenter Behandlung Verbesserungen.";
+"View All Medical Sources" = "Alle medizinischen Quellen anzeigen";
+
+// MARK: - TipsView
+"Ice Regularly" = "Regelmäßig kühlen";
+"tips.ice_description" = "Tragen Sie 3-4 Mal täglich 15 Minuten lang Eis auf, um Entzündungen zu reduzieren";
+"Start Slow" = "Langsam beginnen";
+"tips.start_slow_description" = "Beginnen Sie mit sanften Dehnübungen und steigern Sie die Intensität allmählich";
+"Be Consistent" = "Konsequent sein";
+"tips.consistency_description" = "Regelmäßige, tägliche Übungen sind effektiver als gelegentliche intensive Sitzungen";
+"Modify Activities" = "Aktivitäten anpassen";
+"tips.modify_description" = "Vermeiden oder modifizieren Sie Aktivitäten, die Ihre Symptome verschlimmern";
+"Warm Up" = "Aufwärmen";
+"tips.warmup_description" = "Wärmen Sie Ihren Arm immer vor den Übungen auf";
+"Seek Professional Help" = "Professionelle Hilfe suchen";
+"tips.professional_help_description" = "Wenn die Schmerzen länger als 6-8 Wochen andauern, konsultieren Sie einen Arzt";
+"Sources" = "Quellen";
+"tips.sources_description" = "Die obigen Informationen basieren auf Richtlinien der American Academy of Orthopaedic Surgeons (AAOS) und den Behandlungsprotokollen der Mayo Clinic für laterale Epicondylitis.";
+
+// MARK: - ActivityDetailView
+"Evidence-Based" = "Evidenzbasiert";
+"View Research Source" = "Forschungsquelle anzeigen";
+"Duration" = "Dauer";
+"Reps" = "Wiederholungen";
+"Sets" = "Sätze";
+
+// MARK: - MedicalSourcesView
+"References & Citations" = "Referenzen & Zitate";
+"medical_sources.description" = "Die Übungen und Behandlungsempfehlungen in dieser App basieren auf von Fachleuten begutachteter medizinischer Forschung und klinischen Richtlinien anerkannter medizinischer Institutionen.";
+"Important Note" = "Wichtiger Hinweis";
+"medical_sources.disclaimer" = "Diese Quellen werden nur zu Informationszwecken bereitgestellt. Konsultieren Sie immer einen qualifizierten Arzt, bevor Sie mit einem Behandlungsprogramm beginnen.";
+"Peer-Reviewed Sources" = "Von Fachleuten begutachtete Quellen";
+"Additional Resources" = "Zusätzliche Ressourcen";
+"National Institutes of Health (NIH)" = "National Institutes of Health (NIH)";
+"MedlinePlus - Tennis Elbow" = "MedlinePlus - Tennisellenbogen";
+"Cleveland Clinic" = "Cleveland Clinic";
+"Lateral Epicondylitis Overview" = "Überblick über laterale Epicondylitis";
+"NHS (UK National Health Service)" = "NHS (Britischer Nationaler Gesundheitsdienst)";
+"Tennis Elbow Treatment Guide" = "Behandlungsleitfaden für Tennisellenbogen";
+"View Source" = "Quelle anzeigen";

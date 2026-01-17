@@ -1,0 +1,158 @@
+/* 
+  Localizable.strings (Chinese Simplified)
+  TennisElbow
+  Chinese Simplified localization support
+*/
+
+// MARK: - Common
+"Done" = "完成";
+"Cancel" = "取消";
+"Close" = "关闭";
+"Complete" = "完成";
+"lbs" = "磅";
+
+// MARK: - DisclaimerView
+"Medical Disclaimer" = "医疗免责声明";
+"Important Information" = "重要信息";
+"disclaimer.description" = "本应用程序旨在提供有关网球肘（肱骨外上髁炎）锻炼和治疗方法的一般信息和指导。它不能替代专业医疗建议、诊断或治疗。";
+"Please Note:" = "请注意：";
+"disclaimer.consult_provider" = "在开始任何治疗计划之前，请务必咨询合格的医疗保健提供者";
+"disclaimer.seek_attention" = "如果您出现剧烈疼痛、肿胀或症状恶化，请立即就医";
+"disclaimer.individual_results" = "个人效果可能因病情严重程度而异";
+"disclaimer.not_replacement" = "本应用程序不能替代物理治疗或医疗治疗";
+"disclaimer.stop_pain" = "停止任何引起剧烈疼痛的运动";
+"Medical Sources" = "医疗来源";
+"disclaimer.sources_description" = "本应用程序中的锻炼和治疗建议基于同行评审的医学研究和公认医疗组织的指南，包括美国骨科医师学会（AAOS）、梅奥诊所以及《英国运动医学杂志》上发表的研究。";
+"View All Medical Sources & Citations" = "查看所有医疗来源和引用";
+"Data & Privacy" = "数据与隐私";
+"disclaimer.privacy_description" = "您的所有健康数据（活动、疼痛级别、进度）都存储在您的设备本地。我们不会收集、传输或与第三方共享您的个人健康信息。";
+"Accept and Continue" = "接受并继续";
+"Decline" = "拒绝";
+
+// MARK: - ScheduleView
+"Schedule" = "日程安排";
+"Select Date" = "选择日期";
+"Regenerate" = "重新生成";
+"No activities scheduled" = "没有安排的活动";
+"schedule.generate_prompt" = "生成日程安排以查看您的活动";
+"Scheduled Activity" = "已安排的活动";
+"Pain Level:" = "疼痛级别：";
+"Weight Used:" = "使用的重量：";
+"Notes" = "备注";
+"Mark as Complete" = "标记为完成";
+"Completed" = "已完成";
+"Completed at" = "完成时间";
+"How do you feel?" = "您感觉如何？";
+"schedule.feel_after_activity" = "此活动后您感觉如何？";
+"Weight Used" = "使用的重量";
+"Complete Activity" = "完成活动";
+
+// MARK: - Pain Levels
+"pain.none" = "完全没有不适";
+"pain.mild" = "轻微不适，易于管理";
+"pain.moderate" = "明显疼痛但可以忍受";
+"pain.severe" = "严重疼痛，难以忽视";
+"pain.extreme" = "剧烈疼痛，难以完成活动";
+
+// MARK: - TreatmentPlanView
+"Treatment Plan" = "治疗计划";
+"Activities" = "活动";
+"Change Plan" = "更改计划";
+"Today's Progress" = "今日进度";
+"Activities Completed" = "已完成的活动";
+"Morning" = "早晨";
+"Afternoon" = "下午";
+"Evening" = "晚上";
+"Details" = "详情";
+"Instructions" = "说明";
+"Pain Level Check" = "疼痛级别检查";
+"treatment.feel_after_session" = "此次训练后您感觉如何？";
+
+// MARK: - ProgressView
+"Progress" = "进度";
+"Overall Completion" = "总体完成度";
+"Total Activities" = "总活动数";
+"Remaining" = "剩余";
+"Pain Trend" = "疼痛趋势";
+"Average Pain Level" = "平均疼痛级别";
+"progress.track_pain_prompt" = "完成活动并跟踪疼痛以查看趋势";
+"pain_history_30_days" = "疼痛历史记录（30天）";
+"No pain data recorded yet" = "尚未记录疼痛数据";
+"weight_progress_30_days" = "重量进度（30天）";
+"Average:" = "平均：";
+"Max:" = "最大：";
+"progress.track_weight_prompt" = "完成带有重量跟踪的锻炼活动以查看进度";
+"This Week" = "本周";
+"progress.week_completion" = "本周完成%d%%";
+"Activity Breakdown" = "活动明细";
+"Recent Completions" = "最近完成";
+"No completed activities yet" = "尚无已完成的活动";
+
+// MARK: - SettingsView
+"Notifications" = "通知";
+"Enable Reminders" = "启用提醒";
+"Morning Time" = "早晨时间";
+"Evening Time" = "晚上时间";
+"settings.notification_description" = "您将在自定义时间收到已安排活动的通知";
+"Current Plan" = "当前计划";
+"Regenerate Schedule" = "重新生成日程安排";
+"Data Management" = "数据管理";
+"Clear All Data" = "清除所有数据";
+"Information" = "信息";
+"About Tennis Elbow" = "关于网球肘";
+"Treatment Tips" = "治疗提示";
+"Medical Sources & Citations" = "医疗来源和引用";
+"App Information" = "应用程序信息";
+"Version" = "版本";
+"Settings" = "设置";
+"settings.clear_data_warning" = "这将删除您所有已安排的活动、已完成的训练和进度数据。此操作无法撤消。";
+
+// MARK: - AboutTennisElbowView
+"What is Tennis Elbow?" = "什么是网球肘？";
+"about.tennis_elbow_description" = "网球肘（肱骨外上髁炎）是一种疼痛性疾病，通常由手腕和手臂的重复性运动导致肘部肌腱过度负荷时发生。尽管名称如此，但大多数患网球肘的人并不打网球。这种情况在工作需要重复性手臂运动的人群中很常见。";
+"Common Symptoms" = "常见症状";
+"symptoms.pain_outer_part" = "肘部外侧疼痛或灼烧感";
+"symptoms.weak_grip" = "握力减弱";
+"symptoms.pain_lifting" = "抬起或弯曲手臂时疼痛";
+"symptoms.pain_gripping" = "抓握物体时疼痛";
+"Treatment Approach" = "治疗方法";
+"about.treatment_description" = "本应用程序遵循基于证据的治疗方案，结合休息、冰敷疗法、拉伸和加强锻炼。这些锻炼旨在逐步增强您的前臂肌肉和肌腱的力量。大多数人在坚持治疗6-12周内会看到改善。";
+"View All Medical Sources" = "查看所有医疗来源";
+
+// MARK: - TipsView
+"Ice Regularly" = "定期冰敷";
+"tips.ice_description" = "每天冰敷15分钟，每天3-4次以减轻炎症";
+"Start Slow" = "慢慢开始";
+"tips.start_slow_description" = "从温和的拉伸开始，逐渐增加强度";
+"Be Consistent" = "保持一致";
+"tips.consistency_description" = "定期的日常锻炼比偶尔的高强度训练更有效";
+"Modify Activities" = "调整活动";
+"tips.modify_description" = "避免或调整会加重症状的活动";
+"Warm Up" = "热身";
+"tips.warmup_description" = "锻炼前务必热身您的手臂";
+"Seek Professional Help" = "寻求专业帮助";
+"tips.professional_help_description" = "如果疼痛持续超过6-8周，请咨询医疗保健提供者";
+"Sources" = "来源";
+"tips.sources_description" = "以上信息基于美国骨科医师学会（AAOS）的指南和梅奥诊所的肱骨外上髁炎治疗方案。";
+
+// MARK: - ActivityDetailView
+"Evidence-Based" = "基于证据";
+"View Research Source" = "查看研究来源";
+"Duration" = "持续时间";
+"Reps" = "重复次数";
+"Sets" = "组数";
+
+// MARK: - MedicalSourcesView
+"References & Citations" = "参考文献和引用";
+"medical_sources.description" = "本应用程序中的锻炼和治疗建议基于同行评审的医学研究和公认医疗机构的临床指南。";
+"Important Note" = "重要提示";
+"medical_sources.disclaimer" = "这些来源仅供参考。在开始任何治疗计划之前，请务必咨询合格的医疗保健提供者。";
+"Peer-Reviewed Sources" = "同行评审来源";
+"Additional Resources" = "其他资源";
+"National Institutes of Health (NIH)" = "美国国立卫生研究院（NIH）";
+"MedlinePlus - Tennis Elbow" = "MedlinePlus - 网球肘";
+"Cleveland Clinic" = "克利夫兰诊所";
+"Lateral Epicondylitis Overview" = "肱骨外上髁炎概述";
+"NHS (UK National Health Service)" = "NHS（英国国家医疗服务体系）";
+"Tennis Elbow Treatment Guide" = "网球肘治疗指南";
+"View Source" = "查看来源";

@@ -125,7 +125,7 @@ platform :ios do
 
   desc "Process screenshots for App Store Connect (resize iPhone, copy iPad)"
   lane :process_screenshots do
-    screenshot_dir = "fastlane/screenshots/en-US"
+    languages = ["en-US", "es-ES", "fr-FR", "de-DE", "ja-JP", "zh-Hans", "pt-PT", "it-IT", "nl-NL", "ko-KR"]
     output_dir = "fastlane/screenshots/app-store-ready"
     
     # Create output directory
@@ -134,41 +134,58 @@ platform :ios do
     UI.message "🔄 Processing screenshots for App Store Connect..."
     UI.message ""
     
-    # iPhone screenshots - resize to 1284x2778 (6.7" display)
-    iphone_target_width = 1284
-    iphone_target_height = 2778
-    
-    UI.message "--- iPhone Screenshots ---"
-    Dir.glob("#{screenshot_dir}/iPhone 17 Pro Max-*.png").each do |file|
-      filename = File.basename(file)
-      new_filename = filename.gsub("iPhone 17 Pro Max-", "iPhone-")
-      output_file = "#{output_dir}/#{new_filename}"
+    languages.each do |language|
+      screenshot_dir = "fastlane/screenshots/#{language}"
       
-      UI.message "Processing: #{filename}"
-      UI.message "  → Resizing to #{iphone_target_width}x#{iphone_target_height}"
+      # Skip if directory doesn't exist
+      unless Dir.exist?(screenshot_dir)
+        UI.message "⚠️  Skipping #{language} - directory not found"
+        next
+      end
       
-      sh "sips -z #{iphone_target_height} #{iphone_target_width} '#{file}' --out '#{output_file}' > /dev/null 2>&1"
+      lang_output_dir = "#{output_dir}/#{language}"
+      sh "mkdir -p #{lang_output_dir}"
       
-      UI.message "  ✓ Saved to: #{output_file}"
-    end
-    
-    UI.message ""
-    UI.message "--- iPad Screenshots ---"
-    # iPad screenshots - copy at original resolution
-    Dir.glob("#{screenshot_dir}/iPad*.png").each do |file|
-      filename = File.basename(file)
-      # Extract device model for better organization
-      device_model = filename.match(/^(iPad[^-]*)/)[1] rescue "iPad"
-      screenshot_name = filename.match(/-(\d\d-.*)\.png$/)[1] rescue filename
-      new_filename = "#{device_model}-#{screenshot_name}"
-      output_file = "#{output_dir}/#{new_filename}"
+      UI.message "--- Processing #{language} ---"
       
-      UI.message "Processing: #{filename}"
-      UI.message "  → Copying original resolution (no resize needed)"
+      # iPhone screenshots - resize to 1284x2778 (6.7" display)
+      iphone_target_width = 1284
+      iphone_target_height = 2778
       
-      sh "cp '#{file}' '#{output_file}'"
+      UI.message "--- iPhone Screenshots ---"
+      Dir.glob("#{screenshot_dir}/iPhone 17 Pro Max-*.png").each do |file|
+        filename = File.basename(file)
+        new_filename = filename.gsub("iPhone 17 Pro Max-", "iPhone-")
+        output_file = "#{lang_output_dir}/#{new_filename}"
+        
+        UI.message "Processing: #{filename}"
+        UI.message "  → Resizing to #{iphone_target_width}x#{iphone_target_height}"
+        
+        sh "sips -z #{iphone_target_height} #{iphone_target_width} '#{file}' --out '#{output_file}' > /dev/null 2>&1"
+        
+        UI.message "  ✓ Saved to: #{output_file}"
+      end
       
-      UI.message "  ✓ Saved to: #{output_file}"
+      UI.message ""
+      UI.message "--- iPad Screenshots ---"
+      # iPad screenshots - copy at original resolution
+      Dir.glob("#{screenshot_dir}/iPad*.png").each do |file|
+        filename = File.basename(file)
+        # Extract device model for better organization
+        device_model = filename.match(/^(iPad[^-]*)/)[1] rescue "iPad"
+        screenshot_name = filename.match(/-(\d\d-.*)\.png$/)[1] rescue filename
+        new_filename = "#{device_model}-#{screenshot_name}"
+        output_file = "#{lang_output_dir}/#{new_filename}"
+        
+        UI.message "Processing: #{filename}"
+        UI.message "  → Copying original resolution (no resize needed)"
+        
+        sh "cp '#{file}' '#{output_file}'"
+        
+        UI.message "  ✓ Saved to: #{output_file}"
+      end
+      
+      UI.message ""
     end
     
     UI.message ""

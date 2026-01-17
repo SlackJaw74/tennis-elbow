@@ -1,0 +1,158 @@
+/* 
+  Localizable.strings (Italian)
+  TennisElbow
+  Italian localization support
+*/
+
+// MARK: - Common
+"Done" = "Fatto";
+"Cancel" = "Annulla";
+"Close" = "Chiudi";
+"Complete" = "Completa";
+"lbs" = "lbs";
+
+// MARK: - DisclaimerView
+"Medical Disclaimer" = "Disclaimer Medico";
+"Important Information" = "Informazioni Importanti";
+"disclaimer.description" = "Questa app è progettata per fornire informazioni generali e indicazioni su esercizi e approcci terapeutici per il gomito del tennista (epicondilite laterale). NON è destinata a sostituire consulenza medica professionale, diagnosi o trattamento.";
+"Please Note:" = "Nota Bene:";
+"disclaimer.consult_provider" = "Consulta sempre un operatore sanitario qualificato prima di iniziare qualsiasi programma di trattamento";
+"disclaimer.seek_attention" = "Se avverti dolore intenso, gonfiore o sintomi che peggiorano, cerca immediatamente assistenza medica";
+"disclaimer.individual_results" = "I risultati individuali possono variare in base alla gravità della tua condizione";
+"disclaimer.not_replacement" = "Questa app non sostituisce la fisioterapia o il trattamento medico";
+"disclaimer.stop_pain" = "Interrompi qualsiasi esercizio che causa dolore acuto";
+"Medical Sources" = "Fonti Mediche";
+"disclaimer.sources_description" = "Gli esercizi e le raccomandazioni terapeutiche in questa app si basano su ricerche mediche sottoposte a revisione paritaria e linee guida di organizzazioni mediche riconosciute, tra cui l'American Academy of Orthopaedic Surgeons (AAOS), la Mayo Clinic e studi pubblicati nel British Journal of Sports Medicine.";
+"View All Medical Sources & Citations" = "Visualizza Tutte le Fonti Mediche e Citazioni";
+"Data & Privacy" = "Dati e Privacy";
+"disclaimer.privacy_description" = "Tutti i tuoi dati sulla salute (attività, livelli di dolore, progressi) sono archiviati localmente sul tuo dispositivo. Non raccogliamo, trasmettiamo o condividiamo le tue informazioni sanitarie personali con terze parti.";
+"Accept and Continue" = "Accetta e Continua";
+"Decline" = "Rifiuta";
+
+// MARK: - ScheduleView
+"Schedule" = "Programma";
+"Select Date" = "Seleziona Data";
+"Regenerate" = "Rigenera";
+"No activities scheduled" = "Nessuna attività programmata";
+"schedule.generate_prompt" = "Genera un programma per vedere le tue attività";
+"Scheduled Activity" = "Attività Programmata";
+"Pain Level:" = "Livello di Dolore:";
+"Weight Used:" = "Peso Utilizzato:";
+"Notes" = "Note";
+"Mark as Complete" = "Segna come Completata";
+"Completed" = "Completata";
+"Completed at" = "Completata alle";
+"How do you feel?" = "Come ti senti?";
+"schedule.feel_after_activity" = "Come ti senti dopo questa attività?";
+"Weight Used" = "Peso Utilizzato";
+"Complete Activity" = "Completa Attività";
+
+// MARK: - Pain Levels
+"pain.none" = "Nessun disagio";
+"pain.mild" = "Lieve disagio, facilmente gestibile";
+"pain.moderate" = "Dolore evidente ma tollerabile";
+"pain.severe" = "Dolore significativo, difficile da ignorare";
+"pain.extreme" = "Dolore intenso, difficile completare l'attività";
+
+// MARK: - TreatmentPlanView
+"Treatment Plan" = "Piano di Trattamento";
+"Activities" = "Attività";
+"Change Plan" = "Cambia Piano";
+"Today's Progress" = "Progressi di Oggi";
+"Activities Completed" = "Attività Completate";
+"Morning" = "Mattina";
+"Afternoon" = "Pomeriggio";
+"Evening" = "Sera";
+"Details" = "Dettagli";
+"Instructions" = "Istruzioni";
+"Pain Level Check" = "Controllo Livello di Dolore";
+"treatment.feel_after_session" = "Come ti senti dopo questa sessione?";
+
+// MARK: - ProgressView
+"Progress" = "Progresso";
+"Overall Completion" = "Completamento Complessivo";
+"Total Activities" = "Attività Totali";
+"Remaining" = "Rimanenti";
+"Pain Trend" = "Tendenza del Dolore";
+"Average Pain Level" = "Livello Medio di Dolore";
+"progress.track_pain_prompt" = "Completa le attività e monitora il dolore per vedere le tendenze";
+"pain_history_30_days" = "Cronologia Dolore (30 Giorni)";
+"No pain data recorded yet" = "Nessun dato sul dolore ancora registrato";
+"weight_progress_30_days" = "Progresso Pesi (30 Giorni)";
+"Average:" = "Media:";
+"Max:" = "Max:";
+"progress.track_weight_prompt" = "Completa attività di esercizio con monitoraggio del peso per vedere i progressi";
+"This Week" = "Questa Settimana";
+"progress.week_completion" = "%d%% completato questa settimana";
+"Activity Breakdown" = "Ripartizione Attività";
+"Recent Completions" = "Completamenti Recenti";
+"No completed activities yet" = "Nessuna attività completata ancora";
+
+// MARK: - SettingsView
+"Notifications" = "Notifiche";
+"Enable Reminders" = "Abilita Promemoria";
+"Morning Time" = "Orario Mattina";
+"Evening Time" = "Orario Sera";
+"settings.notification_description" = "Riceverai notifiche per le attività programmate nei tuoi orari personalizzati";
+"Current Plan" = "Piano Attuale";
+"Regenerate Schedule" = "Rigenera Programma";
+"Data Management" = "Gestione Dati";
+"Clear All Data" = "Cancella Tutti i Dati";
+"Information" = "Informazioni";
+"About Tennis Elbow" = "Info sul Gomito del Tennista";
+"Treatment Tips" = "Suggerimenti per il Trattamento";
+"Medical Sources & Citations" = "Fonti Mediche e Citazioni";
+"App Information" = "Informazioni App";
+"Version" = "Versione";
+"Settings" = "Impostazioni";
+"settings.clear_data_warning" = "Questo eliminerà tutte le tue attività programmate, sessioni completate e dati sui progressi. Questa azione non può essere annullata.";
+
+// MARK: - AboutTennisElbowView
+"What is Tennis Elbow?" = "Cos'è il Gomito del Tennista?";
+"about.tennis_elbow_description" = "Il gomito del tennista (epicondilite laterale) è una condizione dolorosa che si verifica quando i tendini del gomito sono sovraccaricati, solitamente da movimenti ripetitivi del polso e del braccio. Nonostante il nome, la maggior parte delle persone che sviluppano il gomito del tennista non gioca a tennis. È comune nelle persone i cui lavori comportano movimenti ripetitivi del braccio.";
+"Common Symptoms" = "Sintomi Comuni";
+"symptoms.pain_outer_part" = "Dolore o bruciore sulla parte esterna del gomito";
+"symptoms.weak_grip" = "Forza di presa debole";
+"symptoms.pain_lifting" = "Dolore quando si solleva o si piega il braccio";
+"symptoms.pain_gripping" = "Dolore quando si afferrano oggetti";
+"Treatment Approach" = "Approccio Terapeutico";
+"about.treatment_description" = "Questa app segue protocolli di trattamento basati sull'evidenza che combinano riposo, terapia del freddo, stretching ed esercizi di rafforzamento. Gli esercizi sono progettati per sviluppare gradualmente la forza nei muscoli e tendini dell'avambraccio. La maggior parte delle persone vede miglioramenti entro 6-12 settimane di trattamento costante.";
+"View All Medical Sources" = "Visualizza Tutte le Fonti Mediche";
+
+// MARK: - TipsView
+"Ice Regularly" = "Applicare Ghiaccio Regolarmente";
+"tips.ice_description" = "Applica ghiaccio per 15 minuti, 3-4 volte al giorno per ridurre l'infiammazione";
+"Start Slow" = "Inizia Lentamente";
+"tips.start_slow_description" = "Inizia con allungamenti delicati e aumenta gradualmente l'intensità";
+"Be Consistent" = "Sii Costante";
+"tips.consistency_description" = "Esercizi regolari e quotidiani sono più efficaci di sessioni intense occasionali";
+"Modify Activities" = "Modifica le Attività";
+"tips.modify_description" = "Evita o modifica le attività che aggravano i tuoi sintomi";
+"Warm Up" = "Riscaldamento";
+"tips.warmup_description" = "Riscalda sempre il braccio prima degli esercizi";
+"Seek Professional Help" = "Cerca Aiuto Professionale";
+"tips.professional_help_description" = "Se il dolore persiste oltre le 6-8 settimane, consulta un operatore sanitario";
+"Sources" = "Fonti";
+"tips.sources_description" = "Le informazioni sopra si basano sulle linee guida dell'American Academy of Orthopaedic Surgeons (AAOS) e sui protocolli di trattamento della Mayo Clinic per l'epicondilite laterale.";
+
+// MARK: - ActivityDetailView
+"Evidence-Based" = "Basato sull'Evidenza";
+"View Research Source" = "Visualizza Fonte di Ricerca";
+"Duration" = "Durata";
+"Reps" = "Ripetizioni";
+"Sets" = "Serie";
+
+// MARK: - MedicalSourcesView
+"References & Citations" = "Riferimenti e Citazioni";
+"medical_sources.description" = "Gli esercizi e le raccomandazioni terapeutiche in questa app si basano su ricerche mediche sottoposte a revisione paritaria e linee guida cliniche di istituzioni mediche riconosciute.";
+"Important Note" = "Nota Importante";
+"medical_sources.disclaimer" = "Queste fonti sono fornite solo a scopo informativo. Consulta sempre un operatore sanitario qualificato prima di iniziare qualsiasi programma di trattamento.";
+"Peer-Reviewed Sources" = "Fonti Sottoposte a Revisione Paritaria";
+"Additional Resources" = "Risorse Aggiuntive";
+"National Institutes of Health (NIH)" = "National Institutes of Health (NIH)";
+"MedlinePlus - Tennis Elbow" = "MedlinePlus - Gomito del Tennista";
+"Cleveland Clinic" = "Cleveland Clinic";
+"Lateral Epicondylitis Overview" = "Panoramica Epicondilite Laterale";
+"NHS (UK National Health Service)" = "NHS (Servizio Sanitario Nazionale del Regno Unito)";
+"Tennis Elbow Treatment Guide" = "Guida al Trattamento del Gomito del Tennista";
+"View Source" = "Visualizza Fonte";

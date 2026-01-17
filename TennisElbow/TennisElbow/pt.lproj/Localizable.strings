@@ -1,0 +1,158 @@
+/* 
+  Localizable.strings (Portuguese)
+  TennisElbow
+  Portuguese localization support
+*/
+
+// MARK: - Common
+"Done" = "Concluído";
+"Cancel" = "Cancelar";
+"Close" = "Fechar";
+"Complete" = "Concluir";
+"lbs" = "lbs";
+
+// MARK: - DisclaimerView
+"Medical Disclaimer" = "Aviso Médico";
+"Important Information" = "Informações Importantes";
+"disclaimer.description" = "Este aplicativo foi projetado para fornecer informações gerais e orientações sobre exercícios e abordagens de tratamento para cotovelo de tenista (epicondilite lateral). NÃO se destina a substituir aconselhamento médico profissional, diagnóstico ou tratamento.";
+"Please Note:" = "Nota:";
+"disclaimer.consult_provider" = "Sempre consulte um profissional de saúde qualificado antes de iniciar qualquer programa de tratamento";
+"disclaimer.seek_attention" = "Se você sentir dor intensa, inchaço ou sintomas que pioram, procure atendimento médico imediatamente";
+"disclaimer.individual_results" = "Os resultados individuais podem variar com base na gravidade da sua condição";
+"disclaimer.not_replacement" = "Este aplicativo não substitui fisioterapia ou tratamento médico";
+"disclaimer.stop_pain" = "Interrompa qualquer exercício que cause dor aguda";
+"Medical Sources" = "Fontes Médicas";
+"disclaimer.sources_description" = "Os exercícios e recomendações de tratamento neste aplicativo são baseados em pesquisas médicas revisadas por pares e diretrizes de organizações médicas reconhecidas, incluindo a American Academy of Orthopaedic Surgeons (AAOS), Mayo Clinic e estudos publicados no British Journal of Sports Medicine.";
+"View All Medical Sources & Citations" = "Ver Todas as Fontes Médicas e Citações";
+"Data & Privacy" = "Dados e Privacidade";
+"disclaimer.privacy_description" = "Todos os seus dados de saúde (atividades, níveis de dor, progresso) são armazenados localmente no seu dispositivo. Não coletamos, transmitimos ou compartilhamos suas informações de saúde pessoais com terceiros.";
+"Accept and Continue" = "Aceitar e Continuar";
+"Decline" = "Recusar";
+
+// MARK: - ScheduleView
+"Schedule" = "Agenda";
+"Select Date" = "Selecionar Data";
+"Regenerate" = "Regerar";
+"No activities scheduled" = "Nenhuma atividade agendada";
+"schedule.generate_prompt" = "Gere uma agenda para ver suas atividades";
+"Scheduled Activity" = "Atividade Agendada";
+"Pain Level:" = "Nível de Dor:";
+"Weight Used:" = "Peso Usado:";
+"Notes" = "Notas";
+"Mark as Complete" = "Marcar como Concluído";
+"Completed" = "Concluído";
+"Completed at" = "Concluído em";
+"How do you feel?" = "Como você se sente?";
+"schedule.feel_after_activity" = "Como você se sente após esta atividade?";
+"Weight Used" = "Peso Usado";
+"Complete Activity" = "Concluir Atividade";
+
+// MARK: - Pain Levels
+"pain.none" = "Nenhum desconforto";
+"pain.mild" = "Leve desconforto, facilmente controlável";
+"pain.moderate" = "Dor perceptível mas tolerável";
+"pain.severe" = "Dor significativa, difícil de ignorar";
+"pain.extreme" = "Dor intensa, difícil de completar a atividade";
+
+// MARK: - TreatmentPlanView
+"Treatment Plan" = "Plano de Tratamento";
+"Activities" = "Atividades";
+"Change Plan" = "Alterar Plano";
+"Today's Progress" = "Progresso de Hoje";
+"Activities Completed" = "Atividades Concluídas";
+"Morning" = "Manhã";
+"Afternoon" = "Tarde";
+"Evening" = "Noite";
+"Details" = "Detalhes";
+"Instructions" = "Instruções";
+"Pain Level Check" = "Verificação do Nível de Dor";
+"treatment.feel_after_session" = "Como você se sente após esta sessão?";
+
+// MARK: - ProgressView
+"Progress" = "Progresso";
+"Overall Completion" = "Conclusão Geral";
+"Total Activities" = "Total de Atividades";
+"Remaining" = "Restantes";
+"Pain Trend" = "Tendência da Dor";
+"Average Pain Level" = "Nível Médio de Dor";
+"progress.track_pain_prompt" = "Complete atividades e acompanhe a dor para ver tendências";
+"pain_history_30_days" = "Histórico de Dor (30 Dias)";
+"No pain data recorded yet" = "Nenhum dado de dor registrado ainda";
+"weight_progress_30_days" = "Progresso de Peso (30 Dias)";
+"Average:" = "Média:";
+"Max:" = "Máx:";
+"progress.track_weight_prompt" = "Complete atividades de exercício com acompanhamento de peso para ver o progresso";
+"This Week" = "Esta Semana";
+"progress.week_completion" = "%d%% concluído esta semana";
+"Activity Breakdown" = "Distribuição de Atividades";
+"Recent Completions" = "Conclusões Recentes";
+"No completed activities yet" = "Nenhuma atividade concluída ainda";
+
+// MARK: - SettingsView
+"Notifications" = "Notificações";
+"Enable Reminders" = "Ativar Lembretes";
+"Morning Time" = "Horário da Manhã";
+"Evening Time" = "Horário da Noite";
+"settings.notification_description" = "Você receberá notificações para atividades agendadas em seus horários personalizados";
+"Current Plan" = "Plano Atual";
+"Regenerate Schedule" = "Regerar Agenda";
+"Data Management" = "Gestão de Dados";
+"Clear All Data" = "Limpar Todos os Dados";
+"Information" = "Informações";
+"About Tennis Elbow" = "Sobre Cotovelo de Tenista";
+"Treatment Tips" = "Dicas de Tratamento";
+"Medical Sources & Citations" = "Fontes Médicas e Citações";
+"App Information" = "Informações do Aplicativo";
+"Version" = "Versão";
+"Settings" = "Configurações";
+"settings.clear_data_warning" = "Isto irá excluir todas as suas atividades agendadas, sessões concluídas e dados de progresso. Esta ação não pode ser desfeita.";
+
+// MARK: - AboutTennisElbowView
+"What is Tennis Elbow?" = "O que é Cotovelo de Tenista?";
+"about.tennis_elbow_description" = "Cotovelo de tenista (epicondilite lateral) é uma condição dolorosa que ocorre quando os tendões do seu cotovelo ficam sobrecarregados, geralmente por movimentos repetitivos do pulso e braço. Apesar do nome, a maioria das pessoas que têm cotovelo de tenista não joga tênis. É comum em pessoas cujos trabalhos envolvem movimentos repetitivos do braço.";
+"Common Symptoms" = "Sintomas Comuns";
+"symptoms.pain_outer_part" = "Dor ou queimação na parte externa do seu cotovelo";
+"symptoms.weak_grip" = "Força de preensão fraca";
+"symptoms.pain_lifting" = "Dor ao levantar ou dobrar o braço";
+"symptoms.pain_gripping" = "Dor ao segurar objetos";
+"Treatment Approach" = "Abordagem de Tratamento";
+"about.treatment_description" = "Este aplicativo segue protocolos de tratamento baseados em evidências que combinam repouso, terapia com gelo, alongamento e exercícios de fortalecimento. Os exercícios são projetados para desenvolver gradualmente a força nos músculos e tendões do antebraço. A maioria das pessoas vê melhora dentro de 6-12 semanas de tratamento consistente.";
+"View All Medical Sources" = "Ver Todas as Fontes Médicas";
+
+// MARK: - TipsView
+"Ice Regularly" = "Aplicar Gelo Regularmente";
+"tips.ice_description" = "Aplique gelo por 15 minutos, 3-4 vezes ao dia para reduzir a inflamação";
+"Start Slow" = "Começar Devagar";
+"tips.start_slow_description" = "Comece com alongamentos suaves e aumente gradualmente a intensidade";
+"Be Consistent" = "Ser Consistente";
+"tips.consistency_description" = "Exercícios regulares diários são mais eficazes do que sessões intensas ocasionais";
+"Modify Activities" = "Modificar Atividades";
+"tips.modify_description" = "Evite ou modifique atividades que agravem seus sintomas";
+"Warm Up" = "Aquecer";
+"tips.warmup_description" = "Sempre aqueça seu braço antes dos exercícios";
+"Seek Professional Help" = "Procurar Ajuda Profissional";
+"tips.professional_help_description" = "Se a dor persistir além de 6-8 semanas, consulte um profissional de saúde";
+"Sources" = "Fontes";
+"tips.sources_description" = "As informações acima são baseadas em diretrizes da American Academy of Orthopaedic Surgeons (AAOS) e protocolos de tratamento da Mayo Clinic para epicondilite lateral.";
+
+// MARK: - ActivityDetailView
+"Evidence-Based" = "Baseado em Evidências";
+"View Research Source" = "Ver Fonte de Pesquisa";
+"Duration" = "Duração";
+"Reps" = "Repetições";
+"Sets" = "Séries";
+
+// MARK: - MedicalSourcesView
+"References & Citations" = "Referências e Citações";
+"medical_sources.description" = "Os exercícios e recomendações de tratamento neste aplicativo são baseados em pesquisas médicas revisadas por pares e diretrizes clínicas de instituições médicas reconhecidas.";
+"Important Note" = "Nota Importante";
+"medical_sources.disclaimer" = "Estas fontes são fornecidas apenas para fins informativos. Sempre consulte um profissional de saúde qualificado antes de iniciar qualquer programa de tratamento.";
+"Peer-Reviewed Sources" = "Fontes Revisadas por Pares";
+"Additional Resources" = "Recursos Adicionais";
+"National Institutes of Health (NIH)" = "National Institutes of Health (NIH)";
+"MedlinePlus - Tennis Elbow" = "MedlinePlus - Cotovelo de Tenista";
+"Cleveland Clinic" = "Cleveland Clinic";
+"Lateral Epicondylitis Overview" = "Visão Geral da Epicondilite Lateral";
+"NHS (UK National Health Service)" = "NHS (Serviço Nacional de Saúde do Reino Unido)";
+"Tennis Elbow Treatment Guide" = "Guia de Tratamento do Cotovelo de Tenista";
+"View Source" = "Ver Fonte";
