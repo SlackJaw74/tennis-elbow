@@ -283,7 +283,10 @@ final class TennisElbowTests: XCTestCase {
 
     func testAdvanceToNextStageAtLastStage() {
         // Set to the last plan
-        let lastPlan = TreatmentPlan.defaultPlans.last!
+        guard let lastPlan = TreatmentPlan.defaultPlans.last else {
+            XCTFail("defaultPlans should not be empty")
+            return
+        }
         treatmentManager.changePlan(to: lastPlan)
 
         let currentWeek = treatmentManager.currentPlan.weekNumber
@@ -393,7 +396,10 @@ final class TennisElbowTests: XCTestCase {
     }
 
     func testPromptForAdvancementAtLastStage() {
-        let lastPlan = TreatmentPlan.defaultPlans.last!
+        guard let lastPlan = TreatmentPlan.defaultPlans.last else {
+            XCTFail("TreatmentPlan.defaultPlans should not be empty")
+            return
+        }
         treatmentManager.changePlan(to: lastPlan)
 
         treatmentManager.promptForAdvancement()
