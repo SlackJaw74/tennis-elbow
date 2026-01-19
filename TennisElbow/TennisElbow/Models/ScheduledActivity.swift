@@ -48,10 +48,16 @@ struct ScheduledActivity: Identifiable, Codable {
     var painLevel: PainLevel?
     var weightUsedLbs: Int?
 
-    init(id: UUID = UUID(), activity: TreatmentActivity, scheduledTime: Date,
-         isCompleted: Bool = false, completedTime: Date? = nil, notes: String? = nil,
-         painLevel: PainLevel? = nil, weightUsedLbs: Int? = nil)
-    {
+    init(
+        id: UUID = UUID(),
+        activity: TreatmentActivity,
+        scheduledTime: Date,
+        isCompleted: Bool = false,
+        completedTime: Date? = nil,
+        notes: String? = nil,
+        painLevel: PainLevel? = nil,
+        weightUsedLbs: Int? = nil
+    ) {
         self.id = id
         self.activity = activity
         self.scheduledTime = scheduledTime

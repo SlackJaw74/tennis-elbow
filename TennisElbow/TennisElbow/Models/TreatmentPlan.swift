@@ -8,9 +8,14 @@ struct TreatmentPlan: Identifiable, Codable {
     let activities: [TreatmentActivity]
     let dailySchedule: [DayOfWeek: [TimeOfDay]]
 
-    init(id: UUID = UUID(), name: String, description: String, weekNumber: Int,
-         activities: [TreatmentActivity], dailySchedule: [DayOfWeek: [TimeOfDay]])
-    {
+    init(
+        id: UUID = UUID(),
+        name: String,
+        description: String,
+        weekNumber: Int,
+        activities: [TreatmentActivity],
+        dailySchedule: [DayOfWeek: [TimeOfDay]]
+    ) {
         self.id = id
         self.name = name
         self.description = description
@@ -63,7 +68,7 @@ extension TreatmentPlan {
                 TreatmentActivity.defaultActivities[6], // Wrist Rotations
                 TreatmentActivity.defaultActivities[2], // Eccentric Wrist Extension
                 TreatmentActivity.defaultActivities[4], // Ice Therapy
-                TreatmentActivity.defaultActivities[7], // Pain Level Check
+                TreatmentActivity.defaultActivities[7] // Pain Level Check
             ],
             dailySchedule: [
                 .monday: [.morning, .evening],
@@ -72,7 +77,7 @@ extension TreatmentPlan {
                 .thursday: [.morning, .evening],
                 .friday: [.morning, .evening],
                 .saturday: [.morning],
-                .sunday: [.morning],
+                .sunday: [.morning]
             ]
         ),
         TreatmentPlan(
@@ -87,7 +92,7 @@ extension TreatmentPlan {
                 TreatmentActivity.defaultActivities[2], // Eccentric Wrist Extension
                 TreatmentActivity.defaultActivities[3], // Grip Strengthening
                 TreatmentActivity.defaultActivities[4], // Ice Therapy
-                TreatmentActivity.defaultActivities[7], // Pain Level Check
+                TreatmentActivity.defaultActivities[7] // Pain Level Check
             ],
             dailySchedule: [
                 .monday: [.morning, .afternoon, .evening],
@@ -96,7 +101,7 @@ extension TreatmentPlan {
                 .thursday: [.morning, .evening],
                 .friday: [.morning, .afternoon, .evening],
                 .saturday: [.morning],
-                .sunday: [.morning],
+                .sunday: [.morning]
             ]
         ),
         TreatmentPlan(
@@ -111,7 +116,7 @@ extension TreatmentPlan {
                 TreatmentActivity.defaultActivities[2], // Eccentric Wrist Extension
                 TreatmentActivity.defaultActivities[3], // Grip Strengthening
                 TreatmentActivity.defaultActivities[4], // Ice Therapy
-                TreatmentActivity.defaultActivities[7], // Pain Level Check
+                TreatmentActivity.defaultActivities[7] // Pain Level Check
             ],
             dailySchedule: [
                 .monday: [.morning, .afternoon, .evening],
@@ -120,8 +125,8 @@ extension TreatmentPlan {
                 .thursday: [.morning, .afternoon, .evening],
                 .friday: [.morning, .afternoon, .evening],
                 .saturday: [.morning, .afternoon],
-                .sunday: [.morning],
+                .sunday: [.morning]
             ]
-        ),
+        )
     ]
 }

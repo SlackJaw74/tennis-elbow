@@ -1,21 +1,59 @@
 # SwiftFormat Configuration for Tennis Elbow App
+# Aligned with SwiftLint to prevent conflicts
 
 # Version
 --swiftversion 5.7
 
-# Indentation
+# Indentation (matches SwiftLint indentation_width: 4)
 --indent 4
 --tabwidth 4
 --indentcase false
 --ifdef noindent
+--smarttabs enabled
 
-# Wrapping
+# Wrapping (matches SwiftLint line_length warning: 120)
 --maxwidth 120
+--wraparguments before-first
+--wrapparameters before-first
+--wrapcollections before-first
+--wrapternary before-operators
 
-# Excluded paths
+# Braces and spacing
+--allman false
+--elseposition same-line
+--guardelse same-line
+
+# Operators and spacing
+--operatorfunc spaced
+--nospaceoperators
+--ranges spaced
+
+# Other formatting
+--commas inline
+--decimalgrouping 3,6
+--exponentcase lowercase
+--exponentgrouping disabled
+--fractiongrouping disabled
+--hexgrouping 4,8
+--hexliteralcase uppercase
+--importgrouping alpha
+--octalgrouping 4,8
+--semicolons inline
+--stripunusedargs closure-only
+--trimwhitespace always
+--voidtype void
+--emptybraces no-space
+
+# Self
+--self remove
+--selfrequired
+
+# Excluded paths (matches SwiftLint excluded)
 --exclude build,archives,fastlane,.build,DerivedData
 
-# Disabled rules (rules that conflict with project style)
+# Disabled rules that conflict with SwiftLint or project style
 --disable blankLinesAroundMark
 --disable blankLinesAtStartOfScope
 --disable blankLinesAtEndOfScope
+--disable sortImports
+--disable wrapMultilineStatementBraces

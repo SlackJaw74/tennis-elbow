@@ -75,7 +75,7 @@ struct MedicalSourcesView: View {
             year: "2004",
             url: "https://pubmed.ncbi.nlm.nih.gov/15155427/",
             description: "Evidence for ice therapy application protocols in musculoskeletal injury management."
-        ),
+        )
     ]
 
     var body: some View {
