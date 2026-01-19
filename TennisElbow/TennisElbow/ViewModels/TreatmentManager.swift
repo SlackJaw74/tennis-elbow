@@ -428,11 +428,21 @@ class TreatmentManager: ObservableObject {
            let decoded = try? JSONDecoder().decode([ScheduledActivity].self, from: data)
         {
             scheduledActivities = decoded
-            // Check if there are any activities for today - if not, generate a new schedule
-            // This handles the case where saved activities are from previous weeks or the array is empty
+            // Check if the schedule is stale (from a previous week)
+            // This handles the case where saved activities are from previous weeks
             let calendar = Calendar.current
-            let hasTodayActivities = scheduledActivities.contains { calendar.isDateInToday($0.scheduledTime) }
-            if !hasTodayActivities {
+            let isScheduleStale = scheduledActivities.allSatisfy { activity in
+                // Consider schedule stale if all activities are from before the current week
+                guard let weekOfActivity = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: activity.scheduledTime).weekOfYear,
+                      let yearOfActivity = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: activity.scheduledTime).yearForWeekOfYear,
+                      let currentWeek = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: Date()).weekOfYear,
+                      let currentYear = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: Date()).yearForWeekOfYear
+                else {
+                    return true // Treat as stale if we can't determine the week
+                }
+                return yearOfActivity < currentYear || (yearOfActivity == currentYear && weekOfActivity < currentWeek)
+            }
+            if scheduledActivities.isEmpty || isScheduleStale {
                 generateSchedule()
             }
         } else {
