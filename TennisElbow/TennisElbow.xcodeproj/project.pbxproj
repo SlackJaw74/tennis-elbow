@@ -14,11 +14,19 @@
 			remoteGlobalIDString = 7638AF482ED7873300F98DC4;
 			remoteInfo = TennisElbow;
 		};
+		76TE00012F100000008A1B4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7638AF412ED7873300F98DC4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7638AF482ED7873300F98DC4;
+			remoteInfo = TennisElbow;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7638AF492ED7873300F98DC4 /* TennisElbow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TennisElbow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76DB51192F035918008A1B4D /* TennisElbowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TennisElbowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76TE00002F100000008A1B4D /* TennisElbowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TennisElbowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -30,6 +38,11 @@
 		76DB511A2F035918008A1B4D /* TennisElbowUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TennisElbowUITests;
+			sourceTree = "<group>";
+		};
+		76TE00022F100000008A1B4D /* TennisElbowTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TennisElbowTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -49,6 +62,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		76TE00032F100000008A1B4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -57,6 +77,7 @@
 			children = (
 				7638AF4B2ED7873300F98DC4 /* TennisElbow */,
 				76DB511A2F035918008A1B4D /* TennisElbowUITests */,
+				76TE00022F100000008A1B4D /* TennisElbowTests */,
 				7638AF4A2ED7873300F98DC4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,6 +87,7 @@
 			children = (
 				7638AF492ED7873300F98DC4 /* TennisElbow.app */,
 				76DB51192F035918008A1B4D /* TennisElbowUITests.xctest */,
+				76TE00002F100000008A1B4D /* TennisElbowTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,6 +140,29 @@
 			productReference = 76DB51192F035918008A1B4D /* TennisElbowUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		76TE00042F100000008A1B4D /* TennisElbowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76TE00052F100000008A1B4D /* Build configuration list for PBXNativeTarget "TennisElbowTests" */;
+			buildPhases = (
+				76TE00062F100000008A1B4D /* Sources */,
+				76TE00032F100000008A1B4D /* Frameworks */,
+				76TE00072F100000008A1B4D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				76TE00082F100000008A1B4D /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				76TE00022F100000008A1B4D /* TennisElbowTests */,
+			);
+			name = TennisElbowTests;
+			packageProductDependencies = (
+			);
+			productName = TennisElbowTests;
+			productReference = 76TE00002F100000008A1B4D /* TennisElbowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -132,6 +177,10 @@
 						CreatedOnToolsVersion = 26.1.1;
 					};
 					76DB51182F035918008A1B4D = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 7638AF482ED7873300F98DC4;
+					};
+					76TE00042F100000008A1B4D = {
 						CreatedOnToolsVersion = 26.2;
 						TestTargetID = 7638AF482ED7873300F98DC4;
 					};
@@ -162,6 +211,7 @@
 			targets = (
 				7638AF482ED7873300F98DC4 /* TennisElbow */,
 				76DB51182F035918008A1B4D /* TennisElbowUITests */,
+				76TE00042F100000008A1B4D /* TennisElbowTests */,
 			);
 		};
 /* End PBXProject section */
@@ -175,6 +225,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		76DB51172F035918008A1B4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76TE00072F100000008A1B4D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -198,6 +255,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		76TE00062F100000008A1B4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -205,6 +269,11 @@
 			isa = PBXTargetDependency;
 			target = 7638AF482ED7873300F98DC4 /* TennisElbow */;
 			targetProxy = 76DB511F2F035918008A1B4D /* PBXContainerItemProxy */;
+		};
+		76TE00082F100000008A1B4D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7638AF482ED7873300F98DC4 /* TennisElbow */;
+			targetProxy = 76TE00012F100000008A1B4D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -442,6 +511,50 @@
 			};
 			name = Release;
 		};
+		76TE00092F100000008A1B4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = PXU22JKS94;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.2.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.madhouse.TennisElbowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TennisElbow.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TennisElbow";
+			};
+			name = Debug;
+		};
+		76TE000A2F100000008A1B4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = PXU22JKS94;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.2.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.madhouse.TennisElbowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TennisElbow.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TennisElbow";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -468,6 +581,15 @@
 			buildConfigurations = (
 				76DB51222F035918008A1B4D /* Debug */,
 				76DB51232F035918008A1B4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76TE00052F100000008A1B4D /* Build configuration list for PBXNativeTarget "TennisElbowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76TE00092F100000008A1B4D /* Debug */,
+				76TE000A2F100000008A1B4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
