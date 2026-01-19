@@ -156,3 +156,105 @@
 "NHS (UK National Health Service)" = "NHS (UK National Health Service)";
 "Tennis Elbow Treatment Guide" = "Tennis Elbow Treatment Guide";
 "View Source" = "View Source";
+
+// MARK: - Activity Names
+"activity.wrist_extension_stretch" = "Wrist Extension Stretch";
+"activity.wrist_flexion_stretch" = "Wrist Flexion Stretch";
+"activity.eccentric_wrist_extension" = "Eccentric Wrist Extension";
+"activity.grip_strengthening" = "Grip Strengthening";
+"activity.ice_therapy" = "Ice Therapy";
+"activity.forearm_massage" = "Forearm Massage";
+"activity.wrist_rotations" = "Wrist Rotations";
+"activity.pain_level_check" = "Pain Level Check";
+
+// MARK: - Activity Descriptions
+"activity.wrist_extension_stretch.description" = "Gentle stretching to improve flexibility";
+"activity.wrist_flexion_stretch.description" = "Stretches the extensors of the forearm";
+"activity.eccentric_wrist_extension.description" = "Strengthening exercise for forearm extensors";
+"activity.grip_strengthening.description" = "Build grip and forearm strength";
+"activity.ice_therapy.description" = "Reduce inflammation and pain";
+"activity.forearm_massage.description" = "Self-massage to reduce tension";
+"activity.wrist_rotations.description" = "Improve mobility and circulation";
+"activity.pain_level_check.description" = "Track your pain level after activities";
+
+// MARK: - Activity Instructions
+"activity.wrist_extension_stretch.instruction.1" = "Extend your arm in front with palm facing down";
+"activity.wrist_extension_stretch.instruction.2" = "Use your other hand to gently pull fingers back";
+"activity.wrist_extension_stretch.instruction.3" = "Hold for 15-30 seconds";
+"activity.wrist_extension_stretch.instruction.4" = "Repeat on both arms";
+
+"activity.wrist_flexion_stretch.instruction.1" = "Extend your arm with palm facing up";
+"activity.wrist_flexion_stretch.instruction.2" = "Gently pull fingers down with other hand";
+"activity.wrist_flexion_stretch.instruction.3" = "Hold for 15-30 seconds";
+"activity.wrist_flexion_stretch.instruction.4" = "Feel the stretch in your forearm";
+
+"activity.eccentric_wrist_extension.instruction.1" = "Rest your forearm on a table, palm down";
+"activity.eccentric_wrist_extension.instruction.2" = "Hold a light weight (1-2 lbs to start)";
+"activity.eccentric_wrist_extension.instruction.3" = "Slowly lower the weight by bending wrist down";
+"activity.eccentric_wrist_extension.instruction.4" = "Use other hand to help raise it back up";
+"activity.eccentric_wrist_extension.instruction.5" = "Focus on the lowering motion";
+
+"activity.grip_strengthening.instruction.1" = "Use a stress ball or grip strengthener";
+"activity.grip_strengthening.instruction.2" = "Squeeze firmly for 5 seconds";
+"activity.grip_strengthening.instruction.3" = "Release slowly";
+"activity.grip_strengthening.instruction.4" = "Rest between sets";
+
+"activity.ice_therapy.instruction.1" = "Apply ice pack to outer elbow";
+"activity.ice_therapy.instruction.2" = "Use a towel to protect skin";
+"activity.ice_therapy.instruction.3" = "Apply for 15 minutes";
+"activity.ice_therapy.instruction.4" = "Repeat 3-4 times daily as needed";
+
+"activity.forearm_massage.instruction.1" = "Use your thumb to apply gentle pressure";
+"activity.forearm_massage.instruction.2" = "Massage along the forearm muscles";
+"activity.forearm_massage.instruction.3" = "Focus on tender points";
+"activity.forearm_massage.instruction.4" = "Move slowly and breathe deeply";
+
+"activity.wrist_rotations.instruction.1" = "Hold arm out with elbow bent at 90 degrees";
+"activity.wrist_rotations.instruction.2" = "Slowly rotate wrist in circles";
+"activity.wrist_rotations.instruction.3" = "Do 10 rotations clockwise";
+"activity.wrist_rotations.instruction.4" = "Then 10 rotations counter-clockwise";
+
+"activity.pain_level_check.instruction.1" = "Rate your current pain level";
+"activity.pain_level_check.instruction.2" = "Consider pain during activities";
+"activity.pain_level_check.instruction.3" = "Note any changes from previous sessions";
+"activity.pain_level_check.instruction.4" = "This helps track your recovery progress";
+
+// MARK: - Treatment Plan Names
+"plan.week_1_2_gentle_recovery" = "Week 1-2: Gentle Recovery";
+"plan.week_3_4_progressive_strengthening" = "Week 3-4: Progressive Strengthening";
+"plan.week_5_6_active_rehabilitation" = "Week 5-6: Active Rehabilitation";
+
+// MARK: - Treatment Plan Descriptions
+"plan.week_1_2_gentle_recovery.description" = "Focus on reducing inflammation and gentle stretching";
+"plan.week_3_4_progressive_strengthening.description" = "Add gentle strengthening exercises";
+"plan.week_5_6_active_rehabilitation.description" = "Increase strength and endurance";
+
+// MARK: - Activity Types
+"activity_type.exercise" = "Exercise";
+"activity_type.stretch" = "Stretch";
+"activity_type.ice_therapy" = "Ice Therapy";
+"activity_type.rest" = "Rest";
+"activity_type.medication" = "Medication";
+"activity_type.pain_tracking" = "Pain Tracking";
+
+// MARK: - Difficulty Levels
+"difficulty.beginner" = "Beginner";
+"difficulty.intermediate" = "Intermediate";
+"difficulty.advanced" = "Advanced";
+
+// MARK: - Days of Week
+"day.sunday" = "Sunday";
+"day.monday" = "Monday";
+"day.tuesday" = "Tuesday";
+"day.wednesday" = "Wednesday";
+"day.thursday" = "Thursday";
+"day.friday" = "Friday";
+"day.saturday" = "Saturday";
+
+// MARK: - Activity Detail Source Descriptions
+"source.exercise.description" = "Eccentric strengthening exercises are supported by research published in the British Journal of Sports Medicine and guidelines from the American Academy of Orthopaedic Surgeons.";
+"source.stretch.description" = "Stretching protocols are based on clinical studies published in the British Journal of Sports Medicine demonstrating effectiveness for lateral epicondylitis.";
+"source.ice_therapy.description" = "Cryotherapy recommendations follow evidence-based protocols for musculoskeletal injury management as published in peer-reviewed sports medicine journals.";
+"source.rest.description" = "Rest and activity modification guidance follows AAOS and Mayo Clinic recommendations for tennis elbow recovery.";
+"source.medication.description" = "Always consult with a healthcare provider regarding medication. This activity tracks compliance only.";
+"source.pain_tracking.description" = "Pain tracking helps monitor recovery progress as recommended in clinical practice guidelines.";
