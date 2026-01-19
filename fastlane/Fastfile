@@ -148,7 +148,7 @@ platform :ios do
 
   desc "Process screenshots for App Store Connect (resize iPhone, copy iPad)"
   lane :process_screenshots do
-    languages = ["en-US", "es-ES", "fr-FR", "de-DE", "ja-JP", "zh-Hans", "pt-PT", "it-IT", "nl-NL", "ko-KR"]
+    languages = ALL_LANGUAGES
     output_dir = "./screenshots/app-store-ready"
     
     # Create output directory
