@@ -62,14 +62,20 @@ struct TreatmentProgressView: View {
                 .accessibilityValue("\(Int(completionRate * 100)) percent complete")
 
                 VStack(alignment: .leading, spacing: 12) {
-                    StatRow(label: "Total Activities".localized(),
-                            value: "\(treatmentManager.scheduledActivities.count)")
-                    StatRow(label: "Completed".localized(),
-                            value: "\(treatmentManager.scheduledActivities.filter(\.isCompleted).count)",
-                            color: .green)
-                    StatRow(label: "Remaining".localized(),
-                            value: "\(treatmentManager.scheduledActivities.filter { !$0.isCompleted }.count)",
-                            color: .orange)
+                    StatRow(
+                        label: "Total Activities".localized(),
+                        value: "\(treatmentManager.scheduledActivities.count)"
+                    )
+                    StatRow(
+                        label: "Completed".localized(),
+                        value: "\(treatmentManager.scheduledActivities.filter(\.isCompleted).count)",
+                        color: .green
+                    )
+                    StatRow(
+                        label: "Remaining".localized(),
+                        value: "\(treatmentManager.scheduledActivities.filter { !$0.isCompleted }.count)",
+                        color: .orange
+                    )
                 }
             }
         }
@@ -285,7 +291,7 @@ struct TreatmentProgressView: View {
             Text("Activity Breakdown".localized())
                 .font(.headline)
 
-            ForEach(Array(activityCounts.keys.sorted(by: { $0.rawValue < $1.rawValue })), id: \.self) { type in
+            ForEach(Array(activityCounts.keys.sorted { $0.rawValue < $1.rawValue }), id: \.self) { type in
                 if let count = activityCounts[type] {
                     HStack {
                         Image(systemName: iconForType(type))

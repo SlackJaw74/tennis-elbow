@@ -62,8 +62,7 @@ class TreatmentManager: ObservableObject {
         for day in 0 ..< 7 {
             guard let currentDate = calendar.date(byAdding: .day, value: day, to: weekStart),
                   let dayOfWeek = DayOfWeek(rawValue: calendar.component(.weekday, from: currentDate)),
-                  let timesOfDay = currentPlan.dailySchedule[dayOfWeek]
-            else {
+                  let timesOfDay = currentPlan.dailySchedule[dayOfWeek] else {
                 continue
             }
 
@@ -90,8 +89,7 @@ class TreatmentManager: ObservableObject {
                     components.minute = getCustomMinute(for: timeOfDay)
 
                     if let sessionStartTime = calendar.date(from: components),
-                       let scheduledTime = calendar.date(byAdding: .minute, value: 30, to: sessionStartTime)
-                    {
+                       let scheduledTime = calendar.date(byAdding: .minute, value: 30, to: sessionStartTime) {
                         let scheduled = ScheduledActivity(
                             activity: painActivity,
                             scheduledTime: scheduledTime
@@ -274,13 +272,17 @@ class TreatmentManager: ObservableObject {
             content.body = "\(activity.activity.name) - \(activity.activity.durationMinutes) minutes"
             content.sound = .default
 
-            let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute],
-                                                             from: activity.scheduledTime)
+            let components = Calendar.current.dateComponents(
+                [.year, .month, .day, .hour, .minute],
+                from: activity.scheduledTime
+            )
             let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
 
-            let request = UNNotificationRequest(identifier: activity.id.uuidString,
-                                                content: content,
-                                                trigger: trigger)
+            let request = UNNotificationRequest(
+                identifier: activity.id.uuidString,
+                content: content,
+                trigger: trigger
+            )
 
             UNUserNotificationCenter.current().add(request)
         }
@@ -310,8 +312,7 @@ class TreatmentManager: ObservableObject {
     func promptForAdvancement() {
         // Check if there is a next stage available
         guard let currentIndex = TreatmentPlan.defaultPlans.firstIndex(where: { $0.id == currentPlan.id }),
-              currentIndex < TreatmentPlan.defaultPlans.count - 1
-        else {
+              currentIndex < TreatmentPlan.defaultPlans.count - 1 else {
             // Already at the last stage, no prompt needed
             return
         }
@@ -340,8 +341,7 @@ class TreatmentManager: ObservableObject {
     func advanceToNextStage() {
         // Find the next plan in the sequence
         guard let currentIndex = TreatmentPlan.defaultPlans.firstIndex(where: { $0.id == currentPlan.id }),
-              currentIndex < TreatmentPlan.defaultPlans.count - 1
-        else {
+              currentIndex < TreatmentPlan.defaultPlans.count - 1 else {
             // Already at the last stage
             return
         }
@@ -425,8 +425,7 @@ class TreatmentManager: ObservableObject {
 
     private func loadScheduledActivities() {
         if let data = UserDefaults.standard.data(forKey: "scheduledActivities"),
-           let decoded = try? JSONDecoder().decode([ScheduledActivity].self, from: data)
-        {
+           let decoded = try? JSONDecoder().decode([ScheduledActivity].self, from: data) {
             scheduledActivities = decoded
         } else {
             generateSchedule()

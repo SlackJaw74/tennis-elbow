@@ -109,11 +109,15 @@ struct ScheduledActivityRow: View {
                     .strikethrough(scheduledActivity.isCompleted)
 
                 HStack {
-                    Label(scheduledActivity.scheduledTime.formatted(date: .omitted, time: .shortened),
-                          systemImage: "clock")
+                    Label(
+                        scheduledActivity.scheduledTime.formatted(date: .omitted, time: .shortened),
+                        systemImage: "clock"
+                    )
                     Text("•")
-                    Label("\(scheduledActivity.activity.durationMinutes) min",
-                          systemImage: "timer")
+                    Label(
+                        "\(scheduledActivity.activity.durationMinutes) min",
+                        systemImage: "timer"
+                    )
                 }
                 .font(.caption)
                 .foregroundColor(.secondary)
@@ -134,11 +138,12 @@ struct ScheduledActivityRow: View {
                 .accessibilityHidden(true)
         }
         .padding()
-        .background(scheduledActivity.isCompleted ?
-            Color.green.opacity(0.1) : Color(.secondarySystemBackground))
-        .cornerRadius(10)
-        .opacity(scheduledActivity.isCompleted ? 0.7 : 1.0)
-        .accessibilityElement(children: .contain)
+        .background(scheduledActivity.isCompleted
+            ? Color.green.opacity(0.1)
+            : Color(.secondarySystemBackground))
+            .cornerRadius(10)
+            .opacity(scheduledActivity.isCompleted ? 0.7 : 1.0)
+            .accessibilityElement(children: .contain)
     }
 
     var activityColor: Color {
@@ -214,17 +219,16 @@ struct ScheduledActivityDetailView: View {
                     selectedPainLevel: $selectedPainLevel,
                     notes: $notes,
                     weightUsed: $weightUsed,
-                    activity: scheduledActivity.activity,
-                    onComplete: {
-                        treatmentManager.completeActivity(
-                            scheduledActivity,
-                            notes: notes.isEmpty ? nil : notes,
-                            painLevel: scheduledActivity.activity.type == .painTracking ? selectedPainLevel : nil,
-                            weightUsedLbs: scheduledActivity.activity.type == .exercise ? weightUsed : nil
-                        )
-                        dismiss()
-                    }
-                )
+                    activity: scheduledActivity.activity
+                ) {
+                    treatmentManager.completeActivity(
+                        scheduledActivity,
+                        notes: notes.isEmpty ? nil : notes,
+                        painLevel: scheduledActivity.activity.type == .painTracking ? selectedPainLevel : nil,
+                        weightUsedLbs: scheduledActivity.activity.type == .exercise ? weightUsed : nil
+                    )
+                    dismiss()
+                }
             }
         }
         .onAppear {
@@ -237,8 +241,10 @@ struct ScheduledActivityDetailView: View {
     var scheduleInfoCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Label(scheduledActivity.scheduledTime.formatted(date: .abbreviated, time: .shortened),
-                      systemImage: "calendar.clock")
+                Label(
+                    scheduledActivity.scheduledTime.formatted(date: .abbreviated, time: .shortened),
+                    systemImage: "calendar.clock"
+                )
                 Spacer()
                 if scheduledActivity.isCompleted {
                     Label("Completed".localized(), systemImage: "checkmark.circle.fill")
@@ -319,8 +325,10 @@ struct PainLevelSheet: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 24) {
-                    Text(activity.type == .painTracking ? "How do you feel?".localized() : "schedule.feel_after_activity"
-                        .localized())
+                    Text(activity.type == .painTracking
+                        ? "How do you feel?".localized()
+                        : "schedule.feel_after_activity"
+                            .localized())
                         .font(.title3)
                         .bold()
                         .multilineTextAlignment(.center)
@@ -409,14 +417,16 @@ struct PainLevelSheet: View {
                                         }
                                     }
                                     .padding()
-                                    .background(selectedPainLevel == level ?
-                                        Color.blue.opacity(0.1) : Color(.secondarySystemBackground))
-                                    .cornerRadius(12)
+                                    .background(selectedPainLevel == level
+                                        ? Color.blue.opacity(0.1)
+                                        : Color(.secondarySystemBackground))
+                                        .cornerRadius(12)
                                 }
                                 .accessibilityLabel("Pain level: \(level.description)")
                                 .accessibilityHint(getPainDescription(for: level))
-                                .accessibilityAddTraits(selectedPainLevel == level ? [.isButton, .isSelected] :
-                                    .isButton)
+                                .accessibilityAddTraits(selectedPainLevel == level
+                                    ? [.isButton, .isSelected]
+                                    : .isButton)
                             }
                         }
                         .padding(.horizontal)

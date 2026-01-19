@@ -4,29 +4,14 @@
 # List of devices to generate screenshots for
 # Using older device types to match App Store Connect requirements
 devices([
-  # iPhone devices
-  "iPhone 11 Pro Max",      # Produces 1242x2688 screenshots (App Store requirement)
-  "iPhone 12 Pro Max",      # Produces 1284x2778 screenshots (App Store requirement)
-  
-  # iPad devices - supporting multiple form factors
-  "iPad Pro 13-inch (M5)",           # Latest large iPad Pro
-  "iPad Pro 12.9-inch (6th generation)",  # Previous generation large iPad
-  "iPad Air 11-inch (M2)",           # iPad Air
-  "iPad (10th generation)"           # Standard iPad
+  "iPad Pro 13-inch (M5)",    # 13" Display
+  "iPhone 16 Pro Max",        # 6.9" Display
+  "iPhone 11 Pro Max"         # 6.5" Display
 ])
 
 # List of languages to generate screenshots for
 languages([
-  "en-US",
-  "es-ES",
-  "fr-FR",
-  "de-DE",
-  "ja-JP",
-  "zh-Hans",
-  "pt-PT",
-  "it-IT",
-  "nl-NL",
-  "ko-KR"
+  "en-US"
 ])
 
 # The name of the scheme which contains the UI Tests

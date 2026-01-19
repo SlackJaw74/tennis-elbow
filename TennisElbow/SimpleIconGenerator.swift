@@ -7,8 +7,10 @@ struct SimpleTextIcon: View {
         ZStack {
             // Medical blue background
             LinearGradient(
-                colors: [Color(red: 0.3, green: 0.6, blue: 1.0),
-                         Color(red: 0.1, green: 0.4, blue: 0.8)],
+                colors: [
+                    Color(red: 0.3, green: 0.6, blue: 1.0),
+                    Color(red: 0.1, green: 0.4, blue: 0.8)
+                ],
                 startPoint: .top,
                 endPoint: .bottom
             )

@@ -3,7 +3,7 @@ import SwiftUI
 struct TreatmentPlanView: View {
     @EnvironmentObject var treatmentManager: TreatmentManager
     @State private var expandedSessions: Set<String> = ["morning"] // Start with morning expanded
-    @State private var expandedActivityId: UUID? = nil // Track which activity is expanded
+    @State private var expandedActivityId: UUID? // Track which activity is expanded
 
     var body: some View {
         NavigationStack {
@@ -45,9 +45,11 @@ struct TreatmentPlanView: View {
             Divider()
 
             HStack {
-                Label(String(format: "%d %@", treatmentManager.currentPlan.activities.count, "Activities".localized()),
-                      systemImage: "list.bullet")
-                    .accessibilityLabel("\(treatmentManager.currentPlan.activities.count) activities in plan")
+                Label(
+                    String(format: "%d %@", treatmentManager.currentPlan.activities.count, "Activities".localized()),
+                    systemImage: "list.bullet"
+                )
+                .accessibilityLabel("\(treatmentManager.currentPlan.activities.count) activities in plan")
 
                 Spacer()
 
@@ -104,8 +106,9 @@ struct TreatmentPlanView: View {
 
                 Spacer()
 
-                let progressPercent = todayActivities.isEmpty ? 0 :
-                    Int(Double(completed) / Double(todayActivities.count) * 100)
+                let progressPercent = todayActivities.isEmpty
+                    ? 0
+                    : Int(Double(completed) / Double(todayActivities.count) * 100)
                 CircularProgressView(progress: todayActivities
                     .isEmpty ? 0 : Double(completed) / Double(todayActivities.count))
                     .frame(width: 60, height: 60)
@@ -130,9 +133,8 @@ struct TreatmentPlanView: View {
                     icon: "sunrise.fill",
                     activities: morningActivities,
                     isExpanded: expandedSessions.contains("morning"),
-                    expandedActivityId: $expandedActivityId,
-                    onToggle: { toggleSession("morning", activities: morningActivities) }
-                )
+                    expandedActivityId: $expandedActivityId
+                ) { toggleSession("morning", activities: morningActivities) }
             }
 
             if !afternoonActivities.isEmpty {
@@ -141,9 +143,8 @@ struct TreatmentPlanView: View {
                     icon: "sun.max.fill",
                     activities: afternoonActivities,
                     isExpanded: expandedSessions.contains("afternoon"),
-                    expandedActivityId: $expandedActivityId,
-                    onToggle: { toggleSession("afternoon", activities: afternoonActivities) }
-                )
+                    expandedActivityId: $expandedActivityId
+                ) { toggleSession("afternoon", activities: afternoonActivities) }
             }
 
             if !eveningActivities.isEmpty {
@@ -152,9 +153,8 @@ struct TreatmentPlanView: View {
                     icon: "moon.fill",
                     activities: eveningActivities,
                     isExpanded: expandedSessions.contains("evening"),
-                    expandedActivityId: $expandedActivityId,
-                    onToggle: { toggleSession("evening", activities: eveningActivities) }
-                )
+                    expandedActivityId: $expandedActivityId
+                ) { toggleSession("evening", activities: eveningActivities) }
             }
         }
     }
@@ -238,15 +238,14 @@ struct SessionSection: View {
                     ForEach(activities) { activity in
                         SessionActivityRow(
                             scheduledActivity: activity,
-                            isExpanded: expandedActivityId == activity.id,
-                            onToggle: {
-                                if expandedActivityId == activity.id {
-                                    expandedActivityId = nil
-                                } else {
-                                    expandedActivityId = activity.id
-                                }
+                            isExpanded: expandedActivityId == activity.id
+                        ) {
+                            if expandedActivityId == activity.id {
+                                expandedActivityId = nil
+                            } else {
+                                expandedActivityId = activity.id
                             }
-                        )
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -319,8 +318,7 @@ struct SessionActivityRow: View {
                                 .foregroundColor(.secondary)
 
                             if let reps = scheduledActivity.activity.repetitions,
-                               let sets = scheduledActivity.activity.sets
-                            {
+                               let sets = scheduledActivity.activity.sets {
                                 Text("•")
                                     .font(.caption2)
                                     .foregroundColor(.secondary)
@@ -386,16 +384,15 @@ struct SessionActivityRow: View {
         }
         .sheet(isPresented: $showPainPicker) {
             PainPickerSheet(
-                selectedPainLevel: $selectedPainLevel,
-                onComplete: {
-                    treatmentManager.completeActivity(
-                        scheduledActivity,
-                        notes: nil,
-                        painLevel: selectedPainLevel,
-                        weightUsedLbs: nil
-                    )
-                }
-            )
+                selectedPainLevel: $selectedPainLevel
+            ) {
+                treatmentManager.completeActivity(
+                    scheduledActivity,
+                    notes: nil,
+                    painLevel: selectedPainLevel,
+                    weightUsedLbs: nil
+                )
+            }
             .presentationDetents([.medium])
         }
         .onAppear {
@@ -419,8 +416,7 @@ struct SessionActivityRow: View {
         var label = scheduledActivity.activity.localizedName
         label += ", \(scheduledActivity.activity.durationMinutes) minutes"
         if let reps = scheduledActivity.activity.repetitions,
-           let sets = scheduledActivity.activity.sets
-        {
+           let sets = scheduledActivity.activity.sets {
             label += ", \(sets) sets of \(reps) repetitions"
         }
         if let weight = scheduledActivity.weightUsedLbs {

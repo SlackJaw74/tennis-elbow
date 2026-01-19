@@ -116,7 +116,7 @@ extension TreatmentActivity {
                 "Extend your arm in front with palm facing down",
                 "Use your other hand to gently pull fingers back",
                 "Hold for 15-30 seconds",
-                "Repeat on both arms",
+                "Repeat on both arms"
             ],
             imageSystemName: "hand.raised",
             localizationKey: "wrist_extension_stretch"
@@ -131,7 +131,7 @@ extension TreatmentActivity {
                 "Extend your arm with palm facing up",
                 "Gently pull fingers down with other hand",
                 "Hold for 15-30 seconds",
-                "Feel the stretch in your forearm",
+                "Feel the stretch in your forearm"
             ],
             imageSystemName: "hand.point.down",
             localizationKey: "wrist_flexion_stretch"
@@ -148,7 +148,7 @@ extension TreatmentActivity {
                 "Hold a light weight (1-2 lbs to start)",
                 "Slowly lower the weight by bending wrist down",
                 "Use other hand to help raise it back up",
-                "Focus on the lowering motion",
+                "Focus on the lowering motion"
             ],
             imageSystemName: "dumbbell",
             localizationKey: "eccentric_wrist_extension"
@@ -165,7 +165,7 @@ extension TreatmentActivity {
                 "Use a stress ball or grip strengthener",
                 "Squeeze firmly for 5 seconds",
                 "Release slowly",
-                "Rest between sets",
+                "Rest between sets"
             ],
             imageSystemName: "hand.thumbsup",
             localizationKey: "grip_strengthening"
@@ -179,7 +179,7 @@ extension TreatmentActivity {
                 "Apply ice pack to outer elbow",
                 "Use a towel to protect skin",
                 "Apply for 15 minutes",
-                "Repeat 3-4 times daily as needed",
+                "Repeat 3-4 times daily as needed"
             ],
             imageSystemName: "snowflake",
             localizationKey: "ice_therapy"
@@ -193,7 +193,7 @@ extension TreatmentActivity {
                 "Use your thumb to apply gentle pressure",
                 "Massage along the forearm muscles",
                 "Focus on tender points",
-                "Move slowly and breathe deeply",
+                "Move slowly and breathe deeply"
             ],
             imageSystemName: "hands.sparkles",
             localizationKey: "forearm_massage"
@@ -209,7 +209,7 @@ extension TreatmentActivity {
                 "Hold arm out with elbow bent at 90 degrees",
                 "Slowly rotate wrist in circles",
                 "Do 10 rotations clockwise",
-                "Then 10 rotations counter-clockwise",
+                "Then 10 rotations counter-clockwise"
             ],
             imageSystemName: "arrow.triangle.2.circlepath",
             localizationKey: "wrist_rotations"
@@ -223,7 +223,7 @@ extension TreatmentActivity {
                 "Rate your current pain level",
                 "Consider pain during activities",
                 "Note any changes from previous sessions",
-                "This helps track your recovery progress",
+                "This helps track your recovery progress"
             ],
             imageSystemName: "heart.text.square.fill",
             localizationKey: "pain_level_check"

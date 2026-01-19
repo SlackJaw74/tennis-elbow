@@ -1,4 +1,5 @@
 # SwiftLint Configuration for Tennis Elbow App
+# Aligned with SwiftFormat to prevent conflicts
 
 # Paths to exclude from linting
 excluded:
@@ -20,7 +21,6 @@ opt_in_rules:
   - discouraged_optional_boolean
   - discouraged_optional_collection
   - force_unwrapping
-  - implicit_return
   - multiline_arguments
   - multiline_function_chains
   - multiline_parameters
@@ -35,10 +35,19 @@ opt_in_rules:
   - vertical_parameter_alignment_on_call
   - yoda_condition
 
-# Disabled rules
+# Disabled rules - handled by SwiftFormat or conflict with it
 disabled_rules:
-  - trailing_whitespace  # Can be handled by SwiftFormat
-  - todo  # TODOs are acceptable in development
+  - trailing_whitespace           # Handled by SwiftFormat (trailingSpace)
+  - todo                          # TODOs are acceptable in development
+  - opening_brace                 # Handled by SwiftFormat (braces)
+  - closure_end_indentation       # Handled by SwiftFormat (indent)
+  - closure_parameter_position    # Handled by SwiftFormat (wrapArguments)
+  - vertical_whitespace           # Handled by SwiftFormat (blankLines)
+  - implicit_return               # SwiftFormat has its own implicit return handling
+  - statement_position            # Handled by SwiftFormat (elseOnSameLine)
+  - comma                         # Handled by SwiftFormat (spaceAroundComments)
+  - colon                         # Handled by SwiftFormat (spaceAroundColons)
+  - return_arrow_whitespace       # Handled by SwiftFormat (spaceAroundOperators)
 
 # Rule configurations
 line_length:

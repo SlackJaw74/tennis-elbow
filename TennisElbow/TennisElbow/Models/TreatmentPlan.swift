@@ -80,7 +80,7 @@ extension TreatmentPlan {
                 TreatmentActivity.defaultActivities[6], // Wrist Rotations
                 TreatmentActivity.defaultActivities[2], // Eccentric Wrist Extension
                 TreatmentActivity.defaultActivities[4], // Ice Therapy
-                TreatmentActivity.defaultActivities[7], // Pain Level Check
+                TreatmentActivity.defaultActivities[7] // Pain Level Check
             ],
             dailySchedule: [
                 .monday: [.morning, .evening],
@@ -105,7 +105,7 @@ extension TreatmentPlan {
                 TreatmentActivity.defaultActivities[2], // Eccentric Wrist Extension
                 TreatmentActivity.defaultActivities[3], // Grip Strengthening
                 TreatmentActivity.defaultActivities[4], // Ice Therapy
-                TreatmentActivity.defaultActivities[7], // Pain Level Check
+                TreatmentActivity.defaultActivities[7] // Pain Level Check
             ],
             dailySchedule: [
                 .monday: [.morning, .afternoon, .evening],
@@ -130,7 +130,7 @@ extension TreatmentPlan {
                 TreatmentActivity.defaultActivities[2], // Eccentric Wrist Extension
                 TreatmentActivity.defaultActivities[3], // Grip Strengthening
                 TreatmentActivity.defaultActivities[4], // Ice Therapy
-                TreatmentActivity.defaultActivities[7], // Pain Level Check
+                TreatmentActivity.defaultActivities[7] // Pain Level Check
             ],
             dailySchedule: [
                 .monday: [.morning, .afternoon, .evening],

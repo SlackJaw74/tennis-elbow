@@ -6,9 +6,12 @@ IPAD_DEVICE ?= iPad Pro 13-inch (M5)
 BUNDLE_ID := com.madhouse.TennisElbow
 APP := $(DERIVED)/Build/Products/Debug-iphonesimulator/TennisElbow.app
 
-.PHONY: sim-build sim-install sim-launch sim-run device-list clean archive open-xcode format
-.PHONY: ipad-build ipad-install ipad-launch ipad-run screenshots screenshots-iphone screenshots-ipad process-screenshots
+.PHONY: sim-build sim-install sim-launch sim-run device-list clean archive open-xcode
+
+.PHONY: ipad-build ipad-install ipad-launch ipad-run test test-unit test-ui screenshots screenshots-iphone screenshots-ipad process-screenshots
+.PHONY: screenshots-all-languages screenshots-iphone-all-languages screenshots-ipad-all-languages screenshot-debug
 .PHONY: version bump-patch bump-minor bump-major bump-build
+.PHONY: lint lint-fix format format-check fix
 
 sim-build:
 	open -a Simulator || true
@@ -52,6 +55,35 @@ ipad-launch:
 
 ipad-run: ipad-build ipad-install ipad-launch
 
+test:
+	xcodebuild test \
+	  -project "$(PROJECT)" \
+	  -scheme "$(SCHEME)" \
+	  -sdk iphonesimulator \
+	  -destination "platform=iOS Simulator,name=$(DEVICE)" \
+	  -derivedDataPath "$(DERIVED)" \
+	  -enableCodeCoverage YES
+
+test-unit:
+	xcodebuild test \
+	  -project "$(PROJECT)" \
+	  -scheme "$(SCHEME)" \
+	  -sdk iphonesimulator \
+	  -destination "platform=iOS Simulator,name=$(DEVICE)" \
+	  -derivedDataPath "$(DERIVED)" \
+	  -enableCodeCoverage YES \
+	  -only-testing:TennisElbowTests
+
+test-ui:
+	xcodebuild test \
+	  -project "$(PROJECT)" \
+	  -scheme "$(SCHEME)" \
+	  -sdk iphonesimulator \
+	  -destination "platform=iOS Simulator,name=$(DEVICE)" \
+	  -derivedDataPath "$(DERIVED)" \
+	  -enableCodeCoverage YES \
+	  -only-testing:TennisElbowUITests
+
 screenshots:
 	@echo "Capturing screenshots for all devices (iPhone and iPad)..."
 	cd fastlane && bundle exec fastlane screenshots_all
@@ -89,10 +121,6 @@ archive:
 open-xcode:
 	open "$(PROJECT)"
 
-format:
-	@command -v swiftformat >/dev/null 2>&1 || { echo "Error: swiftformat not installed. Install with: brew install swiftformat"; exit 1; }
-	cd TennisElbow && swiftformat .
-
 # Version Management
 version:
 	@echo "Current version information:"
@@ -111,3 +139,22 @@ bump-major:
 bump-build:
 	@bash scripts/version_bump.sh build
 
+# Linting and Formatting
+lint:
+	@echo "Running SwiftLint..."
+	cd TennisElbow && swiftlint lint
+
+lint-fix:
+	@echo "Running SwiftLint with auto-fix..."
+	cd TennisElbow && swiftlint --fix
+
+format:
+	@echo "Running SwiftFormat..."
+	cd TennisElbow && swiftformat .
+
+format-check:
+	@echo "Checking SwiftFormat compliance..."
+	cd TennisElbow && swiftformat --lint .
+
+fix: format lint-fix
+	@echo "All auto-fixes applied."
