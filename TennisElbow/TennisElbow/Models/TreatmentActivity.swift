@@ -84,7 +84,8 @@ struct TreatmentActivity: Identifiable, Codable, Hashable {
 
     var localizedInstructions: [String] {
         var result: [String] = []
-        for i in 1...10 {
+        let maxInstructionSteps = 10
+        for i in 1...maxInstructionSteps {
             let key = "activity.\(localizationKey).instruction.\(i)"
             let localized = key.localized()
             if localized != key {
@@ -94,6 +95,11 @@ struct TreatmentActivity: Identifiable, Codable, Hashable {
             }
         }
         return result
+    }
+
+    /// Indicates whether this activity requires weight tracking
+    var requiresWeightTracking: Bool {
+        type == .exercise && localizationKey == "eccentric_wrist_extension"
     }
 }
 

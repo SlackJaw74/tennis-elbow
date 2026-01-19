@@ -278,10 +278,8 @@ struct SessionActivityRow: View {
                         if scheduledActivity.isCompleted {
                             treatmentManager.uncompleteActivity(scheduledActivity)
                         } else {
-                            // Only show weight picker for Eccentric Wrist Extension
-                            if scheduledActivity.activity.type == .exercise,
-                               scheduledActivity.activity.localizationKey == "eccentric_wrist_extension"
-                            {
+                            // Only show weight picker for exercises that require weight tracking
+                            if scheduledActivity.activity.requiresWeightTracking {
                                 showWeightPicker = true
                             } else if scheduledActivity.activity.type == .painTracking {
                                 showPainPicker = true
