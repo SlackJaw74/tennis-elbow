@@ -62,11 +62,17 @@ ipad-run: ipad-build ipad-install ipad-launch
 fastlane-run:
 	@set -e; \
 	lane="$(LANE)"; \
+	params="$(PARAMS)"; \
 	if [ -z "$$lane" ]; then echo "Error: LANE not set"; exit 1; fi; \
 	if [ -n "$(FASTLANE)" ]; then \
 		echo "Using fastlane: $(FASTLANE)"; \
-		echo "Running lane: $$lane"; \
-		cd "$(FASTLANE_DIR)" && $(FASTLANE) "$$lane"; \
+		if [ -n "$$params" ]; then \
+			echo "Running lane: $$lane with params: $$params"; \
+			cd "$(FASTLANE_DIR)" && $(FASTLANE) $$lane $$params; \
+		else \
+			echo "Running lane: $$lane"; \
+			cd "$(FASTLANE_DIR)" && $(FASTLANE) $$lane; \
+		fi; \
 	else \
 		echo "Error: fastlane not available."; \
 		echo "Install with: brew install fastlane"; \
@@ -88,7 +94,7 @@ screenshots-iphone:
 
 screenshots-iphone-all-languages:
 	@echo "Capturing screenshots for iPhone devices in ALL languages..."
-	@$(MAKE) fastlane-run LANE="screenshots_iphone all_languages:true"
+	@$(MAKE) fastlane-run LANE=screenshots_iphone PARAMS="all_languages:true"
 
 screenshots-ipad:
 	@echo "Capturing screenshots for iPad devices only (English)..."
@@ -96,7 +102,7 @@ screenshots-ipad:
 
 screenshots-ipad-all-languages:
 	@echo "Capturing screenshots for iPad devices in ALL languages..."
-	@$(MAKE) fastlane-run LANE="screenshots_ipad all_languages:true"
+	@$(MAKE) fastlane-run LANE=screenshots_ipad PARAMS="all_languages:true"
 
 # Quick single screenshot for debugging - bypasses fastlane
 # Sets up the environment that fastlane's snapshot would normally create
