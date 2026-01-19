@@ -6,8 +6,15 @@ IPAD_DEVICE ?= iPad Pro 13-inch (M5)
 BUNDLE_ID := com.madhouse.TennisElbow
 APP := $(DERIVED)/Build/Products/Debug-iphonesimulator/TennisElbow.app
 
+FASTLANE_DIR := fastlane
+# Prefer Homebrew fastlane (avoids Ruby version conflicts)
+HOMEBREW_FASTLANE := $(shell command -v /opt/homebrew/bin/fastlane 2>/dev/null || command -v /usr/local/bin/fastlane 2>/dev/null)
+FASTLANE := $(if $(HOMEBREW_FASTLANE),$(HOMEBREW_FASTLANE),$(shell command -v fastlane))
+
 .PHONY: sim-build sim-install sim-launch sim-run device-list clean archive open-xcode format
-.PHONY: ipad-build ipad-install ipad-launch ipad-run screenshots screenshots-iphone screenshots-ipad process-screenshots
+.PHONY: ipad-build ipad-install ipad-launch ipad-run process-screenshots screenshot-debug
+.PHONY: screenshots screenshots-all-languages screenshots-iphone screenshots-iphone-all-languages screenshots-ipad screenshots-ipad-all-languages
+.PHONY: fastlane-run
 .PHONY: version bump-patch bump-minor bump-major bump-build
 
 sim-build:
@@ -52,24 +59,79 @@ ipad-launch:
 
 ipad-run: ipad-build ipad-install ipad-launch
 
+fastlane-run:
+	@set -e; \
+	lane="$(LANE)"; \
+	if [ -z "$$lane" ]; then echo "Error: LANE not set"; exit 1; fi; \
+	if [ -n "$(FASTLANE)" ]; then \
+		echo "Using fastlane: $(FASTLANE)"; \
+		echo "Running lane: $$lane"; \
+		cd "$(FASTLANE_DIR)" && $(FASTLANE) "$$lane"; \
+	else \
+		echo "Error: fastlane not available."; \
+		echo "Install with: brew install fastlane"; \
+		exit 1; \
+	fi
+
+# Screenshot targets - English only by default, use *-all-languages for all locales
 screenshots:
-	@echo "Capturing screenshots for all devices (iPhone and iPad)..."
-	cd fastlane && bundle exec fastlane screenshots_all
+	@echo "Capturing screenshots for all devices (English only)..."
+	@$(MAKE) fastlane-run LANE=screenshots_all
+
+screenshots-all-languages:
+	@echo "Capturing screenshots for all devices in ALL languages (this takes a while)..."
+	@$(MAKE) fastlane-run LANE=screenshots_all_languages
 
 screenshots-iphone:
-	@echo "Capturing screenshots for iPhone devices only..."
-	cd fastlane && bundle exec fastlane screenshots_iphone
+	@echo "Capturing screenshots for iPhone devices only (English)..."
+	@$(MAKE) fastlane-run LANE=screenshots_iphone
+
+screenshots-iphone-all-languages:
+	@echo "Capturing screenshots for iPhone devices in ALL languages..."
+	@$(MAKE) fastlane-run LANE="screenshots_iphone all_languages:true"
 
 screenshots-ipad:
-	@echo "Capturing screenshots for iPad devices only..."
-	cd fastlane && bundle exec fastlane screenshots_ipad
+	@echo "Capturing screenshots for iPad devices only (English)..."
+	@$(MAKE) fastlane-run LANE=screenshots_ipad
+
+screenshots-ipad-all-languages:
+	@echo "Capturing screenshots for iPad devices in ALL languages..."
+	@$(MAKE) fastlane-run LANE="screenshots_ipad all_languages:true"
+
+# Quick single screenshot for debugging - bypasses fastlane
+# Sets up the environment that fastlane's snapshot would normally create
+screenshot-debug:
+	@echo "Running single device screenshot test for debugging..."
+	@mkdir -p screenshots/en-US
+	@mkdir -p ~/Library/Caches/tools.fastlane/screenshots
+	@echo "en-US" > ~/Library/Caches/tools.fastlane/language.txt
+	@echo "en_US" > ~/Library/Caches/tools.fastlane/locale.txt
+	@touch ~/Library/Caches/tools.fastlane/snapshot-launch_arguments.txt
+	SIMULATOR_HOST_HOME=$(HOME) xcodebuild test \
+	  -project "$(PROJECT)" \
+	  -scheme "$(SCHEME)" \
+	  -configuration Debug \
+	  -sdk iphonesimulator \
+	  -destination "platform=iOS Simulator,name=$(DEVICE)" \
+	  -derivedDataPath "$(DERIVED)" \
+	  -only-testing:TennisElbowUITests/TennisElbowUITests/testScreenshots \
+	  2>&1 | tee screenshot-debug.log
+	@echo ""
+	@echo "=== Debug Complete ==="
+	@echo "Log saved to: screenshot-debug.log"
+	@echo "Screenshots saved to: ~/Library/Caches/tools.fastlane/screenshots/"
+	@ls -la ~/Library/Caches/tools.fastlane/screenshots/ 2>/dev/null || echo "No screenshots found"
+	@echo ""
+	@echo "Copying screenshots to screenshots/en-US/..."
+	@cp ~/Library/Caches/tools.fastlane/screenshots/*.png screenshots/en-US/ 2>/dev/null || echo "No PNG files to copy"
+	@ls -la screenshots/en-US/
 
 process-screenshots:
 	@echo "Processing screenshots for App Store Connect..."
-	cd fastlane && bundle exec fastlane process_screenshots
+	@$(MAKE) fastlane-run LANE=process_screenshots
 
 device-list:
-	xcrun simctl list devices
+	xcrun simctl list devices available
 
 clean:
 	rm -rf "$(DERIVED)" archives

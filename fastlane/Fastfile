@@ -10,7 +10,7 @@ platform :ios do
   lane :archive do
     gym(
       scheme: "TennisElbow",
-      project: "TennisElbow/TennisElbow.xcodeproj",
+      project: "../TennisElbow/TennisElbow.xcodeproj",
       configuration: "Release",
       export_method: "app-store",
       output_directory: "archives",
@@ -80,53 +80,76 @@ platform :ios do
   desc "Generate screenshots for App Store using fastlane snapshot"
   lane :screenshots do
     snapshot(
-      project: "TennisElbow/TennisElbow.xcodeproj",
+      project: File.expand_path("../TennisElbow/TennisElbow.xcodeproj", __dir__),
       scheme: "TennisElbow"
     )
   end
 
-  desc "Capture screenshots for iPhone devices only"
-  lane :screenshots_iphone do
+  # All supported languages for localized screenshots
+  ALL_LANGUAGES = ["en-US", "es-ES", "fr-FR", "de-DE", "ja-JP", "zh-Hans", "pt-PT", "it-IT", "nl-NL", "ko-KR"]
+  ENGLISH_ONLY = ["en-US"]
+
+  desc "Capture screenshots for iPhone devices only (English). Use all_languages:true for all languages."
+  lane :screenshots_iphone do |options|
     iphone_devices = [
       "iPhone 17 Pro Max",
       "iPhone 17 Pro",
       "iPhone 17",
       "iPhone 16e"
     ]
+    languages = options[:all_languages] ? ALL_LANGUAGES : ENGLISH_ONLY
     
-    capture_screenshots_for_devices(devices: iphone_devices, device_type: "iPhone")
+    capture_screenshots_for_devices(devices: iphone_devices, device_type: "iPhone", languages: languages)
   end
 
-  desc "Capture screenshots for iPad devices only"
-  lane :screenshots_ipad do
+  desc "Capture screenshots for iPad devices only (English). Use all_languages:true for all languages."
+  lane :screenshots_ipad do |options|
+    # Updated device list to match available simulators
     ipad_devices = [
       "iPad Pro 13-inch (M5)",
-      "iPad Pro 12.9-inch (6th generation)",
-      "iPad Air 11-inch (M2)",
-      "iPad (10th generation)"
+      "iPad Pro 11-inch (M5)",
+      "iPad Air 13-inch (M3)",
+      "iPad Air 11-inch (M3)"
     ]
+    languages = options[:all_languages] ? ALL_LANGUAGES : ENGLISH_ONLY
     
-    capture_screenshots_for_devices(devices: ipad_devices, device_type: "iPad")
+    capture_screenshots_for_devices(devices: ipad_devices, device_type: "iPad", languages: languages)
   end
 
-  desc "Capture screenshots for all devices (iPhone and iPad)"
+  desc "Capture screenshots for all devices (English only)"
   lane :screenshots_all do
-    UI.message "📱 Capturing screenshots for all devices (iPhone and iPad)..."
+    UI.message "📱 Capturing screenshots for all devices (English only)..."
     
     UI.message "--- iPhone Devices ---"
-    screenshots_iphone
+    screenshots_iphone(all_languages: false)
     
     UI.message ""
     UI.message "--- iPad Devices ---"
-    screenshots_ipad
+    screenshots_ipad(all_languages: false)
     
-    UI.success "✅ Screenshot capture complete for all devices!"
+    UI.success "✅ Screenshot capture complete for all devices (English)!"
+  end
+
+  desc "Capture screenshots for all devices in ALL languages (takes much longer)"
+  lane :screenshots_all_languages do
+    UI.message "📱 Capturing screenshots for all devices in ALL languages..."
+    UI.message "🌍 Languages: #{ALL_LANGUAGES.join(', ')}"
+    UI.message "⏱️  This will take a while..."
+    
+    UI.message "--- iPhone Devices ---"
+    screenshots_iphone(all_languages: true)
+    
+    UI.message ""
+    UI.message "--- iPad Devices ---"
+    screenshots_ipad(all_languages: true)
+    
+    UI.success "✅ Screenshot capture complete for all devices and languages!"
   end
 
   desc "Process screenshots for App Store Connect (resize iPhone, copy iPad)"
   lane :process_screenshots do
     languages = ["en-US", "es-ES", "fr-FR", "de-DE", "ja-JP", "zh-Hans", "pt-PT", "it-IT", "nl-NL", "ko-KR"]
-    output_dir = "fastlane/screenshots/app-store-ready"
+    output_dir = "./screenshots/app-store-ready"
     
     # Create output directory
     sh "mkdir -p #{output_dir}"
@@ -135,7 +158,7 @@ platform :ios do
     UI.message ""
     
     languages.each do |language|
-      screenshot_dir = "fastlane/screenshots/#{language}"
+      screenshot_dir = "./screenshots/#{language}"
       
       # Skip if directory doesn't exist
       unless Dir.exist?(screenshot_dir)
@@ -203,34 +226,32 @@ platform :ios do
   private_lane :capture_screenshots_for_devices do |options|
     devices = options[:devices]
     device_type = options[:device_type]
+    languages = options[:languages] || ENGLISH_ONLY
     
-    project = "TennisElbow/TennisElbow.xcodeproj"
+    # Use absolute path for the project
+    project_path = File.expand_path("../TennisElbow/TennisElbow.xcodeproj", __dir__)
     scheme = "TennisElbow"
-    output_dir = "fastlane/screenshots"
+    output_dir = "./screenshots"
     
-    # Create output directory
-    sh "mkdir -p #{output_dir}"
+    UI.message "📱 Capturing screenshots for #{device_type} devices..."
+    UI.message "🌍 Languages: #{languages.join(', ')}"
     
-    devices.each do |device|
-      UI.message "📱 Running tests on: #{device} (#{device_type})"
-      
-      begin
-        # Run UI tests which will capture screenshots
-        scan(
-          project: project,
-          scheme: scheme,
-          device: device,
-          derived_data_path: "./build",
-          output_directory: output_dir,
-          only_testing: ["TennisElbowUITests/TennisElbowUITests/testScreenshots"],
-          fail_build: false
-        )
-      rescue => ex
-        UI.error "⚠️  Tests failed on #{device}, but continuing..."
-      end
-      
-      UI.success "✓ Completed #{device}"
-      UI.message ""
+    begin
+      # Use snapshot action which properly sets up SnapshotHelper environment
+      snapshot(
+        project: project_path,
+        scheme: scheme,
+        devices: devices,
+        languages: languages,
+        output_directory: output_dir,
+        clear_previous_screenshots: false,
+        override_status_bar: true,
+        skip_open_summary: true
+      )
+    rescue => ex
+      UI.error "⚠️  Screenshot capture failed: #{ex.message}"
     end
+    
+    UI.success "✓ Completed #{device_type} screenshots"
   end
 end

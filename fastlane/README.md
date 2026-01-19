@@ -109,7 +109,7 @@ Generate screenshots for App Store using fastlane snapshot
 [bundle exec] fastlane ios screenshots_iphone
 ```
 
-Capture screenshots for iPhone devices only
+Capture screenshots for iPhone devices only (English). Use all_languages:true for all languages.
 
 ### ios screenshots_ipad
 
@@ -117,7 +117,7 @@ Capture screenshots for iPhone devices only
 [bundle exec] fastlane ios screenshots_ipad
 ```
 
-Capture screenshots for iPad devices only
+Capture screenshots for iPad devices only (English). Use all_languages:true for all languages.
 
 ### ios screenshots_all
 
@@ -125,7 +125,15 @@ Capture screenshots for iPad devices only
 [bundle exec] fastlane ios screenshots_all
 ```
 
-Capture screenshots for all devices (iPhone and iPad)
+Capture screenshots for all devices (English only)
+
+### ios screenshots_all_languages
+
+```sh
+[bundle exec] fastlane ios screenshots_all_languages
+```
+
+Capture screenshots for all devices in ALL languages (takes much longer)
 
 ### ios process_screenshots
 

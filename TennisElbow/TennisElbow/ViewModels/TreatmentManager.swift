@@ -428,6 +428,13 @@ class TreatmentManager: ObservableObject {
            let decoded = try? JSONDecoder().decode([ScheduledActivity].self, from: data)
         {
             scheduledActivities = decoded
+            // Check if there are any activities for today - if not, generate a new schedule
+            // This handles the case where saved activities are from previous weeks or the array is empty
+            let calendar = Calendar.current
+            let hasTodayActivities = scheduledActivities.contains { calendar.isDateInToday($0.scheduledTime) }
+            if !hasTodayActivities {
+                generateSchedule()
+            }
         } else {
             generateSchedule()
         }

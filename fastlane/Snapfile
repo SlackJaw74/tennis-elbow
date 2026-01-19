@@ -2,17 +2,19 @@
 # More info: https://docs.fastlane.tools/actions/snapshot/
 
 # List of devices to generate screenshots for
-# Using older device types to match App Store Connect requirements
+# Updated to use available simulators
 devices([
   # iPhone devices
-  "iPhone 11 Pro Max",      # Produces 1242x2688 screenshots (App Store requirement)
-  "iPhone 12 Pro Max",      # Produces 1284x2778 screenshots (App Store requirement)
+  "iPhone 17 Pro Max",
+  "iPhone 17 Pro",
+  "iPhone 17",
+  "iPhone 16e",
   
-  # iPad devices - supporting multiple form factors
-  "iPad Pro 13-inch (M5)",           # Latest large iPad Pro
-  "iPad Pro 12.9-inch (6th generation)",  # Previous generation large iPad
-  "iPad Air 11-inch (M2)",           # iPad Air
-  "iPad (10th generation)"           # Standard iPad
+  # iPad devices
+  "iPad Pro 13-inch (M5)",
+  "iPad Pro 11-inch (M5)",
+  "iPad Air 13-inch (M3)",
+  "iPad Air 11-inch (M3)"
 ])
 
 # List of languages to generate screenshots for
@@ -33,7 +35,7 @@ languages([
 scheme("TennisElbow")
 
 # Where should the resulting screenshots be stored?
-output_directory("./fastlane/screenshots")
+output_directory("./screenshots")
 
 # Clear all previously generated screenshots before creating new ones
 clear_previous_screenshots(true)
