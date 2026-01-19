@@ -66,7 +66,7 @@ fastlane-run:
 	if [ -n "$(FASTLANE)" ]; then \
 		echo "Using fastlane: $(FASTLANE)"; \
 		echo "Running lane: $$lane"; \
-		cd "$(FASTLANE_DIR)" && $(FASTLANE) "$$lane"; \
+		cd "$(FASTLANE_DIR)" && $(FASTLANE) $$lane; \
 	else \
 		echo "Error: fastlane not available."; \
 		echo "Install with: brew install fastlane"; \
