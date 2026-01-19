@@ -156,3 +156,105 @@
 "NHS (UK National Health Service)" = "NHS（英国国民保健サービス）";
 "Tennis Elbow Treatment Guide" = "テニス肘治療ガイド";
 "View Source" = "情報源を表示";
+
+// MARK: - Activity Names
+"activity.wrist_extension_stretch" = "手首伸展ストレッチ";
+"activity.wrist_flexion_stretch" = "手首屈曲ストレッチ";
+"activity.eccentric_wrist_extension" = "偏心性手首伸展運動";
+"activity.grip_strengthening" = "握力強化";
+"activity.ice_therapy" = "アイシング療法";
+"activity.forearm_massage" = "前腕マッサージ";
+"activity.wrist_rotations" = "手首回転運動";
+"activity.pain_level_check" = "痛みレベルチェック";
+
+// MARK: - Activity Descriptions
+"activity.wrist_extension_stretch.description" = "柔軟性を向上させるための優しいストレッチ";
+"activity.wrist_flexion_stretch.description" = "前腕の伸筋をストレッチ";
+"activity.eccentric_wrist_extension.description" = "前腕伸筋の強化運動";
+"activity.grip_strengthening.description" = "握力と前腕の筋力を強化";
+"activity.ice_therapy.description" = "炎症と痛みを軽減";
+"activity.forearm_massage.description" = "緊張を和らげるセルフマッサージ";
+"activity.wrist_rotations.description" = "可動性と血行を改善";
+"activity.pain_level_check.description" = "活動後の痛みレベルを記録";
+
+// MARK: - Activity Instructions
+"activity.wrist_extension_stretch.instruction.1" = "手のひらを下に向けて腕を前に伸ばします";
+"activity.wrist_extension_stretch.instruction.2" = "もう一方の手で指を優しく後ろに引きます";
+"activity.wrist_extension_stretch.instruction.3" = "15〜30秒間保持します";
+"activity.wrist_extension_stretch.instruction.4" = "両腕で繰り返します";
+
+"activity.wrist_flexion_stretch.instruction.1" = "手のひらを上に向けて腕を伸ばします";
+"activity.wrist_flexion_stretch.instruction.2" = "もう一方の手で指を優しく下に引きます";
+"activity.wrist_flexion_stretch.instruction.3" = "15〜30秒間保持します";
+"activity.wrist_flexion_stretch.instruction.4" = "前腕のストレッチを感じてください";
+
+"activity.eccentric_wrist_extension.instruction.1" = "手のひらを下にして前腕をテーブルに置きます";
+"activity.eccentric_wrist_extension.instruction.2" = "軽い重り（最初は1〜2ポンド）を持ちます";
+"activity.eccentric_wrist_extension.instruction.3" = "手首を下に曲げてゆっくりと重りを下ろします";
+"activity.eccentric_wrist_extension.instruction.4" = "もう一方の手で元の位置に戻すのを助けます";
+"activity.eccentric_wrist_extension.instruction.5" = "下ろす動作に集中してください";
+
+"activity.grip_strengthening.instruction.1" = "ストレスボールまたはグリップ強化器具を使用します";
+"activity.grip_strengthening.instruction.2" = "5秒間しっかりと握ります";
+"activity.grip_strengthening.instruction.3" = "ゆっくりと力を緩めます";
+"activity.grip_strengthening.instruction.4" = "セット間に休憩を取ります";
+
+"activity.ice_therapy.instruction.1" = "肘の外側にアイスパックを当てます";
+"activity.ice_therapy.instruction.2" = "皮膚を保護するためにタオルを使用します";
+"activity.ice_therapy.instruction.3" = "15分間冷やします";
+"activity.ice_therapy.instruction.4" = "必要に応じて1日3〜4回繰り返します";
+
+"activity.forearm_massage.instruction.1" = "親指を使って優しく圧力をかけます";
+"activity.forearm_massage.instruction.2" = "前腕の筋肉に沿ってマッサージします";
+"activity.forearm_massage.instruction.3" = "圧痛点に焦点を当てます";
+"activity.forearm_massage.instruction.4" = "ゆっくりと動かし、深く呼吸します";
+
+"activity.wrist_rotations.instruction.1" = "肘を90度に曲げて腕を伸ばします";
+"activity.wrist_rotations.instruction.2" = "手首をゆっくりと円を描くように回転させます";
+"activity.wrist_rotations.instruction.3" = "時計回りに10回転行います";
+"activity.wrist_rotations.instruction.4" = "次に反時計回りに10回転行います";
+
+"activity.pain_level_check.instruction.1" = "現在の痛みレベルを評価してください";
+"activity.pain_level_check.instruction.2" = "活動中の痛みを考慮してください";
+"activity.pain_level_check.instruction.3" = "前回のセッションからの変化に注目してください";
+"activity.pain_level_check.instruction.4" = "これは回復の進捗を追跡するのに役立ちます";
+
+// MARK: - Treatment Plan Names
+"plan.week_1_2_gentle_recovery" = "第1〜2週：優しい回復期";
+"plan.week_3_4_progressive_strengthening" = "第3〜4週：段階的強化期";
+"plan.week_5_6_active_rehabilitation" = "第5〜6週：積極的リハビリ期";
+
+// MARK: - Treatment Plan Descriptions
+"plan.week_1_2_gentle_recovery.description" = "炎症の軽減と優しいストレッチに焦点を当てます";
+"plan.week_3_4_progressive_strengthening.description" = "優しい強化運動を追加します";
+"plan.week_5_6_active_rehabilitation.description" = "筋力と持久力を向上させます";
+
+// MARK: - Activity Types
+"activity_type.exercise" = "運動";
+"activity_type.stretch" = "ストレッチ";
+"activity_type.ice_therapy" = "アイシング療法";
+"activity_type.rest" = "休息";
+"activity_type.medication" = "服薬";
+"activity_type.pain_tracking" = "痛みの記録";
+
+// MARK: - Difficulty Levels
+"difficulty.beginner" = "初級";
+"difficulty.intermediate" = "中級";
+"difficulty.advanced" = "上級";
+
+// MARK: - Days of Week
+"day.sunday" = "日曜日";
+"day.monday" = "月曜日";
+"day.tuesday" = "火曜日";
+"day.wednesday" = "水曜日";
+"day.thursday" = "木曜日";
+"day.friday" = "金曜日";
+"day.saturday" = "土曜日";
+
+// MARK: - Activity Detail Source Descriptions
+"source.exercise.description" = "偏心性強化運動は、British Journal of Sports Medicineに掲載された研究とAmerican Academy of Orthopaedic Surgeons（AAOS）のガイドラインによって支持されています。";
+"source.stretch.description" = "ストレッチプロトコルは、British Journal of Sports Medicineに掲載された外側上顆炎に対する有効性を示す臨床研究に基づいています。";
+"source.ice_therapy.description" = "寒冷療法の推奨事項は、査読済みのスポーツ医学誌に掲載された筋骨格系損傷管理のエビデンスに基づくプロトコルに従っています。";
+"source.rest.description" = "休息と活動変更のガイダンスは、AAOSとMayo Clinicのテニス肘回復の推奨事項に従っています。";
+"source.medication.description" = "薬物療法については必ず医療提供者に相談してください。この活動は服薬遵守のみを記録します。";
+"source.pain_tracking.description" = "痛みの記録は、臨床実践ガイドラインで推奨されているように回復の進捗を監視するのに役立ちます。";

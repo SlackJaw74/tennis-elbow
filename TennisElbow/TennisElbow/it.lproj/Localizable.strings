@@ -156,3 +156,105 @@
 "NHS (UK National Health Service)" = "NHS (Servizio Sanitario Nazionale del Regno Unito)";
 "Tennis Elbow Treatment Guide" = "Guida al Trattamento del Gomito del Tennista";
 "View Source" = "Visualizza Fonte";
+
+// MARK: - Activity Names
+"activity.wrist_extension_stretch" = "Allungamento Estensione del Polso";
+"activity.wrist_flexion_stretch" = "Allungamento Flessione del Polso";
+"activity.eccentric_wrist_extension" = "Estensione Eccentrica del Polso";
+"activity.grip_strengthening" = "Rafforzamento della Presa";
+"activity.ice_therapy" = "Terapia del Freddo";
+"activity.forearm_massage" = "Massaggio dell'Avambraccio";
+"activity.wrist_rotations" = "Rotazioni del Polso";
+"activity.pain_level_check" = "Controllo Livello di Dolore";
+
+// MARK: - Activity Descriptions
+"activity.wrist_extension_stretch.description" = "Allungamento delicato per migliorare la flessibilità";
+"activity.wrist_flexion_stretch.description" = "Allunga gli estensori dell'avambraccio";
+"activity.eccentric_wrist_extension.description" = "Esercizio di rafforzamento per gli estensori dell'avambraccio";
+"activity.grip_strengthening.description" = "Sviluppa la forza della presa e dell'avambraccio";
+"activity.ice_therapy.description" = "Riduce l'infiammazione e il dolore";
+"activity.forearm_massage.description" = "Auto-massaggio per ridurre la tensione";
+"activity.wrist_rotations.description" = "Migliora la mobilità e la circolazione";
+"activity.pain_level_check.description" = "Monitora il tuo livello di dolore dopo le attività";
+
+// MARK: - Activity Instructions
+"activity.wrist_extension_stretch.instruction.1" = "Estendi il braccio davanti a te con il palmo rivolto verso il basso";
+"activity.wrist_extension_stretch.instruction.2" = "Usa l'altra mano per tirare delicatamente le dita all'indietro";
+"activity.wrist_extension_stretch.instruction.3" = "Mantieni la posizione per 15-30 secondi";
+"activity.wrist_extension_stretch.instruction.4" = "Ripeti su entrambe le braccia";
+
+"activity.wrist_flexion_stretch.instruction.1" = "Estendi il braccio con il palmo rivolto verso l'alto";
+"activity.wrist_flexion_stretch.instruction.2" = "Tira delicatamente le dita verso il basso con l'altra mano";
+"activity.wrist_flexion_stretch.instruction.3" = "Mantieni la posizione per 15-30 secondi";
+"activity.wrist_flexion_stretch.instruction.4" = "Senti l'allungamento nell'avambraccio";
+
+"activity.eccentric_wrist_extension.instruction.1" = "Appoggia l'avambraccio su un tavolo, palmo verso il basso";
+"activity.eccentric_wrist_extension.instruction.2" = "Tieni un peso leggero (inizia con 0,5-1 kg)";
+"activity.eccentric_wrist_extension.instruction.3" = "Abbassa lentamente il peso piegando il polso verso il basso";
+"activity.eccentric_wrist_extension.instruction.4" = "Usa l'altra mano per aiutarti a sollevarlo";
+"activity.eccentric_wrist_extension.instruction.5" = "Concentrati sul movimento di abbassamento";
+
+"activity.grip_strengthening.instruction.1" = "Usa una palla anti-stress o un rafforzatore per la presa";
+"activity.grip_strengthening.instruction.2" = "Stringi con forza per 5 secondi";
+"activity.grip_strengthening.instruction.3" = "Rilascia lentamente";
+"activity.grip_strengthening.instruction.4" = "Riposa tra le serie";
+
+"activity.ice_therapy.instruction.1" = "Applica un impacco di ghiaccio sul gomito esterno";
+"activity.ice_therapy.instruction.2" = "Usa un asciugamano per proteggere la pelle";
+"activity.ice_therapy.instruction.3" = "Applica per 15 minuti";
+"activity.ice_therapy.instruction.4" = "Ripeti 3-4 volte al giorno secondo necessità";
+
+"activity.forearm_massage.instruction.1" = "Usa il pollice per applicare una pressione delicata";
+"activity.forearm_massage.instruction.2" = "Massaggia lungo i muscoli dell'avambraccio";
+"activity.forearm_massage.instruction.3" = "Concentrati sui punti dolenti";
+"activity.forearm_massage.instruction.4" = "Muoviti lentamente e respira profondamente";
+
+"activity.wrist_rotations.instruction.1" = "Tieni il braccio esteso con il gomito piegato a 90 gradi";
+"activity.wrist_rotations.instruction.2" = "Ruota lentamente il polso in cerchio";
+"activity.wrist_rotations.instruction.3" = "Fai 10 rotazioni in senso orario";
+"activity.wrist_rotations.instruction.4" = "Poi 10 rotazioni in senso antiorario";
+
+"activity.pain_level_check.instruction.1" = "Valuta il tuo livello di dolore attuale";
+"activity.pain_level_check.instruction.2" = "Considera il dolore durante le attività";
+"activity.pain_level_check.instruction.3" = "Annota eventuali cambiamenti rispetto alle sessioni precedenti";
+"activity.pain_level_check.instruction.4" = "Questo aiuta a monitorare i tuoi progressi di recupero";
+
+// MARK: - Treatment Plan Names
+"plan.week_1_2_gentle_recovery" = "Settimana 1-2: Recupero Delicato";
+"plan.week_3_4_progressive_strengthening" = "Settimana 3-4: Rafforzamento Progressivo";
+"plan.week_5_6_active_rehabilitation" = "Settimana 5-6: Riabilitazione Attiva";
+
+// MARK: - Treatment Plan Descriptions
+"plan.week_1_2_gentle_recovery.description" = "Concentrati sulla riduzione dell'infiammazione e sull'allungamento delicato";
+"plan.week_3_4_progressive_strengthening.description" = "Aggiungi esercizi di rafforzamento delicato";
+"plan.week_5_6_active_rehabilitation.description" = "Aumenta la forza e la resistenza";
+
+// MARK: - Activity Types
+"activity_type.exercise" = "Esercizio";
+"activity_type.stretch" = "Allungamento";
+"activity_type.ice_therapy" = "Terapia del Freddo";
+"activity_type.rest" = "Riposo";
+"activity_type.medication" = "Farmaco";
+"activity_type.pain_tracking" = "Monitoraggio del Dolore";
+
+// MARK: - Difficulty Levels
+"difficulty.beginner" = "Principiante";
+"difficulty.intermediate" = "Intermedio";
+"difficulty.advanced" = "Avanzato";
+
+// MARK: - Days of Week
+"day.sunday" = "Domenica";
+"day.monday" = "Lunedì";
+"day.tuesday" = "Martedì";
+"day.wednesday" = "Mercoledì";
+"day.thursday" = "Giovedì";
+"day.friday" = "Venerdì";
+"day.saturday" = "Sabato";
+
+// MARK: - Activity Detail Source Descriptions
+"source.exercise.description" = "Gli esercizi di rafforzamento eccentrico sono supportati da ricerche pubblicate nel British Journal of Sports Medicine e dalle linee guida dell'American Academy of Orthopaedic Surgeons.";
+"source.stretch.description" = "I protocolli di allungamento si basano su studi clinici pubblicati nel British Journal of Sports Medicine che dimostrano l'efficacia per l'epicondilite laterale.";
+"source.ice_therapy.description" = "Le raccomandazioni sulla crioterapia seguono protocolli basati sull'evidenza per la gestione delle lesioni muscoloscheletriche pubblicati in riviste di medicina sportiva sottoposte a revisione paritaria.";
+"source.rest.description" = "Le indicazioni sul riposo e la modifica dell'attività seguono le raccomandazioni dell'AAOS e della Mayo Clinic per il recupero dal gomito del tennista.";
+"source.medication.description" = "Consulta sempre un operatore sanitario in merito ai farmaci. Questa attività monitora solo la conformità.";
+"source.pain_tracking.description" = "Il monitoraggio del dolore aiuta a seguire i progressi di recupero come raccomandato nelle linee guida di pratica clinica.";

@@ -156,3 +156,105 @@
 "NHS (UK National Health Service)" = "NHS (Service national de santé du Royaume-Uni)";
 "Tennis Elbow Treatment Guide" = "Guide de traitement de l'épicondylite latérale";
 "View Source" = "Voir la source";
+
+// MARK: - Activity Names
+"activity.wrist_extension_stretch" = "Étirement en extension du poignet";
+"activity.wrist_flexion_stretch" = "Étirement en flexion du poignet";
+"activity.eccentric_wrist_extension" = "Extension excentrique du poignet";
+"activity.grip_strengthening" = "Renforcement de la préhension";
+"activity.ice_therapy" = "Thérapie par le froid";
+"activity.forearm_massage" = "Massage de l'avant-bras";
+"activity.wrist_rotations" = "Rotations du poignet";
+"activity.pain_level_check" = "Évaluation du niveau de douleur";
+
+// MARK: - Activity Descriptions
+"activity.wrist_extension_stretch.description" = "Étirement doux pour améliorer la flexibilité";
+"activity.wrist_flexion_stretch.description" = "Étire les muscles extenseurs de l'avant-bras";
+"activity.eccentric_wrist_extension.description" = "Exercice de renforcement des extenseurs de l'avant-bras";
+"activity.grip_strengthening.description" = "Renforce la préhension et l'avant-bras";
+"activity.ice_therapy.description" = "Réduit l'inflammation et la douleur";
+"activity.forearm_massage.description" = "Auto-massage pour réduire les tensions";
+"activity.wrist_rotations.description" = "Améliore la mobilité et la circulation";
+"activity.pain_level_check.description" = "Suivez votre niveau de douleur après les activités";
+
+// MARK: - Activity Instructions
+"activity.wrist_extension_stretch.instruction.1" = "Tendez votre bras devant vous, paume vers le bas";
+"activity.wrist_extension_stretch.instruction.2" = "Utilisez votre autre main pour tirer doucement les doigts vers l'arrière";
+"activity.wrist_extension_stretch.instruction.3" = "Maintenez pendant 15 à 30 secondes";
+"activity.wrist_extension_stretch.instruction.4" = "Répétez sur les deux bras";
+
+"activity.wrist_flexion_stretch.instruction.1" = "Tendez votre bras, paume vers le haut";
+"activity.wrist_flexion_stretch.instruction.2" = "Tirez doucement les doigts vers le bas avec l'autre main";
+"activity.wrist_flexion_stretch.instruction.3" = "Maintenez pendant 15 à 30 secondes";
+"activity.wrist_flexion_stretch.instruction.4" = "Sentez l'étirement dans votre avant-bras";
+
+"activity.eccentric_wrist_extension.instruction.1" = "Posez votre avant-bras sur une table, paume vers le bas";
+"activity.eccentric_wrist_extension.instruction.2" = "Tenez un poids léger (500 g à 1 kg pour commencer)";
+"activity.eccentric_wrist_extension.instruction.3" = "Abaissez lentement le poids en pliant le poignet vers le bas";
+"activity.eccentric_wrist_extension.instruction.4" = "Utilisez l'autre main pour aider à le remonter";
+"activity.eccentric_wrist_extension.instruction.5" = "Concentrez-vous sur le mouvement de descente";
+
+"activity.grip_strengthening.instruction.1" = "Utilisez une balle anti-stress ou un renforçateur de préhension";
+"activity.grip_strengthening.instruction.2" = "Serrez fermement pendant 5 secondes";
+"activity.grip_strengthening.instruction.3" = "Relâchez lentement";
+"activity.grip_strengthening.instruction.4" = "Reposez-vous entre les séries";
+
+"activity.ice_therapy.instruction.1" = "Appliquez une poche de glace sur la partie externe du coude";
+"activity.ice_therapy.instruction.2" = "Utilisez une serviette pour protéger la peau";
+"activity.ice_therapy.instruction.3" = "Appliquez pendant 15 minutes";
+"activity.ice_therapy.instruction.4" = "Répétez 3 à 4 fois par jour selon les besoins";
+
+"activity.forearm_massage.instruction.1" = "Utilisez votre pouce pour appliquer une pression douce";
+"activity.forearm_massage.instruction.2" = "Massez le long des muscles de l'avant-bras";
+"activity.forearm_massage.instruction.3" = "Concentrez-vous sur les points sensibles";
+"activity.forearm_massage.instruction.4" = "Bougez lentement et respirez profondément";
+
+"activity.wrist_rotations.instruction.1" = "Tendez le bras avec le coude plié à 90 degrés";
+"activity.wrist_rotations.instruction.2" = "Faites tourner lentement le poignet en cercles";
+"activity.wrist_rotations.instruction.3" = "Faites 10 rotations dans le sens horaire";
+"activity.wrist_rotations.instruction.4" = "Puis 10 rotations dans le sens antihoraire";
+
+"activity.pain_level_check.instruction.1" = "Évaluez votre niveau de douleur actuel";
+"activity.pain_level_check.instruction.2" = "Considérez la douleur pendant les activités";
+"activity.pain_level_check.instruction.3" = "Notez tout changement par rapport aux séances précédentes";
+"activity.pain_level_check.instruction.4" = "Cela aide à suivre vos progrès de récupération";
+
+// MARK: - Treatment Plan Names
+"plan.week_1_2_gentle_recovery" = "Semaines 1-2 : Récupération douce";
+"plan.week_3_4_progressive_strengthening" = "Semaines 3-4 : Renforcement progressif";
+"plan.week_5_6_active_rehabilitation" = "Semaines 5-6 : Rééducation active";
+
+// MARK: - Treatment Plan Descriptions
+"plan.week_1_2_gentle_recovery.description" = "Concentrez-vous sur la réduction de l'inflammation et les étirements doux";
+"plan.week_3_4_progressive_strengthening.description" = "Ajoutez des exercices de renforcement doux";
+"plan.week_5_6_active_rehabilitation.description" = "Augmentez la force et l'endurance";
+
+// MARK: - Activity Types
+"activity_type.exercise" = "Exercice";
+"activity_type.stretch" = "Étirement";
+"activity_type.ice_therapy" = "Thérapie par le froid";
+"activity_type.rest" = "Repos";
+"activity_type.medication" = "Médicament";
+"activity_type.pain_tracking" = "Suivi de la douleur";
+
+// MARK: - Difficulty Levels
+"difficulty.beginner" = "Débutant";
+"difficulty.intermediate" = "Intermédiaire";
+"difficulty.advanced" = "Avancé";
+
+// MARK: - Days of Week
+"day.sunday" = "Dimanche";
+"day.monday" = "Lundi";
+"day.tuesday" = "Mardi";
+"day.wednesday" = "Mercredi";
+"day.thursday" = "Jeudi";
+"day.friday" = "Vendredi";
+"day.saturday" = "Samedi";
+
+// MARK: - Activity Detail Source Descriptions
+"source.exercise.description" = "Les exercices de renforcement excentriques sont soutenus par des recherches publiées dans le British Journal of Sports Medicine et les directives de l'American Academy of Orthopaedic Surgeons.";
+"source.stretch.description" = "Les protocoles d'étirement sont basés sur des études cliniques publiées dans le British Journal of Sports Medicine démontrant leur efficacité pour l'épicondylite latérale.";
+"source.ice_therapy.description" = "Les recommandations de cryothérapie suivent des protocoles fondés sur des preuves pour la gestion des blessures musculo-squelettiques, tels que publiés dans des revues de médecine sportive évaluées par des pairs.";
+"source.rest.description" = "Les conseils sur le repos et la modification des activités suivent les recommandations de l'AAOS et de la Mayo Clinic pour la récupération de l'épicondylite latérale.";
+"source.medication.description" = "Consultez toujours un professionnel de santé concernant les médicaments. Cette activité ne suit que l'observance.";
+"source.pain_tracking.description" = "Le suivi de la douleur aide à surveiller les progrès de la récupération, comme recommandé dans les directives de pratique clinique.";

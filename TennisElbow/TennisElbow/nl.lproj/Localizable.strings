@@ -156,3 +156,105 @@
 "NHS (UK National Health Service)" = "NHS (UK National Health Service)";
 "Tennis Elbow Treatment Guide" = "Behandelingsgids Tenniselleboog";
 "View Source" = "Bekijk Bron";
+
+// MARK: - Activity Names
+"activity.wrist_extension_stretch" = "Polsextensie Stretch";
+"activity.wrist_flexion_stretch" = "Polsflexie Stretch";
+"activity.eccentric_wrist_extension" = "Excentrische Polsextensie";
+"activity.grip_strengthening" = "Greepkracht Versterking";
+"activity.ice_therapy" = "IJstherapie";
+"activity.forearm_massage" = "Onderarmmassage";
+"activity.wrist_rotations" = "Polsrotaties";
+"activity.pain_level_check" = "Pijnniveau Controle";
+
+// MARK: - Activity Descriptions
+"activity.wrist_extension_stretch.description" = "Zachte stretching om flexibiliteit te verbeteren";
+"activity.wrist_flexion_stretch.description" = "Strekt de extensoren van de onderarm";
+"activity.eccentric_wrist_extension.description" = "Krachtoefening voor onderarmextensoren";
+"activity.grip_strengthening.description" = "Bouw greepkracht en onderarmkracht op";
+"activity.ice_therapy.description" = "Verminder ontsteking en pijn";
+"activity.forearm_massage.description" = "Zelfmassage om spanning te verminderen";
+"activity.wrist_rotations.description" = "Verbeter mobiliteit en circulatie";
+"activity.pain_level_check.description" = "Volg uw pijnniveau na activiteiten";
+
+// MARK: - Activity Instructions
+"activity.wrist_extension_stretch.instruction.1" = "Strek uw arm voor u uit met de handpalm naar beneden";
+"activity.wrist_extension_stretch.instruction.2" = "Gebruik uw andere hand om de vingers voorzichtig naar achteren te trekken";
+"activity.wrist_extension_stretch.instruction.3" = "Houd 15-30 seconden vast";
+"activity.wrist_extension_stretch.instruction.4" = "Herhaal met beide armen";
+
+"activity.wrist_flexion_stretch.instruction.1" = "Strek uw arm uit met de handpalm naar boven";
+"activity.wrist_flexion_stretch.instruction.2" = "Trek de vingers voorzichtig naar beneden met de andere hand";
+"activity.wrist_flexion_stretch.instruction.3" = "Houd 15-30 seconden vast";
+"activity.wrist_flexion_stretch.instruction.4" = "Voel de stretch in uw onderarm";
+
+"activity.eccentric_wrist_extension.instruction.1" = "Rust uw onderarm op een tafel, handpalm naar beneden";
+"activity.eccentric_wrist_extension.instruction.2" = "Houd een licht gewicht vast (begin met 0,5-1 kg)";
+"activity.eccentric_wrist_extension.instruction.3" = "Laat het gewicht langzaam zakken door uw pols naar beneden te buigen";
+"activity.eccentric_wrist_extension.instruction.4" = "Gebruik uw andere hand om het terug omhoog te helpen";
+"activity.eccentric_wrist_extension.instruction.5" = "Focus op de neerwaartse beweging";
+
+"activity.grip_strengthening.instruction.1" = "Gebruik een stressbal of greepkrachttrainer";
+"activity.grip_strengthening.instruction.2" = "Knijp stevig gedurende 5 seconden";
+"activity.grip_strengthening.instruction.3" = "Laat langzaam los";
+"activity.grip_strengthening.instruction.4" = "Rust tussen sets";
+
+"activity.ice_therapy.instruction.1" = "Breng een ijspak aan op de buitenkant van de elleboog";
+"activity.ice_therapy.instruction.2" = "Gebruik een handdoek om de huid te beschermen";
+"activity.ice_therapy.instruction.3" = "Breng 15 minuten aan";
+"activity.ice_therapy.instruction.4" = "Herhaal 3-4 keer per dag indien nodig";
+
+"activity.forearm_massage.instruction.1" = "Gebruik uw duim om zachte druk uit te oefenen";
+"activity.forearm_massage.instruction.2" = "Masseer langs de onderarmspieren";
+"activity.forearm_massage.instruction.3" = "Focus op gevoelige punten";
+"activity.forearm_massage.instruction.4" = "Beweeg langzaam en adem diep";
+
+"activity.wrist_rotations.instruction.1" = "Houd uw arm uit met de elleboog gebogen op 90 graden";
+"activity.wrist_rotations.instruction.2" = "Roteer de pols langzaam in cirkels";
+"activity.wrist_rotations.instruction.3" = "Doe 10 rotaties met de klok mee";
+"activity.wrist_rotations.instruction.4" = "Daarna 10 rotaties tegen de klok in";
+
+"activity.pain_level_check.instruction.1" = "Beoordeel uw huidige pijnniveau";
+"activity.pain_level_check.instruction.2" = "Overweeg pijn tijdens activiteiten";
+"activity.pain_level_check.instruction.3" = "Noteer eventuele veranderingen ten opzichte van eerdere sessies";
+"activity.pain_level_check.instruction.4" = "Dit helpt bij het volgen van uw herstelvoortgang";
+
+// MARK: - Treatment Plan Names
+"plan.week_1_2_gentle_recovery" = "Week 1-2: Zacht Herstel";
+"plan.week_3_4_progressive_strengthening" = "Week 3-4: Progressieve Versterking";
+"plan.week_5_6_active_rehabilitation" = "Week 5-6: Actieve Revalidatie";
+
+// MARK: - Treatment Plan Descriptions
+"plan.week_1_2_gentle_recovery.description" = "Focus op het verminderen van ontsteking en zachte stretching";
+"plan.week_3_4_progressive_strengthening.description" = "Voeg zachte krachtoefeningen toe";
+"plan.week_5_6_active_rehabilitation.description" = "Verhoog kracht en uithoudingsvermogen";
+
+// MARK: - Activity Types
+"activity_type.exercise" = "Oefening";
+"activity_type.stretch" = "Stretch";
+"activity_type.ice_therapy" = "IJstherapie";
+"activity_type.rest" = "Rust";
+"activity_type.medication" = "Medicatie";
+"activity_type.pain_tracking" = "Pijnregistratie";
+
+// MARK: - Difficulty Levels
+"difficulty.beginner" = "Beginner";
+"difficulty.intermediate" = "Gemiddeld";
+"difficulty.advanced" = "Gevorderd";
+
+// MARK: - Days of Week
+"day.sunday" = "Zondag";
+"day.monday" = "Maandag";
+"day.tuesday" = "Dinsdag";
+"day.wednesday" = "Woensdag";
+"day.thursday" = "Donderdag";
+"day.friday" = "Vrijdag";
+"day.saturday" = "Zaterdag";
+
+// MARK: - Activity Detail Source Descriptions
+"source.exercise.description" = "Excentrische krachtoefeningen worden ondersteund door onderzoek gepubliceerd in het British Journal of Sports Medicine en richtlijnen van de American Academy of Orthopaedic Surgeons.";
+"source.stretch.description" = "Stretchprotocollen zijn gebaseerd op klinische studies gepubliceerd in het British Journal of Sports Medicine die de effectiviteit voor laterale epicondylitis aantonen.";
+"source.ice_therapy.description" = "Cryotherapie-aanbevelingen volgen evidence-based protocollen voor musculoskeletaal letselmanagement zoals gepubliceerd in peer-reviewed sportgeneeskundige tijdschriften.";
+"source.rest.description" = "Richtlijnen voor rust en activiteitenmodificatie volgen AAOS en Mayo Clinic aanbevelingen voor tenniselleboogherstel.";
+"source.medication.description" = "Raadpleeg altijd een zorgverlener over medicatie. Deze activiteit registreert alleen naleving.";
+"source.pain_tracking.description" = "Pijnregistratie helpt bij het monitoren van herstelvoortgang zoals aanbevolen in klinische praktijkrichtlijnen.";

@@ -156,3 +156,105 @@
 "NHS (UK National Health Service)" = "NHS (Servicio Nacional de Salud del Reino Unido)";
 "Tennis Elbow Treatment Guide" = "Guía de Tratamiento del Codo de Tenista";
 "View Source" = "Ver Fuente";
+
+// MARK: - Activity Names
+"activity.wrist_extension_stretch" = "Estiramiento de Extensión de Muñeca";
+"activity.wrist_flexion_stretch" = "Estiramiento de Flexión de Muñeca";
+"activity.eccentric_wrist_extension" = "Extensión Excéntrica de Muñeca";
+"activity.grip_strengthening" = "Fortalecimiento de Agarre";
+"activity.ice_therapy" = "Terapia con Hielo";
+"activity.forearm_massage" = "Masaje de Antebrazo";
+"activity.wrist_rotations" = "Rotaciones de Muñeca";
+"activity.pain_level_check" = "Verificación del Nivel de Dolor";
+
+// MARK: - Activity Descriptions
+"activity.wrist_extension_stretch.description" = "Estiramiento suave para mejorar la flexibilidad";
+"activity.wrist_flexion_stretch.description" = "Estira los extensores del antebrazo";
+"activity.eccentric_wrist_extension.description" = "Ejercicio de fortalecimiento para extensores del antebrazo";
+"activity.grip_strengthening.description" = "Desarrollar la fuerza del agarre y del antebrazo";
+"activity.ice_therapy.description" = "Reducir la inflamación y el dolor";
+"activity.forearm_massage.description" = "Automasaje para reducir la tensión";
+"activity.wrist_rotations.description" = "Mejorar la movilidad y la circulación";
+"activity.pain_level_check.description" = "Registre su nivel de dolor después de las actividades";
+
+// MARK: - Activity Instructions
+"activity.wrist_extension_stretch.instruction.1" = "Extienda el brazo frente a usted con la palma hacia abajo";
+"activity.wrist_extension_stretch.instruction.2" = "Use la otra mano para tirar suavemente los dedos hacia atrás";
+"activity.wrist_extension_stretch.instruction.3" = "Mantenga durante 15-30 segundos";
+"activity.wrist_extension_stretch.instruction.4" = "Repita en ambos brazos";
+
+"activity.wrist_flexion_stretch.instruction.1" = "Extienda el brazo con la palma hacia arriba";
+"activity.wrist_flexion_stretch.instruction.2" = "Tire suavemente los dedos hacia abajo con la otra mano";
+"activity.wrist_flexion_stretch.instruction.3" = "Mantenga durante 15-30 segundos";
+"activity.wrist_flexion_stretch.instruction.4" = "Sienta el estiramiento en su antebrazo";
+
+"activity.eccentric_wrist_extension.instruction.1" = "Apoye el antebrazo en una mesa, con la palma hacia abajo";
+"activity.eccentric_wrist_extension.instruction.2" = "Sostenga un peso ligero (comience con 1-2 lbs)";
+"activity.eccentric_wrist_extension.instruction.3" = "Baje lentamente el peso doblando la muñeca hacia abajo";
+"activity.eccentric_wrist_extension.instruction.4" = "Use la otra mano para ayudar a levantarlo nuevamente";
+"activity.eccentric_wrist_extension.instruction.5" = "Concéntrese en el movimiento de descenso";
+
+"activity.grip_strengthening.instruction.1" = "Use una pelota antiestrés o fortalecedor de agarre";
+"activity.grip_strengthening.instruction.2" = "Apriete firmemente durante 5 segundos";
+"activity.grip_strengthening.instruction.3" = "Suelte lentamente";
+"activity.grip_strengthening.instruction.4" = "Descanse entre series";
+
+"activity.ice_therapy.instruction.1" = "Aplique una bolsa de hielo en la parte externa del codo";
+"activity.ice_therapy.instruction.2" = "Use una toalla para proteger la piel";
+"activity.ice_therapy.instruction.3" = "Aplique durante 15 minutos";
+"activity.ice_therapy.instruction.4" = "Repita 3-4 veces al día según sea necesario";
+
+"activity.forearm_massage.instruction.1" = "Use el pulgar para aplicar presión suave";
+"activity.forearm_massage.instruction.2" = "Masajee a lo largo de los músculos del antebrazo";
+"activity.forearm_massage.instruction.3" = "Concéntrese en los puntos sensibles";
+"activity.forearm_massage.instruction.4" = "Muévase lentamente y respire profundamente";
+
+"activity.wrist_rotations.instruction.1" = "Sostenga el brazo con el codo doblado a 90 grados";
+"activity.wrist_rotations.instruction.2" = "Rote lentamente la muñeca en círculos";
+"activity.wrist_rotations.instruction.3" = "Haga 10 rotaciones en sentido horario";
+"activity.wrist_rotations.instruction.4" = "Luego 10 rotaciones en sentido antihorario";
+
+"activity.pain_level_check.instruction.1" = "Califique su nivel de dolor actual";
+"activity.pain_level_check.instruction.2" = "Considere el dolor durante las actividades";
+"activity.pain_level_check.instruction.3" = "Anote cualquier cambio de sesiones anteriores";
+"activity.pain_level_check.instruction.4" = "Esto ayuda a rastrear el progreso de su recuperación";
+
+// MARK: - Treatment Plan Names
+"plan.week_1_2_gentle_recovery" = "Semana 1-2: Recuperación Suave";
+"plan.week_3_4_progressive_strengthening" = "Semana 3-4: Fortalecimiento Progresivo";
+"plan.week_5_6_active_rehabilitation" = "Semana 5-6: Rehabilitación Activa";
+
+// MARK: - Treatment Plan Descriptions
+"plan.week_1_2_gentle_recovery.description" = "Enfóquese en reducir la inflamación y el estiramiento suave";
+"plan.week_3_4_progressive_strengthening.description" = "Agregue ejercicios de fortalecimiento suave";
+"plan.week_5_6_active_rehabilitation.description" = "Aumente la fuerza y la resistencia";
+
+// MARK: - Activity Types
+"activity_type.exercise" = "Ejercicio";
+"activity_type.stretch" = "Estiramiento";
+"activity_type.ice_therapy" = "Terapia con Hielo";
+"activity_type.rest" = "Descanso";
+"activity_type.medication" = "Medicación";
+"activity_type.pain_tracking" = "Seguimiento del Dolor";
+
+// MARK: - Difficulty Levels
+"difficulty.beginner" = "Principiante";
+"difficulty.intermediate" = "Intermedio";
+"difficulty.advanced" = "Avanzado";
+
+// MARK: - Days of Week
+"day.sunday" = "Domingo";
+"day.monday" = "Lunes";
+"day.tuesday" = "Martes";
+"day.wednesday" = "Miércoles";
+"day.thursday" = "Jueves";
+"day.friday" = "Viernes";
+"day.saturday" = "Sábado";
+
+// MARK: - Activity Detail Source Descriptions
+"source.exercise.description" = "Los ejercicios de fortalecimiento excéntrico están respaldados por investigaciones publicadas en el British Journal of Sports Medicine y las pautas de la Academia Estadounidense de Cirujanos Ortopédicos.";
+"source.stretch.description" = "Los protocolos de estiramiento se basan en estudios clínicos publicados en el British Journal of Sports Medicine que demuestran efectividad para la epicondilitis lateral.";
+"source.ice_therapy.description" = "Las recomendaciones de crioterapia siguen protocolos basados en evidencia para el manejo de lesiones musculoesqueléticas publicados en revistas de medicina deportiva revisadas por pares.";
+"source.rest.description" = "La orientación sobre descanso y modificación de actividades sigue las recomendaciones de la AAOS y la Clínica Mayo para la recuperación del codo de tenista.";
+"source.medication.description" = "Siempre consulte con un proveedor de atención médica sobre medicamentos. Esta actividad solo rastrea el cumplimiento.";
+"source.pain_tracking.description" = "El seguimiento del dolor ayuda a monitorear el progreso de la recuperación según lo recomendado en las pautas de práctica clínica.";

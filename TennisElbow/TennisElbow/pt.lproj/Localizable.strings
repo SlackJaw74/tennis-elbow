@@ -156,3 +156,105 @@
 "NHS (UK National Health Service)" = "NHS (Serviço Nacional de Saúde do Reino Unido)";
 "Tennis Elbow Treatment Guide" = "Guia de Tratamento do Cotovelo de Tenista";
 "View Source" = "Ver Fonte";
+
+// MARK: - Activity Names
+"activity.wrist_extension_stretch" = "Alongamento de Extensão do Punho";
+"activity.wrist_flexion_stretch" = "Alongamento de Flexão do Punho";
+"activity.eccentric_wrist_extension" = "Extensão Excêntrica do Punho";
+"activity.grip_strengthening" = "Fortalecimento da Preensão";
+"activity.ice_therapy" = "Terapia com Gelo";
+"activity.forearm_massage" = "Massagem no Antebraço";
+"activity.wrist_rotations" = "Rotações do Punho";
+"activity.pain_level_check" = "Verificação do Nível de Dor";
+
+// MARK: - Activity Descriptions
+"activity.wrist_extension_stretch.description" = "Alongamento suave para melhorar a flexibilidade";
+"activity.wrist_flexion_stretch.description" = "Alonga os extensores do antebraço";
+"activity.eccentric_wrist_extension.description" = "Exercício de fortalecimento para extensores do antebraço";
+"activity.grip_strengthening.description" = "Desenvolver força de preensão e do antebraço";
+"activity.ice_therapy.description" = "Reduzir inflamação e dor";
+"activity.forearm_massage.description" = "Automassagem para reduzir a tensão";
+"activity.wrist_rotations.description" = "Melhorar mobilidade e circulação";
+"activity.pain_level_check.description" = "Acompanhe seu nível de dor após as atividades";
+
+// MARK: - Activity Instructions
+"activity.wrist_extension_stretch.instruction.1" = "Estenda seu braço à frente com a palma voltada para baixo";
+"activity.wrist_extension_stretch.instruction.2" = "Use a outra mão para puxar suavemente os dedos para trás";
+"activity.wrist_extension_stretch.instruction.3" = "Mantenha por 15-30 segundos";
+"activity.wrist_extension_stretch.instruction.4" = "Repita em ambos os braços";
+
+"activity.wrist_flexion_stretch.instruction.1" = "Estenda seu braço com a palma voltada para cima";
+"activity.wrist_flexion_stretch.instruction.2" = "Puxe suavemente os dedos para baixo com a outra mão";
+"activity.wrist_flexion_stretch.instruction.3" = "Mantenha por 15-30 segundos";
+"activity.wrist_flexion_stretch.instruction.4" = "Sinta o alongamento no seu antebraço";
+
+"activity.eccentric_wrist_extension.instruction.1" = "Apoie seu antebraço em uma mesa, palma para baixo";
+"activity.eccentric_wrist_extension.instruction.2" = "Segure um peso leve (0,5-1 kg para começar)";
+"activity.eccentric_wrist_extension.instruction.3" = "Abaixe lentamente o peso dobrando o punho para baixo";
+"activity.eccentric_wrist_extension.instruction.4" = "Use a outra mão para ajudar a levantá-lo de volta";
+"activity.eccentric_wrist_extension.instruction.5" = "Concentre-se no movimento de descida";
+
+"activity.grip_strengthening.instruction.1" = "Use uma bola antiestresse ou fortalecedor de preensão";
+"activity.grip_strengthening.instruction.2" = "Aperte firmemente por 5 segundos";
+"activity.grip_strengthening.instruction.3" = "Solte lentamente";
+"activity.grip_strengthening.instruction.4" = "Descanse entre as séries";
+
+"activity.ice_therapy.instruction.1" = "Aplique uma bolsa de gelo na parte externa do cotovelo";
+"activity.ice_therapy.instruction.2" = "Use uma toalha para proteger a pele";
+"activity.ice_therapy.instruction.3" = "Aplique por 15 minutos";
+"activity.ice_therapy.instruction.4" = "Repita 3-4 vezes ao dia conforme necessário";
+
+"activity.forearm_massage.instruction.1" = "Use seu polegar para aplicar pressão suave";
+"activity.forearm_massage.instruction.2" = "Massageie ao longo dos músculos do antebraço";
+"activity.forearm_massage.instruction.3" = "Concentre-se nos pontos sensíveis";
+"activity.forearm_massage.instruction.4" = "Mova-se lentamente e respire profundamente";
+
+"activity.wrist_rotations.instruction.1" = "Segure o braço com o cotovelo dobrado a 90 graus";
+"activity.wrist_rotations.instruction.2" = "Gire lentamente o punho em círculos";
+"activity.wrist_rotations.instruction.3" = "Faça 10 rotações no sentido horário";
+"activity.wrist_rotations.instruction.4" = "Depois 10 rotações no sentido anti-horário";
+
+"activity.pain_level_check.instruction.1" = "Avalie seu nível de dor atual";
+"activity.pain_level_check.instruction.2" = "Considere a dor durante as atividades";
+"activity.pain_level_check.instruction.3" = "Note quaisquer mudanças em relação às sessões anteriores";
+"activity.pain_level_check.instruction.4" = "Isso ajuda a acompanhar seu progresso de recuperação";
+
+// MARK: - Treatment Plan Names
+"plan.week_1_2_gentle_recovery" = "Semanas 1-2: Recuperação Suave";
+"plan.week_3_4_progressive_strengthening" = "Semanas 3-4: Fortalecimento Progressivo";
+"plan.week_5_6_active_rehabilitation" = "Semanas 5-6: Reabilitação Ativa";
+
+// MARK: - Treatment Plan Descriptions
+"plan.week_1_2_gentle_recovery.description" = "Foco na redução da inflamação e alongamento suave";
+"plan.week_3_4_progressive_strengthening.description" = "Adicionar exercícios de fortalecimento suaves";
+"plan.week_5_6_active_rehabilitation.description" = "Aumentar força e resistência";
+
+// MARK: - Activity Types
+"activity_type.exercise" = "Exercício";
+"activity_type.stretch" = "Alongamento";
+"activity_type.ice_therapy" = "Terapia com Gelo";
+"activity_type.rest" = "Repouso";
+"activity_type.medication" = "Medicação";
+"activity_type.pain_tracking" = "Monitoramento da Dor";
+
+// MARK: - Difficulty Levels
+"difficulty.beginner" = "Iniciante";
+"difficulty.intermediate" = "Intermediário";
+"difficulty.advanced" = "Avançado";
+
+// MARK: - Days of Week
+"day.sunday" = "Domingo";
+"day.monday" = "Segunda-feira";
+"day.tuesday" = "Terça-feira";
+"day.wednesday" = "Quarta-feira";
+"day.thursday" = "Quinta-feira";
+"day.friday" = "Sexta-feira";
+"day.saturday" = "Sábado";
+
+// MARK: - Activity Detail Source Descriptions
+"source.exercise.description" = "Os exercícios de fortalecimento excêntrico são apoiados por pesquisas publicadas no British Journal of Sports Medicine e diretrizes da American Academy of Orthopaedic Surgeons.";
+"source.stretch.description" = "Os protocolos de alongamento são baseados em estudos clínicos publicados no British Journal of Sports Medicine demonstrando eficácia para epicondilite lateral.";
+"source.ice_therapy.description" = "As recomendações de crioterapia seguem protocolos baseados em evidências para o manejo de lesões musculoesqueléticas, conforme publicado em revistas de medicina esportiva revisadas por pares.";
+"source.rest.description" = "As orientações de repouso e modificação de atividades seguem as recomendações da AAOS e Mayo Clinic para recuperação do cotovelo de tenista.";
+"source.medication.description" = "Sempre consulte um profissional de saúde em relação à medicação. Esta atividade rastreia apenas a conformidade.";
+"source.pain_tracking.description" = "O monitoramento da dor ajuda a acompanhar o progresso da recuperação, conforme recomendado nas diretrizes de prática clínica.";
