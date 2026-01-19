@@ -78,6 +78,10 @@ platform :ios do
   end
 
   desc "Generate screenshots for App Store using fastlane snapshot"
+  # Directory structure requirement:
+  # - This Fastfile is expected to live at fastlane/Fastfile
+  # - The Xcode project is expected at ../TennisElbow/TennisElbow.xcodeproj relative to this Fastfile
+  # If either location changes, update the File.expand_path path below to match the new structure.
   lane :screenshots do
     snapshot(
       project: File.expand_path("../TennisElbow/TennisElbow.xcodeproj", __dir__),

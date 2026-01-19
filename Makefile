@@ -111,7 +111,7 @@ screenshot-debug:
 	@mkdir -p screenshots/en-US
 	@mkdir -p ~/Library/Caches/tools.fastlane/screenshots
 	@echo "en-US" > ~/Library/Caches/tools.fastlane/language.txt
-	@echo "en_US" > ~/Library/Caches/tools.fastlane/locale.txt
+	@echo "en-US" > ~/Library/Caches/tools.fastlane/locale.txt
 	@touch ~/Library/Caches/tools.fastlane/snapshot-launch_arguments.txt
 	SIMULATOR_HOST_HOME=$(HOME) xcodebuild test \
 	  -project "$(PROJECT)" \
