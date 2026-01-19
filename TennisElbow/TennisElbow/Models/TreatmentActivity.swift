@@ -86,7 +86,7 @@ struct TreatmentActivity: Identifiable, Codable, Hashable {
 
     var localizedInstructions: [String] {
         var result: [String] = []
-        for i in 1...Self.maxInstructionSteps {
+        for i in 1 ... Self.maxInstructionSteps {
             let key = "activity.\(localizationKey).instruction.\(i)"
             let localized = key.localized()
             if localized != key {

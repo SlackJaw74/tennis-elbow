@@ -131,7 +131,9 @@ struct ActivityDetailView: View {
             .font(.caption)
             .foregroundColor(.secondary)
             .accessibilityElement(children: .combine)
-            .accessibilityLabel("Type: \(activity.type.localizedName), Difficulty: \(activity.difficultyLevel.localizedName)")
+            .accessibilityLabel(
+                "Type: \(activity.type.localizedName), Difficulty: \(activity.difficultyLevel.localizedName)"
+            )
         }
         .padding()
         .background(Color(.secondarySystemBackground))
