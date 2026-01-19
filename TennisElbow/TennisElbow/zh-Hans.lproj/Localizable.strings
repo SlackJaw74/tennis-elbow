@@ -156,3 +156,105 @@
 "NHS (UK National Health Service)" = "NHS（英国国家医疗服务体系）";
 "Tennis Elbow Treatment Guide" = "网球肘治疗指南";
 "View Source" = "查看来源";
+
+// MARK: - Activity Names
+"activity.wrist_extension_stretch" = "腕部伸展拉伸";
+"activity.wrist_flexion_stretch" = "腕部屈曲拉伸";
+"activity.eccentric_wrist_extension" = "离心腕部伸展";
+"activity.grip_strengthening" = "握力增强";
+"activity.ice_therapy" = "冰敷疗法";
+"activity.forearm_massage" = "前臂按摩";
+"activity.wrist_rotations" = "腕部旋转";
+"activity.pain_level_check" = "疼痛级别检查";
+
+// MARK: - Activity Descriptions
+"activity.wrist_extension_stretch.description" = "温和拉伸以提高灵活性";
+"activity.wrist_flexion_stretch.description" = "拉伸前臂伸肌";
+"activity.eccentric_wrist_extension.description" = "前臂伸肌增强锻炼";
+"activity.grip_strengthening.description" = "增强握力和前臂力量";
+"activity.ice_therapy.description" = "减轻炎症和疼痛";
+"activity.forearm_massage.description" = "自我按摩以减轻紧张";
+"activity.wrist_rotations.description" = "改善活动度和血液循环";
+"activity.pain_level_check.description" = "跟踪活动后的疼痛级别";
+
+// MARK: - Activity Instructions
+"activity.wrist_extension_stretch.instruction.1" = "将手臂伸直向前，手掌朝下";
+"activity.wrist_extension_stretch.instruction.2" = "用另一只手轻轻将手指向后拉";
+"activity.wrist_extension_stretch.instruction.3" = "保持15-30秒";
+"activity.wrist_extension_stretch.instruction.4" = "两只手臂重复";
+
+"activity.wrist_flexion_stretch.instruction.1" = "伸直手臂，手掌朝上";
+"activity.wrist_flexion_stretch.instruction.2" = "用另一只手轻轻向下拉手指";
+"activity.wrist_flexion_stretch.instruction.3" = "保持15-30秒";
+"activity.wrist_flexion_stretch.instruction.4" = "感受前臂的拉伸";
+
+"activity.eccentric_wrist_extension.instruction.1" = "将前臂放在桌上，手掌朝下";
+"activity.eccentric_wrist_extension.instruction.2" = "握住轻重量（从1-2磅开始）";
+"activity.eccentric_wrist_extension.instruction.3" = "通过向下弯曲手腕慢慢放低重量";
+"activity.eccentric_wrist_extension.instruction.4" = "用另一只手帮助将其抬起";
+"activity.eccentric_wrist_extension.instruction.5" = "专注于下降动作";
+
+"activity.grip_strengthening.instruction.1" = "使用压力球或握力器";
+"activity.grip_strengthening.instruction.2" = "用力握紧5秒";
+"activity.grip_strengthening.instruction.3" = "慢慢放松";
+"activity.grip_strengthening.instruction.4" = "组间休息";
+
+"activity.ice_therapy.instruction.1" = "将冰袋敷在肘部外侧";
+"activity.ice_therapy.instruction.2" = "用毛巾保护皮肤";
+"activity.ice_therapy.instruction.3" = "敷15分钟";
+"activity.ice_therapy.instruction.4" = "根据需要每天重复3-4次";
+
+"activity.forearm_massage.instruction.1" = "用拇指施加轻柔的压力";
+"activity.forearm_massage.instruction.2" = "沿前臂肌肉按摩";
+"activity.forearm_massage.instruction.3" = "重点按摩疼痛点";
+"activity.forearm_massage.instruction.4" = "慢慢移动并深呼吸";
+
+"activity.wrist_rotations.instruction.1" = "伸出手臂，肘部弯曲90度";
+"activity.wrist_rotations.instruction.2" = "慢慢以圆周方式旋转手腕";
+"activity.wrist_rotations.instruction.3" = "顺时针旋转10次";
+"activity.wrist_rotations.instruction.4" = "然后逆时针旋转10次";
+
+"activity.pain_level_check.instruction.1" = "评估您当前的疼痛级别";
+"activity.pain_level_check.instruction.2" = "考虑活动期间的疼痛";
+"activity.pain_level_check.instruction.3" = "注意与之前训练的任何变化";
+"activity.pain_level_check.instruction.4" = "这有助于跟踪您的恢复进度";
+
+// MARK: - Treatment Plan Names
+"plan.week_1_2_gentle_recovery" = "第1-2周：温和恢复";
+"plan.week_3_4_progressive_strengthening" = "第3-4周：渐进增强";
+"plan.week_5_6_active_rehabilitation" = "第5-6周：积极康复";
+
+// MARK: - Treatment Plan Descriptions
+"plan.week_1_2_gentle_recovery.description" = "专注于减轻炎症和温和拉伸";
+"plan.week_3_4_progressive_strengthening.description" = "添加温和的增强锻炼";
+"plan.week_5_6_active_rehabilitation.description" = "增强力量和耐力";
+
+// MARK: - Activity Types
+"activity_type.exercise" = "锻炼";
+"activity_type.stretch" = "拉伸";
+"activity_type.ice_therapy" = "冰敷疗法";
+"activity_type.rest" = "休息";
+"activity_type.medication" = "药物";
+"activity_type.pain_tracking" = "疼痛跟踪";
+
+// MARK: - Difficulty Levels
+"difficulty.beginner" = "初级";
+"difficulty.intermediate" = "中级";
+"difficulty.advanced" = "高级";
+
+// MARK: - Days of Week
+"day.sunday" = "星期日";
+"day.monday" = "星期一";
+"day.tuesday" = "星期二";
+"day.wednesday" = "星期三";
+"day.thursday" = "星期四";
+"day.friday" = "星期五";
+"day.saturday" = "星期六";
+
+// MARK: - Activity Detail Source Descriptions
+"source.exercise.description" = "离心增强锻炼得到《英国运动医学杂志》发表的研究以及美国骨科医师学会指南的支持。";
+"source.stretch.description" = "拉伸方案基于《英国运动医学杂志》发表的临床研究，证明对肱骨外上髁炎有效。";
+"source.ice_therapy.description" = "冷冻疗法建议遵循同行评审运动医学期刊发表的基于证据的肌肉骨骼损伤管理方案。";
+"source.rest.description" = "休息和活动调整指导遵循美国骨科医师学会和梅奥诊所对网球肘恢复的建议。";
+"source.medication.description" = "关于药物请务必咨询医疗保健提供者。此活动仅跟踪服药情况。";
+"source.pain_tracking.description" = "疼痛跟踪有助于监测恢复进度，如临床实践指南所建议。";

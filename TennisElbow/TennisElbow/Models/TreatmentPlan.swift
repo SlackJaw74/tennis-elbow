@@ -7,6 +7,7 @@ struct TreatmentPlan: Identifiable, Codable {
     let weekNumber: Int
     let activities: [TreatmentActivity]
     let dailySchedule: [DayOfWeek: [TimeOfDay]]
+    let localizationKey: String?
 
     init(
         id: UUID = UUID(),
@@ -14,7 +15,8 @@ struct TreatmentPlan: Identifiable, Codable {
         description: String,
         weekNumber: Int,
         activities: [TreatmentActivity],
-        dailySchedule: [DayOfWeek: [TimeOfDay]]
+        dailySchedule: [DayOfWeek: [TimeOfDay]],
+        localizationKey: String? = nil
     ) {
         self.id = id
         self.name = name
@@ -22,6 +24,21 @@ struct TreatmentPlan: Identifiable, Codable {
         self.weekNumber = weekNumber
         self.activities = activities
         self.dailySchedule = dailySchedule
+        self.localizationKey = localizationKey
+    }
+
+    var localizedName: String {
+        if let key = localizationKey {
+            return "plan.\(key)".localized()
+        }
+        return name
+    }
+
+    var localizedDescription: String {
+        if let key = localizationKey {
+            return "plan.\(key).description".localized()
+        }
+        return description
     }
 }
 
@@ -30,13 +47,13 @@ enum DayOfWeek: Int, Codable, CaseIterable {
 
     var name: String {
         switch self {
-        case .sunday: return "Sunday"
-        case .monday: return "Monday"
-        case .tuesday: return "Tuesday"
-        case .wednesday: return "Wednesday"
-        case .thursday: return "Thursday"
-        case .friday: return "Friday"
-        case .saturday: return "Saturday"
+        case .sunday: return "day.sunday".localized()
+        case .monday: return "day.monday".localized()
+        case .tuesday: return "day.tuesday".localized()
+        case .wednesday: return "day.wednesday".localized()
+        case .thursday: return "day.thursday".localized()
+        case .friday: return "day.friday".localized()
+        case .saturday: return "day.saturday".localized()
         }
     }
 }
@@ -78,7 +95,8 @@ extension TreatmentPlan {
                 .friday: [.morning, .evening],
                 .saturday: [.morning],
                 .sunday: [.morning]
-            ]
+            ],
+            localizationKey: "week_1_2_gentle_recovery"
         ),
         TreatmentPlan(
             name: "Week 3-4: Progressive Strengthening",
@@ -102,7 +120,8 @@ extension TreatmentPlan {
                 .friday: [.morning, .afternoon, .evening],
                 .saturday: [.morning],
                 .sunday: [.morning]
-            ]
+            ],
+            localizationKey: "week_3_4_progressive_strengthening"
         ),
         TreatmentPlan(
             name: "Week 5-6: Active Rehabilitation",
@@ -126,7 +145,8 @@ extension TreatmentPlan {
                 .friday: [.morning, .afternoon, .evening],
                 .saturday: [.morning, .afternoon],
                 .sunday: [.morning]
-            ]
+            ],
+            localizationKey: "week_5_6_active_rehabilitation"
         )
     ]
 }

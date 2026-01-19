@@ -156,3 +156,105 @@
 "NHS (UK National Health Service)" = "NHS (영국 국민보건서비스)";
 "Tennis Elbow Treatment Guide" = "테니스 엘보 치료 가이드";
 "View Source" = "출처 보기";
+
+// MARK: - Activity Names
+"activity.wrist_extension_stretch" = "손목 신전 스트레칭";
+"activity.wrist_flexion_stretch" = "손목 굴곡 스트레칭";
+"activity.eccentric_wrist_extension" = "편심성 손목 신전 운동";
+"activity.grip_strengthening" = "악력 강화";
+"activity.ice_therapy" = "냉찜질 요법";
+"activity.forearm_massage" = "전완 마사지";
+"activity.wrist_rotations" = "손목 회전";
+"activity.pain_level_check" = "통증 수준 확인";
+
+// MARK: - Activity Descriptions
+"activity.wrist_extension_stretch.description" = "유연성 향상을 위한 부드러운 스트레칭";
+"activity.wrist_flexion_stretch.description" = "전완 신전근 스트레칭";
+"activity.eccentric_wrist_extension.description" = "전완 신전근 강화 운동";
+"activity.grip_strengthening.description" = "악력과 전완 근력 강화";
+"activity.ice_therapy.description" = "염증과 통증 감소";
+"activity.forearm_massage.description" = "긴장 완화를 위한 자가 마사지";
+"activity.wrist_rotations.description" = "가동성과 혈액순환 개선";
+"activity.pain_level_check.description" = "활동 후 통증 수준 추적";
+
+// MARK: - Activity Instructions
+"activity.wrist_extension_stretch.instruction.1" = "손바닥이 아래를 향하도록 팔을 앞으로 뻗으세요";
+"activity.wrist_extension_stretch.instruction.2" = "다른 손으로 손가락을 부드럽게 뒤로 당기세요";
+"activity.wrist_extension_stretch.instruction.3" = "15-30초간 유지하세요";
+"activity.wrist_extension_stretch.instruction.4" = "양쪽 팔에 반복하세요";
+
+"activity.wrist_flexion_stretch.instruction.1" = "손바닥이 위를 향하도록 팔을 뻗으세요";
+"activity.wrist_flexion_stretch.instruction.2" = "다른 손으로 손가락을 부드럽게 아래로 당기세요";
+"activity.wrist_flexion_stretch.instruction.3" = "15-30초간 유지하세요";
+"activity.wrist_flexion_stretch.instruction.4" = "전완에서 스트레칭을 느끼세요";
+
+"activity.eccentric_wrist_extension.instruction.1" = "손바닥이 아래를 향하도록 전완을 테이블에 놓으세요";
+"activity.eccentric_wrist_extension.instruction.2" = "가벼운 무게를 잡으세요 (처음에는 1-2파운드)";
+"activity.eccentric_wrist_extension.instruction.3" = "손목을 아래로 구부려 무게를 천천히 내리세요";
+"activity.eccentric_wrist_extension.instruction.4" = "다른 손으로 다시 올리는 것을 도우세요";
+"activity.eccentric_wrist_extension.instruction.5" = "내리는 동작에 집중하세요";
+
+"activity.grip_strengthening.instruction.1" = "스트레스 볼이나 악력기를 사용하세요";
+"activity.grip_strengthening.instruction.2" = "5초간 세게 쥐세요";
+"activity.grip_strengthening.instruction.3" = "천천히 놓으세요";
+"activity.grip_strengthening.instruction.4" = "세트 사이에 휴식하세요";
+
+"activity.ice_therapy.instruction.1" = "얼음팩을 팔꿈치 바깥쪽에 대세요";
+"activity.ice_therapy.instruction.2" = "수건을 사용하여 피부를 보호하세요";
+"activity.ice_therapy.instruction.3" = "15분간 적용하세요";
+"activity.ice_therapy.instruction.4" = "필요에 따라 하루 3-4회 반복하세요";
+
+"activity.forearm_massage.instruction.1" = "엄지손가락으로 부드러운 압력을 가하세요";
+"activity.forearm_massage.instruction.2" = "전완 근육을 따라 마사지하세요";
+"activity.forearm_massage.instruction.3" = "압통점에 집중하세요";
+"activity.forearm_massage.instruction.4" = "천천히 움직이고 깊게 호흡하세요";
+
+"activity.wrist_rotations.instruction.1" = "팔꿈치를 90도로 구부린 상태로 팔을 뻗으세요";
+"activity.wrist_rotations.instruction.2" = "손목을 천천히 원을 그리며 회전하세요";
+"activity.wrist_rotations.instruction.3" = "시계 방향으로 10회 회전하세요";
+"activity.wrist_rotations.instruction.4" = "그런 다음 반시계 방향으로 10회 회전하세요";
+
+"activity.pain_level_check.instruction.1" = "현재 통증 수준을 평가하세요";
+"activity.pain_level_check.instruction.2" = "활동 중 통증을 고려하세요";
+"activity.pain_level_check.instruction.3" = "이전 세션과의 변화를 기록하세요";
+"activity.pain_level_check.instruction.4" = "이것은 회복 진행 상황을 추적하는 데 도움이 됩니다";
+
+// MARK: - Treatment Plan Names
+"plan.week_1_2_gentle_recovery" = "1-2주차: 부드러운 회복";
+"plan.week_3_4_progressive_strengthening" = "3-4주차: 점진적 강화";
+"plan.week_5_6_active_rehabilitation" = "5-6주차: 적극적 재활";
+
+// MARK: - Treatment Plan Descriptions
+"plan.week_1_2_gentle_recovery.description" = "염증 감소 및 부드러운 스트레칭에 집중";
+"plan.week_3_4_progressive_strengthening.description" = "부드러운 강화 운동 추가";
+"plan.week_5_6_active_rehabilitation.description" = "근력 및 지구력 증가";
+
+// MARK: - Activity Types
+"activity_type.exercise" = "운동";
+"activity_type.stretch" = "스트레칭";
+"activity_type.ice_therapy" = "냉찜질 요법";
+"activity_type.rest" = "휴식";
+"activity_type.medication" = "약물";
+"activity_type.pain_tracking" = "통증 추적";
+
+// MARK: - Difficulty Levels
+"difficulty.beginner" = "초급";
+"difficulty.intermediate" = "중급";
+"difficulty.advanced" = "고급";
+
+// MARK: - Days of Week
+"day.sunday" = "일요일";
+"day.monday" = "월요일";
+"day.tuesday" = "화요일";
+"day.wednesday" = "수요일";
+"day.thursday" = "목요일";
+"day.friday" = "금요일";
+"day.saturday" = "토요일";
+
+// MARK: - Activity Detail Source Descriptions
+"source.exercise.description" = "편심성 강화 운동은 영국 스포츠의학 저널에 게재된 연구와 미국정형외과학회의 지침에 의해 뒷받침됩니다.";
+"source.stretch.description" = "스트레칭 프로토콜은 외측 상과염에 대한 효과를 입증한 영국 스포츠의학 저널에 게재된 임상 연구를 기반으로 합니다.";
+"source.ice_therapy.description" = "냉동요법 권장사항은 동료 검토를 거친 스포츠의학 저널에 게재된 근골격계 부상 관리를 위한 증거 기반 프로토콜을 따릅니다.";
+"source.rest.description" = "휴식 및 활동 조정 지침은 테니스 엘보 회복을 위한 AAOS 및 메이요 클리닉 권장사항을 따릅니다.";
+"source.medication.description" = "약물에 관해서는 항상 의료 제공자와 상담하십시오. 이 활동은 복약 순응도만 추적합니다.";
+"source.pain_tracking.description" = "통증 추적은 임상 진료 지침에서 권장하는 대로 회복 진행 상황을 모니터링하는 데 도움이 됩니다.";

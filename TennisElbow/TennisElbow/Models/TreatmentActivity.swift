@@ -7,12 +7,40 @@ enum ActivityType: String, Codable, CaseIterable {
     case rest
     case medication
     case painTracking
+
+    var localizedName: String {
+        switch self {
+        case .exercise:
+            return "activity_type.exercise".localized()
+        case .stretch:
+            return "activity_type.stretch".localized()
+        case .iceTherapy:
+            return "activity_type.ice_therapy".localized()
+        case .rest:
+            return "activity_type.rest".localized()
+        case .medication:
+            return "activity_type.medication".localized()
+        case .painTracking:
+            return "activity_type.pain_tracking".localized()
+        }
+    }
 }
 
 enum DifficultyLevel: String, Codable {
     case beginner
     case intermediate
     case advanced
+
+    var localizedName: String {
+        switch self {
+        case .beginner:
+            return "difficulty.beginner".localized()
+        case .intermediate:
+            return "difficulty.intermediate".localized()
+        case .advanced:
+            return "difficulty.advanced".localized()
+        }
+    }
 }
 
 struct TreatmentActivity: Identifiable, Codable, Hashable {
@@ -26,6 +54,9 @@ struct TreatmentActivity: Identifiable, Codable, Hashable {
     let difficultyLevel: DifficultyLevel
     let instructions: [String]
     let imageSystemName: String
+    let localizationKey: String
+
+    private static let maxInstructionSteps = 10
 
     init(
         id: UUID = UUID(),
@@ -37,7 +68,8 @@ struct TreatmentActivity: Identifiable, Codable, Hashable {
         sets: Int? = nil,
         difficultyLevel: DifficultyLevel = .beginner,
         instructions: [String],
-        imageSystemName: String
+        imageSystemName: String,
+        localizationKey: String
     ) {
         self.id = id
         self.name = name
@@ -49,6 +81,34 @@ struct TreatmentActivity: Identifiable, Codable, Hashable {
         self.difficultyLevel = difficultyLevel
         self.instructions = instructions
         self.imageSystemName = imageSystemName
+        self.localizationKey = localizationKey
+    }
+
+    var localizedName: String {
+        "activity.\(localizationKey)".localized()
+    }
+
+    var localizedDescription: String {
+        "activity.\(localizationKey).description".localized()
+    }
+
+    var localizedInstructions: [String] {
+        var result: [String] = []
+        for i in 1 ... Self.maxInstructionSteps {
+            let key = "activity.\(localizationKey).instruction.\(i)"
+            let localized = key.localized()
+            if localized != key {
+                result.append(localized)
+            } else {
+                break
+            }
+        }
+        return result
+    }
+
+    /// Indicates whether this activity requires weight tracking
+    var requiresWeightTracking: Bool {
+        type == .exercise && localizationKey == "eccentric_wrist_extension"
     }
 }
 
@@ -66,7 +126,8 @@ extension TreatmentActivity {
                 "Hold for 15-30 seconds",
                 "Repeat on both arms"
             ],
-            imageSystemName: "hand.raised"
+            imageSystemName: "hand.raised",
+            localizationKey: "wrist_extension_stretch"
         ),
         TreatmentActivity(
             name: "Wrist Flexion Stretch",
@@ -80,7 +141,8 @@ extension TreatmentActivity {
                 "Hold for 15-30 seconds",
                 "Feel the stretch in your forearm"
             ],
-            imageSystemName: "hand.point.down"
+            imageSystemName: "hand.point.down",
+            localizationKey: "wrist_flexion_stretch"
         ),
         TreatmentActivity(
             name: "Eccentric Wrist Extension",
@@ -96,7 +158,8 @@ extension TreatmentActivity {
                 "Use other hand to help raise it back up",
                 "Focus on the lowering motion"
             ],
-            imageSystemName: "dumbbell"
+            imageSystemName: "dumbbell",
+            localizationKey: "eccentric_wrist_extension"
         ),
         TreatmentActivity(
             name: "Grip Strengthening",
@@ -112,7 +175,8 @@ extension TreatmentActivity {
                 "Release slowly",
                 "Rest between sets"
             ],
-            imageSystemName: "hand.thumbsup"
+            imageSystemName: "hand.thumbsup",
+            localizationKey: "grip_strengthening"
         ),
         TreatmentActivity(
             name: "Ice Therapy",
@@ -125,7 +189,8 @@ extension TreatmentActivity {
                 "Apply for 15 minutes",
                 "Repeat 3-4 times daily as needed"
             ],
-            imageSystemName: "snowflake"
+            imageSystemName: "snowflake",
+            localizationKey: "ice_therapy"
         ),
         TreatmentActivity(
             name: "Forearm Massage",
@@ -138,7 +203,8 @@ extension TreatmentActivity {
                 "Focus on tender points",
                 "Move slowly and breathe deeply"
             ],
-            imageSystemName: "hands.sparkles"
+            imageSystemName: "hands.sparkles",
+            localizationKey: "forearm_massage"
         ),
         TreatmentActivity(
             name: "Wrist Rotations",
@@ -153,7 +219,8 @@ extension TreatmentActivity {
                 "Do 10 rotations clockwise",
                 "Then 10 rotations counter-clockwise"
             ],
-            imageSystemName: "arrow.triangle.2.circlepath"
+            imageSystemName: "arrow.triangle.2.circlepath",
+            localizationKey: "wrist_rotations"
         ),
         TreatmentActivity(
             name: "Pain Level Check",
@@ -166,7 +233,8 @@ extension TreatmentActivity {
                 "Note any changes from previous sessions",
                 "This helps track your recovery progress"
             ],
-            imageSystemName: "heart.text.square.fill"
+            imageSystemName: "heart.text.square.fill",
+            localizationKey: "pain_level_check"
         )
     ]
 }

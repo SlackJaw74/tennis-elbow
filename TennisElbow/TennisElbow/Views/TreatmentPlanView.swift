@@ -30,16 +30,16 @@ struct TreatmentPlanView: View {
                     .accessibilityHidden(true)
 
                 VStack(alignment: .leading) {
-                    Text(treatmentManager.currentPlan.name)
+                    Text(treatmentManager.currentPlan.localizedName)
                         .font(.headline)
-                    Text(treatmentManager.currentPlan.description)
+                    Text(treatmentManager.currentPlan.localizedDescription)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
             }
             .accessibilityElement(children: .combine)
             .accessibilityLabel(
-                "Current plan: \(treatmentManager.currentPlan.name), \(treatmentManager.currentPlan.description)"
+                "Current plan: \(treatmentManager.currentPlan.localizedName), \(treatmentManager.currentPlan.localizedDescription)"
             )
 
             Divider()
@@ -277,9 +277,8 @@ struct SessionActivityRow: View {
                         if scheduledActivity.isCompleted {
                             treatmentManager.uncompleteActivity(scheduledActivity)
                         } else {
-                            // Only show weight picker for Eccentric Wrist Extension
-                            if scheduledActivity.activity.type == .exercise,
-                               scheduledActivity.activity.name == "Eccentric Wrist Extension" {
+                            // Only show weight picker for exercises that require weight tracking
+                            if scheduledActivity.activity.requiresWeightTracking {
                                 showWeightPicker = true
                             } else if scheduledActivity.activity.type == .painTracking {
                                 showPainPicker = true
@@ -309,7 +308,7 @@ struct SessionActivityRow: View {
                         .accessibilityHidden(true)
 
                     VStack(alignment: .leading, spacing: 2) {
-                        Text(scheduledActivity.activity.name)
+                        Text(scheduledActivity.activity.localizedName)
                             .font(.subheadline)
                             .strikethrough(scheduledActivity.isCompleted)
 
@@ -355,7 +354,7 @@ struct SessionActivityRow: View {
                 .opacity(scheduledActivity.isCompleted ? 0.6 : 1.0)
             }
             .buttonStyle(PlainButtonStyle())
-            .accessibilityLabel("Activity: \(scheduledActivity.activity.name)")
+            .accessibilityLabel("Activity: \(scheduledActivity.activity.localizedName)")
             .accessibilityHint(isExpanded ? "Double tap to collapse details" : "Double tap to view details")
             .accessibilityAddTraits(.isButton)
 
@@ -371,15 +370,16 @@ struct SessionActivityRow: View {
         .sheet(isPresented: $showWeightPicker) {
             WeightPickerSheet(
                 weightUsed: $weightUsed,
-                activityName: scheduledActivity.activity.name
-            ) {
-                treatmentManager.completeActivity(
-                    scheduledActivity,
-                    notes: nil,
-                    painLevel: nil,
-                    weightUsedLbs: weightUsed
-                )
-            }
+                activityName: scheduledActivity.activity.localizedName,
+                onComplete: {
+                    treatmentManager.completeActivity(
+                        scheduledActivity,
+                        notes: nil,
+                        painLevel: nil,
+                        weightUsedLbs: weightUsed
+                    )
+                }
+            )
             .presentationDetents([.medium])
         }
         .sheet(isPresented: $showPainPicker) {
@@ -413,7 +413,7 @@ struct SessionActivityRow: View {
     }
 
     var activityAccessibilityLabel: String {
-        var label = scheduledActivity.activity.name
+        var label = scheduledActivity.activity.localizedName
         label += ", \(scheduledActivity.activity.durationMinutes) minutes"
         if let reps = scheduledActivity.activity.repetitions,
            let sets = scheduledActivity.activity.sets {
@@ -435,7 +435,7 @@ struct ActivityDetailContent: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             // Description
-            Text(activity.description)
+            Text(activity.localizedDescription)
                 .font(.body)
                 .foregroundColor(.secondary)
 
@@ -466,12 +466,12 @@ struct ActivityDetailContent: View {
             }
 
             // Instructions
-            if !activity.instructions.isEmpty {
+            if !activity.localizedInstructions.isEmpty {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Instructions".localized())
                         .font(.headline)
 
-                    ForEach(Array(activity.instructions.enumerated()), id: \.offset) { index, instruction in
+                    ForEach(Array(activity.localizedInstructions.enumerated()), id: \.offset) { index, instruction in
                         HStack(alignment: .top, spacing: 8) {
                             Text("\(index + 1)")
                                 .font(.caption)
@@ -491,13 +491,13 @@ struct ActivityDetailContent: View {
 
             // Type and Difficulty
             HStack(spacing: 12) {
-                Label(activity.type.rawValue.capitalized, systemImage: typeIcon)
+                Label(activity.type.localizedName, systemImage: typeIcon)
                     .font(.caption)
                     .foregroundColor(.secondary)
 
                 Spacer()
 
-                Label(activity.difficultyLevel.rawValue.capitalized, systemImage: "star.fill")
+                Label(activity.difficultyLevel.localizedName, systemImage: "star.fill")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }

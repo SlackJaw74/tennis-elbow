@@ -103,7 +103,7 @@ struct ScheduledActivityRow: View {
                 .isCompleted ? "Double tap to mark as incomplete" : "Double tap to mark as complete")
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(scheduledActivity.activity.name)
+                Text(scheduledActivity.activity.localizedName)
                     .font(.subheadline)
                     .bold()
                     .strikethrough(scheduledActivity.isCompleted)
@@ -125,7 +125,7 @@ struct ScheduledActivityRow: View {
             .accessibilityElement(children: .combine)
             .accessibilityLabel(
                 """
-                \(scheduledActivity.activity.name), scheduled for \
+                \(scheduledActivity.activity.localizedName), scheduled for \
                 \(scheduledActivity.scheduledTime.formatted(date: .omitted, time: .shortened)), \
                 duration \(scheduledActivity.activity.durationMinutes) minutes
                 """

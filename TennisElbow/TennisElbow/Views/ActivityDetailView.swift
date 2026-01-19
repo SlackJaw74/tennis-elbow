@@ -18,7 +18,7 @@ struct ActivityDetailView: View {
                 }
                 .padding()
             }
-            .navigationTitle(activity.name)
+            .navigationTitle(activity.localizedName)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -60,26 +60,17 @@ struct ActivityDetailView: View {
     var sourceDescription: String {
         switch activity.type {
         case .exercise:
-            return """
-            Eccentric strengthening exercises are supported by research published in the British Journal of \
-            Sports Medicine and guidelines from the American Academy of Orthopaedic Surgeons.
-            """
+            return "source.exercise.description".localized()
         case .stretch:
-            return """
-            Stretching protocols are based on clinical studies published in the British Journal of Sports \
-            Medicine demonstrating effectiveness for lateral epicondylitis.
-            """
+            return "source.stretch.description".localized()
         case .iceTherapy:
-            return """
-            Cryotherapy recommendations follow evidence-based protocols for musculoskeletal injury \
-            management as published in peer-reviewed sports medicine journals.
-            """
+            return "source.ice_therapy.description".localized()
         case .rest:
-            return "Rest and activity modification guidance follows AAOS and Mayo Clinic recommendations for tennis elbow recovery."
+            return "source.rest.description".localized()
         case .medication:
-            return "Always consult with a healthcare provider regarding medication. This activity tracks compliance only."
+            return "source.medication.description".localized()
         case .painTracking:
-            return "Pain tracking helps monitor recovery progress as recommended in clinical practice guidelines."
+            return "source.pain_tracking.description".localized()
         }
     }
 
@@ -103,7 +94,7 @@ struct ActivityDetailView: View {
                 .foregroundColor(activityColor)
                 .accessibilityHidden(true)
 
-            Text(activity.description)
+            Text(activity.localizedDescription)
                 .font(.body)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
@@ -133,14 +124,16 @@ struct ActivityDetailView: View {
             }
 
             HStack {
-                Label(activity.type.rawValue.capitalized, systemImage: typeIcon)
+                Label(activity.type.localizedName, systemImage: typeIcon)
                 Spacer()
-                Label(activity.difficultyLevel.rawValue.capitalized, systemImage: "star.fill")
+                Label(activity.difficultyLevel.localizedName, systemImage: "star.fill")
             }
             .font(.caption)
             .foregroundColor(.secondary)
             .accessibilityElement(children: .combine)
-            .accessibilityLabel("Type: \(activity.type.rawValue), Difficulty: \(activity.difficultyLevel.rawValue)")
+            .accessibilityLabel(
+                "Type: \(activity.type.localizedName), Difficulty: \(activity.difficultyLevel.localizedName)"
+            )
         }
         .padding()
         .background(Color(.secondarySystemBackground))
@@ -153,7 +146,7 @@ struct ActivityDetailView: View {
                 .font(.headline)
                 .accessibilityAddTraits(.isHeader)
 
-            ForEach(Array(activity.instructions.enumerated()), id: \.offset) { index, instruction in
+            ForEach(Array(activity.localizedInstructions.enumerated()), id: \.offset) { index, instruction in
                 HStack(alignment: .top, spacing: 12) {
                     Text("\(index + 1)")
                         .font(.caption)

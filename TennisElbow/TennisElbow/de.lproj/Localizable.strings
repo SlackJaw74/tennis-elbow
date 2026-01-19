@@ -156,3 +156,105 @@
 "NHS (UK National Health Service)" = "NHS (Britischer Nationaler Gesundheitsdienst)";
 "Tennis Elbow Treatment Guide" = "Behandlungsleitfaden für Tennisellenbogen";
 "View Source" = "Quelle anzeigen";
+
+// MARK: - Activity Names
+"activity.wrist_extension_stretch" = "Handgelenk-Streckdehnung";
+"activity.wrist_flexion_stretch" = "Handgelenk-Beugedehnung";
+"activity.eccentric_wrist_extension" = "Exzentrische Handgelenkstreckung";
+"activity.grip_strengthening" = "Griffkräftigung";
+"activity.ice_therapy" = "Eistherapie";
+"activity.forearm_massage" = "Unterarmmassage";
+"activity.wrist_rotations" = "Handgelenkrotationen";
+"activity.pain_level_check" = "Schmerzniveau-Überprüfung";
+
+// MARK: - Activity Descriptions
+"activity.wrist_extension_stretch.description" = "Sanfte Dehnung zur Verbesserung der Flexibilität";
+"activity.wrist_flexion_stretch.description" = "Dehnt die Streckmuskeln des Unterarms";
+"activity.eccentric_wrist_extension.description" = "Kräftigungsübung für die Unterarmstreckmuskeln";
+"activity.grip_strengthening.description" = "Aufbau von Griff- und Unterarmkraft";
+"activity.ice_therapy.description" = "Reduziert Entzündungen und Schmerzen";
+"activity.forearm_massage.description" = "Selbstmassage zur Verringerung von Verspannungen";
+"activity.wrist_rotations.description" = "Verbessert Beweglichkeit und Durchblutung";
+"activity.pain_level_check.description" = "Verfolgen Sie Ihr Schmerzniveau nach den Aktivitäten";
+
+// MARK: - Activity Instructions
+"activity.wrist_extension_stretch.instruction.1" = "Strecken Sie Ihren Arm nach vorne mit der Handfläche nach unten";
+"activity.wrist_extension_stretch.instruction.2" = "Ziehen Sie die Finger mit der anderen Hand sanft nach hinten";
+"activity.wrist_extension_stretch.instruction.3" = "Halten Sie die Position 15-30 Sekunden";
+"activity.wrist_extension_stretch.instruction.4" = "Wiederholen Sie dies an beiden Armen";
+
+"activity.wrist_flexion_stretch.instruction.1" = "Strecken Sie Ihren Arm mit der Handfläche nach oben";
+"activity.wrist_flexion_stretch.instruction.2" = "Ziehen Sie die Finger mit der anderen Hand sanft nach unten";
+"activity.wrist_flexion_stretch.instruction.3" = "Halten Sie die Position 15-30 Sekunden";
+"activity.wrist_flexion_stretch.instruction.4" = "Spüren Sie die Dehnung in Ihrem Unterarm";
+
+"activity.eccentric_wrist_extension.instruction.1" = "Legen Sie Ihren Unterarm auf einen Tisch, Handfläche nach unten";
+"activity.eccentric_wrist_extension.instruction.2" = "Halten Sie ein leichtes Gewicht (zum Anfang 0,5-1 kg)";
+"activity.eccentric_wrist_extension.instruction.3" = "Senken Sie das Gewicht langsam, indem Sie das Handgelenk nach unten beugen";
+"activity.eccentric_wrist_extension.instruction.4" = "Verwenden Sie die andere Hand, um es wieder nach oben zu heben";
+"activity.eccentric_wrist_extension.instruction.5" = "Konzentrieren Sie sich auf die Absenkbewegung";
+
+"activity.grip_strengthening.instruction.1" = "Verwenden Sie einen Stressball oder Grifftrainer";
+"activity.grip_strengthening.instruction.2" = "Drücken Sie fest für 5 Sekunden";
+"activity.grip_strengthening.instruction.3" = "Lassen Sie langsam los";
+"activity.grip_strengthening.instruction.4" = "Ruhen Sie sich zwischen den Sätzen aus";
+
+"activity.ice_therapy.instruction.1" = "Legen Sie einen Eisbeutel auf den äußeren Ellenbogen";
+"activity.ice_therapy.instruction.2" = "Verwenden Sie ein Handtuch zum Schutz der Haut";
+"activity.ice_therapy.instruction.3" = "Tragen Sie es für 15 Minuten auf";
+"activity.ice_therapy.instruction.4" = "Wiederholen Sie dies 3-4 Mal täglich nach Bedarf";
+
+"activity.forearm_massage.instruction.1" = "Verwenden Sie Ihren Daumen, um sanften Druck auszuüben";
+"activity.forearm_massage.instruction.2" = "Massieren Sie entlang der Unterarmmuskeln";
+"activity.forearm_massage.instruction.3" = "Konzentrieren Sie sich auf empfindliche Punkte";
+"activity.forearm_massage.instruction.4" = "Bewegen Sie sich langsam und atmen Sie tief";
+
+"activity.wrist_rotations.instruction.1" = "Halten Sie den Arm mit im 90-Grad-Winkel gebeugtem Ellenbogen";
+"activity.wrist_rotations.instruction.2" = "Drehen Sie das Handgelenk langsam im Kreis";
+"activity.wrist_rotations.instruction.3" = "Führen Sie 10 Drehungen im Uhrzeigersinn aus";
+"activity.wrist_rotations.instruction.4" = "Dann 10 Drehungen gegen den Uhrzeigersinn";
+
+"activity.pain_level_check.instruction.1" = "Bewerten Sie Ihr aktuelles Schmerzniveau";
+"activity.pain_level_check.instruction.2" = "Berücksichtigen Sie Schmerzen während der Aktivitäten";
+"activity.pain_level_check.instruction.3" = "Notieren Sie alle Veränderungen gegenüber vorherigen Sitzungen";
+"activity.pain_level_check.instruction.4" = "Dies hilft, Ihren Genesungsfortschritt zu verfolgen";
+
+// MARK: - Treatment Plan Names
+"plan.week_1_2_gentle_recovery" = "Woche 1-2: Sanfte Erholung";
+"plan.week_3_4_progressive_strengthening" = "Woche 3-4: Progressive Kräftigung";
+"plan.week_5_6_active_rehabilitation" = "Woche 5-6: Aktive Rehabilitation";
+
+// MARK: - Treatment Plan Descriptions
+"plan.week_1_2_gentle_recovery.description" = "Fokus auf Reduzierung von Entzündungen und sanfter Dehnung";
+"plan.week_3_4_progressive_strengthening.description" = "Ergänzung durch sanfte Kräftigungsübungen";
+"plan.week_5_6_active_rehabilitation.description" = "Steigerung von Kraft und Ausdauer";
+
+// MARK: - Activity Types
+"activity_type.exercise" = "Übung";
+"activity_type.stretch" = "Dehnung";
+"activity_type.ice_therapy" = "Eistherapie";
+"activity_type.rest" = "Ruhe";
+"activity_type.medication" = "Medikation";
+"activity_type.pain_tracking" = "Schmerzverfolgung";
+
+// MARK: - Difficulty Levels
+"difficulty.beginner" = "Anfänger";
+"difficulty.intermediate" = "Fortgeschritten";
+"difficulty.advanced" = "Erweitert";
+
+// MARK: - Days of Week
+"day.sunday" = "Sonntag";
+"day.monday" = "Montag";
+"day.tuesday" = "Dienstag";
+"day.wednesday" = "Mittwoch";
+"day.thursday" = "Donnerstag";
+"day.friday" = "Freitag";
+"day.saturday" = "Samstag";
+
+// MARK: - Activity Detail Source Descriptions
+"source.exercise.description" = "Exzentrische Kräftigungsübungen werden durch Forschung unterstützt, die im British Journal of Sports Medicine veröffentlicht wurde, sowie durch Richtlinien der American Academy of Orthopaedic Surgeons.";
+"source.stretch.description" = "Dehnungsprotokolle basieren auf klinischen Studien, die im British Journal of Sports Medicine veröffentlicht wurden und die Wirksamkeit bei lateraler Epicondylitis nachweisen.";
+"source.ice_therapy.description" = "Kryotherapie-Empfehlungen folgen evidenzbasierten Protokollen für die Behandlung von Muskel-Skelett-Verletzungen, wie sie in von Fachleuten begutachteten sportmedizinischen Zeitschriften veröffentlicht wurden.";
+"source.rest.description" = "Ruhe- und Aktivitätsmodifikationsempfehlungen folgen den Empfehlungen der AAOS und Mayo Clinic für die Erholung vom Tennisellenbogen.";
+"source.medication.description" = "Konsultieren Sie immer einen Arzt bezüglich Medikamenten. Diese Aktivität verfolgt nur die Einhaltung.";
+"source.pain_tracking.description" = "Schmerzverfolgung hilft dabei, den Genesungsfortschritt zu überwachen, wie in klinischen Praxisleitlinien empfohlen.";

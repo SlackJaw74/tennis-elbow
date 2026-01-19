@@ -338,7 +338,7 @@ struct TreatmentProgressView: View {
                             .foregroundColor(.green)
 
                         VStack(alignment: .leading) {
-                            Text(scheduled.activity.name)
+                            Text(scheduled.activity.localizedName)
                                 .font(.caption)
                             if let completedTime = scheduled.completedTime {
                                 Text(completedTime.formatted(date: .abbreviated, time: .shortened))
