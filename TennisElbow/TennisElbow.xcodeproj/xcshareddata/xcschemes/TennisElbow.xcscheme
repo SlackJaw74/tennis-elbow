@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F47E23232D1A3B8300E8F5B4"
+               BlueprintIdentifier = "7638AF482ED7873300F98DC4"
                BuildableName = "TennisElbow.app"
                BlueprintName = "TennisElbow"
                ReferencedContainer = "container:TennisElbow.xcodeproj">
@@ -35,7 +35,18 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F47E23412D1A3B8500E8F5B4"
+               BlueprintIdentifier = "76TE00042F100000008A1B4D"
+               BuildableName = "TennisElbowTests.xctest"
+               BlueprintName = "TennisElbowTests"
+               ReferencedContainer = "container:TennisElbow.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "76DB51182F035918008A1B4D"
                BuildableName = "TennisElbowUITests.xctest"
                BlueprintName = "TennisElbowUITests"
                ReferencedContainer = "container:TennisElbow.xcodeproj">
@@ -57,7 +68,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F47E23232D1A3B8300E8F5B4"
+            BlueprintIdentifier = "7638AF482ED7873300F98DC4"
             BuildableName = "TennisElbow.app"
             BlueprintName = "TennisElbow"
             ReferencedContainer = "container:TennisElbow.xcodeproj">
@@ -74,7 +85,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F47E23232D1A3B8300E8F5B4"
+            BlueprintIdentifier = "7638AF482ED7873300F98DC4"
             BuildableName = "TennisElbow.app"
             BlueprintName = "TennisElbow"
             ReferencedContainer = "container:TennisElbow.xcodeproj">
