@@ -1,8 +1,7 @@
-name: PR Checks
+name: Main Branch Tests
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  push:
     branches:
       - main
       - master
@@ -11,49 +10,8 @@ permissions:
   contents: read
 
 jobs:
-  swiftlint:
-    name: SwiftLint
-    runs-on: macos-latest
-    permissions:
-      contents: read
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Install SwiftLint
-        run: brew install swiftlint
-      
-      - name: Run SwiftLint
-        run: |
-          cd TennisElbow
-          swiftlint lint --reporter github-actions-logging
-
-  build:
-    name: Build
-    runs-on: macos-latest
-    permissions:
-      contents: read
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Show Xcode version
-        run: xcodebuild -version
-      
-      - name: Build app for simulator
-        run: |
-          xcodebuild \
-            -project "TennisElbow/TennisElbow.xcodeproj" \
-            -scheme "TennisElbow" \
-            -configuration Debug \
-            -sdk iphonesimulator \
-            -destination "generic/platform=iOS Simulator" \
-            clean build
-
-  unit-tests:
-    name: Unit Tests
+  all-tests:
+    name: All Tests (Unit + UI)
     runs-on: macos-latest
     permissions:
       contents: read
@@ -83,7 +41,7 @@ jobs:
       - name: Install xcpretty for better test output
         run: gem install xcpretty
       
-      - name: Run Unit Tests
+      - name: Run All Tests (Unit + UI)
         id: run-tests
         continue-on-error: true
         run: |
@@ -92,7 +50,6 @@ jobs:
           xcodebuild test \
             -project "TennisElbow/TennisElbow.xcodeproj" \
             -scheme "TennisElbow" \
-            -only-testing:TennisElbowTests \
             -configuration Debug \
             -sdk iphonesimulator \
             -destination "platform=iOS Simulator,id=${{ steps.find-simulator.outputs.simulator_id }}" \
@@ -125,32 +82,3 @@ jobs:
       - name: Fail job if tests failed
         if: steps.run-tests.outputs.result != '0'
         run: exit 1
-
-  swiftformat:
-    name: SwiftFormat Check
-    runs-on: macos-latest
-    continue-on-error: true  # Don't fail the build on formatting issues initially
-    permissions:
-      contents: read
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Install SwiftFormat
-        run: brew install swiftformat
-      
-      - name: Run SwiftFormat
-        run: |
-          cd TennisElbow
-          swiftformat .
-      
-      - name: Check for formatting changes
-        run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "SwiftFormat made changes. Please run 'make format' locally and commit the changes."
-            git diff
-            exit 1
-          else
-            echo "No formatting changes needed."
-          fi
