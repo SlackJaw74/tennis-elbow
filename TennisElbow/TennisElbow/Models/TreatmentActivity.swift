@@ -58,11 +58,19 @@ struct TreatmentActivity: Identifiable, Codable, Hashable {
 
     private static let maxInstructionSteps = 10
 
-    init(id: UUID = UUID(), name: String, description: String, type: ActivityType,
-         durationMinutes: Int, repetitions: Int? = nil, sets: Int? = nil,
-         difficultyLevel: DifficultyLevel = .beginner, instructions: [String],
-         imageSystemName: String, localizationKey: String)
-    {
+    init(
+        id: UUID = UUID(),
+        name: String,
+        description: String,
+        type: ActivityType,
+        durationMinutes: Int,
+        repetitions: Int? = nil,
+        sets: Int? = nil,
+        difficultyLevel: DifficultyLevel = .beginner,
+        instructions: [String],
+        imageSystemName: String,
+        localizationKey: String
+    ) {
         self.id = id
         self.name = name
         self.description = description
@@ -227,6 +235,6 @@ extension TreatmentActivity {
             ],
             imageSystemName: "heart.text.square.fill",
             localizationKey: "pain_level_check"
-        ),
+        )
     ]
 }

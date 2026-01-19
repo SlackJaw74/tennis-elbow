@@ -9,10 +9,15 @@ struct TreatmentPlan: Identifiable, Codable {
     let dailySchedule: [DayOfWeek: [TimeOfDay]]
     let localizationKey: String?
 
-    init(id: UUID = UUID(), name: String, description: String, weekNumber: Int,
-         activities: [TreatmentActivity], dailySchedule: [DayOfWeek: [TimeOfDay]],
-         localizationKey: String? = nil)
-    {
+    init(
+        id: UUID = UUID(),
+        name: String,
+        description: String,
+        weekNumber: Int,
+        activities: [TreatmentActivity],
+        dailySchedule: [DayOfWeek: [TimeOfDay]],
+        localizationKey: String? = nil
+    ) {
         self.id = id
         self.name = name
         self.description = description
@@ -89,7 +94,7 @@ extension TreatmentPlan {
                 .thursday: [.morning, .evening],
                 .friday: [.morning, .evening],
                 .saturday: [.morning],
-                .sunday: [.morning],
+                .sunday: [.morning]
             ],
             localizationKey: "week_1_2_gentle_recovery"
         ),
@@ -114,7 +119,7 @@ extension TreatmentPlan {
                 .thursday: [.morning, .evening],
                 .friday: [.morning, .afternoon, .evening],
                 .saturday: [.morning],
-                .sunday: [.morning],
+                .sunday: [.morning]
             ],
             localizationKey: "week_3_4_progressive_strengthening"
         ),
@@ -139,9 +144,9 @@ extension TreatmentPlan {
                 .thursday: [.morning, .afternoon, .evening],
                 .friday: [.morning, .afternoon, .evening],
                 .saturday: [.morning, .afternoon],
-                .sunday: [.morning],
+                .sunday: [.morning]
             ],
             localizationKey: "week_5_6_active_rehabilitation"
-        ),
+        )
     ]
 }

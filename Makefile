@@ -84,21 +84,24 @@ test-ui:
 	  -enableCodeCoverage YES \
 	  -only-testing:TennisElbowUITests
 
-screenshots:
-	@echo "Capturing screenshots for all devices (iPhone and iPad)..."
-	cd fastlane && bundle exec fastlane screenshots_all
+install-deps:
+	bundle check || bundle install --path vendor/bundle
 
-screenshots-iphone:
+screenshots: install-deps
+	@echo "Capturing screenshots for all devices..."
+	bundle exec fastlane screenshots
+
+screenshots-iphone: install-deps
 	@echo "Capturing screenshots for iPhone devices only..."
-	cd fastlane && bundle exec fastlane screenshots_iphone
+	bundle exec fastlane screenshots_iphone
 
-screenshots-ipad:
+screenshots-ipad: install-deps
 	@echo "Capturing screenshots for iPad devices only..."
-	cd fastlane && bundle exec fastlane screenshots_ipad
+	bundle exec fastlane screenshots_ipad
 
-process-screenshots:
+process-screenshots: install-deps
 	@echo "Processing screenshots for App Store Connect..."
-	cd fastlane && bundle exec fastlane process_screenshots
+	bundle exec fastlane process_screenshots
 
 device-list:
 	xcrun simctl list devices
