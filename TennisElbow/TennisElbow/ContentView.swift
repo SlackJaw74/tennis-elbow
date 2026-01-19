@@ -7,11 +7,12 @@ struct ContentView: View {
     @State private var showDisclaimer = false
 
     var body: some View {
+
         TabView(selection: $selectedTab) {
             TreatmentPlanView()
                 .environmentObject(treatmentManager)
                 .tabItem {
-                    Label("Treatment", systemImage: "heart.text.square")
+                    Label("tab.treatment".localized(), systemImage: "heart.text.square")
                 }
                 .tag(0)
                 .accessibilityLabel("Treatment Plan")
@@ -20,7 +21,7 @@ struct ContentView: View {
             ScheduleView()
                 .environmentObject(treatmentManager)
                 .tabItem {
-                    Label("Schedule", systemImage: "calendar")
+                    Label("tab.schedule".localized(), systemImage: "calendar")
                 }
                 .tag(1)
                 .accessibilityLabel("Schedule")
@@ -29,7 +30,7 @@ struct ContentView: View {
             TreatmentProgressView()
                 .environmentObject(treatmentManager)
                 .tabItem {
-                    Label("Progress", systemImage: "chart.line.uptrend.xyaxis")
+                    Label("tab.progress".localized(), systemImage: "chart.line.uptrend.xyaxis")
                 }
                 .tag(2)
                 .accessibilityLabel("Progress")
@@ -38,7 +39,7 @@ struct ContentView: View {
             SettingsView()
                 .environmentObject(treatmentManager)
                 .tabItem {
-                    Label("Settings", systemImage: "gear")
+                    Label("tab.settings".localized(), systemImage: "gear")
                 }
                 .tag(3)
                 .accessibilityLabel("Settings")

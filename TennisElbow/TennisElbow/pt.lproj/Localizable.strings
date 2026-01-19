@@ -11,6 +11,12 @@
 "Complete" = "Concluir";
 "lbs" = "lbs";
 
+// MARK: - Tab Bar
+"tab.treatment" = "Tratamento";
+"tab.schedule" = "Agenda";
+"tab.progress" = "Progresso";
+"tab.settings" = "Configurações";
+
 // MARK: - DisclaimerView
 "Medical Disclaimer" = "Aviso Médico";
 "Important Information" = "Informações Importantes";

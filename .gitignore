@@ -37,3 +37,18 @@ fastlane/test_output/
 
 # Misc
 *.swp
+
+# Temporary files and folders
+*.tmp
+*.temp
+*.log
+*.bak
+*~
+.tmp/
+.temp/
+.cache/
+
+# Ruby/Bundler (fastlane dependencies)
+vendor/
+Gemfile.lock
+.bundle/

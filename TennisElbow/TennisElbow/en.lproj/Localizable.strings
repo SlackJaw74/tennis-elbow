@@ -11,6 +11,12 @@
 "Complete" = "Complete";
 "lbs" = "lbs";
 
+// MARK: - Tab Bar
+"tab.treatment" = "Treatment";
+"tab.schedule" = "Schedule";
+"tab.progress" = "Progress";
+"tab.settings" = "Settings";
+
 // MARK: - DisclaimerView
 "Medical Disclaimer" = "Medical Disclaimer";
 "Important Information" = "Important Information";

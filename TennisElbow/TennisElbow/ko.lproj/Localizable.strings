@@ -11,6 +11,12 @@
 "Complete" = "완료";
 "lbs" = "파운드";
 
+// MARK: - Tab Bar
+"tab.treatment" = "치료";
+"tab.schedule" = "일정";
+"tab.progress" = "진행";
+"tab.settings" = "설정";
+
 // MARK: - DisclaimerView
 "Medical Disclaimer" = "의료 면책조항";
 "Important Information" = "중요한 정보";

@@ -1,12 +1,15 @@
 # Snapfile for fastlane snapshot
 # More info: https://docs.fastlane.tools/actions/snapshot/
 
+# Xcode project path (relative to project root, where fastlane runs from)
+project("TennisElbow/TennisElbow.xcodeproj")
+
 # List of devices to generate screenshots for
-# Using older device types to match App Store Connect requirements
+# Using available simulators that match App Store Connect requirements
 devices([
   "iPad Pro 13-inch (M5)",    # 13" Display
-  "iPhone 16 Pro Max",        # 6.9" Display
-  "iPhone 11 Pro Max"         # 6.5" Display
+  "iPhone 17 Pro Max",        # 6.9" Display (largest iPhone)
+  "iPhone 17"                 # 6.3" Display
 ])
 
 # List of languages to generate screenshots for
@@ -17,11 +20,17 @@ languages([
 # The name of the scheme which contains the UI Tests
 scheme("TennisElbow")
 
+# Only run the screenshot test, not all UI tests
+only_testing(["TennisElbowUITests/TennisElbowUITests/testScreenshots"])
+
 # Where should the resulting screenshots be stored?
 output_directory("./fastlane/screenshots")
 
 # Clear all previously generated screenshots before creating new ones
 clear_previous_screenshots(true)
+
+# Localize simulator to the specified language
+localize_simulator(true)
 
 # Remove the '#' to clear all previously generated screenshots before creating new ones
 override_status_bar(true)

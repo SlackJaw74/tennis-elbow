@@ -11,6 +11,12 @@
 "Complete" = "完了";
 "lbs" = "ポンド";
 
+// MARK: - Tab Bar
+"tab.treatment" = "治療";
+"tab.schedule" = "スケジュール";
+"tab.progress" = "進捗";
+"tab.settings" = "設定";
+
 // MARK: - DisclaimerView
 "Medical Disclaimer" = "医療免責事項";
 "Important Information" = "重要な情報";

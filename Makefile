@@ -84,24 +84,22 @@ test-ui:
 	  -enableCodeCoverage YES \
 	  -only-testing:TennisElbowUITests
 
-install-deps:
-	bundle check || bundle install --path vendor/bundle
-
-screenshots: install-deps
+# Use system fastlane (Homebrew) directly - bundler requires modern Ruby
+screenshots:
 	@echo "Capturing screenshots for all devices..."
-	bundle exec fastlane screenshots
+	fastlane screenshots
 
-screenshots-iphone: install-deps
+screenshots-iphone:
 	@echo "Capturing screenshots for iPhone devices only..."
-	bundle exec fastlane screenshots_iphone
+	fastlane screenshots_iphone
 
-screenshots-ipad: install-deps
+screenshots-ipad:
 	@echo "Capturing screenshots for iPad devices only..."
-	bundle exec fastlane screenshots_ipad
+	fastlane screenshots_ipad
 
-process-screenshots: install-deps
+process-screenshots:
 	@echo "Processing screenshots for App Store Connect..."
-	bundle exec fastlane process_screenshots
+	fastlane process_screenshots
 
 device-list:
 	xcrun simctl list devices
