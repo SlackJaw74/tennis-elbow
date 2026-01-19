@@ -27,11 +27,18 @@ struct TreatmentActivity: Identifiable, Codable, Hashable {
     let instructions: [String]
     let imageSystemName: String
 
-    init(id: UUID = UUID(), name: String, description: String, type: ActivityType,
-         durationMinutes: Int, repetitions: Int? = nil, sets: Int? = nil,
-         difficultyLevel: DifficultyLevel = .beginner, instructions: [String],
-         imageSystemName: String)
-    {
+    init(
+        id: UUID = UUID(),
+        name: String,
+        description: String,
+        type: ActivityType,
+        durationMinutes: Int,
+        repetitions: Int? = nil,
+        sets: Int? = nil,
+        difficultyLevel: DifficultyLevel = .beginner,
+        instructions: [String],
+        imageSystemName: String
+    ) {
         self.id = id
         self.name = name
         self.description = description
@@ -57,7 +64,7 @@ extension TreatmentActivity {
                 "Extend your arm in front with palm facing down",
                 "Use your other hand to gently pull fingers back",
                 "Hold for 15-30 seconds",
-                "Repeat on both arms",
+                "Repeat on both arms"
             ],
             imageSystemName: "hand.raised"
         ),
@@ -71,7 +78,7 @@ extension TreatmentActivity {
                 "Extend your arm with palm facing up",
                 "Gently pull fingers down with other hand",
                 "Hold for 15-30 seconds",
-                "Feel the stretch in your forearm",
+                "Feel the stretch in your forearm"
             ],
             imageSystemName: "hand.point.down"
         ),
@@ -87,7 +94,7 @@ extension TreatmentActivity {
                 "Hold a light weight (1-2 lbs to start)",
                 "Slowly lower the weight by bending wrist down",
                 "Use other hand to help raise it back up",
-                "Focus on the lowering motion",
+                "Focus on the lowering motion"
             ],
             imageSystemName: "dumbbell"
         ),
@@ -103,7 +110,7 @@ extension TreatmentActivity {
                 "Use a stress ball or grip strengthener",
                 "Squeeze firmly for 5 seconds",
                 "Release slowly",
-                "Rest between sets",
+                "Rest between sets"
             ],
             imageSystemName: "hand.thumbsup"
         ),
@@ -116,7 +123,7 @@ extension TreatmentActivity {
                 "Apply ice pack to outer elbow",
                 "Use a towel to protect skin",
                 "Apply for 15 minutes",
-                "Repeat 3-4 times daily as needed",
+                "Repeat 3-4 times daily as needed"
             ],
             imageSystemName: "snowflake"
         ),
@@ -129,7 +136,7 @@ extension TreatmentActivity {
                 "Use your thumb to apply gentle pressure",
                 "Massage along the forearm muscles",
                 "Focus on tender points",
-                "Move slowly and breathe deeply",
+                "Move slowly and breathe deeply"
             ],
             imageSystemName: "hands.sparkles"
         ),
@@ -144,7 +151,7 @@ extension TreatmentActivity {
                 "Hold arm out with elbow bent at 90 degrees",
                 "Slowly rotate wrist in circles",
                 "Do 10 rotations clockwise",
-                "Then 10 rotations counter-clockwise",
+                "Then 10 rotations counter-clockwise"
             ],
             imageSystemName: "arrow.triangle.2.circlepath"
         ),
@@ -157,9 +164,9 @@ extension TreatmentActivity {
                 "Rate your current pain level",
                 "Consider pain during activities",
                 "Note any changes from previous sessions",
-                "This helps track your recovery progress",
+                "This helps track your recovery progress"
             ],
             imageSystemName: "heart.text.square.fill"
-        ),
+        )
     ]
 }

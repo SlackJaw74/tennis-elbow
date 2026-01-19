@@ -1,5 +1,5 @@
-import XCTest
 @testable import TennisElbow
+import XCTest
 
 @MainActor
 final class TennisElbowTests: XCTestCase {
@@ -320,7 +320,7 @@ final class TennisElbowTests: XCTestCase {
         treatmentManager.generateSchedule()
 
         // The completed activity should still exist
-        let completedActivity = treatmentManager.scheduledActivities.first(where: { $0.id == completedId })
+        let completedActivity = treatmentManager.scheduledActivities.first { $0.id == completedId }
         XCTAssertNotNil(completedActivity)
         XCTAssertTrue(completedActivity?.isCompleted ?? false)
     }
