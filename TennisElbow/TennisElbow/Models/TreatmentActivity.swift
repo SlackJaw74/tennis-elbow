@@ -56,6 +56,8 @@ struct TreatmentActivity: Identifiable, Codable, Hashable {
     let imageSystemName: String
     let localizationKey: String
 
+    private static let maxInstructionSteps = 10
+
     init(id: UUID = UUID(), name: String, description: String, type: ActivityType,
          durationMinutes: Int, repetitions: Int? = nil, sets: Int? = nil,
          difficultyLevel: DifficultyLevel = .beginner, instructions: [String],
@@ -84,8 +86,7 @@ struct TreatmentActivity: Identifiable, Codable, Hashable {
 
     var localizedInstructions: [String] {
         var result: [String] = []
-        let maxInstructionSteps = 10
-        for i in 1...maxInstructionSteps {
+        for i in 1...Self.maxInstructionSteps {
             let key = "activity.\(localizationKey).instruction.\(i)"
             let localized = key.localized()
             if localized != key {
