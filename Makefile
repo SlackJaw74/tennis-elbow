@@ -7,7 +7,8 @@ BUNDLE_ID := com.madhouse.TennisElbow
 APP := $(DERIVED)/Build/Products/Debug-iphonesimulator/TennisElbow.app
 
 .PHONY: sim-build sim-install sim-launch sim-run device-list clean archive open-xcode
-.PHONY: ipad-build ipad-install ipad-launch ipad-run screenshots screenshots-iphone screenshots-ipad process-screenshots
+
+.PHONY: ipad-build ipad-install ipad-launch ipad-run test test-unit test-ui screenshots screenshots-iphone screenshots-ipad process-screenshots
 .PHONY: screenshots-all-languages screenshots-iphone-all-languages screenshots-ipad-all-languages screenshot-debug
 .PHONY: version bump-patch bump-minor bump-major bump-build
 .PHONY: lint lint-fix format format-check fix
@@ -53,6 +54,35 @@ ipad-launch:
 	xcrun simctl launch booted $(BUNDLE_ID)
 
 ipad-run: ipad-build ipad-install ipad-launch
+
+test:
+	xcodebuild test \
+	  -project "$(PROJECT)" \
+	  -scheme "$(SCHEME)" \
+	  -sdk iphonesimulator \
+	  -destination "platform=iOS Simulator,name=$(DEVICE)" \
+	  -derivedDataPath "$(DERIVED)" \
+	  -enableCodeCoverage YES
+
+test-unit:
+	xcodebuild test \
+	  -project "$(PROJECT)" \
+	  -scheme "$(SCHEME)" \
+	  -sdk iphonesimulator \
+	  -destination "platform=iOS Simulator,name=$(DEVICE)" \
+	  -derivedDataPath "$(DERIVED)" \
+	  -enableCodeCoverage YES \
+	  -only-testing:TennisElbowTests
+
+test-ui:
+	xcodebuild test \
+	  -project "$(PROJECT)" \
+	  -scheme "$(SCHEME)" \
+	  -sdk iphonesimulator \
+	  -destination "platform=iOS Simulator,name=$(DEVICE)" \
+	  -derivedDataPath "$(DERIVED)" \
+	  -enableCodeCoverage YES \
+	  -only-testing:TennisElbowUITests
 
 screenshots:
 	@echo "Capturing screenshots for all devices (iPhone and iPad)..."

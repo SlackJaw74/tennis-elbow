@@ -28,6 +28,19 @@ make sim-run DEVICE="iPhone 17 Pro"
 make ipad-run IPAD_DEVICE="iPad Air 11-inch (M2)"
 ```
 
+### Testing
+
+```bash
+# Run all tests
+make test
+
+# Run unit tests only
+make test-unit
+
+# Run UI tests only
+make test-ui
+```
+
 ### Screenshot Generation
 
 ```bash
