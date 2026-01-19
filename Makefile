@@ -7,9 +7,13 @@ BUNDLE_ID := com.madhouse.TennisElbow
 APP := $(DERIVED)/Build/Products/Debug-iphonesimulator/TennisElbow.app
 
 FASTLANE_DIR := fastlane
-# Prefer Homebrew fastlane (avoids Ruby version conflicts)
+# Detect fastlane installation method
+# 1. Prefer Homebrew fastlane (simpler, avoids Ruby version conflicts)
+# 2. Fall back to bundler fastlane (if Gemfile.lock exists and bundle is available)
+# 3. Fall back to any fastlane in PATH
 HOMEBREW_FASTLANE := $(shell command -v /opt/homebrew/bin/fastlane 2>/dev/null || command -v /usr/local/bin/fastlane 2>/dev/null)
-FASTLANE := $(if $(HOMEBREW_FASTLANE),$(HOMEBREW_FASTLANE),$(shell command -v fastlane))
+BUNDLE_FASTLANE := $(shell [ -f "$(FASTLANE_DIR)/Gemfile.lock" ] && command -v bundle >/dev/null 2>&1 && echo "bundle exec fastlane")
+FASTLANE := $(if $(HOMEBREW_FASTLANE),$(HOMEBREW_FASTLANE),$(if $(BUNDLE_FASTLANE),$(BUNDLE_FASTLANE),$(shell command -v fastlane)))
 
 .PHONY: sim-build sim-install sim-launch sim-run device-list clean archive open-xcode format
 .PHONY: ipad-build ipad-install ipad-launch ipad-run process-screenshots screenshot-debug
@@ -75,7 +79,9 @@ fastlane-run:
 		fi; \
 	else \
 		echo "Error: fastlane not available."; \
-		echo "Install with: brew install fastlane"; \
+		echo "Install with one of these methods:"; \
+		echo "  1. Homebrew (recommended): brew install fastlane"; \
+		echo "  2. Bundler: cd $(FASTLANE_DIR) && bundle install"; \
 		exit 1; \
 	fi
 

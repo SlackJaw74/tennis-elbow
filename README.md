@@ -66,6 +66,7 @@ tennis-elbow/
 ## Documentation
 
 - **[ACCESSIBILITY.md](docs/ACCESSIBILITY.md)** - Complete accessibility features and VoiceOver support guide
+- **[FASTLANE_SETUP.md](docs/FASTLANE_SETUP.md)** - Fastlane installation methods and usage guide
 - **[SCREENSHOT_GUIDE.md](SCREENSHOT_GUIDE.md)** - Manual and automated screenshot capture for App Store
 - **[SNAPSHOT_TESTING.md](SNAPSHOT_TESTING.md)** - Comprehensive UI snapshot testing guide
 - **[VERSION_MANAGEMENT.md](docs/VERSION_MANAGEMENT.md)** - Automatic version incrementing guide
@@ -134,59 +135,109 @@ Optional (recommended): Add a `PrivacyInfo.xcprivacy` manifest declaring no requ
       ```
 
 - fastlane: CI-friendly automation lanes
-   - Install fastlane:
-      ```bash
-      sudo gem install fastlane -NV
-      # Or with bundler:
-      cd fastlane && bundle install
-      ```
+   
+   > **📖 See [FASTLANE_SETUP.md](docs/FASTLANE_SETUP.md) for detailed installation guide, troubleshooting, and CI/CD integration.**
+   
+   #### Installation Methods
+   
+   **Method 1: Homebrew (Recommended for Local Development)**
+   ```bash
+   brew install fastlane
+   ```
+   - ✅ Simpler installation
+   - ✅ No Ruby version conflicts
+   - ✅ Automatic updates via Homebrew
+   - ✅ Works directly with Makefile targets
+   
+   **Method 2: Bundler (Recommended for CI/CD)**
+   ```bash
+   cd fastlane && bundle install
+   ```
+   - ✅ Consistent versions across team/CI
+   - ✅ Locked dependencies in Gemfile.lock
+   - ✅ Better for reproducible builds
+   - ⚠️ Requires `bundle exec` prefix
+   
+   The Makefile automatically detects which installation method you're using:
+   1. First checks for Homebrew fastlane
+   2. Falls back to bundler fastlane (if Gemfile.lock exists)
+   3. Falls back to any fastlane in PATH
+   
+   #### Using Makefile (Automatically Detects Installation)
+   
+   The Makefile handles fastlane execution automatically regardless of installation method:
+   ```bash
+   # These work with both Homebrew and bundler installations
+   make screenshots
+   make screenshots-iphone
+   make screenshots-ipad
+   make process-screenshots
+   ```
+   
+   #### Using Fastlane Directly
+   
+   If you prefer to run fastlane commands directly:
+   
+   **With Homebrew:**
+   ```bash
+   fastlane screenshots_all
+   fastlane screenshots_iphone
+   fastlane screenshots_ipad
+   fastlane process_screenshots
+   ```
+   
+   **With Bundler:**
+   ```bash
+   cd fastlane && bundle exec fastlane screenshots_all
+   cd fastlane && bundle exec fastlane screenshots_iphone
+   cd fastlane && bundle exec fastlane screenshots_ipad
+   cd fastlane && bundle exec fastlane process_screenshots
+   ```
+   
+   #### Available Lanes
+   
    - Run simulator lane:
       ```bash
+      # Homebrew
+      fastlane simulator
+      # Bundler
       cd fastlane && bundle exec fastlane simulator
       ```
    - Create archive (Release):
       ```bash
+      # Homebrew
+      fastlane archive
+      # Bundler
       cd fastlane && bundle exec fastlane archive
       ```
    - Upload to App Store (set credentials first):
       ```bash
+      # Homebrew
+      fastlane upload
+      # Bundler
       cd fastlane && bundle exec fastlane upload
-      ```
-   - Generate screenshots (all devices):
-      ```bash
-      cd fastlane && bundle exec fastlane screenshots_all
-      ```
-   - Generate screenshots (iPhone only):
-      ```bash
-      cd fastlane && bundle exec fastlane screenshots_iphone
-      ```
-   - Generate screenshots (iPad only):
-      ```bash
-      cd fastlane && bundle exec fastlane screenshots_ipad
-      ```
-   - Process screenshots for App Store:
-      ```bash
-      cd fastlane && bundle exec fastlane process_screenshots
       ```
    - Version management:
       ```bash
       # Show current version and build number
-      cd fastlane && bundle exec fastlane version
-
+      fastlane version
+      
       # Bump patch version (1.0.0 -> 1.0.1)
-      cd fastlane && bundle exec fastlane bump_patch
-
+      fastlane bump_patch
+      
       # Bump minor version (1.0.0 -> 1.1.0)
-      cd fastlane && bundle exec fastlane bump_minor
-
+      fastlane bump_minor
+      
       # Bump major version (1.0.0 -> 2.0.0)
-      cd fastlane && bundle exec fastlane bump_major
-
+      fastlane bump_major
+      
       # Bump build number only
-      cd fastlane && bundle exec fastlane bump_build
-
+      fastlane bump_build
+      
       # Or specify type directly
-      cd fastlane && bundle exec fastlane bump type:patch
+      fastlane bump type:patch
+      
+      # (Add 'cd fastlane && bundle exec' prefix if using bundler)
       ```
 
 ## Snapshot Testing
