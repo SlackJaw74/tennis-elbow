@@ -33,6 +33,7 @@ Pods/
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
+fastlane/screenshots/**/*.html
 fastlane/test_output/
 
 # Misc
