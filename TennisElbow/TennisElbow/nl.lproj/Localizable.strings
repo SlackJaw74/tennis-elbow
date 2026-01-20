@@ -11,6 +11,12 @@
 "Complete" = "Voltooien";
 "lbs" = "lbs";
 
+// MARK: - Tab Bar
+"tab.treatment" = "Behandeling";
+"tab.schedule" = "Schema";
+"tab.progress" = "Voortgang";
+"tab.settings" = "Instellingen";
+
 // MARK: - DisclaimerView
 "Medical Disclaimer" = "Medische Disclaimer";
 "Important Information" = "Belangrijke Informatie";

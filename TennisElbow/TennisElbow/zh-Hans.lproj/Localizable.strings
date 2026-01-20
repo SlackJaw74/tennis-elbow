@@ -11,6 +11,12 @@
 "Complete" = "完成";
 "lbs" = "磅";
 
+// MARK: - Tab Bar
+"tab.treatment" = "治疗";
+"tab.schedule" = "日程";
+"tab.progress" = "进度";
+"tab.settings" = "设置";
+
 // MARK: - DisclaimerView
 "Medical Disclaimer" = "医疗免责声明";
 "Important Information" = "重要信息";

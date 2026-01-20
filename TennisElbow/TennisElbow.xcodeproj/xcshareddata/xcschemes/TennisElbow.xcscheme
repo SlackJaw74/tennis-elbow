@@ -23,12 +23,15 @@
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
+
    <TestAction
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      shouldAutocreateTestPlan = "YES">
+      shouldAutocreateTestPlan = "NO"
+      language = "en"
+      region = "US">
       <Testables>
          <TestableReference
             skipped = "NO"

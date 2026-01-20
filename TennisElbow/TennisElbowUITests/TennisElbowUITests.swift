@@ -41,98 +41,45 @@ final class TennisElbowUITests: XCTestCase {
         XCUIDevice.shared.orientation = .portrait
         sleep(1)
 
-        // Screenshot 0: Disclaimer View (initial launch)
+        // Screenshot 1: Disclaimer View (initial launch)
         let acceptButton = app.buttons["Accept and Continue"]
         if acceptButton.waitForExistence(timeout: 5) {
-            snapshot("00-Disclaimer")
+            snapshot("01-Disclaimer")
             sleep(1)
             acceptButton.tap()
             sleep(2)
+        } else {
+            // Ensure we still capture an initial screen for deterministic screenshot runs
+            snapshot("01-Disclaimer")
+            sleep(1)
         }
 
-        // Screenshot 1: Treatment Plan View
-        snapshot("01-TreatmentPlan")
+        // Wait for tab bar to be ready
+        let tabBar = app.tabBars.firstMatch
+        XCTAssertTrue(tabBar.waitForExistence(timeout: 5), "Tab bar should exist before taking screenshots")
         sleep(1)
 
-        // Screenshot 2: Schedule View
-        let scheduleTab = app.tabBars.buttons["Schedule"]
-        XCTAssertTrue(scheduleTab.exists, "Schedule tab should exist")
-        scheduleTab.tap()
+        // Screenshot 2: Treatment Plan View (already on this view after disclaimer)
+        snapshot("02-Treatment")
+        sleep(1)
+
+        // Screenshot 3: Schedule View - tap second tab
+        let allTabButtons = tabBar.buttons.allElementsBoundByIndex
+        XCTAssertGreaterThanOrEqual(allTabButtons.count, 4, "Expected 4 tabs (Treatment, Schedule, Progress, Settings) for complete screenshot set")
+        
+        allTabButtons[1].tap()
         sleep(2)
-        snapshot("02-Schedule")
+        snapshot("03-Schedule")
 
-        // Screenshot 3: Progress View
-        let progressTab = app.tabBars.buttons["Progress"]
-        XCTAssertTrue(progressTab.exists, "Progress tab should exist")
-        progressTab.tap()
+        // Screenshot 4: Progress View - tap third tab
+        allTabButtons[2].tap()
         sleep(2)
-        snapshot("03-Progress")
+        snapshot("04-Progress")
 
-        // Screenshot 4: Settings View
-        let settingsTab = app.tabBars.buttons["Settings"]
-        XCTAssertTrue(settingsTab.exists, "Settings tab should exist")
-        settingsTab.tap()
+        // Screenshot 5: Settings View - tap fourth tab
+        allTabButtons[3].tap()
         sleep(2)
-        snapshot("04-Settings")
-
-        // Screenshot 5: Medical Sources View (from Settings)
-        let medicalSourcesLink = app.buttons["Medical Sources & Citations"]
-        if medicalSourcesLink.waitForExistence(timeout: 3) {
-            medicalSourcesLink.tap()
-            sleep(2)
-            snapshot("05-MedicalSources")
-
-            // Go back to Settings
-            let backButton = app.navigationBars.buttons.element(boundBy: 0)
-            if backButton.exists {
-                backButton.tap()
-                sleep(1)
-            }
-        }
-
-        // Screenshot 6: Disclaimer from Settings
-        let disclaimerButton = app.buttons["Medical Disclaimer"]
-        if disclaimerButton.waitForExistence(timeout: 3) {
-            disclaimerButton.tap()
-            sleep(2)
-            snapshot("06-DisclaimerFromSettings")
-
-            // Check for Medical Sources link in disclaimer
-            let medicalSourcesCitation = app.links["View All Medical Sources & Citations"]
-            if medicalSourcesCitation.waitForExistence(timeout: 3) {
-                medicalSourcesCitation.tap()
-                sleep(2)
-                snapshot("07-MedicalSourcesFromDisclaimer")
-
-                // Go back
-                let backButton = app.navigationBars.buttons.element(boundBy: 0)
-                if backButton.exists {
-                    backButton.tap()
-                    sleep(1)
-                }
-            }
-
-            // Close disclaimer sheet
-            let closeButton = app.buttons["Close"]
-            if closeButton.exists {
-                closeButton.tap()
-                sleep(1)
-            }
-        }
-
-        // Navigate back to Treatment to show activity details
-        let treatmentTab = app.tabBars.buttons["Treatment"]
-        treatmentTab.tap()
-        sleep(2)
-
-        // Screenshot 8: Activity Detail View
-        let cells = app.collectionViews.cells
-        // swiftlint:disable:next empty_count
-        if cells.count > 0 {
-            cells.element(boundBy: 0).tap()
-            sleep(2)
-            snapshot("08-ActivityDetail")
-        }
+        snapshot("05-Settings")
     }
 
     @MainActor
@@ -150,20 +97,25 @@ final class TennisElbowUITests: XCTestCase {
         let tabBar = app.tabBars.firstMatch
         XCTAssertTrue(tabBar.waitForExistence(timeout: 5), "Tab bar should exist")
 
-        // Verify all main tabs exist
-        XCTAssertTrue(app.tabBars.buttons["Treatment"].exists, "Treatment tab should exist")
-        XCTAssertTrue(app.tabBars.buttons["Schedule"].exists, "Schedule tab should exist")
-        XCTAssertTrue(app.tabBars.buttons["Progress"].exists, "Progress tab should exist")
-        XCTAssertTrue(app.tabBars.buttons["Settings"].exists, "Settings tab should exist")
+        // Verify all main tabs exist (using index since labels are localized)
+        let treatmentTab = app.tabBars.buttons.element(boundBy: 0)
+        let scheduleTab = app.tabBars.buttons.element(boundBy: 1)
+        let progressTab = app.tabBars.buttons.element(boundBy: 2)
+        let settingsTab = app.tabBars.buttons.element(boundBy: 3)
+
+        XCTAssertTrue(treatmentTab.exists, "Treatment tab should exist")
+        XCTAssertTrue(scheduleTab.exists, "Schedule tab should exist")
+        XCTAssertTrue(progressTab.exists, "Progress tab should exist")
+        XCTAssertTrue(settingsTab.exists, "Settings tab should exist")
 
         // Test navigation to all views
-        app.tabBars.buttons["Schedule"].tap()
+        scheduleTab.tap()
         sleep(1)
-        app.tabBars.buttons["Progress"].tap()
+        progressTab.tap()
         sleep(1)
-        app.tabBars.buttons["Settings"].tap()
+        settingsTab.tap()
         sleep(1)
-        app.tabBars.buttons["Treatment"].tap()
+        treatmentTab.tap()
         sleep(1)
     }
 
@@ -180,24 +132,26 @@ final class TennisElbowUITests: XCTestCase {
             sleep(1)
         }
 
+        // Tab indices: 0=Treatment, 1=Schedule, 2=Progress, 3=Settings
+        let treatmentTab = app.tabBars.buttons.element(boundBy: 0)
+        let scheduleTab = app.tabBars.buttons.element(boundBy: 1)
+        let progressTab = app.tabBars.buttons.element(boundBy: 2)
+        let settingsTab = app.tabBars.buttons.element(boundBy: 3)
+
         // Verify we're on the Treatment tab
-        let treatmentTab = app.tabBars.buttons["Treatment"]
         XCTAssertTrue(treatmentTab.exists, "Treatment tab should exist")
 
         // Navigate to Schedule tab
-        let scheduleTab = app.tabBars.buttons["Schedule"]
         XCTAssertTrue(scheduleTab.exists, "Schedule tab should exist")
         scheduleTab.tap()
         sleep(1)
 
         // Navigate to Progress tab
-        let progressTab = app.tabBars.buttons["Progress"]
         XCTAssertTrue(progressTab.exists, "Progress tab should exist")
         progressTab.tap()
         sleep(1)
 
         // Navigate to Settings tab
-        let settingsTab = app.tabBars.buttons["Settings"]
         XCTAssertTrue(settingsTab.exists, "Settings tab should exist")
         settingsTab.tap()
         sleep(1)
@@ -226,8 +180,8 @@ final class TennisElbowUITests: XCTestCase {
             sleep(1)
         }
 
-        // Navigate to Settings tab
-        let settingsTab = app.tabBars.buttons["Settings"]
+        // Navigate to Settings tab (index 3)
+        let settingsTab = app.tabBars.buttons.element(boundBy: 3)
         XCTAssertTrue(settingsTab.exists, "Settings tab should exist")
         settingsTab.tap()
         sleep(1)

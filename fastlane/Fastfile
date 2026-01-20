@@ -80,8 +80,9 @@ platform :ios do
   desc "Generate screenshots for App Store using fastlane snapshot"
   lane :screenshots do
     snapshot(
-      project: "TennisElbow/TennisElbow.xcodeproj",
-      scheme: "TennisElbow"
+      # Configuration is read from Snapfile
+      # Project: ../TennisElbow/TennisElbow.xcodeproj
+      # Scheme: TennisElbow
     )
   end
 
