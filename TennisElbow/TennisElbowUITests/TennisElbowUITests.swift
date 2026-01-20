@@ -52,7 +52,7 @@ final class TennisElbowUITests: XCTestCase {
 
         // Wait for tab bar to be ready
         let tabBar = app.tabBars.firstMatch
-        _ = tabBar.waitForExistence(timeout: 5)
+        XCTAssertTrue(tabBar.waitForExistence(timeout: 5), "Tab bar should exist for screenshot capture")
         sleep(1)
 
         // Screenshot 2: Treatment Plan View (already on this view after disclaimer)
@@ -61,25 +61,21 @@ final class TennisElbowUITests: XCTestCase {
 
         // Screenshot 3: Schedule View - tap second tab
         let allTabButtons = tabBar.buttons.allElementsBoundByIndex
-        if allTabButtons.count > 1 {
-            allTabButtons[1].tap()
-            sleep(2)
-            snapshot("03-Schedule")
-        }
+        XCTAssertGreaterThanOrEqual(allTabButtons.count, 4, "Expected 4 tabs (Treatment, Schedule, Progress, Settings) for complete screenshot set")
+        
+        allTabButtons[1].tap()
+        sleep(2)
+        snapshot("03-Schedule")
 
         // Screenshot 4: Progress View - tap third tab
-        if allTabButtons.count > 2 {
-            allTabButtons[2].tap()
-            sleep(2)
-            snapshot("04-Progress")
-        }
+        allTabButtons[2].tap()
+        sleep(2)
+        snapshot("04-Progress")
 
         // Screenshot 5: Settings View - tap fourth tab
-        if allTabButtons.count > 3 {
-            allTabButtons[3].tap()
-            sleep(2)
-            snapshot("05-Settings")
-        }
+        allTabButtons[3].tap()
+        sleep(2)
+        snapshot("05-Settings")
     }
 
     @MainActor
