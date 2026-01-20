@@ -61,7 +61,7 @@ final class TennisElbowUITests: XCTestCase {
 
         // Screenshot 3: Schedule View - tap second tab
         let allTabButtons = tabBar.buttons.allElementsBoundByIndex
-        XCTAssertGreaterThanOrEqual(allTabButtons.count, 4, "Expected 4 tabs to be present")
+        XCTAssertGreaterThanOrEqual(allTabButtons.count, 4, "Expected 4 tabs (Treatment, Schedule, Progress, Settings) for complete screenshot set")
         
         allTabButtons[1].tap()
         sleep(2)
