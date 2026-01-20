@@ -52,7 +52,7 @@ final class TennisElbowUITests: XCTestCase {
 
         // Wait for tab bar to be ready
         let tabBar = app.tabBars.firstMatch
-        XCTAssertTrue(tabBar.waitForExistence(timeout: 5), "Tab bar should exist for screenshot capture")
+        XCTAssertTrue(tabBar.waitForExistence(timeout: 5), "Tab bar should exist before taking screenshots")
         sleep(1)
 
         // Screenshot 2: Treatment Plan View (already on this view after disclaimer)
