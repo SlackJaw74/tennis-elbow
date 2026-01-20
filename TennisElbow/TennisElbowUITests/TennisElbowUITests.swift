@@ -48,6 +48,10 @@ final class TennisElbowUITests: XCTestCase {
             sleep(1)
             acceptButton.tap()
             sleep(2)
+        } else {
+            // Ensure we still capture an initial screen for deterministic screenshot runs
+            snapshot("01-Disclaimer")
+            sleep(1)
         }
 
         // Wait for tab bar to be ready
