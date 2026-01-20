@@ -95,7 +95,12 @@ platform :ios do
       "iPhone 16e"
     ]
     
-    capture_screenshots_for_devices(devices: iphone_devices, device_type: "iPhone")
+    snapshot(
+      devices: iphone_devices,
+      languages: ["en-US"],
+      localize_simulator: true,
+      clear_previous_screenshots: true
+    )
   end
 
   desc "Capture screenshots for iPad devices only"
@@ -107,7 +112,12 @@ platform :ios do
       "iPad (10th generation)"
     ]
     
-    capture_screenshots_for_devices(devices: ipad_devices, device_type: "iPad")
+    snapshot(
+      devices: ipad_devices,
+      languages: ["en-US"],
+      localize_simulator: true,
+      clear_previous_screenshots: true
+    )
   end
 
   desc "Capture screenshots for all devices (iPhone and iPad)"

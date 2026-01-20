@@ -22,6 +22,7 @@ final class TennisElbowUITests: XCTestCase {
         // before they run. The setUp method is a good place to do this.
 
         app = XCUIApplication()
+        app.launchArguments.append("-resetDisclaimer")
         setupSnapshot(app)
     }
 
@@ -42,17 +43,13 @@ final class TennisElbowUITests: XCTestCase {
         sleep(1)
 
         // Screenshot 1: Disclaimer View (initial launch)
+        // With -resetDisclaimer launch argument, disclaimer will always appear
         let acceptButton = app.buttons["Accept and Continue"]
-        if acceptButton.waitForExistence(timeout: 5) {
-            snapshot("01-Disclaimer")
-            sleep(1)
-            acceptButton.tap()
-            sleep(2)
-        } else {
-            // Ensure we still capture an initial screen for deterministic screenshot runs
-            snapshot("01-Disclaimer")
-            sleep(1)
-        }
+        XCTAssertTrue(acceptButton.waitForExistence(timeout: 5), "Disclaimer should appear on first launch")
+        snapshot("01-Disclaimer")
+        sleep(1)
+        acceptButton.tap()
+        sleep(2)
 
         // Wait for tab bar to be ready
         let tabBar = app.tabBars.firstMatch
