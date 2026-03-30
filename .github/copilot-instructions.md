@@ -134,13 +134,62 @@ xcodebuild test \
 xcrun simctl list devices
 ```
 
+## Testing Requirements
+
+### Test Pyramid — 100% Coverage Required
+
+All code must have 100% test coverage. Follow the test pyramid:
+
+- **Unit tests (most)** — Test Models and ViewModels in isolation. One test per behaviour. Fast, no I/O.
+- **Integration tests (middle)** — Test interactions between components (e.g., TreatmentManager + model layer).
+- **UI tests (fewest)** — Only for critical user flows. Snapshot tests for SwiftUI views where applicable.
+
+Write tests alongside new code. Do not submit code without corresponding tests.
+
+## Commit Message Standard
+
+All commits must follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+
+```
+<type>[optional scope]: <description>
+
+Types: feat | fix | docs | style | refactor | test | chore | perf
+```
+
+Examples:
+- `feat(schedule): add weekly view for scheduled activities`
+- `fix(notifications): handle denied permission state gracefully`
+- `test(treatment-manager): add coverage for getPainTrend edge cases`
+- `refactor(views): extract shared pain level picker into component`
+
+## DRY and Simplicity Principles
+
+- **DRY:** Extract repeated logic into shared functions, computed properties, or `SharedComponents.swift`. Never duplicate view code or business logic.
+- **Simplicity:** Write the simplest solution that satisfies the requirements. No speculative abstractions or future-proofing. Prefer readable code over clever one-liners. Delete dead code — don't comment it out.
+
+## Code Quality Tools
+
+SwiftLint and SwiftFormat are **required** for all code changes.
+
+```bash
+# Lint (must pass with zero warnings/errors)
+cd TennisElbow && swiftlint lint
+
+# Format (auto-fix)
+cd TennisElbow && swiftformat .
+
+# Check formatting without changes
+cd TennisElbow && swiftformat --lint .
+```
+
 ## Code Review Requirements
 
 - All code must pass SwiftLint checks (no warnings or errors)
-- Code must be formatted with SwiftFormat
-- UI tests must pass
+- Code must be formatted with SwiftFormat (zero formatting violations)
+- All tests must pass with 100% coverage maintained
 - No force unwrapping or unsafe code patterns
 - Follow existing architectural patterns (MVVM with SwiftUI)
+- Commit messages must follow Conventional Commits format
 - **Before creating a PR:** Always run linting, formatting, and build checks to ensure CI will pass:
   ```bash
   cd TennisElbow
