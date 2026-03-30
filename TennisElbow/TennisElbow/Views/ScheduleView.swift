@@ -141,9 +141,9 @@ struct ScheduledActivityRow: View {
         .background(scheduledActivity.isCompleted
             ? Color.green.opacity(0.1)
             : Color(.secondarySystemBackground))
-            .cornerRadius(10)
-            .opacity(scheduledActivity.isCompleted ? 0.7 : 1.0)
-            .accessibilityElement(children: .contain)
+        .cornerRadius(10)
+        .opacity(scheduledActivity.isCompleted ? 0.7 : 1.0)
+        .accessibilityElement(children: .contain)
     }
 
     var activityColor: Color {
