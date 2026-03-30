@@ -23,7 +23,9 @@ struct WeightStepperView: View {
     var body: some View {
         HStack(spacing: compact ? 0 : 20) {
             Button {
-                if weight > 1 { weight -= 1 }
+                if weight > 1 {
+                    weight -= 1
+                }
             } label: {
                 Image(systemName: "minus.circle.fill")
                     .font(compact ? .title2 : .system(size: 40))
@@ -32,7 +34,9 @@ struct WeightStepperView: View {
             .accessibilityLabel("Decrease weight")
             .accessibilityHint("Decreases weight by 1 pound")
 
-            if compact { Spacer() }
+            if compact {
+                Spacer()
+            }
 
             VStack {
                 Text("\(weight)")
@@ -45,10 +49,14 @@ struct WeightStepperView: View {
             .accessibilityLabel("\(weight) pounds")
             .accessibilityValue("\(weight)")
 
-            if compact { Spacer() }
+            if compact {
+                Spacer()
+            }
 
             Button {
-                if weight < 100 { weight += 1 }
+                if weight < 100 {
+                    weight += 1
+                }
             } label: {
                 Image(systemName: "plus.circle.fill")
                     .font(compact ? .title2 : .system(size: 40))
