@@ -2,7 +2,7 @@
 
 | # | Task | Status | Blocked By |
 |---|------|--------|------------|
-| 1 | Extract shared UI components (PainLevelPicker, WeightPicker) | completed | — |
+| 1 | Extract shared UI components (PainLevelSheet, WeightPickerSheet) | completed | — |
 | 2 | Customizable afternoon reminder time | pending | — |
 | 3 | Prune old scheduled activities | pending | — |
 | 4 | Fix UI test stability (replace sleep() with waitForExistence) | pending | — |

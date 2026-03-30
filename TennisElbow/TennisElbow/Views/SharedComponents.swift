@@ -1,14 +1,16 @@
 import SwiftUI
 
-// MARK: - Shared Helpers
+// MARK: - PainLevel Extension
 
-func getPainDescription(for level: PainLevel) -> String {
-    switch level {
-    case .none: return "pain.none".localized()
-    case .mild: return "pain.mild".localized()
-    case .moderate: return "pain.moderate".localized()
-    case .severe: return "pain.severe".localized()
-    case .extreme: return "pain.extreme".localized()
+private extension PainLevel {
+    var localizedDetail: String {
+        switch self {
+        case .none: return "pain.none".localized()
+        case .mild: return "pain.mild".localized()
+        case .moderate: return "pain.moderate".localized()
+        case .severe: return "pain.severe".localized()
+        case .extreme: return "pain.extreme".localized()
+        }
     }
 }
 
@@ -147,7 +149,7 @@ struct PainPickerSheet: View {
                                     Text(level.description)
                                         .font(.headline)
                                         .foregroundColor(.primary)
-                                    Text(getPainDescription(for: level))
+                                    Text(level.localizedDetail)
                                         .font(.caption)
                                         .foregroundColor(.secondary)
                                 }
@@ -160,7 +162,7 @@ struct PainPickerSheet: View {
                         }
                         .buttonStyle(PlainButtonStyle())
                         .accessibilityLabel("Pain level: \(level.description)")
-                        .accessibilityHint(getPainDescription(for: level))
+                        .accessibilityHint(level.localizedDetail)
                     }
                 }
                 .padding(.horizontal)
@@ -184,7 +186,6 @@ struct PainPickerSheet: View {
 
 struct PainLevelSheet: View {
     @Binding var selectedPainLevel: PainLevel
-    @Binding var notes: String
     @Binding var weightUsed: Int
     let activity: TreatmentActivity
     let onComplete: () -> Void
@@ -232,7 +233,7 @@ struct PainLevelSheet: View {
                                             Text(level.description)
                                                 .font(.headline)
                                                 .foregroundColor(.primary)
-                                            Text(getPainDescription(for: level))
+                                            Text(level.localizedDetail)
                                                 .font(.caption)
                                                 .foregroundColor(.secondary)
                                         }
@@ -252,7 +253,7 @@ struct PainLevelSheet: View {
                                         .cornerRadius(12)
                                 }
                                 .accessibilityLabel("Pain level: \(level.description)")
-                                .accessibilityHint(getPainDescription(for: level))
+                                .accessibilityHint(level.localizedDetail)
                                 .accessibilityAddTraits(selectedPainLevel == level
                                     ? [.isButton, .isSelected]
                                     : .isButton)

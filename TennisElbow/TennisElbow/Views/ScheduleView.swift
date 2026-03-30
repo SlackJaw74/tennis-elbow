@@ -217,7 +217,6 @@ struct ScheduledActivityDetailView: View {
             .sheet(isPresented: $showCompletionSheet) {
                 PainLevelSheet(
                     selectedPainLevel: $selectedPainLevel,
-                    notes: $notes,
                     weightUsed: $weightUsed,
                     activity: scheduledActivity.activity
                 ) {
