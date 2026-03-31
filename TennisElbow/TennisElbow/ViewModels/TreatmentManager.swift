@@ -12,9 +12,9 @@ class TreatmentManager: ObservableObject {
     // Tracks when the current treatment plan stage started, used for automatic stage advancement
     @Published var currentPlanStartDate: Date
     @Published var notificationsEnabled: Bool = false
-    // Shows prompt to user asking if they want to advance to the next stage
+    /// Shows prompt to user asking if they want to advance to the next stage
     @Published var showAdvancementPrompt: Bool = false
-    // Prevents multiple advancement prompts during a single treatment stage
+    /// Prevents multiple advancement prompts during a single treatment stage
     private var hasPromptedForAdvancement = false
 
     // Custom reminder times (stored as Date for time picker, only hour and minute are used)
@@ -365,7 +365,7 @@ class TreatmentManager: ObservableObject {
         }
     }
 
-    // Get custom hour for a time of day
+    /// Get custom hour for a time of day
     private func getCustomHour(for timeOfDay: TimeOfDay) -> Int {
         let calendar = Calendar.current
         switch timeOfDay {
@@ -378,7 +378,7 @@ class TreatmentManager: ObservableObject {
         }
     }
 
-    // Get custom minute for a time of day
+    /// Get custom minute for a time of day
     private func getCustomMinute(for timeOfDay: TimeOfDay) -> Int {
         let calendar = Calendar.current
         switch timeOfDay {

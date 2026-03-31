@@ -258,7 +258,7 @@ struct PainLevelSheet: View {
                                     .background(selectedPainLevel == level
                                         ? Color.blue.opacity(0.1)
                                         : Color(.secondarySystemBackground))
-                                    .cornerRadius(12)
+                                        .cornerRadius(12)
                                 }
                                 .accessibilityLabel("Pain level: \(level.description)")
                                 .accessibilityHint(level.localizedDetail)

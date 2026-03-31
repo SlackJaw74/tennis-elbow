@@ -111,8 +111,8 @@ struct TreatmentPlanView: View {
                     : Int(Double(completed) / Double(todayActivities.count) * 100)
                 CircularProgressView(progress: todayActivities
                     .isEmpty ? 0 : Double(completed) / Double(todayActivities.count))
-                .frame(width: 60, height: 60)
-                .accessibilityLabel("Progress: \(progressPercent) percent complete")
+                    .frame(width: 60, height: 60)
+                    .accessibilityLabel("Progress: \(progressPercent) percent complete")
             }
         }
         .padding()

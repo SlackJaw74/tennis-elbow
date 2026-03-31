@@ -30,7 +30,7 @@ final class TennisElbowUITests: XCTestCase {
     }
 
     @MainActor
-    func testScreenshots() throws {
+    func testScreenshots() {
 
         // Force portrait orientation
         XCUIDevice.shared.orientation = .portrait
@@ -136,7 +136,7 @@ final class TennisElbowUITests: XCTestCase {
     }
 
     @MainActor
-    func testAllViewsExist() throws {
+    func testAllViewsExist() {
         app.launch()
 
         // Handle the disclaimer if it appears
@@ -168,7 +168,7 @@ final class TennisElbowUITests: XCTestCase {
     }
 
     @MainActor
-    func testExample() throws {
+    func testExample() {
 
         let app = XCUIApplication()
         app.launch()
@@ -208,7 +208,7 @@ final class TennisElbowUITests: XCTestCase {
     }
 
     @MainActor
-    func testLaunchPerformance() throws {
+    func testLaunchPerformance() {
         // This measures how long it takes to launch your application.
         measure(metrics: [XCTApplicationLaunchMetric()]) {
             XCUIApplication().launch()
@@ -216,7 +216,7 @@ final class TennisElbowUITests: XCTestCase {
     }
 
     @MainActor
-    func testCustomReminderTimes() throws {
+    func testCustomReminderTimes() {
         app.launch()
 
         // Handle the disclaimer if it appears
