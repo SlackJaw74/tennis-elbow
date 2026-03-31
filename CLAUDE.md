@@ -90,7 +90,7 @@ SwiftLint and SwiftFormat are mandatory on every change — no exceptions.
 
 ## Documentation
 
-All `.md` files (except `README.md`) go in the `docs/` folder.
+All `.md` files (except `README.md` and `CLAUDE.md`) go in the `docs/` folder.
 
 ## Pre-commit Checklist
 
